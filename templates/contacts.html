@@ -1,0 +1,37 @@
+<div class="contacts-loading-sreen contacts-d-none" id="contacts-loading-sreen"></div>
+<div class="contact-windows" id="contact-windows">
+    <section class="contacts" id="contacts">
+        <div class="contacts-area">
+            <div class="btn-new-contact-area">
+                <button class="btn-new-contact"
+                    onclick="openAndCloseAddNewEditContact('add-new-contact-include-HTML', 'add-new-contact', false)">
+                    <span class="btn-new-contact-text">Add new contact</span>
+                    <img class="btn-new-contact-icon" src="assets/img/icon_person_add.png" alt="person">
+                </button>
+            </div>
+            <div id="contacts-list">
+            </div>
+        </div>
+    </section>
+    <section class="contact-data contact-data-d-none" onclick="closeEditContactPointMenu(); notToClose(event)"
+        id="contact-data">
+        <img class="contact-data-arrow-left-icon" src="assets/img/icon_arrow_left.png" alt="back"
+            onclick="closeContactData(); notToClose(event)">
+        <div class="contact-data-area">
+            <div class="contact-data-headline">
+                <h1 class="contact-data-headline-left">Contacts</h1>
+                <div class="contact-data-headline-subContainer">
+                    <div class="contact-data-headline-separator"></div>
+                    <span class="contact-data-headline-right">Better with a team</span>
+                </div>
+            </div>
+            <div class="contact-data-content-parent">
+                <div id="contact-data-content">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="contact-added-slideBox contacts-d-none" id="contact-added-slideBox">
+    <span id="contact-slideBox-text">Contact succesfully created</span>
+</div>

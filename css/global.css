@@ -1,0 +1,318 @@
+body {
+    margin: 0;
+    font-family: "Inter", "Sans-serif";
+}
+
+.sidebar-t-d-none {
+    text-decoration: none;
+}
+
+.sidebar-t-highlighted {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(10, 25, 49);
+}
+
+.sidebar-t-d-none:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 25, 49);
+
+    .sidebar-icon-summary {
+        background-image: url('../assets/img/icon_summary_side_hover.png');
+    }
+
+    .sidebar-icon-add_task {
+        background-image: url('../assets/img/icons_add_task_side_hover.png');
+    }
+
+    .sidebar-icon-board {
+        background-image: url('../assets/img/icon_board_side_hover.png');
+    }
+
+    .sidebar-icon-contacts {
+        background-image: url('../assets/img/icon_contacts_side_hover.png');
+    }
+}
+
+.sidebar-icon-summary-highlighted {
+    background-image: url('../assets/img/icon_summary_side_hover.png') !important;
+}
+
+.sidebar-icon-add_task-highlighted {
+    background-image: url('../assets/img/icons_add_task_side_hover.png') !important;
+}
+
+.sidebar-icon-board-highlighted {
+    background-image: url('../assets/img/icon_board_side_hover.png') !important;
+}
+
+.sidebar-icon-contacts-highlighted {
+    background-image: url('../assets/img/icon_contacts_side_hover.png') !important;
+}
+
+.sidebar-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 232px;
+    background-color: rgb(42, 54, 71);
+}
+
+@media(max-width: 900px) {
+    .sidebar-panel {
+        display: flex;
+        flex-direction: row;
+        height: 80px;
+        width: 100%;
+    }
+}
+
+.sidebar-logo {
+    height: 121.97px;
+    width: 100.03px;
+    margin-top: 64px;
+}
+
+@media(max-width: 900px) {
+    .sidebar-logo {
+        display: none;
+    }
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media(max-width: 900px) {
+    .sidebar-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.sidebar-nav-member {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 56px;
+    font-size: 16px;
+    color: rgb(205, 205, 205);
+}
+
+@media(max-width: 900px) {
+    .sidebar-nav-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 76px;
+        width: 80px;
+        border-radius: 16px;
+        padding: unset;
+    }
+}
+
+.sidebar-icon {
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+}
+
+.sidebar-icon-summary {
+    background-image: url('../assets/img/icon_summary_side.png');
+}
+
+.sidebar-icon-add_task {
+    background-image: url('../assets/img/icon_add_task_side.png');
+}
+
+.sidebar-icon-board {
+    background-image: url('../assets/img/icon_board_side.png');
+}
+
+.sidebar-icon-contacts {
+    background-image: url('../assets/img/icon_contacs_side.png');
+}
+
+@media(max-width: 900px) {
+    .sidebar-text {
+        font-size: 14px;
+    }
+}
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+@media(max-width: 900px) {
+    .sidebar-footer {
+        display: none;
+    }
+}
+
+@media (min-height: 850px) {
+    .sidebar-footer {
+        height: 317px;
+    }
+}
+
+.topbar-t-d-none {
+    text-decoration: none;
+}
+
+.topbar-d-none {
+    display: none !important;
+}
+
+/* topbar area */
+.topbar-area {
+    display: block;
+    position: relative;
+    max-width: calc(100vw - 232px);
+    z-index: 1;
+}
+
+.topbar-area *,
+::after,
+::before {
+    box-sizing: unset !important;
+}
+
+@media(max-width: 900px) {
+    .topbar-area {
+        max-width: 100%;
+    }
+}
+
+.topbar-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 4px rgba(0 0 0 / 10%);
+    padding-left: calc(384px - 232px);
+    padding-right: 40px;
+}
+
+@media(max-width: 900px) {
+    .topbar-panel {
+        height: 80px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.topbar-logo {
+    display: none;
+}
+
+@media(max-width: 900px) {
+    .topbar-logo {
+        display: inline-flex;
+        height: 39px;
+        width: 32px;
+    }
+}
+
+.topbar-area-headline {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+@media(max-width: 900px) {
+    .topbar-area-headline {
+        display: none;
+    }
+}
+
+.topbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-icon {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+@media(max-width: 900px) {
+    .topbar-icon {
+        display: none;
+    }
+}
+
+.topbar-user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 56px;
+    border: 3px solid rgb(42, 54, 71);
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(41, 170, 227);
+}
+
+@media(max-width: 900px) {
+    .topbar-user-profile {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.topbar-user-profile:hover {
+    cursor: pointer;
+    background-color: rgb(226, 230, 236);
+}
+
+#context-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    height: calc(158px - 20px);
+    width: calc(150px - 20px);
+    background-color: rgb(42, 54, 71);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: absolute;
+    right: 16px;
+    padding: 10px;
+    z-index: 2;
+}
+
+@media(max-width: 900px) {
+    #context-menu {
+        top: 62px;
+        right: 40px;
+    }
+}
+
+.context-menu-member {
+    padding: 8px 12px;
+    font-size: 16px;
+    color: rgb(205, 205, 205);
+}
+
+.context-menu-member:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 25, 49);
+}

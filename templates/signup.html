@@ -1,0 +1,35 @@
+<form class="form_container form_signup">
+    <div class="backToLogin2" onclick="loadHTML('formElement', 'login.html'); toggleUiElements('login.html');"><img src="assets/img/arrowLeft.svg"></div>
+    <div class="login_headline">Sign up</div>
+    <i class="blueLine"></i>
+    <input type="text" autocomplete="username" class="form-control input_login input_name" style="margin-bottom: -16px !important;"
+        aria-describedby="emailHelp" placeholder="Name" id="username" onkeypress="validateSignUp()">
+    <input type="email" autocomplete="username" class="form-control input_login input_mail" style="margin-bottom: -16px !important;"
+        aria-describedby="emailHelp" placeholder="Email" id="email" onkeypress="validateSignUp()">
+    <div class="form-group">
+        <input type="password" autocomplete="new-password" class="form-control input_login input_password" style="margin-bottom: -16px !important;"
+            id="inputPassword2" placeholder="Password" onkeyup="updateInputState(this, 'btn_reveal2')"
+            onkeypress="updateInputState(this, 'btn_reveal2')">
+        <img src="assets/img/lock.svg" class="signup_reveal1" id="btn_reveal2"
+            onclick="toggleReveal(this, 'inputPassword2')">
+    </div>
+    <div class="form-group">
+        <input type="password" autocomplete="new-password" class="form-control input_login input_password" style="margin-bottom: -16px !important;"
+            id="inputPassword3" placeholder="Confirm password" onkeyup="updateInputState(this, 'btn_reveal3')"
+            onkeypress="updateInputState(this, 'btn_reveal3')">
+        <img src="assets/img/lock.svg" class="signup_reveal2" id="btn_reveal3"
+            onclick="toggleReveal(this, 'inputPassword3')">
+        <div class="password_warning invisible" style="top: 22px !important;" id="noMatch">Ups! Your password don't
+            match</div>
+    </div>
+    <div class="consent_container">
+        <label class="custom-checkbox">
+            <input type="checkbox" id="checkboxConsentPolicy" onclick="validateSignUp()">
+            <span class="checkbox-icon"></span>
+            I accept the
+        </label>
+        <a href="privacypolicy.html" style="text-decoration: none; color: #29ABE2;" target="_blank">Privacy policy</a>
+    </div>
+    <button type="submit" class="btn_filled btn_join invisible" id="btn_signUpUser"
+        onclick="register(); return false;">Sign up</button>
+</form>

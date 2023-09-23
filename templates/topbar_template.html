@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="topbar-area">
+        <div class="topbar-panel">
+            <img class="topbar-logo" src="assets/img/join_logo.svg" alt="logo">
+            <h3 class="topbar-area-headline">Kanban Project Management Tool</h3>
+            <nav class="topbar-nav" id="topbar-nav">
+                <a href="#">
+                    <img class="topbar-icon" src="assets/img/icon_help.png" alt="help" onclick="linkPage('help')">
+                </a>
+                <div class="topbar-user-profile" onclick="showOrHideContextMenu()">
+                    <span id="topbar-user-profile-letter"></span>
+                </div>
+            </nav>
+        </div>
+        <div id="context-menu" class="topbar-d-none">
+            <a href="legalnotice.html" class="context-menu-member topbar-t-d-none" target="_blank">Legal Notice</a>
+            <a href="privacypolicy.html" class="context-menu-member topbar-t-d-none" target="_blank">Privacy Policy</a>
+            <a href="index.html" class="context-menu-member topbar-t-d-none" onclick="logoutUser()">Log out</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
