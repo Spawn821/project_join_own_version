@@ -1,30 +1,80 @@
-<form class="form_container form_login" onsubmit="login(); return false;">
-    <div class="login_headline">Log in</div>
-    <i class="blueLine"></i>
-    <div class="form_group_container">
-        <div class="form-group">
-            <input type="email" class="form-control input_login input_mail" id="inputEmail" aria-describedby="emailHelp"
-                placeholder="Email" autocomplete="username">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+    <!-- login panel -->
+    <div class="login-panel background-color-white">
+
+        <!-- login headline -->
+        <div class="login-headline-area">
+            <h1 class="login-headline">Log in</h1>
+            <div class="separator login-separator-lenght"></div>
         </div>
-        <div class="form-group">
-            <input type="password" class="form-control input_login input_password" id="inputPassword"
-                placeholder="Password" onkeyup="updateInputState(this, 'btn_reveal1')"
-                onkeypress="updateInputState(this, 'btn_reveal1')" autocomplete="current-password">
-            <img src="assets/img/lock.svg" class="btn_reveal" id="btn_reveal1"
-                onclick="toggleReveal(this, 'inputPassword')">
-            <div class="password_warning invisible" id="password_warning">Wrong user or password! Try again.</div>
-        </div>
+
+        <form class="login-form-area" onsubmit="login(); return false;">
+
+            <!-- login input area -->
+            <div class="login-form-input-area">
+
+                <!-- login input mail -->
+                <div class="input-img-area">
+                    <input type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Email"
+                        autocomplete="username">
+
+                    <div class="input-img">
+                        <img src="/assets/img/icon_mail.png" alt="mail icon">
+                    </div>
+                </div>
+
+                <!-- login input password -->
+                <div class="input-img-area">
+                    <input type="password" id="inputPassword" placeholder="Password"
+                        onkeyup="updateInputState(this, 'btn_reveal1')"
+                        onkeypress="updateInputState(this, 'btn_reveal1')" autocomplete="current-password">
+
+                    <div class="input-img">
+                        <img src="/assets/img/icon_lock.png" id="btn_reveal1"
+                            onclick="toggleReveal(this, 'inputPassword')">
+                    </div>
+                </div>
+
+                <!-- input warning wrong user or password -->
+                <div class="password_warning" id="password_warning">Wrong user or password! Try again.
+                </div>
+
+            </div>
+
+            <div class="loginOptions">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="myCheckbox">
+                    <span class="checkbox-icon"></span>
+                    Remember me
+                </label>
+                <p class="password_forgotten"
+                    onclick="loadHTML('formElement', 'forgotPassword.html'); toggleUiElements('forgotPassword.html');">
+                    I
+                    forgot my password</p>
+            </div>
+            <div class="loginButtonContainer">
+                <button type="submit" class="btn_filled btn_join">Log in</button>
+                <button type="button" class="btn_outlined btn_join" onclick="guest();">Guest Log in</button>
+            </div>
+        </form>
+
     </div>
-    <div class="loginOptions">
-        <label class="custom-checkbox">
-            <input type="checkbox" id="myCheckbox">
-            <span class="checkbox-icon"></span>
-            Remember me
-        </label>
-        <p class="password_forgotten" onclick="loadHTML('formElement', 'forgotPassword.html'); toggleUiElements('forgotPassword.html');">I forgot my password</p>
-    </div>
-    <div class="loginButtonContainer">
-        <button type="submit" class="btn_filled btn_join">Log in</button>
-        <button type="button" class="btn_outlined btn_join" onclick="guest();">Guest Log in</button>
-    </div>
-</form>
+
+</body>
+
+</html>
