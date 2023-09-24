@@ -1,98 +1,62 @@
 /* ----------- */
-/* login panel */
+/* index panel */
 /* ----------- */
 
-.login-panel {
-  height: 493px;
-  width: 652px;
+.index-panel {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 24px;
+}
+
+
+
+/* ------------ */
+/* index header */
+/* ------------ */
+
+.index-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.index-join-logo {
+    height: 122px;
+    object-fit: contain;
+}
+
+.index-header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.index-header-not-a-user {
+    color: black;
+}
+
+.index-btn-signup {
+    height: 49px;
+    width: 91px;
+}
+
+
+
+/* ------------ */
+/* index footer */
+/* ------------ */
+
+.index-footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0px 0 14px 3px rgba(0 0 0 / 16%);
-  border-radius: 30px;
-  gap: 35px;
 }
 
-
-
-/* -------------- */
-/* login headline */
-/* -------------- */
-
-.login-headline-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.login-headline {
-  font-size: 73px;
-  line-height: 0;
-}
-
-.login-separator-lenght {
-  width: 150px;
-}
-
-
-
-/* ------------------ */
-/* login form element */
-/* ------------------ */
-
-.login-form-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-
-.login-form-input-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 35px;
-}
-
-
-
-
-
-
-
-
-.not-a-user-box {
-  width: 279px;
-  height: 49px;
-  position: absolute;
-  top: 8%;
-  right: 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.not-a-user {
-  font-weight: 400;
-  font-size: 20px;
-  color: #000;
-}
-
-.btn_signup {
-  font-size: 16px !important;
-  padding: 15px 16px !important;
-}
-
-.join_logo {
-  position: absolute;
-  top: 51px;
-  left: 77px;
-  width: 90px;
-  height: 110px;
-}
-
-.animationOverlay {
+/* .animationOverlay {
   position: absolute;
   z-index: 999;
   width: 100vw;
@@ -100,570 +64,10 @@
   height: 100vh;
   height: 100dvh;
   background-color: #F6F7F8;
-}
+} */
 
-.logoAnimation {
+/* .logoAnimation {
   position: relative;
   animation: slideLogo 1s ease-in-out;
   animation-fill-mode: forwards;
-}
-
-@keyframes slideLogo {
-  0% {
-    width: 274px;
-    height: 334px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  100% {
-    width: 90px;
-    height: 110px;
-    top: 51px;
-    left: 77px;
-  }
-}
-
-.animationOverlayMobile {
-  display: none;
-}
-
-.form_login {
-  width: 652px;
-  height: 505px;
-  padding: 48px 115px;
-}
-
-.form_forgotPassword {
-  width: 832px;
-  height: 441px;
-  padding: 48px 88px;
-}
-
-.dontWorry {
-  font-weight: 400;
-  font-size: 20px;
-  text-align: center;
-}
-
-.backToLogin {
-  position: absolute;
-  left: 60px;
-  top: 71px;
-}
-
-.backToLogin2 {
-  position: absolute;
-  left: 60px;
-  top: 71px;
-}
-
-.backToLogin2 img:hover {
-  width: 24px;
-}
-
-.backToLogin img:hover {
-  width: 24px;
-}
-
-.form_resetPassword {
-  height: 511px;
-  width: 826px;
-  padding: 48px 88px;
-}
-
-.form_signup {
-  height: 630px;
-  width: 598px;
-  padding: 48px 88px;
-}
-
-.input_login {
-  width: 422px;
-  height: 48px;
-  padding: 12px 21px;
-  border-radius: 10px;
-}
-
-.input_mail {
-  background: url("../assets/img/mail.svg");
-  background-repeat: no-repeat;
-  background-position: 378px;
-  margin-bottom: 16px;
-  border-color: #D1D1D1 !important;
-  box-shadow: none !important;
-}
-
-.input_name {
-  background: url("../assets/img/person.svg");
-  background-repeat: no-repeat;
-  background-position: 378px;
-  margin-bottom: 32px;
-  border-color: #D1D1D1 !important;
-  box-shadow: none !important;
-}
-
-.input_password {
-  border-color: #D1D1D1 !important;
-  margin-bottom: 16px;
-}
-
-.redBorder {
-  border-color: #FF8190 !important;
-}
-
-.btn_reveal {
-  cursor: pointer;
-  position: absolute;
-  top: 256px;
-  right: 138px;
-}
-
-.signup_reveal1 {
-  position: absolute;
-  cursor: pointer;
-  top: 324px;
-  right: 111px;
-}
-
-.signup_reveal2 {
-  position: absolute;
-  cursor: pointer;
-  top: 390px;
-  right: 111px;
-}
-
-.password_warning {
-  position: relative;
-  top: -12px;
-  font-family: "Poppins";
-  font-size: 12px;
-  line-height: 14px;
-  color: #FF8190;
-}
-
-.loginOptions {
-  width: 422px;
-  height: 24px;
-  display: flex;
-  justify-content: space-around;
-  margin-top: -35px;
-}
-
-.consent_container {
-  width: 231px;
-  height: 24px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.rememberMe {
-  width: 142px;
-  display: flex;
-  justify-content: space-between;
-}
-
-#checkBox_rememberMe {
-  cursor: pointer;
-}
-
-.password_forgotten {
-  color: #29ABE2;
-  cursor: pointer;
-}
-
-.loginButtonContainer {
-  width: 322px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn_filled {
-  border: 2px solid #2A3647;
-  background-color: #2A3647;
-  color: #fff;
-  transition: background-color ease-in-out 100ms, border-color ease-in-out 100ms;
-}
-
-.btn_filled:hover {
-  background-color: #29abe2;
-  border-color: #29abe2;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.06);
-}
-
-.btn_filled:active {
-  background-color: #091931;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.06);
-}
-
-.btn_outlined {
-  border-style: solid;
-  border-color: #2A3647;
-  color: #2A3647;
-  background-color: #fff;
-  transition: border-color ease-in-out 100ms, color ease-in-out 100ms;
-}
-
-.btn_outlined:hover {
-  color: #29ABE2;
-  border-color: #29ABE2;
-}
-
-.btn_outlined:active {
-  color: #091931;
-  border-color: #091931;
-}
-
-.btn_join {
-  border-width: 2px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 21px;
-  padding: 15px 24px;
-}
-
-.legal_container {
-  width: 246px;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 4%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.legal_container a {
-  text-decoration: none;
-  color: #A8A8A8;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-.legal_container a:hover {
-  color: #2A3647;
-}
-
-.invisible {
-  visibility: hidden !important;
-}
-
-.custom-checkbox input[type="checkbox"] {
-  display: none;
-}
-
-.custom-checkbox {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.checkbox-icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-size: contain;
-}
-
-.custom-checkbox .checkbox-icon {
-  background: url("../assets/img/checkbox_empty.svg") no-repeat;
-}
-
-.custom-checkbox input[type="checkbox"]:checked+.checkbox-icon {
-  background: url("../assets/img/checkbox_cutted.svg"), url("../assets/img/checkbox_mark.svg") no-repeat;
-  background-size: contain, 15px;
-  background-position: top left, top right;
-  background-repeat: no-repeat, no-repeat;
-}
-
-.slideBox {
-  font-size: 20px;
-  font-weight: 400;
-  padding: 20px 25px;
-  color: #fff;
-  background-color: #2A3647;
-  border-radius: 20px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
-  position: absolute;
-  bottom: -100px;
-  z-index: 999;
-  animation-name: moveUp;
-  animation-duration: 2s;
-  animation-delay: 800ms;
-  animation-timing-function: ease-out;
-}
-
-@keyframes moveUp {
-  0% {
-    bottom: 0;
-    opacity: 1;
-  }
-
-  99% {
-    bottom: 50vh;
-    opacity: 0;
-  }
-
-  100% {
-    display: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .form_forgotPassword {
-    width: 786px;
-    padding: 18px 28px;
-  }
-
-  .backToLogin2 {
-    left: 41px;
-    top: 43px;
-  }
-}
-
-@media (max-width: 700px) {
-  .form_login {
-    width: 552px;
-    height: 477px;
-    padding: 28px 75px;
-  }
-
-  .form_forgotPassword {
-    width: 532px;
-    height: 555px;
-    padding: 28px 78px;
-  }
-
-  .btn_reveal {
-    top: 235px;
-    right: 89px;
-  }
-
-  .form_signup {
-    height: 597px;
-    width: 477px;
-    padding: 28px 75px;
-  }
-
-  .signup_reveal1 {
-    top: 303px;
-    right: 53px;
-  }
-
-  .signup_reveal2 {
-    top: 371px;
-    right: 53px;
-  }
-
-  .animationOverlay {
-    display: none;
-  }
-
-  .animationOverlayMobile {
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #2A3647;
-    animation: greetingMobile;
-    animation-delay: 200ms;
-    animation-duration: 800ms;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes greetingMobile {
-    0% {
-      display: flex;
-      opacity: 100%;
-    }
-
-    100% {
-      opacity: 0%;
-      display: none;
-    }
-  }
-
-  .logoAnimationMobile {
-    width: 100px;
-    height: 122px;
-    background: url(../assets/img/join_logo_white.png);
-    object-fit: contain;
-  }
-}
-
-@media (max-width: 600px) {
-  .form_login {
-    width: 476px;
-    height: 473px;
-  }
-
-  .form_signup {
-    width: 476px;
-    height: 590px;
-  }
-
-  .btn_reveal {
-    right: 51px;
-  }
-
-  .form_resetPassword {
-    height: 553px;
-    width: 526px;
-    padding: 28px 68px;
-  }
-}
-
-@media (max-width: 500px) {
-  .form_login {
-    width: 320px;
-    height: 473px;
-  }
-
-  .form_forgotPassword {
-    width: 332px;
-    height: 455px;
-    padding: 28px 2px;
-  }
-
-  .form_forgotPassword a {
-    left: 18px;
-    top: 52px;
-  }
-
-  .form_signup {
-    width: 320px;
-    height: 483px;
-  }
-
-  .form_container {
-    gap: 26px;
-  }
-
-  .btn_reveal {
-    right: 33px;
-    top: 216px;
-  }
-
-  .signup_reveal1 {
-    top: 261px;
-    right: 34px;
-  }
-
-  .signup_reveal2 {
-    top: 320px;
-    right: 34px;
-  }
-
-  .loginButtonContainer {
-    width: 180px;
-    height: 123px;
-    flex-direction: column;
-  }
-
-  .login_headline {
-    font-size: 45px;
-  }
-
-  .input_login {
-    width: 285px;
-  }
-
-  .loginOptions {
-    width: 180px;
-    height: 60px;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    position: relative;
-    right: 50px;
-  }
-
-  .btn_join {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-
-  .legal_container {
-    font-size: 16px;
-  }
-
-  .input_mail {
-    background-position: 250px;
-  }
-
-  .not-a-user-box {
-    top: auto;
-    bottom: 10%;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    width: 267px;
-  }
-
-  .backToLogin {
-    left: 36px;
-    top: 55px;
-  }
-
-  .backToLogin2 {
-    left: 19px;
-    top: 51px;
-  }
-
-  .input_name {
-    background-position: 253px
-  }
-
-  .slideBox {
-    font-size: 16px;
-    padding: 10px 15px;
-  }
-}
-
-@media (max-height: 900px) {
-  .join_logo {
-    position: absolute;
-    top: 33px;
-    left: 87px;
-    width: 80px;
-    height: 88px;
-  }
-}
-
-@media (max-height: 800px) {
-  .join_logo {
-    top: 7px;
-    left: 43px;
-    width: 50px;
-    height: 90px;
-  }
-
-  .not-a-user-box {
-    bottom: 5%;
-  }
-
-  .legal_container {
-    bottom: 1%;
-  }
-
-  .btn_signup {
-    font-size: 12px !important;
-    padding: 9px 16px !important;
-  }
-
-  .not-a-user {
-    font-size: 16px;
-  }
-
-  .not-a-user-box {
-    width: 230px;
-  }
-}
+} */

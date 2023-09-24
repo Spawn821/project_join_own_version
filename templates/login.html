@@ -7,9 +7,7 @@
     <title>Document</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
@@ -40,37 +38,44 @@
 
                 <!-- login input password -->
                 <div class="input-img-area">
-                    <input type="password" id="inputPassword" placeholder="Password"
-                        onkeyup="updateInputState(this, 'btn_reveal1')"
-                        onkeypress="updateInputState(this, 'btn_reveal1')" autocomplete="current-password">
+                    <input type="password" id="login-password" placeholder="Password"
+                        onkeyup="updateInputState(this, 'login-input-img-password')"
+                        onkeypress="updateInputState(this, 'login-input-img-password')" autocomplete="current-password">
 
                     <div class="input-img">
-                        <img src="/assets/img/icon_lock.png" id="btn_reveal1"
-                            onclick="toggleReveal(this, 'inputPassword')">
+                        <img src="/assets/img/icon_lock.png" id="login-input-img-password"
+                            onclick="toggleReveal(this, 'login-password')">
                     </div>
                 </div>
 
                 <!-- input warning wrong user or password -->
-                <div class="password_warning" id="password_warning">Wrong user or password! Try again.
-                </div>
+                <span class="login-wrong-mail-password v-hidden" id="login-wrong-mail-password">Wrong user or password! Try again.
+                </span>
 
             </div>
 
-            <div class="loginOptions">
-                <label class="custom-checkbox">
-                    <input type="checkbox" id="myCheckbox">
-                    <span class="checkbox-icon"></span>
-                    Remember me
+            <!-- login options -->
+            <div class="login-options-area">
+
+                <!-- login remeber me -->
+                <label class="checkbox-text-area">
+                    <input type="checkbox" id="login-checkbox">
+                    <div></div> <!-- use for '::after' checkbox image -->
+                    <span>Remember me</span>
                 </label>
-                <p class="password_forgotten"
+
+                <!-- login forgott password -->
+                <label class="login-forgotten-password"
                     onclick="loadHTML('formElement', 'forgotPassword.html'); toggleUiElements('forgotPassword.html');">
-                    I
-                    forgot my password</p>
+                    I forgot my password</label>
             </div>
+
+            <!-- login buttons -->
             <div class="loginButtonContainer">
-                <button type="submit" class="btn_filled btn_join">Log in</button>
-                <button type="button" class="btn_outlined btn_join" onclick="guest();">Guest Log in</button>
+                <button type="submit" class="login-btn-left btn-black f-s-w-21px-700">Log in</button>
+                <button type="button" class="login-btn-right btn-white f-s-w-21px-700" onclick="guest();">Guest Log in</button>
             </div>
+
         </form>
 
     </div>

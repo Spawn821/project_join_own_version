@@ -3,8 +3,9 @@
  */
 async function init() {
     animateJoinLogo();
-    loadHTML('formElement', "login.html");
-    await loadUsers();
+    //loadHTML('formElement', "login.html");
+    await includeHTML();
+/*     await loadUsers(); */
     checkRememberLogin();
 }
 
@@ -73,15 +74,17 @@ const inputState = new InputState();
  * @param {*} idToToggle defines the ID of the icon-element to be toggled.
  */
 function updateInputState(element, idToToggle) {
+    const passwordInput = document.getElementById(idToToggle);
     const password = element;
+
     if (password.value == "") {
         inputState.setState("empty");
-        document.getElementById(idToToggle).src = "assets/img/lock.svg";
+        passwordInput.src = "/assets/img/icon_lock.png";
         password.type = "password";
     } else {
         inputState.setState("filled");
         if (password.value.length == 1) {
-            document.getElementById(idToToggle).src = "assets/img/eye.svg";
+            passwordInput.src = "/assets/img/icon_eye_visibility_on.png";
         }
     }
     if (document.getElementById('formElement').innerHTML.includes('form_signup')) {
@@ -97,13 +100,14 @@ function updateInputState(element, idToToggle) {
  */
 function toggleReveal(img, id) {
     const password = document.getElementById(id);
+
     if (inputState.getState() == "filled") {
         if (password.type == "password") {
-            img.src = "assets/img/eye_close.svg";
+            img.src = "/assets/img/icon_eye_visibility_off.png";
             password.type = "text";
         }
         else {
-            img.src = "assets/img/eye.svg";
+            img.src = "/assets/img/icon_eye_visibility_on.png";
             password.type = "password";
         }
     }

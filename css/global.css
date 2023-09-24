@@ -1,26 +1,59 @@
 body {
     margin: 0;
     font-family: "Inter", "Sans-serif";
+    background-color: rgb(245, 245, 245);
+    height: 100vh;
 }
 
 
 
-/* -------------- */
-/* generic classe */
-/* -------------- */
+/* --------------- */
+/* generic classes */
+/* --------------- */
 
 .d-none {
     display: none;
+}
+
+.v-hidden {
+    visibility: hidden;
 }
 
 .background-color-white {
     background-color: rgb(255, 255, 255);
 }
 
+.f-s-w-20px-400 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.f-s-w-16px-700 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.f-s-w-21px-700 {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+
+/* ----------------- */
+/* headlines default */
+/* ----------------- */
+
 .separator {
-    border: 3px solid rgb(20, 157, 248);
+    border: 3px solid rgb(41, 170, 227);
     border-radius: 8px;
 }
+
+
+
+/* -------------- */
+/* inputs default */
+/* -------------- */
 
 input {
     height: calc(48px - 24px);
@@ -56,13 +89,93 @@ input::placeholder {
 }
 
 input:focus {
-    box-shadow: none !important;
-    border-color: #29ABE2 !important;
+    box-shadow: none;
+    border-color: rgb(41, 170, 227);
 }
 
 .input-img-area:focus-within .input-img {
-    border-color: #29ABE2;
+    border-color: rgb(41, 170, 227);
 }
+
+
+
+/* ------------------ */
+/* checkboxes default */
+/* ------------------ */
+
+.checkbox-text-area {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + div::after {
+    content: url('/assets/img/icon_checkbox_empty.png');
+    margin-right: 4px;
+}
+
+input[type="checkbox"]:hover + div::after {
+    content: url('/assets/img/icon_checkbox_empty_hover.png');
+    margin-right: 4px;
+}
+
+input[type="checkbox"]:checked + div::after {
+    content: url('/assets/img/icon_checkbox_marked.png');
+}
+
+input[type="checkbox"]:checked:hover + div::after {
+    content: url('/assets/img/icon_checkbox_marked_hover.png');
+}
+
+
+
+/* --------------- */
+/* buttons default */
+/* --------------- */
+
+.btn-black {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.btn-black:hover {
+    cursor: pointer;
+    background-color: rgb(41, 170, 227);
+    box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
+}
+
+.btn-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(42, 54, 71);
+    border-radius: 10px;
+}
+
+.btn-white:hover {
+    cursor: pointer;
+    color: rgb(41, 170, 227);
+    border: 2px solid rgb(41, 170, 227);
+    box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
+}
+
+
+
+
+
 
 
 

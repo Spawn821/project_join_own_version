@@ -16,30 +16,52 @@
   <script src="js/global.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/register.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
 </head>
 
 <body onload="init();">
-  <div class="not-a-user-box" id="not-a-user-box">
-    <span class="not-a-user">Not a Join user?</span>
-            <button type="button" class="btn_filled btn_join btn_signup" onclick="loadHTML('formElement', 'signup.html'); toggleUiElements('signup.html');">Sign
-      up</button>
+
+  <!-- index panel -->
+  <div class="index-panel">
+
+    <!-- header area join -->
+    <header class="index-header">
+
+      <!-- header join logo -->
+      <img class="index-join-logo" src="assets/img/logo_join.png">
+
+      <!-- header right area -->
+      <div class="index-header-right" id="index-header-right">
+        <span class="f-s-w-20px-400">Not a Join user?</span>
+        <button type="button" class="btn-black index-btn-signup f-s-w-16px-700"
+          onclick="loadHTML('formElement', 'signup.html'); toggleUiElements('signup.html');">Sign
+          up</button>
+      </div>
+
+    </header>
+
+    <!--   <div id="formElement"></div> -->
+
+    <div w3-include-html="/templates/login.html"></div>
+
+    <!-- index footer -->
+    <footer class="index-footer">
+      <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
+      <a href="legalnotice.html" target="_blank">Legal Notice</a>
+    </footer>
+
+    <div class="slideBox d-none" id="slideBox">
+      text
+    </div>
+    <div class="animationOverlay d-none" id="animationOverlay">
+      <img class="logoAnimation" src="assets/img/join_logo.svg">
+    </div>
+    <div class="animationOverlayMobile" id="animationOverlayMobile">
+      <div class="logoAnimationMobile" id="logoAnimationMobile"></div><br>
+    </div>
+
   </div>
-  <img class="join_logo" src="assets/img/join_logo.svg">
-  <div id="formElement"></div>
-  <div class="legal_container">
-    <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
-    <a href="legalnotice.html" target="_blank">Legal Notice</a>
-  </div>
-  <div class="slideBox d-none" id="slideBox">
-    text
-  </div>
-  <div class="animationOverlay d-none" id="animationOverlay">
-    <img class="logoAnimation" src="assets/img/join_logo.svg">
-  </div>
-  <div class="animationOverlayMobile" id="animationOverlayMobile">
-    <div class="logoAnimationMobile" id="logoAnimationMobile"></div><br>
-  </div>
+
 </body>
 
 </html>
