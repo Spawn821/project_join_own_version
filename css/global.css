@@ -3,6 +3,7 @@ body {
     font-family: "Inter", "Sans-serif";
     background-color: rgb(245, 245, 245);
     height: 100vh;
+    transition: all ease-in-out 75ms;
 }
 
 
@@ -21,6 +22,11 @@ body {
 
 .background-color-white {
     background-color: rgb(255, 255, 255);
+}
+
+.f-s-w-16px-400 {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .f-s-w-20px-400 {
@@ -104,29 +110,29 @@ input:focus {
 /* ------------------ */
 
 .checkbox-text-area {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 input[type="checkbox"] {
     display: none;
 }
 
-input[type="checkbox"] + div::after {
+input[type="checkbox"]+div::after {
     content: url('/assets/img/icon_checkbox_empty.png');
     margin-right: 4px;
 }
 
-input[type="checkbox"]:hover + div::after {
+input[type="checkbox"]:hover+div::after {
     content: url('/assets/img/icon_checkbox_empty_hover.png');
     margin-right: 4px;
 }
 
-input[type="checkbox"]:checked + div::after {
+input[type="checkbox"]:checked+div::after {
     content: url('/assets/img/icon_checkbox_marked.png');
 }
 
-input[type="checkbox"]:checked:hover + div::after {
+input[type="checkbox"]:checked:hover+div::after {
     content: url('/assets/img/icon_checkbox_marked_hover.png');
 }
 
@@ -152,6 +158,16 @@ input[type="checkbox"]:checked:hover + div::after {
     cursor: pointer;
     background-color: rgb(41, 170, 227);
     box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
+}
+
+.btn-black:disabled {
+    opacity: 60%;
+
+    &.btn-black:hover {
+        cursor: unset;
+        background-color: rgb(42, 54, 71);
+        box-shadow: unset;
+    }
 }
 
 .btn-white {

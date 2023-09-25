@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Login</title>
+    <link rel="icon" type="image/png" href="assets/img/logo_join.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- scripts -->
+    <script src="js/global.js"></script>
+    <script src="js/login.js"></script>
+</head>
+
+<body class="login-body">
+
+    <!-- login header area join -->
+    <header class="login-header">
+
+        <!-- login header join logo -->
+        <img class="login-join-logo" src="assets/img/logo_join.png">
+
+        <!-- login header right area -->
+        <div class="login-header-right" id="login-header-right">
+            <span class="f-s-w-20px-400">Not a Join user?</span>
+            <a class="login-btn-link" href="signup.html">
+                <button type="button" class="btn-black login-btn-signup f-s-w-16px-700">
+                    Sign up
+                </button>
+            </a>
+        </div>
+
+    </header>
+
+    <!-- login panel -->
+    <div class="login-panel background-color-white">
+
+        <!-- login headline -->
+        <div class="login-headline-area">
+            <h1 class="login-headline">Log in</h1>
+            <div class="separator login-separator-lenght"></div>
+        </div>
+
+        <form class="login-form-area" onsubmit="login(); return false;">
+
+            <!-- login input area -->
+            <div class="login-form-input-area">
+
+                <!-- login input mail -->
+                <div class="input-img-area">
+                    <input required type="email" id="login-Email" placeholder="Email">
+
+                    <div class="input-img">
+                        <img src="assets/img/icon_mail.png" alt="mail icon">
+                    </div>
+                </div>
+
+                <div class="login-input-warning">
+
+                    <!-- login input password -->
+                    <div class="input-img-area">
+                        <input required type="password" id="login-password" placeholder="Password"
+                            onkeyup="updateInputState(this, 'login-img-password')"
+                            onkeypress="updateInputState(this, 'login-img-password')">
+
+                        <div class="input-img">
+                            <img src="assets/img/icon_lock.png" id="login-img-password"
+                                onclick="toggleReveal(this, 'login-password')">
+                        </div>
+                    </div>
+
+                    <!-- input warning wrong user or password -->
+                    <span class="login-wrong-mail-password v-hidden" id=" login-wrong-mail-password">
+                        Wrong user or password! Try again.
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- login options -->
+            <div class="login-options-area">
+
+                <!-- login remeber me -->
+                <label class="checkbox-text-area">
+                    <input type="checkbox" id="login-checkbox">
+                    <div></div> <!-- use for '::after' checkbox image -->
+                    <span>Remember me</span>
+                </label>
+
+                <!-- login forgott password -->
+                <a class="login-forgotten-password" href="reset_password.html">
+                    I forgot my password
+                </a>
+            </div>
+
+            <!-- login buttons -->
+            <div class="loginButtonContainer">
+                <button type="submit" class="login-btn-left btn-black f-s-w-21px-700">
+                    Log in
+                </button>
+                <button type="button" class="login-btn-right btn-white f-s-w-21px-700" onclick="guest();">
+                    Guest Log in
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- login footer -->
+    <footer class="login-footer">
+        <a class="login-link f-s-w-16px-400" href="privacypolicy.html" target="_blank">Privacy Policy</a>
+        <a class="login-link f-s-w-16px-400" href="legalnotice.html" target="_blank">Legal Notice</a>
+    </footer>
+
+</body>
+
+</html>

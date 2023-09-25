@@ -84,7 +84,7 @@ function updateInputState(element, idToToggle) {
     } else {
         inputState.setState("filled");
         if (password.value.length == 1) {
-            passwordInput.src = "/assets/img/icon_eye_visibility_on.png";
+            passwordInput.src = "/assets/img/icon_eye_visibility_off.png";
         }
     }
     if (document.getElementById('formElement').innerHTML.includes('form_signup')) {
@@ -103,14 +103,15 @@ function toggleReveal(img, id) {
 
     if (inputState.getState() == "filled") {
         if (password.type == "password") {
-            img.src = "/assets/img/icon_eye_visibility_off.png";
+            img.src = "/assets/img/icon_eye_visibility_on.png";
             password.type = "text";
         }
         else {
-            img.src = "/assets/img/icon_eye_visibility_on.png";
+            img.src = "/assets/img/icon_eye_visibility_off.png";
             password.type = "password";
         }
     }
+
     password.focus();
 }
 

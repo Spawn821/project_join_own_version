@@ -1,3 +1,58 @@
+/* ######################### */
+/* LOGIN */
+/* ######################### */
+
+/* ---------- */
+/* login body */
+/* ---------- */
+
+.login-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+
+
+/* ------------ */
+/* login header */
+/* ------------ */
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: calc(100% - 48px);
+  padding-top: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.login-join-logo {
+  height: 122px;
+  object-fit: contain;
+}
+
+.login-header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-btn-link {
+  text-decoration: none;
+}
+
+.login-btn-signup {
+  height: 49px;
+  width: 91px;
+}
+
+
+
 /* ----------- */
 /* login panel */
 /* ----------- */
@@ -56,13 +111,18 @@
   gap: 35px;
 }
 
+.login-input-waring {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .login-wrong-mail-password {
   width: 100%;
   font-family: "Poppins";
   font-size: 12px;
   line-height: 14px;
   color: rgb(255, 129, 144);
-  margin-top: -24px;
 }
 
 .login-options-area {
@@ -74,6 +134,7 @@
 
 .login-forgotten-password {
   color: rgb(41, 170, 227);
+  text-decoration: none;
 }
 
 .login-forgotten-password:hover {
@@ -90,6 +151,102 @@
 .login-btn-right {
   height: 48px;
   width: 177px;
+}
+
+
+
+/* ------------ */
+/* index footer */
+/* ------------ */
+
+.login-footer {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+.login-link {
+  color: rgb(168, 168, 168);
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: rgb(41, 170, 227);
+  font-weight: 700;
+}
+
+
+
+/* ######################### */
+/* SIGNUP */
+/* ######################### */
+
+/* ------------ */
+/* signup panel */
+/* ------------ */
+
+.signup-panel {
+  height: 630px !important;
+  width: 598px !important;
+  position: relative;
+}
+
+
+
+/* ----------------- */
+/* signup back arrow */
+/* ----------------- */
+
+.signup-back-arrow {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+}
+
+
+
+/* ------------------- */
+/* signup form element */
+/* ------------------- */
+
+.signup-form-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.signup-requirement {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.signup-privacy-policy {
+  cursor: pointer;
+  color: rgb(41, 170, 227);
+  text-decoration: none;
+}
+
+.signupt-btn {
+  height: 55px;
+  width: 126px;
+}
+
+
+
+/* ######################### */
+/* RESET PASSWORD */
+/* ######################### */
+
+/* -------------------- */
+/* reset password panel */
+/* -------------------- */
+
+.reset-password-panel {
+  position: relative;
+  height: 443px;
+  width: 852px;
 }
 
 
@@ -145,12 +302,6 @@
 }
 
 .backToLogin {
-  position: absolute;
-  left: 60px;
-  top: 71px;
-}
-
-.backToLogin2 {
   position: absolute;
   left: 60px;
   top: 71px;
@@ -352,7 +503,7 @@
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
   position: absolute;
   bottom: -100px;
-  z-index: 999;
+  z-login: 999;
   animation-name: moveUp;
   animation-duration: 2s;
   animation-delay: 800ms;
@@ -375,258 +526,18 @@
   }
 }
 
-@media (max-width: 900px) {
-  .form_forgotPassword {
-    width: 786px;
-    padding: 18px 28px;
-  }
+/* .animationOverlay {
+  position: absolute;
+  z-index: 999;
+  width: 100vw;
+  width: 100dvw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #F6F7F8;
+} */
 
-  .backToLogin2 {
-    left: 41px;
-    top: 43px;
-  }
-}
-
-@media (max-width: 700px) {
-  .form_login {
-    width: 552px;
-    height: 477px;
-    padding: 28px 75px;
-  }
-
-  .form_forgotPassword {
-    width: 532px;
-    height: 555px;
-    padding: 28px 78px;
-  }
-
-  .btn_reveal {
-    top: 235px;
-    right: 89px;
-  }
-
-  .form_signup {
-    height: 597px;
-    width: 477px;
-    padding: 28px 75px;
-  }
-
-  .signup_reveal1 {
-    top: 303px;
-    right: 53px;
-  }
-
-  .signup_reveal2 {
-    top: 371px;
-    right: 53px;
-  }
-
-  .animationOverlay {
-    display: none;
-  }
-
-  .animationOverlayMobile {
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #2A3647;
-    animation: greetingMobile;
-    animation-delay: 200ms;
-    animation-duration: 800ms;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes greetingMobile {
-    0% {
-      display: flex;
-      opacity: 100%;
-    }
-
-    100% {
-      opacity: 0%;
-      display: none;
-    }
-  }
-
-  .logoAnimationMobile {
-    width: 100px;
-    height: 122px;
-    background: url(../assets/img/join_logo_white.png);
-    object-fit: contain;
-  }
-}
-
-@media (max-width: 600px) {
-  .form_login {
-    width: 476px;
-    height: 473px;
-  }
-
-  .form_signup {
-    width: 476px;
-    height: 590px;
-  }
-
-  .btn_reveal {
-    right: 51px;
-  }
-
-  .form_resetPassword {
-    height: 553px;
-    width: 526px;
-    padding: 28px 68px;
-  }
-}
-
-@media (max-width: 500px) {
-  .form_login {
-    width: 320px;
-    height: 473px;
-  }
-
-  .form_forgotPassword {
-    width: 332px;
-    height: 455px;
-    padding: 28px 2px;
-  }
-
-  .form_forgotPassword a {
-    left: 18px;
-    top: 52px;
-  }
-
-  .form_signup {
-    width: 320px;
-    height: 483px;
-  }
-
-  .form_container {
-    gap: 26px;
-  }
-
-  .btn_reveal {
-    right: 33px;
-    top: 216px;
-  }
-
-  .signup_reveal1 {
-    top: 261px;
-    right: 34px;
-  }
-
-  .signup_reveal2 {
-    top: 320px;
-    right: 34px;
-  }
-
-  .loginButtonContainer {
-    width: 180px;
-    height: 123px;
-    flex-direction: column;
-  }
-
-  .login_headline {
-    font-size: 45px;
-  }
-
-  .input_login {
-    width: 285px;
-  }
-
-  .loginOptions {
-    width: 180px;
-    height: 60px;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    position: relative;
-    right: 50px;
-  }
-
-  .btn_join {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-
-  .legal_container {
-    font-size: 16px;
-  }
-
-  .input_mail {
-    background-position: 250px;
-  }
-
-  .not-a-user-box {
-    top: auto;
-    bottom: 10%;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    width: 267px;
-  }
-
-  .backToLogin {
-    left: 36px;
-    top: 55px;
-  }
-
-  .backToLogin2 {
-    left: 19px;
-    top: 51px;
-  }
-
-  .input_name {
-    background-position: 253px
-  }
-
-  .slideBox {
-    font-size: 16px;
-    padding: 10px 15px;
-  }
-}
-
-@media (max-height: 900px) {
-  .join_logo {
-    position: absolute;
-    top: 33px;
-    left: 87px;
-    width: 80px;
-    height: 88px;
-  }
-}
-
-@media (max-height: 800px) {
-  .join_logo {
-    top: 7px;
-    left: 43px;
-    width: 50px;
-    height: 90px;
-  }
-
-  .not-a-user-box {
-    bottom: 5%;
-  }
-
-  .legal_container {
-    bottom: 1%;
-  }
-
-  .btn_signup {
-    font-size: 12px !important;
-    padding: 9px 16px !important;
-  }
-
-  .not-a-user {
-    font-size: 16px;
-  }
-
-  .not-a-user-box {
-    width: 230px;
-  }
-}
+/* .logoAnimation {
+  position: relative;
+  animation: slideLogo 1s ease-in-out;
+  animation-fill-mode: forwards;
+} */

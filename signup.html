@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Signup</title>
+    <link rel="icon" type="image/png" href="assets/img/logo_join.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- scripts -->
+    <script src="js/global.js"></script>
+    <script src="js/login.js"></script>
+</head>
+
+<body class="login-body">
+
+    <!-- login header area join -->
+    <header class="login-header">
+
+        <!-- login header join logo -->
+        <img class="login-join-logo" src="assets/img/logo_join.png">
+
+    </header>
+
+    <!-- signup panel -->
+    <div class="login-panel signup-panel background-color-white">
+
+        <!-- signup back arrow -->
+        <a class="signup-back-arrow" href="login.html">
+            <img src="assets/img/icon_arrow_left.png">
+        </a>
+
+        <!-- signup headline -->
+        <div class="login-headline-area">
+            <h1 class="login-headline">Sign up</h1>
+            <div class="separator login-separator-lenght"></div>
+        </div>
+
+        <form class="signup-form-area" onsubmit="register(); return false;">
+
+            <!-- -signup input area -->
+            <div class="login-form-input-area">
+
+                <!-- signup input username -->
+                <div class="input-img-area">
+                    <input required type="text" placeholder="Name" id="username" onkeypress="validateSignUp()">
+
+                    <div class="input-img">
+                        <img src="assets/img/icon_person_gray.png" alt="">
+                    </div>
+                </div>
+
+                <!-- signup input mail -->
+                <div class="input-img-area">
+                    <input required type="email" placeholder="Email" id="email" onkeypress="validateSignUp()">
+
+                    <div class="input-img">
+                        <img src="assets/img/icon_mail.png" alt="">
+                    </div>
+                </div>
+
+                <!-- signup input password -->
+                <div class="input-img-area">
+                    <input required type="password" id="signup-password" placeholder="Password"
+                        onkeyup="updateInputState(this, 'signup-img-password')"
+                        onkeypress="updateInputState(this, 'signup-img-password')">
+
+                    <div class="input-img">
+                        <img src="assets/img/icon_lock.png" id="signup-img-password"
+                            onclick="toggleReveal(this, 'signup-password')">
+                    </div>
+                </div>
+
+                <div class="login-input-warning">
+
+                    <!-- signup input confirm password -->
+                    <div class="input-img-area">
+                        <input required type="password" id="signup-confirm-password" placeholder="Confirm password"
+                            onkeyup="updateInputState(this, 'signup-img-confirm-password')"
+                            onkeypress="updateInputState(this, 'signup-img-confirm-password')">
+
+                        <div class="input-img">
+                            <img src="assets/img/icon_lock.png" id="signup-img-confirm-password"
+                                onclick="toggleReveal(this, 'signup-confirm-password')">
+                        </div>
+                    </div>
+
+                    <!-- signup warning password don't macht -->
+                    <span class="login-wrong-mail-password v-hidden" id="signup-wrong-mail-password">
+                        Ups! Your password don't match
+                    </span>
+
+                </div>
+            </div>
+
+            <!-- signup requirement -->
+            <div class="signup-requirement">
+
+                <!-- signup i accept the -->
+                <label class="checkbox-text-area">
+                    <input type="checkbox" id="signup-checkbox" onclick="validateSignUp()">
+                    <div></div>
+                    <span>I accept the</span>
+                </label>
+
+                <a class="signup-privacy-policy" href="privacypolicy.html" target="_blank">Privacy
+                    policy</a>
+            </div>
+
+            <!-- signup button -->
+            <button disabled type="submit" class="signup-btn btn-black f-s-w-21px-700" id="signup-btn">
+                Sign up
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- signup footer -->
+    <footer class="login-footer">
+        <a class="login-link f-s-w-16px-400" href="privacypolicy.html" target="_blank">Privacy Policy</a>
+        <a class="login-link f-s-w-16px-400" href="legalnotice.html" target="_blank">Legal Notice</a>
+    </footer>
+
+</body>
+
+</html>
