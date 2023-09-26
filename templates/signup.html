@@ -4,34 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Signup</title>
-    <link rel="icon" type="image/png" href="assets/img/logo_join.png">
-
-    <!-- css -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/login.css">
-
-    <!-- scripts -->
-    <script src="js/global.js"></script>
-    <script src="js/login.js"></script>
+    <title>Document</title>
 </head>
 
 <body class="login-body">
-
-    <!-- login header area join -->
-    <header class="login-header">
-
-        <!-- login header join logo -->
-        <img class="login-join-logo" src="assets/img/logo_join.png">
-
-    </header>
 
     <!-- signup panel -->
     <div class="login-panel signup-panel background-color-white">
 
         <!-- signup back arrow -->
-        <a class="signup-back-arrow" href="login.html">
+        <a class="signup-back-arrow" onclick="showTemplate('login_html')">
             <img src="assets/img/icon_arrow_left.png">
         </a>
 
@@ -48,30 +30,34 @@
 
                 <!-- signup input username -->
                 <div class="input-img-area">
-                    <input required type="text" placeholder="Name" id="username" onkeypress="validateSignUp()">
+                    <input required type="text" placeholder="Name" id="signup-username"
+                    onkeyup="validateSignUp()"
+                    onkeypress="validateSignUp()">
 
                     <div class="input-img">
-                        <img src="assets/img/icon_person_gray.png" alt="">
+                        <img src="assets/img/icon_person_gray.png" alt="icon person image">
                     </div>
                 </div>
 
                 <!-- signup input mail -->
                 <div class="input-img-area">
-                    <input required type="email" placeholder="Email" id="email" onkeypress="validateSignUp()">
+                    <input required type="email" placeholder="Email" id="signup-mail"
+                    onkeyup="validateSignUp()"
+                    onkeypress="validateSignUp()">
 
                     <div class="input-img">
-                        <img src="assets/img/icon_mail.png" alt="">
+                        <img src="assets/img/icon_mail.png" alt="icon mail image">
                     </div>
                 </div>
 
                 <!-- signup input password -->
                 <div class="input-img-area">
-                    <input required type="password" id="signup-password" placeholder="Password"
-                        onkeyup="updateInputState(this, 'signup-img-password')"
-                        onkeypress="updateInputState(this, 'signup-img-password')">
+                    <input required type="password" placeholder="Password" id="signup-password"
+                        onkeyup="updateInputState(this, 'signup-img-password'); validateSignUp()"
+                        onkeypress="updateInputState(this, 'signup-img-password'); validateSignUp()">
 
                     <div class="input-img">
-                        <img src="assets/img/icon_lock.png" id="signup-img-password"
+                        <img src="assets/img/icon_lock.png" id="signup-img-password" alt="icon lock image"
                             onclick="toggleReveal(this, 'signup-password')">
                     </div>
                 </div>
@@ -80,12 +66,12 @@
 
                     <!-- signup input confirm password -->
                     <div class="input-img-area">
-                        <input required type="password" id="signup-confirm-password" placeholder="Confirm password"
-                            onkeyup="updateInputState(this, 'signup-img-confirm-password')"
-                            onkeypress="updateInputState(this, 'signup-img-confirm-password')">
+                        <input required type="password" placeholder="Confirm password" id="signup-confirm-password"
+                            onkeyup="updateInputState(this, 'signup-img-confirm-password'); validateSignUp()"
+                            onkeypress="updateInputState(this, 'signup-img-confirm-password'); validateSignUp()">
 
                         <div class="input-img">
-                            <img src="assets/img/icon_lock.png" id="signup-img-confirm-password"
+                            <img src="assets/img/icon_lock.png" id="signup-img-confirm-password" alt="icon lock image"
                                 onclick="toggleReveal(this, 'signup-confirm-password')">
                         </div>
                     </div>
@@ -120,12 +106,6 @@
         </form>
 
     </div>
-
-    <!-- signup footer -->
-    <footer class="login-footer">
-        <a class="login-link f-s-w-16px-400" href="privacypolicy.html" target="_blank">Privacy Policy</a>
-        <a class="login-link f-s-w-16px-400" href="legalnotice.html" target="_blank">Legal Notice</a>
-    </footer>
 
 </body>
 

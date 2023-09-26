@@ -1,33 +1,14 @@
 /**
  * This function initialize the landing page and preloads all registered Users to match them against input of the current user of the page.
  */
-async function init() {
-    animateJoinLogo();
-    //loadHTML('formElement', "login.html");
+async function loginInit() {
+/*     animateJoinLogo(); */
     await includeHTML();
 /*     await loadUsers(); */
-    checkRememberLogin();
-}
-
-
-/**
- * This function loads an HTML template into an element with a specific ID. 
- * @param {*} destinationId is the ID of the element the HTML template will be loaded into.
- * @param {*} fileName is the filename of the HTML template to be included in to the page.
- */
-async function loadHTML(destinationId, fileName) {
-    const destinationElement = document.getElementById(destinationId);
-    const htmlFilePath = "templates/" + fileName;
-
-    await fetch(htmlFilePath)
-        .then(response => response.text())
-        .then(htmlContent => {
-            destinationElement.innerHTML = "";
-            destinationElement.innerHTML = htmlContent;
-        })
-        .catch(error => {
-            console.error("Error loading HTML file:", error);
-        });
+/*     checkRememberLogin(); */
+    setTimeout((() => {
+        document.getElementById('login-animation-overlay').classList.add('d-none');
+    }), 900);
 }
 
 
@@ -87,9 +68,9 @@ function updateInputState(element, idToToggle) {
             passwordInput.src = "/assets/img/icon_eye_visibility_off.png";
         }
     }
-    if (document.getElementById('formElement').innerHTML.includes('form_signup')) {
+/*     if (document.getElementById('formElement').innerHTML.includes('form_signup')) {
         validateSignUp();
-    }
+    } */
 }
 
 
@@ -117,54 +98,6 @@ function toggleReveal(img, id) {
 
 
 /**
- * This function validates the input of user on signing up. Things being checked through sub-functions: passwords are identical, username and email are not empty.
- */
-function validateSignUp() {
-    const credentials = validatecredentials();
-    const match = validatePasswords();
-    const consent = document.getElementById('checkboxConsentPolicy').checked;
-
-    if (match && consent && credentials) {
-        document.getElementById('btn_signUpUser').classList.remove('invisible');
-    } else {
-        document.getElementById('btn_signUpUser').classList.add('invisible');
-    }
-}
-
-
-/**
- * This function checks if both username or email are empty.
- * @returns boolean state wether username and email address are empty.
- */
-function validatecredentials() {
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    if (username != "" && email != "") {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
-/**
- * This function checks if password and confirm password values are identical.
- * @returns boolean state for passwords being identical or not.
- */
-function validatePasswords() {
-    const password = document.getElementById('inputPassword2').value;
-    const passwordConfirm = document.getElementById('inputPassword3').value;
-    if (password === passwordConfirm) {
-        document.getElementById('noMatch').classList.add('invisible');
-        return true;
-    } else {
-        document.getElementById('noMatch').classList.remove('invisible');
-        return false;
-    }
-}
-
-
-/**
  * Animates the JoinLogo upon first loading of the page in desktop screen.
  */
 function animateJoinLogo() {
@@ -174,19 +107,6 @@ function animateJoinLogo() {
         animationOverlay.classList.add('d-none');
     }, 990);
     animateIteration = 1;
-}
-
-
-/**
- * Animates a message (sliding up box) upon successfull registration and other events.
- */
-function successMessage(message) {
-    const slideBox = document.getElementById("slideBox");
-    slideBox.classList.remove('d-none');
-    slideBox.innerHTML = message;
-    setTimeout(function () {
-        slideBox.classList.add('d-none');
-    }, 2750);
 }
 
 
@@ -220,6 +140,7 @@ function login() {
     const wrongPasswordOrUser = users.find(u => u.email != email.value || u.password != password.value);
     const warning = document.getElementById("password_warning");
     const passwordTextbox = document.getElementById("inputPassword");
+
     if (user) {
         warning.classList.add('invisible');
         passwordTextbox.classList.remove('redBorder');

@@ -113,6 +113,24 @@ let sidebarNavElements = [
     'contacts'
 ]
 
+let templatesIDIndex = [
+    'login_html',
+    'signup_html',
+    'reset_password_html'
+]
+
+
+/**
+ * Pulling user data from backend server.
+ */
+async function loadUsers() {
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
+}
+
 
 /**
  * This function loads all tasks from backend.
@@ -467,4 +485,43 @@ function returnNameWithoutSpaces(name) {
  */
 function logoutUser() {
     window.localStorage.clear();
+}
+
+
+/**
+ * Animates a message (sliding up box) upon successfull registration and other events.
+ */
+function informationSlidebox(message) {
+    const slidebox = document.getElementById("information-slidebox");
+
+    slidebox.classList.remove('d-none');
+    slidebox.innerHTML = message;
+
+    setTimeout(function () {
+        slidebox.classList.add('d-none');
+    }, 1500);
+}
+
+
+function showTemplate(name) {
+    hideAllTemplates();
+
+    let header = document.getElementById('login-header-right');
+
+    document.getElementById(`${name}`).classList.remove('d-none');
+
+    if (name != 'login_html') {
+        header.classList.add('d-none');
+    } else {
+        header.classList.remove('d-none');
+    }
+}
+
+
+function hideAllTemplates() {
+    for (let i = 0; i < templatesIDIndex.length; i++) {
+        const template = document.getElementById(`${templatesIDIndex[i]}`);
+
+        template.classList.add('d-none');
+    }
 }

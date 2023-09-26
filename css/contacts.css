@@ -733,45 +733,6 @@ body {
     transform: scale(1.01);
 }
 
-.contact-added-slideBox {
-    font-size: 20px;
-    font-weight: 400;
-    color: #fff;
-    background-color: #2A3647;
-    border-radius: 20px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
-    position: absolute;
-    right: -320px;
-    bottom: 48px;
-    z-index: 9;
-    animation-duration: 1.5s;
-    animation-name: moveUp;
-    animation-delay: 200ms;
-    height: 64px;
-    width: 303px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@keyframes moveUp {
-    25% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    50% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    75% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    100% {
-        right: -320px;
-    }
-}
-
 @media(max-width: 1350px) {
     .contact-added-slideBox {
         right: calc(50vw - 151.5px);

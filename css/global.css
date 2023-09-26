@@ -13,7 +13,7 @@ body {
 /* --------------- */
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .v-hidden {
@@ -188,6 +188,74 @@ input[type="checkbox"]:checked:hover+div::after {
     box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
 }
 
+
+
+/* ---------------------------- */
+/* information slidebox default */
+/* ---------------------------- */
+
+.information-slidebox {
+    color: rgb(255, 255, 255);
+    background-color: rgb(42, 54, 71);
+    border-radius: 20px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    position: absolute;
+    right: calc(50vw - 151.5px);
+    bottom: -80px;
+    z-index: 9;
+    animation-duration: 1.5s;
+    animation-name: info-slide-up-down;
+    animation-delay: 200ms;
+    height: 64px;
+    width: 303px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes info-slide-up-down {
+    25% {
+        bottom: 50vh;
+    }
+
+    50% {
+        bottom: 50vh;
+    }
+
+    75% {
+        bottom: 50vh;
+    }
+
+    100% {
+        bottom: -80px;
+    }
+}
+
+/* .contact-added-slideBox {
+    right: -320px;
+    bottom: 48px;
+    animation-duration: 1.5s;
+    animation-name: moveUp;
+    animation-delay: 150ms;
+} */
+
+/* @keyframes info-slide-up-down {
+    25% {
+        right: calc(100vw - 232px - 456px - 303px);
+    }
+
+    50% {
+        right: calc(100vw - 232px - 456px - 303px);
+    }
+
+    75% {
+        right: calc(100vw - 232px - 456px - 303px);
+    }
+
+    100% {
+        right: -320px;
+    }
+} */
 
 
 

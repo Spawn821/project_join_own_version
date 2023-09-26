@@ -1,3 +1,51 @@
+.login-animation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation-duration: 1s;
+  animation-name: login-animation-overlay;
+}
+
+@keyframes login-animation-overlay {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.login-animation-join-logo {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  height: 122px;
+  object-fit: contain;
+  animation-duration: 1s;
+  animation-name: login-logo-animation;
+}
+
+@keyframes login-logo-animation {
+  0% {
+    top: 50vh;
+    left: 50vw;
+    transform: scale(3);
+    display: block;
+  }
+
+  100% {
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    transform: scale(1);
+    display: none !important;
+  }
+}
+
+
 /* ######################### */
 /* LOGIN */
 /* ######################### */
@@ -40,10 +88,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-}
-
-.login-btn-link {
-  text-decoration: none;
 }
 
 .login-btn-signup {
@@ -153,6 +197,13 @@
   width: 177px;
 }
 
+.login-button-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
 
 
 /* ------------ */
@@ -198,6 +249,7 @@
 /* ----------------- */
 
 .signup-back-arrow {
+  cursor: pointer;
   position: absolute;
   top: 32px;
   left: 32px;
@@ -245,299 +297,14 @@
 
 .reset-password-panel {
   position: relative;
-  height: 443px;
+  height: 423px;
   width: 852px;
 }
 
+/* ----------------------- */
+/* reset password headline */
+/* ----------------------- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-@keyframes slideLogo {
-  0% {
-    width: 274px;
-    height: 334px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  100% {
-    width: 90px;
-    height: 110px;
-    top: 51px;
-    left: 77px;
-  }
+.reset-password-separator-lenght {
+  width: 500px;
 }
-
-.animationOverlayMobile {
-  display: none;
-}
-
-.form_login {
-  width: 652px;
-  height: 505px;
-  padding: 48px 115px;
-}
-
-.form_forgotPassword {
-  width: 832px;
-  height: 441px;
-  padding: 48px 88px;
-}
-
-.dontWorry {
-  font-weight: 400;
-  font-size: 20px;
-  text-align: center;
-}
-
-.backToLogin {
-  position: absolute;
-  left: 60px;
-  top: 71px;
-}
-
-.backToLogin2 img:hover {
-  width: 24px;
-}
-
-.backToLogin img:hover {
-  width: 24px;
-}
-
-.form_resetPassword {
-  height: 511px;
-  width: 826px;
-  padding: 48px 88px;
-}
-
-.form_signup {
-  height: 630px;
-  width: 598px;
-  padding: 48px 88px;
-}
-
-.input_login {
-  width: 422px;
-  height: 48px;
-  padding: 12px 21px;
-  border-radius: 10px;
-}
-
-.input_mail {
-  background: url("../assets/img/mail.svg");
-  background-repeat: no-repeat;
-  background-position: 378px;
-  margin-bottom: 16px;
-  border-color: #D1D1D1 !important;
-  box-shadow: none !important;
-}
-
-.input_name {
-  background: url("../assets/img/person.svg");
-  background-repeat: no-repeat;
-  background-position: 378px;
-  margin-bottom: 32px;
-  border-color: #D1D1D1 !important;
-  box-shadow: none !important;
-}
-
-.input_password {
-  border-color: #D1D1D1 !important;
-  margin-bottom: 16px;
-}
-
-.redBorder {
-  border-color: #FF8190 !important;
-}
-
-.btn_reveal {
-  cursor: pointer;
-  position: absolute;
-  top: 256px;
-  right: 138px;
-}
-
-.signup_reveal1 {
-  position: absolute;
-  cursor: pointer;
-  top: 324px;
-  right: 111px;
-}
-
-.signup_reveal2 {
-  position: absolute;
-  cursor: pointer;
-  top: 390px;
-  right: 111px;
-}
-
-.consent_container {
-  width: 231px;
-  height: 24px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.rememberMe {
-  width: 142px;
-  display: flex;
-  justify-content: space-between;
-}
-
-#checkBox_rememberMe {
-  cursor: pointer;
-}
-
-.loginButtonContainer {
-  width: 322px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn_filled {
-  border: 2px solid #2A3647;
-  background-color: #2A3647;
-  color: #fff;
-  transition: background-color ease-in-out 100ms, border-color ease-in-out 100ms;
-}
-
-.btn_filled:hover {
-  background-color: #29abe2;
-  border-color: #29abe2;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.06);
-}
-
-.btn_filled:active {
-  background-color: #091931;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.06);
-}
-
-.btn_outlined {
-  border-style: solid;
-  border-color: #2A3647;
-  color: #2A3647;
-  background-color: #fff;
-  transition: border-color ease-in-out 100ms, color ease-in-out 100ms;
-}
-
-.btn_outlined:hover {
-  color: #29ABE2;
-  border-color: #29ABE2;
-}
-
-.btn_outlined:active {
-  color: #091931;
-  border-color: #091931;
-}
-
-.btn_join {
-  border-width: 2px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 21px;
-  padding: 15px 24px;
-}
-
-.legal_container a {
-  text-decoration: none;
-  color: #A8A8A8;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-.legal_container a:hover {
-  color: #2A3647;
-}
-
-.invisible {
-  visibility: hidden !important;
-}
-
-.custom-checkbox input[type="checkbox"] {
-  display: none;
-}
-
-.custom-checkbox {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.checkbox-icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-size: contain;
-}
-
-.custom-checkbox .checkbox-icon {
-  background: url("../assets/img/checkbox_empty.svg") no-repeat;
-}
-
-.custom-checkbox input[type="checkbox"]:checked+.checkbox-icon {
-  background: url("../assets/img/checkbox_cutted.svg"), url("../assets/img/checkbox_mark.svg") no-repeat;
-  background-size: contain, 15px;
-  background-position: top left, top right;
-  background-repeat: no-repeat, no-repeat;
-}
-
-.slideBox {
-  font-size: 20px;
-  font-weight: 400;
-  padding: 20px 25px;
-  color: #fff;
-  background-color: #2A3647;
-  border-radius: 20px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
-  position: absolute;
-  bottom: -100px;
-  z-login: 999;
-  animation-name: moveUp;
-  animation-duration: 2s;
-  animation-delay: 800ms;
-  animation-timing-function: ease-out;
-}
-
-@keyframes moveUp {
-  0% {
-    bottom: 0;
-    opacity: 1;
-  }
-
-  99% {
-    bottom: 50vh;
-    opacity: 0;
-  }
-
-  100% {
-    display: none;
-  }
-}
-
-/* .animationOverlay {
-  position: absolute;
-  z-index: 999;
-  width: 100vw;
-  width: 100dvw;
-  height: 100vh;
-  height: 100dvh;
-  background-color: #F6F7F8;
-} */
-
-/* .logoAnimation {
-  position: relative;
-  animation: slideLogo 1s ease-in-out;
-  animation-fill-mode: forwards;
-} */

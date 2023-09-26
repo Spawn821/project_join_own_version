@@ -5,63 +5,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join</title>
-  <link rel="shortcut icon" href="assets/img/favicon_black.png" type="image/x-icon">
+  <link rel="icon" type="image/png" href="assets/img/logo_join.png">
 
   <!-- css -->
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/login.css">
 
   <!-- scripts -->
   <script src="js/global.js"></script>
   <script src="js/storage.js"></script>
-  <script src="js/register.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/signup.js"></script>
 </head>
 
-<body onload="init();">
+<body class="login-body" onload="loginInit();">
 
-  <!-- index panel -->
-  <div class="index-panel">
-
-    <!-- header area join -->
-    <header class="index-header">
-
-      <!-- header join logo -->
-      <img class="index-join-logo" src="assets/img/logo_join.png">
-
-      <!-- header right area -->
-      <div class="index-header-right" id="index-header-right">
-        <span class="f-s-w-20px-400">Not a Join user?</span>
-        <button type="button" class="btn-black index-btn-signup f-s-w-16px-700"
-          onclick="loadHTML('formElement', 'signup.html'); toggleUiElements('signup.html');">Sign
-          up</button>
-      </div>
-
-    </header>
-
-    <!--   <div id="formElement"></div> -->
-
-    <div w3-include-html="/templates/login.html"></div>
-
-    <!-- index footer -->
-    <footer class="index-footer">
-      <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
-      <a href="legalnotice.html" target="_blank">Legal Notice</a>
-    </footer>
-
-    <div class="slideBox d-none" id="slideBox">
-      text
-    </div>
-    <div class="animationOverlay d-none" id="animationOverlay">
-      <img class="logoAnimation" src="assets/img/join_logo.svg">
-    </div>
-    <div class="animationOverlayMobile" id="animationOverlayMobile">
-      <div class="logoAnimationMobile" id="logoAnimationMobile"></div><br>
-    </div>
-
+  <!-- login animation overlay join logo -->
+  <div class="login-animation-overlay background-color-white" id="login-animation-overlay">
+    <img class="login-animation-join-logo login-animation-logo" src="assets/img/logo_join.png">
   </div>
 
+  <!-- login header area join -->
+  <header class="login-header">
+
+    <!-- login header join logo -->
+    <img class="login-join-logo" src="assets/img/logo_join.png">
+
+    <!-- login header right area -->
+    <div class="login-header-right" id="login-header-right">
+      <span class="f-s-w-20px-400">Not a Join user?</span>
+      <button type="button" class="btn-black login-btn-signup f-s-w-16px-700" onclick="showTemplate('signup_html')">
+        Sign up
+      </button>
+    </div>
+
+  </header>
+
+  <!-- include login.html -->
+  <div id="login_html" w3-include-html="templates/login.html"></div>
+
+  <!-- include signup.html -->
+  <div id="signup_html" class="d-none" w3-include-html="templates/signup.html"></div>
+
+  <!-- include reset_password.html -->
+  <div id="reset_password_html" class="d-none" w3-include-html="templates/reset_password.html"></div>
+
+  <!-- login footer -->
+  <footer class="login-footer">
+    <a class="login-link f-s-w-16px-400" href="privacypolicy.html" target="_blank">Privacy Policy</a>
+    <a class="login-link f-s-w-16px-400" href="legalnotice.html" target="_blank">Legal Notice</a>
+  </footer>
+
+  <!-- information slider -->
+  <div class="information-slidebox f-s-w-20px-400 d-none" id="information-slidebox">
+    <span id="information-slidebox-text">Contact succesfully created</span>
+  </div>
 </body>
 
 </html>
