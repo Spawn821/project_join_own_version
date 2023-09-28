@@ -1,37 +1,59 @@
-<div class="contentStandard left-0-top-3em-mobile">
-    <div class="add-task-subcontainer">
-        <h1>Add Task</h1>
-        <div class="panel block-mobile">
-            <div class="left-side-of-panel">
-                <div class="property">
-                    <label for="title" class="form-label">Title</label>
-                    <input id="title" type="text" class="form-control height-48px cursor-pointer"
-                        placeholder="Enter a title">
-                    <div class="invalidMessage d-none" id="titleInvalid">This field is required.</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/add_task.css">
+</head>
+
+<body>
+
+    <!-- add task panel -->
+    <div class="add-task-panel">
+
+        <!-- add task headline -->
+        <h1 class="f-s-61px">Add Task</h1>
+
+        <!-- add new task area' -->
+        <form class="add-new-task-area">
+
+            <!-- add new task left side -->
+            <div class="add-new-task-left-side">
+
+                <!-- add new task left side container one -->
+                <div class="add-new-task-subcontainer">
+                    <label for="title" class="f-s-w-20px-400">Title</label>
+                    <input id="title" type="text" class="add-new-task-input" placeholder="Enter a title">
                 </div>
-                <div class="property">
+
+                <div class="add-new-task-subcontainer">
                     <label class="form-label">Description</label>
-                    <textarea id="description" class="form-control cursor-pointer"
-                        placeholder="Enter a Description" id="floatingTextarea"
-                        style="height: 100px"></textarea>
+                    <textarea id="description" class="form-control cursor-pointer" placeholder="Enter a Description"
+                        id="floatingTextarea" style="height: 100px"></textarea>
                     <div class="invalidMessage d-none" id="descriptionInvalid">This field is required.</div>
                 </div>
-                <div class="property">
+
+                <div class="add-new-task-subcontainer">
                     <label class="form-label">Assigned to</label>
-                    <div class="select-btn form-control" onclick="selectContactFieldInBackground('contentSearchContact');"
-                        id="selectContactField">
+                    <div class="select-btn form-control"
+                        onclick="selectContactFieldInBackground('contentSearchContact');" id="selectContactField">
                         <span>Select Contact</span>
                         <div class="circleAroundDownArrow" id="downarrow"
                             onclick="add_d_none('downarrow'); remove_d_none('uparrow');">
-                            <img src="./assets/img/arrow_drop_down.svg">
+                            <img src="/assets/img/arrow_drop_down.svg">
                         </div>
                     </div>
                     <div class="contentSearchContact d-none" id="contentSearchContact">
                         <div class="search">
                             <input type="text" placeholder="Search" id="searchContactField" onkeydown="filterNames();">
-                            <div class="circleAroundUpArrow d-none" id="uparrow"
-                                onclick="closeContactList();">
-                                <img src="./assets/img/arrow_drop_up.svg">
+                            <div class="circleAroundUpArrow d-none" id="uparrow" onclick="closeContactList();">
+                                <img src="/assets/img/arrow_drop_up.svg">
                             </div>
                         </div>
                         <div style="position: relative;">
@@ -44,7 +66,7 @@
                                     Add new contact
                                 </div>
                                 <div>
-                                    <img src="./assets/img/person_add.svg">
+                                    <img src="/assets/img/person_add.svg">
                                 </div>
                             </div>
                         </div>
@@ -53,23 +75,26 @@
                     <div id="selected-contacts-circles-below">
                     </div>
                 </div>
+
             </div>
+
             <div class="separator hide-mobile"></div>
+
             <div class="right-side-of-panel" onclick="closeContactList();">
+
                 <div class="property">
                     <label class="form-label">Due date</label>
-                    <input id="date" name="date" type="date"
-                        class="form-control height-48px date-format cursor-pointer" placeholder="dd/mm/yyyy"
-                        onmouseover="setDateOfTodayForDatepicker('date');">
+                    <input id="date" name="date" type="date" class="form-control height-48px date-format cursor-pointer"
+                        placeholder="dd/mm/yyyy" onmouseover="setDateOfTodayForDatepicker('date');">
                     <div class="invalidMessage d-none" id="dateInvalid">This field is required.</div>
                 </div>
+
                 <div class="property">
                     <label class="form-label">Prio</label>
                     <div class="all-buttons-prio" id="all-buttons-prio">
                         <div id="btn_urgent" class="button-prio" onclick="colorRed();">Urgent
                             <div class="containArrow">
-                                <img id="arrowWhiteUrgent" class="arrowWhiteUrgent"
-                                    src="./assets/img/Capa_2_white.svg">
+                                <img id="arrowWhiteUrgent" class="arrowWhiteUrgent" src="./assets/img/Capa_2_white.svg">
                                 <img id="arrowRedUrgent" class="arrowRedUrgent" src="./assets/img/Capa_2.svg">
                             </div>
                         </div>
@@ -77,14 +102,12 @@
                             <div class="containArrow">
                                 <img id="arrowWhiteMedium" class="arrowWhiteMedium"
                                     src="./assets/img/Prio_media_white.svg">
-                                <img id="arrowOrangeMedium" class="arrowOrangeMedium"
-                                    src="./assets/img/Prio_media.svg">
+                                <img id="arrowOrangeMedium" class="arrowOrangeMedium" src="./assets/img/Prio_media.svg">
                             </div>
                         </div>
                         <div id="btn_low" class="button-prio" onclick="colorGreen();">Low
                             <div class="containArrow">
-                                <img id="arrowWhiteLow" class="arrowWhiteLow"
-                                    src="./assets/img/Capa_1_white.svg">
+                                <img id="arrowWhiteLow" class="arrowWhiteLow" src="./assets/img/Capa_1_white.svg">
                                 <img id="arrowGreenLow" class="arrowGreenLow" src="./assets/img/Capa_1.svg">
                             </div>
                         </div>
@@ -92,13 +115,13 @@
                     </div>
                     <div class="invalidMessage d-none" id="prioInvalid">This field is required.</div>
                 </div>
+
                 <div class="property">
                     <div class="wrapper-category">
                         <label class="form-label" for="">Category</label>
                         <div class="select-btn form-control" onclick="showContentCategory();" id="categoryId">
                             <span id="selectedCategory">Select task category</span>
-                            <div class=" circleAroundDownArrow" id="downarrow_cat"
-                                onclick="showContentCategory();">
+                            <div class=" circleAroundDownArrow" id="downarrow_cat" onclick="showContentCategory();">
                                 <img src="assets/img/arrow_drop_down.svg">
                             </div>
                             <div class="circleAroundDownArrow d-none" id="uparrow_cat"
@@ -127,6 +150,7 @@
                     </div>
                     <div class="invalidMessage d-none" id="categoryInvalid">This field is required.</div>
                 </div>
+
                 <div class="property">
                     <label for="subtask_wrapper" class="form-label">Subtasks</label>
                     <div class="input-group" id="subtask_wrapper">
@@ -140,6 +164,7 @@
                     <div class="invalidMessage d-none" id="subtaskInvalid">This field is required.</div>
                     <div class="selectedSubtasks bigger-area-mobile" id="selectedSubtasks"></div>
                 </div>
+
                 <div class="buttons_clear_create fixed-mobile">
                     <button class="btn btn-outline-dark button-clear hide-mobile" onclick="resetForm2();"
                         onmouseover="remove_d_none('blue_x'); add_d_none('black_x');"
@@ -151,7 +176,13 @@
                             id="buttonCreate">Create Task <img src="./assets/img/check.svg"></button>
                     </div>
                 </div>
+
             </div>
-        </div>
+
+        </form>
+
     </div>
-</div>
+
+</body>
+
+</html>

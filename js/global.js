@@ -165,12 +165,12 @@ async function includeHTML() {
  * This function toggles visibility of the menu on top right of the top-navigation bar.
  */
 function showOrHideContextMenu() {
-    let contextMenu = document.getElementById('context-menu');
+    let contextMenu = document.getElementById('context-menu-panel');
 
-    if (contextMenu.classList.contains('topbar-d-none')) {
-        contextMenu.classList.remove('topbar-d-none')
+    if (contextMenu.classList.contains('d-none')) {
+        contextMenu.classList.remove('d-none')
     } else (
-        contextMenu.classList.add('topbar-d-none')
+        contextMenu.classList.add('d-none')
     )
 }
 
@@ -503,6 +503,10 @@ function informationSlidebox(message) {
 }
 
 
+/**
+ * This function show the in 'name' saved template.
+ * @param {string} name is the name from the template.
+ */
 function showTemplate(name) {
     hideAllTemplates();
 
@@ -518,6 +522,9 @@ function showTemplate(name) {
 }
 
 
+/**
+ * This function close all templates on the index side.
+ */
 function hideAllTemplates() {
     for (let i = 0; i < templatesIDIndex.length; i++) {
         const template = document.getElementById(`${templatesIDIndex[i]}`);

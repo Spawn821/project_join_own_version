@@ -6,8 +6,10 @@ async function loginInit() {
     await includeHTML();
 /*     await loadUsers(); */
 /*     checkRememberLogin(); */
+
     setTimeout((() => {
         document.getElementById('login-animation-overlay').classList.add('d-none');
+        document.getElementById('login-animation-logo').classList.add('d-none');
     }), 900);
 }
 
@@ -68,9 +70,6 @@ function updateInputState(element, idToToggle) {
             passwordInput.src = "/assets/img/icon_eye_visibility_off.png";
         }
     }
-/*     if (document.getElementById('formElement').innerHTML.includes('form_signup')) {
-        validateSignUp();
-    } */
 }
 
 

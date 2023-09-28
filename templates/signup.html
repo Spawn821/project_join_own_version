@@ -19,7 +19,7 @@
 
         <!-- signup headline -->
         <div class="login-headline-area">
-            <h1 class="login-headline">Sign up</h1>
+            <h1 class="login-headline f-s-61px">Sign up</h1>
             <div class="separator login-separator-lenght"></div>
         </div>
 
@@ -29,34 +29,34 @@
             <div class="login-form-input-area">
 
                 <!-- signup input username -->
-                <div class="input-img-area">
-                    <input required type="text" placeholder="Name" id="signup-username"
+                <div class="login-input-img-area">
+                    <input required class="login-input" type="text" placeholder="Name" id="signup-username"
                     onkeyup="validateSignUp()"
                     onkeypress="validateSignUp()">
 
-                    <div class="input-img">
+                    <div class="login-input-img">
                         <img src="assets/img/icon_person_gray.png" alt="icon person image">
                     </div>
                 </div>
 
                 <!-- signup input mail -->
-                <div class="input-img-area">
-                    <input required type="email" placeholder="Email" id="signup-mail"
+                <div class="login-input-img-area">
+                    <input required class="login-input" type="email" placeholder="Email" id="signup-mail"
                     onkeyup="validateSignUp()"
                     onkeypress="validateSignUp()">
 
-                    <div class="input-img">
+                    <div class="login-input-img">
                         <img src="assets/img/icon_mail.png" alt="icon mail image">
                     </div>
                 </div>
 
                 <!-- signup input password -->
-                <div class="input-img-area">
-                    <input required type="password" placeholder="Password" id="signup-password"
+                <div class="login-input-img-area">
+                    <input required class="login-input" type="password" placeholder="Password" id="signup-password"
                         onkeyup="updateInputState(this, 'signup-img-password'); validateSignUp()"
                         onkeypress="updateInputState(this, 'signup-img-password'); validateSignUp()">
 
-                    <div class="input-img">
+                    <div class="login-input-img">
                         <img src="assets/img/icon_lock.png" id="signup-img-password" alt="icon lock image"
                             onclick="toggleReveal(this, 'signup-password')">
                     </div>
@@ -65,12 +65,12 @@
                 <div class="login-input-warning">
 
                     <!-- signup input confirm password -->
-                    <div class="input-img-area">
-                        <input required type="password" placeholder="Confirm password" id="signup-confirm-password"
+                    <div class="login-input-img-area">
+                        <input required class="login-input" type="password" placeholder="Confirm password" id="signup-confirm-password"
                             onkeyup="updateInputState(this, 'signup-img-confirm-password'); validateSignUp()"
                             onkeypress="updateInputState(this, 'signup-img-confirm-password'); validateSignUp()">
 
-                        <div class="input-img">
+                        <div class="login-input-img">
                             <img src="assets/img/icon_lock.png" id="signup-img-confirm-password" alt="icon lock image"
                                 onclick="toggleReveal(this, 'signup-confirm-password')">
                         </div>

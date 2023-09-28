@@ -1,76 +1,100 @@
-<div class="contentContainer">
-    <div class="headline-subcontainer-panel">
-        <div class="contact-data-headline summary-headline">
-            <h1 class="contact-data-headline-left">Summary</h1>
-            <div class="contact-data-headline-subContainer">
-                <div class="contact-data-headline-separator"></div>
-                <span class="contact-data-headline-right">Everything in a nutshell!</span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- summary panel -->
+    <div class="summary-panel">
+
+        <!-- summary headline -->
+        <div class="summary-headline-area">
+            <h1 class="summary-headline-left">Summary</h1>
+            <div class="summary-headline-subContainer">
+                <div class="summary-headline-separator"></div>
+                <span class="summary-headline-right">Everything in a nutshell!</span>
             </div>
         </div>
-        <div class="contentSubcontainer">
-            <div class="panelContainer">
-                <div class="panelRow">
-                    <div class="tasksPanel" onclick="getBoard();">
-                        <div class="variablePanel" id="variablePanel1"></div>
-                        <div class="font20px400">Tasks in<br>Board</div>
-                    </div>
-                    <div class="tasksPanel" onclick="getBoard();">
-                        <div class="variablePanel" id="variablePanel2"></div>
-                        <div class="font20px400">Tasks in<br>Progress</div>
-                    </div>
-                    <div class="tasksPanel" onclick="getBoard();">
-                        <div class="variablePanel" id="variablePanel3"></div>
-                        <div class="font20px400">Awaiting<br>Feedback</div>
-                    </div>
-                </div>
-                <div class="rowUrgent" onclick="getBoard();">
-                    <div class="urgentTask">
-                        <div class="urgentImageContainer">
-                            <img src="assets/img/Capa_2_white.svg" alt="arrowUp">
+
+        <!-- summary information area -->
+        <div class="summary-information-area">
+
+            <!-- summary information area left container -->
+            <div class="summary-infomation-left-container">
+
+                <!-- summary information first row container -->
+                <div class="summary-information-row">
+                    <div class="summary-container-medium" onclick="getBoard();">
+                        <div class="summary-edit">
+                            <div class="summary-edit-icon"></div>
                         </div>
-                        <div class="urgentTextContainer">
-                            <div class="variablePanel" id="variablePanel4"></div>
-                            <div class="font16px400">Urgent</div>
+                        <div class="summary-text-container">
+                            <span class="f-s-w-64px-600" id="summary-to-do-number">1</span>
+                            <span class="f-s-w-20px-400">To-Do</span>
                         </div>
                     </div>
-                    <div class="verticalGreyLine"></div>
-                    <div class="deadline">
-                        <div class="font21px700" id="deadlineDate">October 16, 2022</div>
-                        <div class="font16px400">Upcoming Deadline</div>
-                    </div>
-                </div>
-                <div class="panelRow">
-                    <div class="otherTasksContainer" onclick="getBoard();">
-                        <div class="edit">
-                            <div class="edit-icon"></div>
+                    <div class="summary-container-medium" onclick="getBoard();">
+                        <div class="summary-done">
+                            <div class="summary-done-icon"></div>
                         </div>
-                        <div class="editTextSummary">
-                            <div class="variablePanel" id="variablePanel5"></div>
-                            <div class="font20px400">To-Do</div>
-                        </div>
-                    </div>
-                    <div class="otherTasksContainer" onclick="getBoard();">
-                        <div class="done">
-                            <div class="done-icon"></div>
-                        </div>
-                        <div class="editTextSummary">
-                            <div class="variablePanel" id="variablePanel6"></div>
-                            <div class="font20px400">Done</div>
+                        <div class="summary-text-container">
+                            <span class="f-s-w-64px-600" id="summary-done-number">1</span>
+                            <span class="f-s-w-20px-400">Done</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- summary information second row -->
+                <div class="summary-container-large" onclick="getBoard();">
+                    <div class="summary-priority-task">
+                        <div class="summary-priority-icon">
+                            <img src="/assets/img/icon_summary_urgent_white.png" alt="priority image">
+                        </div>
+                        <div class="summary-text-container">
+                            <span class="f-s-w-64px-600" id="summary-priority-number">1</span>
+                            <span class="f-s-w-20px-400">priority</span>
+                        </div>
+                    </div>
+                    <div class="summary-priority-separator"></div>
+                    <div class="summary-priority-deadline">
+                        <span class="f-s-w-21px-700" id="summary-priority-date">October 16, 2022</span>
+                        <span class="f-s-w-16px-400">Upcoming Deadline</span>
+                    </div>
+                </div>
+
+                <!-- summary information third row -->
+                <div class="summary-information-row">
+                    <div class="summary-container-small" onclick="getBoard();">
+                        <span class="f-s-w-64px-600" id="summary-all-tasks-nummber">1</span>
+                        <span class="f-s-w-20px-400">Tasks in<br>Board</span>
+                    </div>
+                    <div class="summary-container-small" onclick="getBoard();">
+                        <span class="f-s-w-64px-600" id="summary-progress-number">1</span>
+                        <span class="f-s-w-20px-400">Tasks in<br>Progress</span>
+                    </div>
+                    <div class="summary-container-small" onclick="getBoard();">
+                        <span class="f-s-w-64px-600" id="summary-feedback-number">1</span>
+                        <span class="f-s-w-20px-400">Awaiting<br>Feedback</span>
+                    </div>
+                </div>
+
             </div>
 
+            <!-- summary information greeting -->
             <div class="summary-greeting">
-                <div class="greetingContainer">
-                    <div class="font47px500" id="greeting">Welcome,</div>
-                    <div class="font64px700" style="color: #29ABE2;" id="greetingName">Guest</div>
-                </div>
+                <span class="f-s-w-47px-500" id="summary-greeting">Welcome,</span>
+                <span class="f-s-w-64px-700" style="color: #29ABE2;" id="summary-greeting-name">Guest</span>
             </div>
-            <div class="greetingMobileContainer" id="greetingMobileContainer">
-                <div class="greetingMobileMessage" id="greetingMobileMessage"></div><br>
-                <div class="greetingMobileName" id="greetingMobileName"></div>
-            </div>
+
         </div>
+
     </div>
-</div>
+
+</body>
+
+</html>

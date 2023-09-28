@@ -15,7 +15,7 @@
 
         <!-- login headline -->
         <div class="login-headline-area">
-            <h1 class="login-headline">Log in</h1>
+            <h1 class="login-headline f-s-61px">Log in</h1>
             <div class="separator login-separator-lenght"></div>
         </div>
 
@@ -25,10 +25,10 @@
             <div class="login-form-input-area">
 
                 <!-- login input mail -->
-                <div class="input-img-area">
-                    <input required type="email" id="login-Email" placeholder="Email">
+                <div class="login-input-img-area">
+                    <input required class="login-input" type="email" id="login-Email" placeholder="Email">
 
-                    <div class="input-img">
+                    <div class="login-input-img">
                         <img src="assets/img/icon_mail.png" alt="icon mail image">
                     </div>
                 </div>
@@ -36,12 +36,12 @@
                 <div class="login-input-warning">
 
                     <!-- login input password -->
-                    <div class="input-img-area">
-                        <input required type="password" id="login-password" placeholder="Password"
+                    <div class="login-input-img-area">
+                        <input required class="login-input" type="password" id="login-password" placeholder="Password"
                             onkeyup="updateInputState(this, 'login-img-password')"
                             onkeypress="updateInputState(this, 'login-img-password')">
 
-                        <div class="input-img">
+                        <div class="login-input-img">
                             <img src="assets/img/icon_lock.png" id="login-img-password" alt="icon lock image"
                                 onclick="toggleReveal(this, 'login-password')">
                         </div>
