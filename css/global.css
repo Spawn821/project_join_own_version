@@ -20,12 +20,28 @@ body {
     visibility: hidden;
 }
 
+
+/* -------------------- */
+/* generic classe color */
+/* -------------------- */
+
 .background-color-white {
     background-color: white;
 }
 
+
+
+/* --------------------- */
+/* generic classes fonts */
+/* --------------------- */
+
 .f-s-61px {
     font-size: 61px;
+}
+
+.f-s-w-12px-400 {
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .f-s-w-16px-400 {
@@ -69,9 +85,49 @@ body {
 /* headlines default */
 /* ----------------- */
 
-.separator {
+.separator-3px-blue {
     border: 3px solid rgb(41, 170, 227);
     border-radius: 8px;
+}
+
+.separator-1px-lightgrey {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+
+
+/* -------------------------- */
+/* input and textarea default */
+/* -------------------------- */
+
+input {
+    padding: 12px 21px;
+    border: 1px solid lightgrey;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgb(209, 209, 209);
+}
+
+input:focus {
+    box-shadow: none;
+    border-color: rgb(41, 170, 227);
+}
+
+textarea {
+    padding: 12px 21px;
+    border: 1px solid lightgrey;
+    outline: none;
+}
+
+textarea::placeholder {
+    color: rgb(209, 209, 209);
+}
+
+textarea:focus {
+    border-color: rgb(41, 170, 227);
 }
 
 
@@ -81,6 +137,7 @@ body {
 /* ------------------ */
 
 .checkbox-text-area {
+    cursor: pointer;
     display: flex;
     align-items: center;
 }
@@ -109,6 +166,16 @@ input[type="checkbox"]:checked:hover+div::after {
 
 
 
+/* ---------------- */
+/* calendar default */
+/* ---------------- */
+
+input::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+}
+
+
+
 /* --------------- */
 /* buttons default */
 /* --------------- */
@@ -123,6 +190,7 @@ input[type="checkbox"]:checked:hover+div::after {
     border: none;
     border-radius: 10px;
     padding: 12px;
+    gap: 16px;
 }
 
 .btn-black:hover {
@@ -150,6 +218,7 @@ input[type="checkbox"]:checked:hover+div::after {
     color: black;
     border: 1px solid rgb(42, 54, 71);
     border-radius: 10px;
+    gap: 16px;
 }
 
 .btn-white:hover {
@@ -157,6 +226,41 @@ input[type="checkbox"]:checked:hover+div::after {
     color: rgb(41, 170, 227);
     border: 2px solid rgb(41, 170, 227);
     box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
+}
+
+
+
+/* ----------------- */
+/* scrollbar defualt */
+/* ----------------- */
+
+::-webkit-scrollbar {
+    width: 24px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 16px;
+    border: 8px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-button:single-button {
+    display: flex;
+    align-items: center;
+    height: 32px;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url('../assets/img/scrollbar_up_arrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url('../assets/img/scrollbar_down_arrow.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 

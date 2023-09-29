@@ -179,10 +179,13 @@
     align-items: center;
 }
 
+.summary-priority-icon-img {
+    height: 25px;
+    object-fit: contain;
+}
+
 .summary-priority-separator {
-    width: 0px;
     height: 102px;
-    border: solid 1px lightgray;
 }
 
 .summary-priority-deadline {
