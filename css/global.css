@@ -20,6 +20,10 @@ body {
     visibility: hidden;
 }
 
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+
 
 /* -------------------- */
 /* generic classe color */
@@ -35,8 +39,14 @@ body {
 /* generic classes fonts */
 /* --------------------- */
 
+.f-s-27px {
+    font-size: 27px;
+}
+
 .f-s-61px {
     font-size: 61px;
+    padding: unset;
+    margin: 0;
 }
 
 .f-s-w-12px-400 {
@@ -97,9 +107,9 @@ body {
 
 
 
-/* -------------------------- */
-/* input and textarea default */
-/* -------------------------- */
+/* ------------- */
+/* input default */
+/* ------------ */
 
 input {
     padding: 12px 21px;
@@ -115,6 +125,12 @@ input:focus {
     box-shadow: none;
     border-color: rgb(41, 170, 227);
 }
+
+
+
+/* ---------------- */
+/* textarea default */
+/* ---------------- */
 
 textarea {
     padding: 12px 21px;
@@ -176,6 +192,19 @@ input::-webkit-calendar-picker-indicator:hover {
 
 
 
+/* ----------------- */
+/* selection default */
+/* ----------------- */
+
+select {
+    padding: 12px;
+    border: 1px solid lightgrey;
+    outline: none;
+}
+
+
+
+
 /* --------------- */
 /* buttons default */
 /* --------------- */
@@ -190,7 +219,7 @@ input::-webkit-calendar-picker-indicator:hover {
     border: none;
     border-radius: 10px;
     padding: 12px;
-    gap: 16px;
+    gap: 8px;
 }
 
 .btn-black:hover {
@@ -218,7 +247,7 @@ input::-webkit-calendar-picker-indicator:hover {
     color: black;
     border: 1px solid rgb(42, 54, 71);
     border-radius: 10px;
-    gap: 16px;
+    gap: 8px;
 }
 
 .btn-white:hover {
@@ -226,6 +255,19 @@ input::-webkit-calendar-picker-indicator:hover {
     color: rgb(41, 170, 227);
     border: 2px solid rgb(41, 170, 227);
     box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
+
+    .btn-white-img {
+        background-image: url('/assets/img/icon_close_hover.png');
+        background-repeat: no-repeat;
+    }
+}
+
+.btn-white-img {
+    height: 24px;
+    width: 24px;
+    background-image: url('/assets/img/icon_close.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 

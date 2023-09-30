@@ -309,11 +309,11 @@ function addSubtask() {
     }
 }
 
-function editSubtask(subtaskNumber){
-    remove_d_none('rawDataChange'+subtaskNumber);
-    add_d_none('rawData'+subtaskNumber);
-    add_d_none('pencil'+subtaskNumber);
-    remove_d_none('submit'+subtaskNumber);
+function editSubtask(subtaskNumber) {
+    remove_d_none('rawDataChange' + subtaskNumber);
+    add_d_none('rawData' + subtaskNumber);
+    add_d_none('pencil' + subtaskNumber);
+    remove_d_none('submit' + subtaskNumber);
 }
 
 /**
@@ -347,11 +347,11 @@ function fillSubtaskArray() {
 function fillSubtaskArrayAsValue(subtaskNumber) {
     // subtasks = [];
     // for (let i = 0; i < 100; i++) {
-        let element = document.getElementById('rawData' + subtaskNumber)
+    let element = document.getElementById('rawData' + subtaskNumber)
 
-        if (element) {
-            subtasks[subtaskNumber]= element.value;  // hier als value
-        }
+    if (element) {
+        subtasks[subtaskNumber] = element.value;  // hier als value
+    }
 
     // }
 }
@@ -517,11 +517,38 @@ function filterNames() {
     search = search.toLowerCase();
 
     document.getElementById('selectAssignedTo').innerHTML = '';
-    for (let i = 0; i < users.length; i++) {    
+    for (let i = 0; i < users.length; i++) {
         let user = users[i].name;
-        if(user.toLowerCase().includes(search)){
+        if (user.toLowerCase().includes(search)) {
             document.getElementById('selectAssignedTo').innerHTML += showDropdown(i, user);
-        fillUsername(i, user);
+            fillUsername(i, user);
         }
     }
+}
+
+
+
+
+
+
+
+
+function showOrHideDropDownAddTask(id) {
+
+    for (let i = 0; i < id.length; i++) {
+        let dropdownElement = document.getElementById(id[i]);
+
+        if (id[i] == 'add-task-subtask') {
+
+            if (dropdownElement.style == 'margin-top: -96px') {
+                dropdownElement.removeAttribute('style');
+            } else {
+                dropdownElement.style = 'margin-top: -96px; z-index: -1;';
+            }
+        } else {
+            dropdownElement.classList.toggle('d-none');
+        }
+
+    }
+
 }

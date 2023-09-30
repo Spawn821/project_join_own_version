@@ -24,12 +24,6 @@
     gap: 30px;
 }
 
-.summary-headline-left {
-    font-size: 61px;
-    padding: unset;
-    margin: 0;
-}
-
 .summary-headline-subContainer {
     display: flex;
     align-items: center;
@@ -42,10 +36,6 @@
     border-radius: 3px;
     margin-top: 8px;
     margin-bottom: 8px;
-}
-
-.summary-headline-right {
-    font-size: 27px;
 }
 
 

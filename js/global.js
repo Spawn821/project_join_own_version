@@ -488,6 +488,10 @@ function logoutUser() {
 }
 
 
+
+
+
+
 /**
  * Animates a message (sliding up box) upon successfull registration and other events.
  */

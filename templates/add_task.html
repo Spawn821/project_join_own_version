@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/add_task.css">
+
+    <!-- scripts -->
+    <script src="/js/add_task.js"></script>
 </head>
 
 <body>
@@ -27,7 +30,7 @@
             <div class="add-new-task-input-area">
 
                 <!-- add new task left side -->
-                <div class="add-new-task-left-side">
+                <div class="add-new-task-half-side">
 
                     <!-- add new task left side title -->
                     <div class="add-new-task-subcontainer">
@@ -45,24 +48,37 @@
 
                     <!-- add new task left side assigned to -->
                     <div class="add-new-task-subcontainer">
+
                         <label class="f-s-w-20px-400">Assigned to</label>
 
                         <div class="add-new-task-input-dropdown-area background-color-white">
 
                             <!-- input -->
                             <div class="login-input-img-area">
-                                <input class="login-input add-new-task-input-dropdown f-s-w-20px-400"
+
+                                <input class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
                                     id="add-task-input-assign-to" placeholder="Select contacts to assign">
 
-                                <div class="login-input-img id=" id="add-task-input-assign-to-arrow">
-                                    <img src="/assets/img/drop_down_arrow_down.png">
-                                    <img class="d-none" src="/assets/img/drop_down_arrow_up.png">
+                                <div class="login-input-img id="
+                                    onclick="showOrHideDropDownAddTask(['add-task-contact-list', 'add-task-contact-button',
+                                    'add-task-contact-arrow-close', 'add-task-contact-arrow-open'])">
+
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                        id="add-task-contact-arrow-close">
+                                        <img src="/assets/img/drop_down_arrow_down.png">
+                                    </div>
+
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                        id="add-task-contact-arrow-open">
+                                        <img src="/assets/img/drop_down_arrow_up.png">
+                                    </div>
+
                                 </div>
+
                             </div>
 
-
                             <!-- contact list -->
-                            <div class="add-task-contact-list" id="add-task-contact-list">
+                            <div class="add-task-contact-list overflow-y-scroll d-none" id="add-task-contact-list">
 
                                 <div class="add-task-contact">
                                     <div class="add-task-contact-name-area">
@@ -78,7 +94,7 @@
                             </div>
 
                             <!-- add new contact button -->
-                            <div class="add-new-contact-button-area">
+                            <div class="add-new-contact-button-area d-none" id="add-task-contact-button">
                                 <div class="add-new-contact-button btn-black">
                                     <span class="f-s-w-21px-700">Add new contact</span>
                                     <div>
@@ -98,7 +114,7 @@
                 <div class="separator-1px-lightgrey"></div>
 
                 <!-- add new task right side -->
-                <div class="add-new-task-left-side">
+                <div class="add-new-task-half-side">
 
                     <!-- add new task right side due date -->
                     <div class="add-new-task-subcontainer">
@@ -112,94 +128,105 @@
 
                         <label class="f-s-w-20px-400">Prio</label>
 
-                        <div class="all-buttons-prio" id="all-buttons-prio">
+                        <div class="add-new-task-priority-area" id="all-buttons-prio">
 
-                            <div id="add-task-btn-urgent" class="add-new-task-priority-button add-new-task-priority-color-red" onclick="colorRed();">
+                            <!-- button urgent -->
+                            <div id="add-task-btn-urgent" class="add-new-task-priority-button" onclick="colorRed();">
                                 <span class="f-s-w-20px-400">Urgent</span>
                                 <div class="add-new-task-priority-urgent-img"></div>
                             </div>
 
-                            <div id="add-task-btn-medium" class="add-new-task-priority-button add-new-task-priority-color-orange" onclick="colorOrange();">
+                            <!-- button medium -->
+                            <div id="add-task-btn-medium" class="add-new-task-priority-button" onclick="colorOrange();">
                                 <span class="f-s-w-20px-400">Medium</span>
                                 <div class="add-new-task-priority-medium-img"></div>
                             </div>
 
-                            <div id="add-task-btn-low" class="add-new-task-priority-button add-new-task-priority-color-green" onclick="colorGreen();">
+                            <!-- button low -->
+                            <div id="add-task-btn-low" class="add-new-task-priority-button" onclick="colorGreen();">
                                 <span class="f-s-w-20px-400">Low</span>
                                 <div class="add-new-task-priority-low-img"></div>
                             </div>
 
                             <div id="prioStatusAsString" style="display: none;"></div>
                         </div>
-                        <div class="invalidMessage d-none" id="prioInvalid">This field is required.</div>
 
                     </div>
 
-                    <div class="property">
-                        <div class="wrapper-category">
-                            <label class="form-label" for="">Category</label>
-                            <div class="select-btn form-control" onclick="showContentCategory();" id="categoryId">
-                                <span id="selectedCategory">Select task category</span>
-                                <div class=" circleAroundDownArrow" id="downarrow_cat" onclick="showContentCategory();">
-                                    <img src="assets/img/arrow_drop_down.svg">
+                    <!-- add new task right side category -->
+                    <div class="add-new-task-subcontainer">
+
+                        <label class="f-s-w-20px-400">Category</label>
+
+                        <div class="add-new-task-input-dropdown-area background-color-white">
+
+                            <!-- input -->
+                            <div class="login-input-img-area">
+
+                                <input required readonly class="login-input add-new-task-input-dropdown f-s-w-20px-400"
+                                    type="text" id="add-task-input-category" placeholder="Select task category">
+
+                                <div class="login-input-img id=" id="add-task-input-assign-to-arrow"
+                                    onclick="showOrHideDropDownAddTask(['add-task-category-list',
+                                    'add-task-category-arrow-close', 'add-task-category-arrow-open', 'add-task-subtask'])">
+
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                        id="add-task-category-arrow-close">
+                                        <img src="/assets/img/drop_down_arrow_down.png">
+                                    </div>
+
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                        id="add-task-category-arrow-open">
+                                        <img src="/assets/img/drop_down_arrow_up.png">
+                                    </div>
+
                                 </div>
-                                <div class="circleAroundDownArrow d-none" id="uparrow_cat"
-                                    onclick="closeContentCategory();">
-                                    <img src="assets/img/arrow_drop_up.svg">
-                                </div>
+
+                            </div>
+
+                            <!-- category list -->
+                            <div class="add-task-contact-list d-none" id="add-task-category-list">
+                                <span class="add-task-category f-s-w-20px-400">Technical Task</span>
+                                <span class="add-task-category f-s-w-20px-400">User Story</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- add new task right side subtask -->
+                    <div class="add-new-task-subcontainer" id="add-task-subtask"> <!-- if category open, this d-none -->
+
+                        <label class="f-s-w-20px-400">Subtasks</label>
+
+                        <div class="login-input-img-area">
+
+                            <input class="login-input add-new-task-input-subtask f-s-w-20px-400" type="text"
+                                id="add-task-input-subtask" placeholder="Add new subtask">
+
+                            <div class="login-input-img background-color-white">
+                                <img src="/assets/img/icon_add.png" onclick="addSubtask();">
                             </div>
                         </div>
-                        <div class="contentSearchContact d-none" id="contentCategory">
-                            <ul class="selectAssignedTo dropdownAbsolutePositioned">
-                                <li class="list-group-item padding-left-16 list-group-item-category"
-                                    onclick="selectCategory(1); closeContentCategory();">
-                                    <div class="list-item-display-flex">
-                                        <div class="list-item-display-flex-icon-name" id="category1">User Story
-                                        </div>
-                                    </div>
-                                </li>
-                                <li clas s="list-group-item padding-left-16 display-flex"
-                                    onclick="selectCategory(2); closeContentCategory();">
-                                    <div class="list-item-display-flex">
-                                        <div class="list-item-display-flex-icon-name" id="category2">Technical
-                                            Task</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div cla ss="invalidMessage d-none" id="categoryInvalid">This field is required.</div>
-                    </div>
 
-                    <div class="property">
-                        <label for="subtask_wrapper" class="form-label">Subtasks</label>
-                        <div class="input-group" id="subtask_wrapper">
-                            <input type="text"
-                                class="form-control white-background borderradius-10 height-48px cursor-pointer"
-                                placeholder="Add new subtask" aria-label="Recipient's username"
-                                aria-describedby="basic-addon2" id="subtaskInputfield">
-                            <img id="add_symbol" class="cursor-pointer" src="./assets/img/add_black.svg"
-                                onclick="addSubtask();">
-                        </div>
-                        <div class="invalidMessage d-none" id="subtaskInvalid">This field is required.</div>
-                        <div class="selectedSubtasks bigger-area-mobile" id="selectedSubtasks"></div>
                     </div>
-
 
                 </div>
 
             </div>
 
+            <!-- add new task button area -->
+            <div class="login-button-area">
 
-            <div class="buttons_clear_create fixed-mobile">
-                <button class="btn btn-outline-dark button-clear hide-mobile" onclick="resetForm2();"
-                    onmouseover="remove_d_none('blue_x'); add_d_none('black_x');"
-                    onmouseleave="add_d_none('blue_x'); remove_d_none('black_x');">Clear<img id="black_x"
-                        src="./assets/img/Vector.svg"> <img id="blue_x" src="./assets/img/Vector_blue.svg"
-                        class="d-none"></button>
-                <div>
-                    <button class="btn btn-outline-dark button-create-task" onclick="custValidation('add_task');"
-                        id="buttonCreate">Create Task <img src="./assets/img/check.svg"></button>
-                </div>
+                <button class="add-new-task-btn-left btn-white" onclick="resetForm2();">
+                    <span class="f-s-w-20px-400">Clear</span>
+                    <div class="btn-white-img"></div>
+                </button>
+
+                <button class="add-new-task-btn-right btn-black" onclick="custValidation('add_task');">
+                    <span class="f-s-w-21px-700">Create Task</span>
+                    <img src="/assets/img/icon_done_white_small.png">
+                </button>
             </div>
 
         </form>
