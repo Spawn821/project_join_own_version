@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="/css/add_task.css">
 
     <!-- scripts -->
+    <script src="/js/global.js"></script>
+    <script src="/js/storage.js"></script>
     <script src="/js/add_task.js"></script>
+    <script src="/js/html_template.js"></script>
 </head>
 
-<body>
+<body onload="initAddTask()">
 
     <!-- add task panel -->
     <div class="add-task-panel">
@@ -51,59 +54,79 @@
 
                         <label class="f-s-w-20px-400">Assigned to</label>
 
-                        <div class="add-new-task-input-dropdown-area background-color-white">
+                        <div class="add-new-task-input-dropdown-area background-color-white
+                            b-top-left-radius b-top-right-radius b-bottom-left-radius b-bottom-right-radius"
+                            id="add-task-wrapper-contact">
 
-                            <!-- input -->
-                            <div class="login-input-img-area">
+                            <!-- wrapper for position relative -->
+                            <div class="p-relative">
 
-                                <input class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
-                                    id="add-task-input-assign-to" placeholder="Select contacts to assign">
+                                <!-- input -->
+                                <div class="login-input-img-area">
 
-                                <div class="login-input-img id="
-                                    onclick="showOrHideDropDownAddTask(['add-task-contact-list', 'add-task-contact-button',
-                                    'add-task-contact-arrow-close', 'add-task-contact-arrow-open'])">
+                                    <input class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
+                                        id="add-task-input-assign-to" placeholder="Select contacts to assign">
 
-                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                        id="add-task-contact-arrow-close">
-                                        <img src="/assets/img/drop_down_arrow_down.png">
-                                    </div>
+                                    <div class="login-input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
+                                        'add-task-contact-arrow-close', 'add-task-contact-arrow-open']);
+                                        renderAddTaskContactList()">
 
-                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
-                                        id="add-task-contact-arrow-open">
-                                        <img src="/assets/img/drop_down_arrow_up.png">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                            id="add-task-contact-arrow-close">
+                                            <img src="/assets/img/drop_down_arrow_down.png">
+                                        </div>
+
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                            id="add-task-contact-arrow-open">
+                                            <img src="/assets/img/drop_down_arrow_up.png">
+                                        </div>
+
                                     </div>
 
                                 </div>
 
-                            </div>
+                                <!-- wrapper for position absolut -->
+                                <div class="p-absolute width-100-prozent background-color-white b-bottom-left-radius
+                                    b-bottom-right-radius d-none" id="add-task-contact-btn-area">
 
-                            <!-- contact list -->
-                            <div class="add-task-contact-list overflow-y-scroll d-none" id="add-task-contact-list">
+                                    <!-- contact list -->
+                                    <div class="add-task-contact-list overflow-y-scroll" id="add-task-contact-list">
 
-                                <div class="add-task-contact">
-                                    <div class="add-task-contact-name-area">
-                                        <div class="add-task-contact-letter-icon f-s-w-12px-400">SS</div>
-                                        <span class="f-s-w-20px-400">Stephan Schmidt</span>
+                                        <div class="add-task-contact">
+                                            <div class="add-task-contact-name-area">
+                                                <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
+                                                <span class="f-s-w-20px-400">Stephan Schmidt</span>
+                                            </div>
+                                            <label class="checkbox-text-area">
+                                                <input type="checkbox">
+                                                <div></div>
+                                            </label>
+                                        </div>
+
                                     </div>
-                                    <label class="checkbox-text-area">
-                                        <input type="checkbox">
-                                        <div></div>
-                                    </label>
-                                </div>
 
-                            </div>
+                                    <!-- add new contact button -->
+                                    <div class="add-new-contact-button-area">
 
-                            <!-- add new contact button -->
-                            <div class="add-new-contact-button-area d-none" id="add-task-contact-button">
-                                <div class="add-new-contact-button btn-black">
-                                    <span class="f-s-w-21px-700">Add new contact</span>
-                                    <div>
-                                        <img class="add-new-contact-button-icon" src="/assets/img/icon_person_add.png">
+                                        <div class="add-new-contact-button btn-black">
+                                            <span class="f-s-w-21px-700">Add new contact</span>
+                                            <div>
+                                                <img class="add-new-contact-button-icon"
+                                                    src="/assets/img/icon_person_add.png">
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-
                             </div>
 
+                        </div>
+
+                        <!-- added contacts, showed by initals -->
+                        <div class="add-task-contact-added-users" id="add-task-contact-added-users">
+                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
+                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
+                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
                         </div>
 
                     </div>
@@ -120,7 +143,7 @@
                     <div class="add-new-task-subcontainer">
                         <label class=" f-s-w-20px-400">Due date</label>
                         <input required class="add-new-task-input f-s-w-20px-400" type="date" id="add-task-input-date"
-                            onmouseover="setDateOfTodayForDatepicker('date');">
+                            onmouseover="setDateOfTodayForDatepicker('add-task-input-date');">
                     </div>
 
                     <!-- add new task right side prio -->
@@ -158,36 +181,43 @@
 
                         <label class="f-s-w-20px-400">Category</label>
 
-                        <div class="add-new-task-input-dropdown-area background-color-white">
+                        <div class="add-new-task-input-dropdown-area background-color-white b-top-left-radius b-top-right-radius
+                        b-bottom-left-radius b-bottom-right-radius" id="add-task-wrapper-category">
 
-                            <!-- input -->
-                            <div class="login-input-img-area">
+                            <!-- wrapper for position relative -->
+                            <div class="p-relative">
 
-                                <input required readonly class="login-input add-new-task-input-dropdown f-s-w-20px-400"
-                                    type="text" id="add-task-input-category" placeholder="Select task category">
+                                <!-- input -->
+                                <div class="login-input-img-area">
 
-                                <div class="login-input-img id=" id="add-task-input-assign-to-arrow"
-                                    onclick="showOrHideDropDownAddTask(['add-task-category-list',
-                                    'add-task-category-arrow-close', 'add-task-category-arrow-open', 'add-task-subtask'])">
+                                    <input required readonly
+                                        class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
+                                        id="add-task-input-category" placeholder="Select task category">
 
-                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                        id="add-task-category-arrow-close">
-                                        <img src="/assets/img/drop_down_arrow_down.png">
-                                    </div>
+                                    <div class="login-input-img id=" id="add-task-input-assign-to-arrow" onclick="showOrHideDropDownAddTask(['add-task-category-list', 'add-task-wrapper-category',
+                                    'add-task-category-arrow-close', 'add-task-category-arrow-open'])">
 
-                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
-                                        id="add-task-category-arrow-open">
-                                        <img src="/assets/img/drop_down_arrow_up.png">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                            id="add-task-category-arrow-close">
+                                            <img src="/assets/img/drop_down_arrow_down.png">
+                                        </div>
+
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                            id="add-task-category-arrow-open">
+                                            <img src="/assets/img/drop_down_arrow_up.png">
+                                        </div>
+
                                     </div>
 
                                 </div>
 
-                            </div>
+                                <!-- category list, wrapper for position absolute -->
+                                <div class="p-absolute add-task-contact-list background-color-white
+                                    b-bottom-left-radius b-bottom-right-radius d-none" id="add-task-category-list">
+                                    <span class="add-task-category f-s-w-20px-400">Technical Task</span>
+                                    <span class="add-task-category f-s-w-20px-400">User Story</span>
+                                </div>
 
-                            <!-- category list -->
-                            <div class="add-task-contact-list d-none" id="add-task-category-list">
-                                <span class="add-task-category f-s-w-20px-400">Technical Task</span>
-                                <span class="add-task-category f-s-w-20px-400">User Story</span>
                             </div>
 
                         </div>
@@ -195,7 +225,8 @@
                     </div>
 
                     <!-- add new task right side subtask -->
-                    <div class="add-new-task-subcontainer" id="add-task-subtask"> <!-- if category open, this d-none -->
+                    <div class="add-new-task-subcontainer">
+                        <!-- if category open, this d-none -->
 
                         <label class="f-s-w-20px-400">Subtasks</label>
 

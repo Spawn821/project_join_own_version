@@ -2,11 +2,11 @@ let tasks = [];
 let boardStatus = 'to do';
 
 async function initAddTask() {
-    await includeHTML();
+/*     await includeHTML(); */
     await loadUsers();
-    await fillAssignedTo();
+/*     await fillAssignedTo();
     await loadTasks();
-    userInitials();
+    userInitials(); */
 }
 
 // #region Coloring Buttons Urgent, Medium, Low / Set status of Prio for transfer to Board
@@ -485,18 +485,7 @@ function setRedBorder(classname) {
 
 //#region set Date Minimum for Datepicker
 
-/**
- * functions to set today's date for disable past calendar days
- */
-async function setDateOfTodayForDatepicker(inputName) {
-    let today = new Date().toISOString().split('T')[0];
-    document.getElementsByName(inputName)[0].setAttribute('min', today);
-}
 
-function setDateOfTodayForDatepickerCard(inputId) {
-    let today = new Date().toISOString().split('T')[0];
-    document.getElementsByName(inputId)[0].setAttribute('min', today);
-}
 //#endregion set Date Minimum for Datepicker
 
 /**
@@ -532,23 +521,76 @@ function filterNames() {
 
 
 
-
+/**
+ * This function show or hide elements, based on the given array list.
+ * @param {[string|array]} id is a list from id's.
+ */
 function showOrHideDropDownAddTask(id) {
 
-    for (let i = 0; i < id.length; i++) {
-        let dropdownElement = document.getElementById(id[i]);
+    id.map((element) => {
+        let dropdownElement = document.getElementById(element);
 
-        if (id[i] == 'add-task-subtask') {
-
-            if (dropdownElement.style == 'margin-top: -96px') {
-                dropdownElement.removeAttribute('style');
-            } else {
-                dropdownElement.style = 'margin-top: -96px; z-index: -1;';
-            }
+        if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
+            dropdownElement.classList.toggle('b-bottom-left-radius');
+            dropdownElement.classList.toggle('b-bottom-right-radius');
         } else {
             dropdownElement.classList.toggle('d-none');
         }
 
+    })
+}
+
+
+/**
+ * This functions to set today's date for disable past calendar days
+ * @param {string} id is the id form the element
+ */
+function setDateOfTodayForDatepicker(id) {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById(id).setAttribute('min', today);
+}
+
+
+/**
+ * This function rendert the contact list in 'add task' dropdown 'assigend to'.
+ */
+function renderAddTaskContactList() {
+    let contact = document.getElementById('add-task-contact-list');
+    contact.innerHTML = '';
+    let i = 0;
+
+    users.map((element) => {
+        const name = element.name;
+        const initials = getInitials(name);
+        contact.innerHTML += getAddTaskContactCardHTML(name, initials, i);
+        i++;
+    })
+}
+
+
+/**
+ * This fuction shows all data from the clicked contcat in a separate window.
+ * @param {integer} i is the index from arry users.
+ */
+function addedUserToTask(i) {
+    let contactCard = document.getElementById(`contactCard-${i}`);
+    let conatacts = document.getElementById('contacts');
+    let contactData = document.getElementById('contact-data');
+    let windowSize = window.matchMedia('(max-width: 1350px)');
+
+    if (contactCard.classList.contains('contact-card-click')) {
+        contactCard.classList.remove('contact-card-click');
+        clearContactData();
+    } else {
+        if (windowSize.matches) {
+            conatacts.classList.add('contact-data-d-none');
+            contactData.classList.remove('contact-data-d-none');
+        } else {
+            closeAllContactClicks();
+            contactCard.classList.add('contact-card-click');
+        }
+        renderContactData(i);
     }
 
+    currentContactIndex = i;
 }

@@ -1,3 +1,5 @@
+let users = [];
+
 let contactColors = [
     {
         'number': 1,
@@ -211,7 +213,9 @@ async function initHelp() {
  * @returns First characters of the username.
  */
 function getInitials(contact) {
+
     initials = contact.charAt(0);
+
     if (contact.match(' ')) {
         initials += contact.charAt(contact.match(' ').index + 1);
     }
@@ -281,8 +285,8 @@ async function initInfoPage() {
 
 /**
  * This function returns the color to set the background color of user icons.
- * @param {*} i defines the index of the color to be returned.
- * @returns color value
+ * @param {integer} i defines the index of the color to be returned.
+ * @returns {string} is the rgb color stlyle.
  */
 function returnContactColor(i) {
     let result = i % contactColors.length
@@ -292,8 +296,8 @@ function returnContactColor(i) {
 
 /**
  * This function returns the index of the color assigned to a user.
- * @param {*} name defines the name of the user.
- * @returns 
+ * @param {string} name defines the name of the user.
+ * @returns {string} is the rgb color style.
  */
 function returnContactColorByName(name) {
     let index = 0;

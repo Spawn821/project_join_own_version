@@ -4,7 +4,7 @@
 async function loginInit() {
 /*     animateJoinLogo(); */
     await includeHTML();
-/*     await loadUsers(); */
+    await loadUsers();
 /*     checkRememberLogin(); */
 
     setTimeout((() => {

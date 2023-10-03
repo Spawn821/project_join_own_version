@@ -79,3 +79,27 @@ function getContactDataHTML(i, colorStyle, firstLetters, name, email, phone) {
         </button>
     `;
 }
+
+
+/**
+ * Thais function returns html code which is needed for the contact list in 'add task'. 
+ * @param {string} name is the username from array users.
+ * @param {string} initials is the initials from the usersname.
+ * @returns html code.
+ */
+function getAddTaskContactCardHTML(name, initials, i) {
+    const color = returnContactColorByName(name);
+
+    return /*html*/ `
+        <div class="add-task-contact">
+            <div class="add-task-contact-name-area">
+                <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initials}</div>
+                <span class="f-s-w-20px-400">${name}</span>
+            </div>
+            <label class="checkbox-text-area" onclick="addedUserToTask(${i})">
+                <input type="checkbox">
+                    <div></div>
+            </label>
+        </div>
+    `
+}

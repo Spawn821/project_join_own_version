@@ -1,12 +1,7 @@
-let users = [];
-
-
 /**
  * This function is registering a user on signup and saves the data to backend.
  */
 async function register() {
-    informationSlidebox('You signed up successfully');
-
     const username = document.getElementById('signup-username');
     const usermail = document.getElementById('signup-mail');
     const password = document.getElementById('signup-password');
@@ -24,6 +19,7 @@ async function register() {
     await setItem('users', JSON.stringify(users));
     resetForm(username, usermail, password, confirmPassword);
     showTemplate('login_html');
+    informationSlidebox('You signed up successfully');
 }
 
 
@@ -46,7 +42,8 @@ function resetForm(username, usermail, password, confirmPassword) {
 
 
 /**
- * This function validates the input of user on signing up. Things being checked through sub-functions: passwords are identical, username and email are not empty.
+ * This function validates the input of user on signing up. 
+ * Things being checked through sub-functions: passwords are identical, username and email are not empty.
  */
 function validateSignUp() {
     let signupBtn = document.getElementById('signup-btn');

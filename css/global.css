@@ -16,6 +16,10 @@ body {
     display: none !important;
 }
 
+.d-flex {
+    display: flex;
+}
+
 .v-hidden {
     visibility: hidden;
 }
@@ -23,6 +27,35 @@ body {
 .overflow-y-scroll {
     overflow-y: scroll;
 }
+
+.b-top-left-radius {
+    border-top-left-radius: 10px;
+}
+
+.b-top-right-radius {
+    border-top-right-radius: 10px;
+}
+
+.b-bottom-left-radius {
+    border-bottom-left-radius: 10px;
+}
+
+.b-bottom-right-radius {
+    border-bottom-right-radius: 10px;
+}
+
+.p-relative {
+    position: relative;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+.width-100-prozent {
+    width: 100%;
+}
+
 
 
 /* -------------------- */
