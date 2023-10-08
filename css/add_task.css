@@ -87,12 +87,12 @@
     align-items: center;
 }
 
-.login-input-img:has(.add-new-task-dropdown-close) .add-new-task-dropdown-close:hover {
+.input-img:has(.add-new-task-dropdown-close) .add-new-task-dropdown-close:hover {
     background-color: rgba(0, 0, 0, 5%);
     border-radius: 50%;
 }
 
-.login-input-img:has(.add-new-task-dropdown-open) .add-new-task-dropdown-open:hover {
+.input-img:has(.add-new-task-dropdown-open) .add-new-task-dropdown-open:hover {
     background-color: rgba(41 170 227 / 20%);
     border-radius: 50%;
 }
@@ -107,6 +107,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 7px 16px;
+}
+
+.add-task-contact:hover {
+    cursor: pointer;
+    background-color: rgba(0 0 0 / 10%);
+    border-radius: 10px;
 }
 
 .add-task-contact-name-area {

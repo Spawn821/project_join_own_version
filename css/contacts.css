@@ -183,14 +183,6 @@ body {
     color: rgb(0, 124, 237);
 }
 
-.contact-card-click {
-    background-color: rgb(42, 54, 71) !important;
-
-    .contact-name {
-        color: white !important;
-    }
-}
-
 .contact-data {
     display: flex;
     flex-direction: column;

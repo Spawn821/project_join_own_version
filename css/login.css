@@ -165,37 +165,6 @@
   gap: 8px;
 }
 
-.login-input {
-  height: calc(48px - 24px);
-  width: calc(422px - 42px - 37px);
-  border-right: unset;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-.login-input-img-area {
-  display: flex;
-  align-items: center;
-}
-
-.login-input-img {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 48px;
-  padding-right: 12px;
-  border: 1px solid lightgray;
-  border-left: unset;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: white;
-}
-
-.login-input-img-area:focus-within .login-input-img {
-  border-color: rgb(41, 170, 227);
-}
-
 .login-wrong-mail-password {
   width: 100%;
   font-family: "Poppins";
@@ -230,13 +199,6 @@
 .login-btn-right {
   height: 48px;
   width: 177px;
-}
-
-.login-button-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
 }
 
 

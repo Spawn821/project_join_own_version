@@ -88,18 +88,25 @@ function getContactDataHTML(i, colorStyle, firstLetters, name, email, phone) {
  * @returns html code.
  */
 function getAddTaskContactCardHTML(name, initials, i) {
-    const color = returnContactColorByName(name);
+    const color = returnContactColor(i);
 
     return /*html*/ `
-        <div class="add-task-contact">
+        <div class="add-task-contact" id="add-task-contact-${i}">
             <div class="add-task-contact-name-area">
                 <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initials}</div>
-                <span class="f-s-w-20px-400">${name}</span>
+                <span class="f-s-w-20px-400 contact-name-color-white">${name}</span>
             </div>
-            <label class="checkbox-text-area" onclick="addedUserToTask(${i})">
-                <input type="checkbox">
-                    <div></div>
+            <label class="checkbox-text-area">
+                <input class="contact-card-click-check" type="checkbox" id="add-task-checkbox-${i}" onclick="addedUserToTask(${i})">
+                <div id="add-task-check"></div>
             </label>
         </div>
-    `
+    `;
+}
+
+
+function getAddedContactsToTaskHTML(initals, color) {
+    return /*html*/ `
+        <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initals}</div>
+    `;
 }

@@ -25,10 +25,11 @@
             <div class="login-form-input-area">
 
                 <!-- login input mail -->
-                <div class="login-input-img-area">
-                    <input required class="login-input f-s-w-20px-400" type="email" id="login-Email" placeholder="Email">
+                <div class="input-img-area">
+                    <input required class="input-whitout-border-right f-s-w-20px-400" type="email" id="login-Email"
+                        placeholder="Email">
 
-                    <div class="login-input-img">
+                    <div class="input-img">
                         <img src="assets/img/icon_mail.png" alt="icon mail image">
                     </div>
                 </div>
@@ -36,12 +37,13 @@
                 <div class="login-input-warning">
 
                     <!-- login input password -->
-                    <div class="login-input-img-area">
-                        <input required class="login-input f-s-w-20px-400" type="password" id="login-password" placeholder="Password"
+                    <div class="input-img-area">
+                        <input required class="input-whitout-border-right f-s-w-20px-400" type="password"
+                            id="login-password" placeholder="Password"
                             onkeyup="updateInputState(this, 'login-img-password')"
                             onkeypress="updateInputState(this, 'login-img-password')">
 
-                        <div class="login-input-img">
+                        <div class="input-img">
                             <img src="assets/img/icon_lock.png" id="login-img-password" alt="icon lock image"
                                 onclick="toggleReveal(this, 'login-password')">
                         </div>
@@ -73,7 +75,7 @@
             </div>
 
             <!-- login buttons -->
-            <div class="login-button-area">
+            <div class="button-area">
                 <button type="submit" class="login-btn-left btn-black f-s-w-21px-700">
                     Log in
                 </button>

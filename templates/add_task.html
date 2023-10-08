@@ -62,12 +62,13 @@
                             <div class="p-relative">
 
                                 <!-- input -->
-                                <div class="login-input-img-area">
+                                <div class="input-img-area">
 
-                                    <input class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
+                                    <input class="input-whitout-border-right add-new-task-input-dropdown
+                                        f-s-w-20px-400" type="text"
                                         id="add-task-input-assign-to" placeholder="Select contacts to assign">
 
-                                    <div class="login-input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
+                                    <div class="input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
                                         'add-task-contact-arrow-close', 'add-task-contact-arrow-open']);
                                         renderAddTaskContactList()">
 
@@ -92,17 +93,6 @@
                                     <!-- contact list -->
                                     <div class="add-task-contact-list overflow-y-scroll" id="add-task-contact-list">
 
-                                        <div class="add-task-contact">
-                                            <div class="add-task-contact-name-area">
-                                                <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
-                                                <span class="f-s-w-20px-400">Stephan Schmidt</span>
-                                            </div>
-                                            <label class="checkbox-text-area">
-                                                <input type="checkbox">
-                                                <div></div>
-                                            </label>
-                                        </div>
-
                                     </div>
 
                                     <!-- add new contact button -->
@@ -117,16 +107,15 @@
                                         </div>
 
                                     </div>
+
                                 </div>
+
                             </div>
 
                         </div>
 
                         <!-- added contacts, showed by initals -->
                         <div class="add-task-contact-added-users" id="add-task-contact-added-users">
-                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
-                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
-                            <div class="add-task-contact-initals-icon f-s-w-12px-400">SS</div>
                         </div>
 
                     </div>
@@ -188,13 +177,13 @@
                             <div class="p-relative">
 
                                 <!-- input -->
-                                <div class="login-input-img-area">
+                                <div class="input-img-area">
 
                                     <input required readonly
-                                        class="login-input add-new-task-input-dropdown f-s-w-20px-400" type="text"
+                                        class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400" type="text"
                                         id="add-task-input-category" placeholder="Select task category">
 
-                                    <div class="login-input-img id=" id="add-task-input-assign-to-arrow" onclick="showOrHideDropDownAddTask(['add-task-category-list', 'add-task-wrapper-category',
+                                    <div class="input-img id=" id="add-task-input-assign-to-arrow" onclick="showOrHideDropDownAddTask(['add-task-category-list', 'add-task-wrapper-category',
                                     'add-task-category-arrow-close', 'add-task-category-arrow-open'])">
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
@@ -230,12 +219,12 @@
 
                         <label class="f-s-w-20px-400">Subtasks</label>
 
-                        <div class="login-input-img-area">
+                        <div class="input-img-area">
 
-                            <input class="login-input add-new-task-input-subtask f-s-w-20px-400" type="text"
+                            <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400" type="text"
                                 id="add-task-input-subtask" placeholder="Add new subtask">
 
-                            <div class="login-input-img background-color-white">
+                            <div class="input-img background-color-white">
                                 <img src="/assets/img/icon_add.png" onclick="addSubtask();">
                             </div>
                         </div>
@@ -247,7 +236,7 @@
             </div>
 
             <!-- add new task button area -->
-            <div class="login-button-area">
+            <div class="button-area">
 
                 <button class="add-new-task-btn-left btn-white" onclick="resetForm2();">
                     <span class="f-s-w-20px-400">Clear</span>

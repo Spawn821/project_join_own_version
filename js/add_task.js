@@ -2,11 +2,11 @@ let tasks = [];
 let boardStatus = 'to do';
 
 async function initAddTask() {
-/*     await includeHTML(); */
+    /*     await includeHTML(); */
     await loadUsers();
-/*     await fillAssignedTo();
-    await loadTasks();
-    userInitials(); */
+    /*     await fillAssignedTo();
+        await loadTasks();
+        userInitials(); */
 }
 
 // #region Coloring Buttons Urgent, Medium, Low / Set status of Prio for transfer to Board
@@ -524,9 +524,8 @@ function filterNames() {
 /**
  * This function show or hide elements, based on the given array list.
  * @param {[string|array]} id is a list from id's.
- */
+*/
 function showOrHideDropDownAddTask(id) {
-
     id.map((element) => {
         let dropdownElement = document.getElementById(element);
 
@@ -537,14 +536,14 @@ function showOrHideDropDownAddTask(id) {
             dropdownElement.classList.toggle('d-none');
         }
 
-    })
+    });
 }
 
 
 /**
  * This functions to set today's date for disable past calendar days
  * @param {string} id is the id form the element
- */
+*/
 function setDateOfTodayForDatepicker(id) {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById(id).setAttribute('min', today);
@@ -553,7 +552,7 @@ function setDateOfTodayForDatepicker(id) {
 
 /**
  * This function rendert the contact list in 'add task' dropdown 'assigend to'.
- */
+*/
 function renderAddTaskContactList() {
     let contact = document.getElementById('add-task-contact-list');
     contact.innerHTML = '';
@@ -563,7 +562,20 @@ function renderAddTaskContactList() {
         const name = element.name;
         const initials = getInitials(name);
         contact.innerHTML += getAddTaskContactCardHTML(name, initials, i);
+
         i++;
+    });
+
+    renderUserAsClicked();
+}
+
+
+function renderUserAsClicked() {
+    addedUserToTaskList.map((user) => {
+        const checkbox = document.getElementById(`add-task-checkbox-${user.id}`);
+
+        markedUsersAsClicked(user.id, 'add');
+        checkbox.checked = true;
     })
 }
 
@@ -571,26 +583,51 @@ function renderAddTaskContactList() {
 /**
  * This fuction shows all data from the clicked contcat in a separate window.
  * @param {integer} i is the index from arry users.
- */
-function addedUserToTask(i) {
-    let contactCard = document.getElementById(`contactCard-${i}`);
-    let conatacts = document.getElementById('contacts');
-    let contactData = document.getElementById('contact-data');
-    let windowSize = window.matchMedia('(max-width: 1350px)');
+*/
 
-    if (contactCard.classList.contains('contact-card-click')) {
-        contactCard.classList.remove('contact-card-click');
-        clearContactData();
+let addedUserToTaskList = [];
+
+function addedUserToTask(i) {
+    const checkbox = document.getElementById(`add-task-checkbox-${i}`);
+
+    if (checkbox.checked) {
+        addedUserToTaskList.push({ name: users[i]['name'], id: i }); //if task createt arry reset to default.
     } else {
-        if (windowSize.matches) {
-            conatacts.classList.add('contact-data-d-none');
-            contactData.classList.remove('contact-data-d-none');
-        } else {
-            closeAllContactClicks();
-            contactCard.classList.add('contact-card-click');
-        }
-        renderContactData(i);
+        addedUserToTaskList.splice(removeUserFromTask(i), 1);
+        markedUsersAsClicked(i, 'remove');
     }
 
-    currentContactIndex = i;
+    renderAddedUserToTask();
+}
+
+
+function renderAddedUserToTask() {
+    let container = document.getElementById('add-task-contact-added-users');
+    container.innerHTML = '';
+
+    addedUserToTaskList.map((user) => {
+        const initals = getInitials(user.name);
+        const color = returnContactColor(user.id);
+
+        container.innerHTML += getAddedContactsToTaskHTML(initals, color);
+
+        markedUsersAsClicked(user.id, 'add');
+    });
+}
+
+
+function markedUsersAsClicked(i, action) {
+    const contact = document.getElementById(`add-task-contact-${i}`);
+
+    if (action == 'add') {
+        contact.classList.add('contact-card-click');
+    } else {
+        contact.classList.remove('contact-card-click');
+    }
+}
+
+function removeUserFromTask(i) {
+    const index = addedUserToTaskList.findIndex((user) => user.id == i);
+
+    return index;
 }

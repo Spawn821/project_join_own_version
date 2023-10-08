@@ -66,6 +66,20 @@ body {
     background-color: white;
 }
 
+.contact-card-click {
+    background-color: rgb(42, 54, 71);
+    border-radius: 10px;
+
+    .contact-name-color-white {
+        color: white;
+    }
+
+}
+
+.contact-card-click:hover {
+    background-color: rgb(10, 25, 49) !important;
+}
+
 
 
 /* --------------------- */
@@ -159,6 +173,37 @@ input:focus {
     border-color: rgb(41, 170, 227);
 }
 
+.input-whitout-border-right {
+    height: calc(48px - 24px);
+    width: calc(422px - 42px - 37px);
+    border-right: unset;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.input-img-area {
+    display: flex;
+    align-items: center;
+}
+
+.input-img {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    padding-right: 12px;
+    border: 1px solid lightgray;
+    border-left: unset;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.input-img-area:focus-within .input-img {
+    border-color: rgb(41, 170, 227);
+}
+
 
 
 /* ---------------- */
@@ -195,22 +240,31 @@ input[type="checkbox"] {
     display: none;
 }
 
+/* checkbox black empty */
 input[type="checkbox"]+div::after {
     content: url('/assets/img/icon_checkbox_empty.png');
     margin-right: 4px;
 }
 
+/* checkbox black empty hover */
 input[type="checkbox"]:hover+div::after {
     content: url('/assets/img/icon_checkbox_empty_hover.png');
     margin-right: 4px;
 }
 
+/* checkbox black checked */
 input[type="checkbox"]:checked+div::after {
     content: url('/assets/img/icon_checkbox_marked.png');
 }
 
+/* checkbox black checked hover */
 input[type="checkbox"]:checked:hover+div::after {
     content: url('/assets/img/icon_checkbox_marked_hover.png');
+}
+
+/* checkbox white checked */
+input[type="checkbox"]:checked+#add-task-check::after {
+    content: url('/assets/img/icon_checkbox_marked_white.png');
 }
 
 
@@ -301,6 +355,13 @@ select {
     background-image: url('/assets/img/icon_close.png');
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
 }
 
 

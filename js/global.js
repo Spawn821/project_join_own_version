@@ -213,12 +213,12 @@ async function initHelp() {
  * @returns First characters of the username.
  */
 function getInitials(contact) {
-
     initials = contact.charAt(0);
 
     if (contact.match(' ')) {
         initials += contact.charAt(contact.match(' ').index + 1);
     }
+
     return initials;
 }
 
