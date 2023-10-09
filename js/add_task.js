@@ -521,6 +521,15 @@ function filterNames() {
 
 
 
+
+
+
+
+
+
+
+/* === DROPDOWNS === */
+
 /**
  * This function show or hide elements, based on the given array list.
  * @param {[string|array]} id is a list from id's.
@@ -528,17 +537,20 @@ function filterNames() {
 function showOrHideDropDownAddTask(id) {
     id.map((element) => {
         let dropdownElement = document.getElementById(element);
+        let categoryInput = document.getElementById('add-task-input-category');
 
         if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
             dropdownElement.classList.toggle('b-bottom-left-radius');
             dropdownElement.classList.toggle('b-bottom-right-radius');
+            categoryInput.toggleAttribute('readonly');
         } else {
             dropdownElement.classList.toggle('d-none');
         }
-
     });
 }
 
+
+/* === CALENDAR === */
 
 /**
  * This functions to set today's date for disable past calendar days
@@ -550,10 +562,13 @@ function setDateOfTodayForDatepicker(id) {
 }
 
 
+/* === ASSIGNED TO === */
+
 /**
  * This function rendert the contact list in 'add task' dropdown 'assigend to'.
 */
 function renderAddTaskContactList() {
+    let search = document.getElementById('add-task-input-assigned-to').value;
     let contact = document.getElementById('add-task-contact-list');
     contact.innerHTML = '';
     let i = 0;
@@ -561,16 +576,19 @@ function renderAddTaskContactList() {
     users.map((element) => {
         const name = element.name;
         const initials = getInitials(name);
-        contact.innerHTML += getAddTaskContactCardHTML(name, initials, i);
+
+        if (name.toLowerCase().includes(search.toLowerCase())) {
+            contact.innerHTML += getAddTaskContactCardHTML(name, initials, i);
+        }
 
         i++;
     });
 
-    renderUserAsClicked();
+    markedUserAsClicked();
 }
 
 
-function renderUserAsClicked() {
+function markedUserAsClicked() {
     addedUserToTaskList.map((user) => {
         const checkbox = document.getElementById(`add-task-checkbox-${user.id}`);
 
@@ -580,13 +598,12 @@ function renderUserAsClicked() {
 }
 
 
+let addedUserToTaskList = [];
+
 /**
  * This fuction shows all data from the clicked contcat in a separate window.
  * @param {integer} i is the index from arry users.
 */
-
-let addedUserToTaskList = [];
-
 function addedUserToTask(i) {
     const checkbox = document.getElementById(`add-task-checkbox-${i}`);
 
@@ -601,6 +618,9 @@ function addedUserToTask(i) {
 }
 
 
+/**
+ * This function rendert the area under 'assigned to' with added user to task.
+ */
 function renderAddedUserToTask() {
     let container = document.getElementById('add-task-contact-added-users');
     container.innerHTML = '';
@@ -626,8 +646,123 @@ function markedUsersAsClicked(i, action) {
     }
 }
 
+
 function removeUserFromTask(i) {
     const index = addedUserToTaskList.findIndex((user) => user.id == i);
 
     return index;
+}
+
+
+/* === PRIO === */
+
+let idPrioBtn = [
+    { id: 'add-task-btn-urgent', class: 'add-new-task-priority-color-red' },
+    { id: 'add-task-btn-medium', class: 'add-new-task-priority-color-orange' },
+    { id: 'add-task-btn-low', class: 'add-new-task-priority-color-green' }
+]
+
+/**
+ * This function changes the style from the clicked priority button in add task.
+ * @param {string} id is the id from the respective priority button.
+ */
+
+function markedPrioAsClicked(id) {
+    removeMarkedPrio(id);
+
+    let prioBtn = document.getElementById(id);
+
+    switch (id) {
+        case 'add-task-btn-urgent':
+            prioBtn.classList.toggle('add-new-task-priority-color-red');
+            break;
+        case 'add-task-btn-medium':
+            prioBtn.classList.toggle('add-new-task-priority-color-orange');
+            break;
+        case 'add-task-btn-low':
+            prioBtn.classList.toggle('add-new-task-priority-color-green');
+            break;
+    }
+}
+
+
+function removeMarkedPrio(id) {
+    idPrioBtn.map((element) => {
+        let prioBtn = document.getElementById(element.id);
+
+        element.id != id ? prioBtn.classList.remove(element.class) : null;
+    });
+}
+
+
+/* === CATEGORY === */
+
+let categoriesTask = [
+    'Technical Task',
+    'User Story'
+]
+
+/**
+ * This function rendert all categories in 'add task' dropdown 'category'.
+ */
+function renderCategoryTask() {
+    let categorieContainer = document.getElementById('add-task-category-list');
+    categorieContainer.innerHTML = '';
+    let i = 0;
+
+    categoriesTask.map((category) => {
+        categorieContainer.innerHTML += getCategoryEntryHTML(category, i);
+
+        i++
+    });
+}
+
+
+/**
+ * This funciton show or hide the add image by keyup or keydown event in the html file.
+ */
+function showOrHideCategoryAddImg() {
+    let categoryInput = document.getElementById('add-task-input-category');
+    let addImg = document.getElementById('add-task-category-add');
+    let downArrow = document.getElementById('add-task-category-arrow-open');
+
+    if (categoryInput.value == '') {
+        addImg.classList.add('d-none');
+        downArrow.classList.remove('d-none');
+    } else {
+        addImg.classList.remove('d-none');
+        downArrow.classList.add('d-none');
+    }
+}
+
+
+function addCategoryToList() {
+    let newCategory = document.getElementById('add-task-input-category');
+
+    categoriesTask.push(newCategory.value);
+    newCategory.value = '';
+
+    renderCategoryTask();
+    showOrHideCategoryAddImg();
+}
+
+
+function deleteCategoryFromList(i) {
+    categoriesTask.splice(i, 1);
+    renderCategoryTask();
+}
+
+
+function selectCategory(i) {
+    let input = document.getElementById('add-task-input-category');
+
+    input.value = categoriesTask[i];
+}
+
+
+/**
+ * This function excludes a child container from the parent container's onclick method. 
+ */
+function isolateFromOderEvents(event) {
+    event.stopPropagation();
 }

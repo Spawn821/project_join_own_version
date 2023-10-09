@@ -260,10 +260,16 @@
     cursor: pointer;
     background-color: rgba(0 0 0 / 10%);
     border-radius: 10px;
+
+    &>img:hover {
+        background-color: white;
+        border-radius: 6px;
+        transform: scale(1.1);
+    }
 }
 
 .add-new-task-input-subtask {
-  width: calc(440px - 42px - 37px);
+    width: calc(440px - 42px - 37px);
 }
 
 .add-new-task-btn-left {

@@ -65,8 +65,9 @@
                                 <div class="input-img-area">
 
                                     <input class="input-whitout-border-right add-new-task-input-dropdown
-                                        f-s-w-20px-400" type="text"
-                                        id="add-task-input-assign-to" placeholder="Select contacts to assign">
+                                        f-s-w-20px-400" type="text" id="add-task-input-assigned-to"
+                                        placeholder="Select contacts to assign" onkeydown="renderAddTaskContactList()"
+                                        onkeyup="renderAddTaskContactList()">
 
                                     <div class="input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
                                         'add-task-contact-arrow-close', 'add-task-contact-arrow-open']);
@@ -143,19 +144,22 @@
                         <div class="add-new-task-priority-area" id="all-buttons-prio">
 
                             <!-- button urgent -->
-                            <div id="add-task-btn-urgent" class="add-new-task-priority-button" onclick="colorRed();">
+                            <div id="add-task-btn-urgent" class="add-new-task-priority-button"
+                                onclick="markedPrioAsClicked('add-task-btn-urgent');">
                                 <span class="f-s-w-20px-400">Urgent</span>
                                 <div class="add-new-task-priority-urgent-img"></div>
                             </div>
 
                             <!-- button medium -->
-                            <div id="add-task-btn-medium" class="add-new-task-priority-button" onclick="colorOrange();">
+                            <div id="add-task-btn-medium" class="add-new-task-priority-button"
+                                onclick="markedPrioAsClicked('add-task-btn-medium');">
                                 <span class="f-s-w-20px-400">Medium</span>
                                 <div class="add-new-task-priority-medium-img"></div>
                             </div>
 
                             <!-- button low -->
-                            <div id="add-task-btn-low" class="add-new-task-priority-button" onclick="colorGreen();">
+                            <div id="add-task-btn-low" class="add-new-task-priority-button"
+                                onclick="markedPrioAsClicked('add-task-btn-low');">
                                 <span class="f-s-w-20px-400">Low</span>
                                 <div class="add-new-task-priority-low-img"></div>
                             </div>
@@ -180,19 +184,30 @@
                                 <div class="input-img-area">
 
                                     <input required readonly
-                                        class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400" type="text"
-                                        id="add-task-input-category" placeholder="Select task category">
+                                        class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
+                                        type="text" id="add-task-input-category" placeholder="Select task category"
+                                        onkeydown="showOrHideCategoryAddImg()" onkeyup="showOrHideCategoryAddImg()">
 
-                                    <div class="input-img id=" id="add-task-input-assign-to-arrow" onclick="showOrHideDropDownAddTask(['add-task-category-list', 'add-task-wrapper-category',
-                                    'add-task-category-arrow-close', 'add-task-category-arrow-open'])">
+                                    <div class="input-img id=" id="add-task-input-assign-to-arrow">
+
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none" id="add-task-category-add"
+                                            onclick="addCategoryToList()">
+                                            <img src="/assets/img/icon_add.png">
+                                        </div>
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                            id="add-task-category-arrow-close">
+                                            id="add-task-category-arrow-close"
+                                            onclick="showOrHideDropDownAddTask(['add-task-category-list',
+                                            'add-task-wrapper-category', 'add-task-category-arrow-close',
+                                            'add-task-category-arrow-open']); renderCategoryTask();">
                                             <img src="/assets/img/drop_down_arrow_down.png">
                                         </div>
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
-                                            id="add-task-category-arrow-open">
+                                            id="add-task-category-arrow-open"
+                                            onclick="showOrHideDropDownAddTask(['add-task-category-list',
+                                            'add-task-wrapper-category', 'add-task-category-arrow-close',
+                                            'add-task-category-arrow-open']);">
                                             <img src="/assets/img/drop_down_arrow_up.png">
                                         </div>
 
@@ -203,8 +218,6 @@
                                 <!-- category list, wrapper for position absolute -->
                                 <div class="p-absolute add-task-contact-list background-color-white
                                     b-bottom-left-radius b-bottom-right-radius d-none" id="add-task-category-list">
-                                    <span class="add-task-category f-s-w-20px-400">Technical Task</span>
-                                    <span class="add-task-category f-s-w-20px-400">User Story</span>
                                 </div>
 
                             </div>
@@ -221,8 +234,8 @@
 
                         <div class="input-img-area">
 
-                            <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400" type="text"
-                                id="add-task-input-subtask" placeholder="Add new subtask">
+                            <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
+                                type="text" id="add-task-input-subtask" placeholder="Add new subtask">
 
                             <div class="input-img background-color-white">
                                 <img src="/assets/img/icon_add.png" onclick="addSubtask();">

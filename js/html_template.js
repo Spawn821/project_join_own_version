@@ -82,7 +82,7 @@ function getContactDataHTML(i, colorStyle, firstLetters, name, email, phone) {
 
 
 /**
- * Thais function returns html code which is needed for the contact list in 'add task'. 
+ * This function returns html code which is needed for the contact list in 'add task'. 
  * @param {string} name is the username from array users.
  * @param {string} initials is the initials from the usersname.
  * @returns html code.
@@ -105,8 +105,30 @@ function getAddTaskContactCardHTML(name, initials, i) {
 }
 
 
+/**
+ * This function returns html code which is neede for the added contects under assigned to.
+ * @param {string} initals is the initials from user.
+ * @param {string} color is the rgb stlye from array contactColors.
+ * @returns html code.
+ */
 function getAddedContactsToTaskHTML(initals, color) {
     return /*html*/ `
         <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initals}</div>
+    `;
+}
+
+
+/**
+ * This funcion returns html code which is need for the category entry in add task.
+ * @param {string} category is the category entry.
+ * @param {integer} i is the index from array categoriesTask. 
+ * @returns html code.
+ */
+function getCategoryEntryHTML(category, i) {
+    return /*html*/ `
+        <div class="add-task-category" onclick="selectCategory(${i})">
+            <span class="f-s-w-20px-400">${category}</span>
+            <img src="/assets/img/icon_delete_white.png" onclick="deleteCategoryFromList(${i}); isolateFromOderEvents(event)">
+        </div>
     `;
 }

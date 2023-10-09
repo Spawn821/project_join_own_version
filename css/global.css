@@ -241,29 +241,29 @@ input[type="checkbox"] {
 }
 
 /* checkbox black empty */
-input[type="checkbox"]+div::after {
+input[type="checkbox"]+div {
     content: url('/assets/img/icon_checkbox_empty.png');
     margin-right: 4px;
 }
 
 /* checkbox black empty hover */
-input[type="checkbox"]:hover+div::after {
+input[type="checkbox"]:hover+div {
     content: url('/assets/img/icon_checkbox_empty_hover.png');
     margin-right: 4px;
 }
 
 /* checkbox black checked */
-input[type="checkbox"]:checked+div::after {
+input[type="checkbox"]:checked+div {
     content: url('/assets/img/icon_checkbox_marked.png');
 }
 
 /* checkbox black checked hover */
-input[type="checkbox"]:checked:hover+div::after {
+input[type="checkbox"]:checked:hover+div {
     content: url('/assets/img/icon_checkbox_marked_hover.png');
 }
 
 /* checkbox white checked */
-input[type="checkbox"]:checked+#add-task-check::after {
+input[type="checkbox"]:checked+#add-task-check {
     content: url('/assets/img/icon_checkbox_marked_white.png');
 }
 
@@ -275,6 +275,10 @@ input[type="checkbox"]:checked+#add-task-check::after {
 
 input::-webkit-calendar-picker-indicator:hover {
     cursor: pointer;
+}
+
+input[type="date"] {
+    font-family: "Inter", "Sans-serif";
 }
 
 
