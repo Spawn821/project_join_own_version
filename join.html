@@ -12,9 +12,13 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/join.css">
     <link rel="stylesheet" href="css/summary.css">
+    <link rel="stylesheet" href="css/add_task.css">
 
     <!-- scripts -->
     <script src="js/global.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/add_task.js"></script>
+    <script src="/js/html_template.js"></script>
 
 </head>
 
@@ -26,11 +30,11 @@
 
         <!-- sidebar nav -->
         <nav id="sidebar-nav">
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="getSummary();" id="sidebar-summary">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('summary_html');" id="sidebar-summary">
                 <div class="sidebar-icon sidebar-icon-summary"></div>
                 <span class="sidebar-text">Summary</span>
             </a>
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="getAddTask();" id="sidebar-add_task">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('add_task_html');" id="sidebar-add_task">
                 <div class="sidebar-icon sidebar-icon-add_task"></div>
                 <span class="sidebar-text">Add Task</span>
             </a>
@@ -82,7 +86,10 @@
         </div>
 
         <!-- include summary.html -->
-        <div w3-include-html="templates/summary.html"></div>
+        <div id="summary_html" class="overflow-y-scroll" w3-include-html="templates/summary.html"></div>
+
+        <!-- include add_task.html -->
+        <div id="add_task_html" class="d-none overflow-y-scroll" w3-include-html="templates/add_task.html"></div>
 
     </div>
 

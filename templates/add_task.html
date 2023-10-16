@@ -5,18 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <!-- css -->
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/add_task.css">
-
-    <!-- scripts -->
-    <script src="/js/global.js"></script>
-    <script src="/js/storage.js"></script>
-    <script src="/js/add_task.js"></script>
-    <script src="/js/html_template.js"></script>
 </head>
 
 <body onload="initAddTask()">
@@ -28,29 +16,32 @@
         <h1 class="f-s-61px">Add Task</h1>
 
         <!-- add new task area' -->
-        <form class="add-new-task-area">
+        <form class="add-new-task-area" onsubmit="createTask('create'); return false;">
 
             <div class="add-new-task-input-area">
 
                 <!-- add new task left side -->
-                <div class="add-new-task-half-side">
+                <main class="add-new-task-half-side">
 
                     <!-- add new task left side title -->
-                    <div class="add-new-task-subcontainer">
-                        <label class="f-s-w-20px-400">Title</label>
+                    <section class="add-new-task-subcontainer">
+                        <label class="f-s-w-20px-400">
+                            Title
+                            <span style="color: red">*</span>
+                        </label>
                         <input required class="add-new-task-input f-s-w-20px-400" type="text" id="add-task-input-title"
                             placeholder="Enter a title">
-                    </div>
+                    </section>
 
                     <!-- add new task left side description -->
-                    <div class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer">
                         <label class="f-s-w-20px-400">Description</label>
                         <textarea class="add-new-task-textarea f-s-w-20px-400" id="add-task-textarea-description"
                             placeholder="Enter a Description"></textarea>
-                    </div>
+                    </section>
 
                     <!-- add new task left side assigned to -->
-                    <div class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer">
 
                         <label class="f-s-w-20px-400">Assigned to</label>
 
@@ -66,20 +57,19 @@
 
                                     <input class="input-whitout-border-right add-new-task-input-dropdown
                                         f-s-w-20px-400" type="text" id="add-task-input-assigned-to"
-                                        placeholder="Select contacts to assign" onkeydown="renderAddTaskContactList()"
-                                        onkeyup="renderAddTaskContactList()">
+                                        placeholder="Select contacts to assign" onkeyup="renderAddTaskContactList()">
 
                                     <div class="input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
-                                        'add-task-contact-arrow-close', 'add-task-contact-arrow-open']);
+                                        'add-task-contact-arrow-open', 'add-task-contact-arrow-close']);
                                         renderAddTaskContactList()">
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                            id="add-task-contact-arrow-close">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
+                                            id="add-task-contact-arrow-open">
                                             <img src="/assets/img/drop_down_arrow_down.png">
                                         </div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
-                                            id="add-task-contact-arrow-open">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close d-none"
+                                            id="add-task-contact-arrow-close">
                                             <img src="/assets/img/drop_down_arrow_up.png">
                                         </div>
 
@@ -119,25 +109,28 @@
                         <div class="add-task-contact-added-users" id="add-task-contact-added-users">
                         </div>
 
-                    </div>
+                    </section>
 
-                </div>
+                </main>
 
                 <!-- add new task separator -->
                 <div class="separator-1px-lightgrey"></div>
 
                 <!-- add new task right side -->
-                <div class="add-new-task-half-side">
+                <main class="add-new-task-half-side">
 
                     <!-- add new task right side due date -->
-                    <div class="add-new-task-subcontainer">
-                        <label class=" f-s-w-20px-400">Due date</label>
+                    <section class="add-new-task-subcontainer">
+                        <label class=" f-s-w-20px-400">
+                            Due date
+                            <span style="color: red">*</span>
+                        </label>
                         <input required class="add-new-task-input f-s-w-20px-400" type="date" id="add-task-input-date"
                             onmouseover="setDateOfTodayForDatepicker('add-task-input-date');">
-                    </div>
+                    </section>
 
                     <!-- add new task right side prio -->
-                    <div class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer">
 
                         <label class="f-s-w-20px-400">Prio</label>
 
@@ -167,12 +160,15 @@
                             <div id="prioStatusAsString" style="display: none;"></div>
                         </div>
 
-                    </div>
+                    </section>
 
                     <!-- add new task right side category -->
-                    <div class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer">
 
-                        <label class="f-s-w-20px-400">Category</label>
+                        <label class="f-s-w-20px-400">
+                            Category
+                            <span style="color: red">*</span>
+                        </label>
 
                         <div class="add-new-task-input-dropdown-area background-color-white b-top-left-radius b-top-right-radius
                         b-bottom-left-radius b-bottom-right-radius" id="add-task-wrapper-category">
@@ -186,28 +182,26 @@
                                     <input required readonly
                                         class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
                                         type="text" id="add-task-input-category" placeholder="Select task category"
-                                        onkeydown="showOrHideCategoryAddImg()" onkeyup="showOrHideCategoryAddImg()">
+                                        onkeyup="showOrHideCategoryAddImg()">
 
                                     <div class="input-img id=" id="add-task-input-assign-to-arrow">
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none" id="add-task-category-add"
-                                            onclick="addCategoryToList()">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                            id="add-task-category-add" onclick="addCategoryToList()">
                                             <img src="/assets/img/icon_add.png">
                                         </div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                            id="add-task-category-arrow-close"
-                                            onclick="showOrHideDropDownAddTask(['add-task-category-list',
-                                            'add-task-wrapper-category', 'add-task-category-arrow-close',
-                                            'add-task-category-arrow-open']); renderCategoryTask();">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
+                                            id="add-task-category-arrow-open" onclick="showOrHideDropDownAddTask(['add-task-category-list',
+                                            'add-task-wrapper-category', 'add-task-category-arrow-open',
+                                            'add-task-category-arrow-close']); renderCategoryTask();">
                                             <img src="/assets/img/drop_down_arrow_down.png">
                                         </div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
-                                            id="add-task-category-arrow-open"
-                                            onclick="showOrHideDropDownAddTask(['add-task-category-list',
-                                            'add-task-wrapper-category', 'add-task-category-arrow-close',
-                                            'add-task-category-arrow-open']);">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close d-none"
+                                            id="add-task-category-arrow-close" onclick="showOrHideDropDownAddTask(['add-task-category-list',
+                                            'add-task-wrapper-category', 'add-task-category-arrow-open',
+                                            'add-task-category-arrow-close']);">
                                             <img src="/assets/img/drop_down_arrow_up.png">
                                         </div>
 
@@ -218,49 +212,83 @@
                                 <!-- category list, wrapper for position absolute -->
                                 <div class="p-absolute add-task-contact-list background-color-white
                                     b-bottom-left-radius b-bottom-right-radius d-none" id="add-task-category-list">
+
                                 </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                    </section>
 
                     <!-- add new task right side subtask -->
-                    <div class="add-new-task-subcontainer">
-                        <!-- if category open, this d-none -->
+                    <section class="add-new-task-subcontainer">
 
                         <label class="f-s-w-20px-400">Subtasks</label>
 
                         <div class="input-img-area">
 
-                            <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
+                            <input readonly class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
                                 type="text" id="add-task-input-subtask" placeholder="Add new subtask">
 
-                            <div class="input-img background-color-white">
-                                <img src="/assets/img/icon_add.png" onclick="addSubtask();">
+                            <div class="input-img background-color-white" id="add-task-subtask-add">
+                                <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
+                                    <img src="/assets/img/icon_add.png" onclick="actionInputSubtask('start input');">
+                                </div>
                             </div>
+
+                            <div class="d-none input-img" id="add-task-add-new-subtask">
+
+                                <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
+                                    <img src="/assets/img/icon_close.png" onclick="actionInputSubtask('cancel input')">
+                                </div>
+
+                                <div class="separator-1px-lightgrey"></div>
+
+                                <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
+                                    <img src="/assets/img/icon_done_black_small.png"
+                                        onclick="actionInputSubtask('add subtask')">
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    </div>
+                        <!-- subtask list -->
+                        <div class="add-new-task-subtask-list" id="add-task-subtask-list">
+
+                        </div>
+
+                    </section>
+
+                </main>
+
+            </div>
+
+            <!-- add new task required and buttons area -->
+            <section class="add-new-task-required-buttons-area">
+
+                <span class="f-s-w-20px-400">
+                    <span style="color: red">*</span>
+                    This field are required
+                </span>
+
+                <!-- add new task button area -->
+                <div class="button-area">
+
+                    <button type="button" class="add-new-task-btn-left btn-white" onclick="createTask('clear');">
+                        <span class="f-s-w-20px-400">Clear</span>
+                        <div class="btn-white-img"></div>
+                    </button>
+
+                    <button type="submit" class="add-new-task-btn-right btn-black">
+                        <span class="f-s-w-21px-700">Create Task</span>
+                        <img src="/assets/img/icon_done_white_small.png">
+                    </button>
 
                 </div>
 
-            </div>
-
-            <!-- add new task button area -->
-            <div class="button-area">
-
-                <button class="add-new-task-btn-left btn-white" onclick="resetForm2();">
-                    <span class="f-s-w-20px-400">Clear</span>
-                    <div class="btn-white-img"></div>
-                </button>
-
-                <button class="add-new-task-btn-right btn-black" onclick="custValidation('add_task');">
-                    <span class="f-s-w-21px-700">Create Task</span>
-                    <img src="/assets/img/icon_done_white_small.png">
-                </button>
-            </div>
+            </section>
 
         </form>
 

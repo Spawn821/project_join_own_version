@@ -148,6 +148,8 @@ body {
 }
 
 .separator-1px-lightgrey {
+    min-height: calc(100% - 24px);
+    max-height: 437px;
     border: 1px solid lightgray;
     border-radius: 8px;
 }
@@ -168,7 +170,7 @@ input::placeholder {
     color: rgb(209, 209, 209);
 }
 
-input:focus {
+input:not(:read-only):focus {
     box-shadow: none;
     border-color: rgb(41, 170, 227);
 }
@@ -198,9 +200,10 @@ input:focus {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
+    gap: 4px;
 }
 
-.input-img-area:focus-within .input-img {
+.input-img-area:has(input:not(:read-only)):focus-within .input-img {
     border-color: rgb(41, 170, 227);
 }
 
@@ -279,6 +282,11 @@ input::-webkit-calendar-picker-indicator:hover {
 
 input[type="date"] {
     font-family: "Inter", "Sans-serif";
+    color: black;
+}
+
+input[type="date"]:invalid {
+    color: lightgrey;
 }
 
 

@@ -132,3 +132,38 @@ function getCategoryEntryHTML(category, i) {
         </div>
     `;
 }
+
+
+/**
+ * This function returns html code which is need for only added subtask.
+ * @param {*} subtask is the text from added subtask
+ * @param {*} i is the index in array subtasksTask.
+ * @returns html code.
+ */
+function getAddedSubtaskHTML(subtask, i) {
+    return /*html*/ `
+        <div>
+            <div class="input-img-area d-none" id="add-task-edit-task(${i})">
+                <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
+                    type="text" id="add-task-input-edit-subtask${i}" placeholder="Add new subtask">
+                <div class="input-img" id="add-task-input-change-subtask">
+                    <img src="/assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
+                    <div class="separator-1px-lightgrey"></div>
+                    <img src="/assets/img/icon_done_black_small.png" onclick="editSubtask(${i})">
+                </div>
+            </div>
+
+            <div class="input-img-area" id="add-task-shown-task(${i})">
+                <li class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
+                    type="text" id="add-task-input-subtask" placeholder="Add new subtask">
+                    ${subtask}
+                </li>
+                <div class="input-img v-hidden" id="add-task-list-change-subtask">
+                    <img src="/assets/img/icon_edit_black.png" onclick="changeSubtaskFromShownToEdit(${i})">
+                    <div class="separator-1px-lightgrey"></div>
+                    <img src="/assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
+                </div>
+            </div>
+        </div>
+    `;
+}

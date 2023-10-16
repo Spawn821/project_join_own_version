@@ -118,7 +118,9 @@ let sidebarNavElements = [
 let templatesIDIndex = [
     'login_html',
     'signup_html',
-    'reset_password_html'
+    'reset_password_html',
+    'summary_html',
+    'add_task_html'
 ]
 
 
@@ -522,10 +524,14 @@ function showTemplate(name) {
 
     document.getElementById(`${name}`).classList.remove('d-none');
 
-    if (name != 'login_html') {
-        header.classList.add('d-none');
-    } else {
-        header.classList.remove('d-none');
+    try {
+        if (name != 'login_html') {
+            header.classList.add('d-none');
+        } else {
+            header.classList.remove('d-none');
+        }
+    } catch {
+        return;
     }
 }
 
@@ -537,6 +543,10 @@ function hideAllTemplates() {
     for (let i = 0; i < templatesIDIndex.length; i++) {
         const template = document.getElementById(`${templatesIDIndex[i]}`);
 
-        template.classList.add('d-none');
+        try {
+            template.classList.add('d-none');
+        } catch {
+            continue;
+        }
     }
 }
