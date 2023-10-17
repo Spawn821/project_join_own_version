@@ -2,10 +2,8 @@
  * This function initialize the summary page.
  */
 async function initSummary() {
-    await loadTasks();
-    renderSummary();
-    userInitials();
-    mobileGreetings();
+/*     renderSummary(); */
+/*     mobileGreetings(); */
 }
 
 /**

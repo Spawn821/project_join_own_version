@@ -1,5 +1,7 @@
 let users = [];
 
+let tasks = [];
+
 let contactColors = [
     {
         'number': 1,
@@ -73,7 +75,6 @@ let contactColors = [
     }
 ]
 
-
 let alphabet = [
     { 'number': 0, 'letter': 'a' },
     { 'number': 1, 'letter': 'b' },
@@ -107,32 +108,30 @@ let alphabet = [
     { 'number': 29, 'letter': '.' },
 ];
 
-
-let sidebarNavElements = [
-    'summary',
-    'add_task',
-    'board',
-    'contacts'
-]
-
 let templatesIDIndex = [
     'login_html',
     'signup_html',
     'reset_password_html',
     'summary_html',
-    'add_task_html'
+    'add_task_html',
+    'borad_html',
+    'contacts_html',
+    'help_html'
 ]
+
+
+async function initGlobal() {
+    await loadUsers();
+    await loadTasks();
+    await includeHTML();
+}
 
 
 /**
  * Pulling user data from backend server.
  */
 async function loadUsers() {
-    try {
-        users = JSON.parse(await getItem('users'));
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
+    users = JSON.parse(await getItem('users'));
 }
 
 
@@ -166,50 +165,6 @@ async function includeHTML() {
 
 
 /**
- * This function toggles visibility of the menu on top right of the top-navigation bar.
- */
-function showOrHideContextMenu() {
-    let contextMenu = document.getElementById('context-menu-panel');
-
-    if (contextMenu.classList.contains('d-none')) {
-        contextMenu.classList.remove('d-none')
-    } else (
-        contextMenu.classList.add('d-none')
-    )
-}
-
-
-/**
- * This function returns the name of the user from URL parameters.
- * @returns 
- */
-function queryUserName() {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var userName = urlParams.get('name');
-    return userName;
-}
-
-
-/**
- * This function sets the initials of the username to the top right icon of the top-navigation bar.
- */
-function userInitials() {
-    const userName = queryUserName();
-    document.getElementById('topbar-user-profile-letter').innerHTML = getInitials(userName);
-}
-
-
-/**
- * This function initializes the "Help" page.
- */
-async function initHelp() {
-    await includeHTML();
-    userInitials();
-}
-
-
-/**
  * This function return the first characters of the first and second string separated by space.
  * @param {*} contact defines the username.
  * @returns First characters of the username.
@@ -222,66 +177,6 @@ function getInitials(contact) {
     }
 
     return initials;
-}
-
-
-/**
- * This function refers to another page with URL encoded username.
- * @param {*} pageName defines the name of the page to be linked to.
- */
-function linkPage(pageName) {
-    saveSidebarNavHighlights(pageName);
-    window.location.href = pageName + ".html?name=" + encodeURIComponent(queryUserName());
-}
-
-
-/**
- * This function highlighted the current pagename in the navarea on the sidebar that was clicked.
- * @param {*} pageName defines the name of the page to be linked to.
- */
-function setSidebarNavActive(pageName) {
-    removeSibebarNavActive();
-
-    let sidebarClickedIcon = '';
-    let sidebarClickedText = '';
-
-    for (let i = 0; i < sidebarNavElements.length; i++) {
-        const navElement = sidebarNavElements[i];
-
-        if (navElement == pageName) {
-            sidebarClickedText = 'sidebar-t-highlighted';
-            sidebarClickedIcon = `sidebar-icon-${navElement}-highlighted`;
-        }
-    }
-
-    document.getElementById(`sidebar-${pageName}`).classList.add(`${sidebarClickedText}`);
-    document.getElementById(`sidebar-${pageName}`).children[0].classList.add(`${sidebarClickedIcon}`);
-}
-
-/**
- * This function removed all highlightes in the navarea on sidebar.
- */
-function removeSibebarNavActive() {
-    for (let i = 0; i < sidebarNavElements.length; i++) {
-        const navElement = sidebarNavElements[i];
-
-        try {
-            document.getElementById(`sidebar-${navElement}`).classList.remove('sidebar-t-highlighted');
-            document.getElementById(`sidebar-${navElement}`).children[0].classList.remove(`sidebar-icon-${navElement}-highlighted`);
-        } catch {
-            continue;
-        }
-    }
-}
-
-
-/**
- * This function is called on onload of pages privacypolicy and legalnotice.
- */
-async function initInfoPage() {
-    await includeHTML();
-    document.getElementById('sidebar-nav').style.display = "none";
-    document.getElementById('topbar-nav').style.display = "none";
 }
 
 
@@ -314,188 +209,6 @@ function returnContactColorByName(name) {
 
     return returnContactColor(index);
 }
-
-
-/**
- * This function sorts "users" array by alphabetical order of usernames.
- * @returns {(object|array)} alphabetUsers is the status from all current sortet users/contacts.
- * @returns {integer} lastAddedContactIndex is the index number from the current added contact/contacts in alphabetUsers.
- */
-function sortUsers() {
-    let alphabetUsers = [];
-    let lastAddedContactIndex = 0;
-    let outOfFunctionFirstLoop = false;
-
-    for (let i = 0; i < users.length; i++) {
-        const userName = users[i]['name'];
-        let userNameWithoutSpace = returnNameWithoutSpaces(userName);
-
-        let alphabetLetterCurrentUser = alphabet.find(element => element['letter'] == userNameWithoutSpace[0].toLowerCase());
-
-        if (alphabetUsers.length == 0) {
-            alphabetUsers.push(retrunUserJSON(i));
-        } else {
-            [alphabetUsers, lastAddedContactIndex] = compareUsersWithAlphabetUsersFirstLoop(i, alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, userNameWithoutSpace, alphabetLetterCurrentUser);
-        }
-    }
-
-    return [alphabetUsers, lastAddedContactIndex];
-}
-
-
-/**
- * This fuction loops through the array alphabetUsers.
- * @param {integer} i is the index number from array users.
- * @param {(object|array)} alphabetUsers is the status from all current sortet users/contacts.
- * @param {integer} lastAddedContactIndex is the index number from the current added contact/contacts in alphabetUsers.
- * @param {boolean} outOfFunctionFirstLoop is the exit to leave the loop in the function compareUsersWithAlphabetUsersFirstLoop.
- * @param {string} userNameWithoutSpace is the current user/contact without space from array users.
- * @param {char} alphabetLetterCurrentUser is the current letter from the current user/contact from array users.
- * @returns {(object|array)} alphabetUsers is the status from all current sortet users/contacts.
- * @returns {integer} lastAddedContactIndex is the index number from the current added user/contact in alphabetUsers.
- */
-function compareUsersWithAlphabetUsersFirstLoop(i, alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, userNameWithoutSpace, alphabetLetterCurrentUser) {
-    for (let k = 0; k < alphabetUsers.length; k++) {
-        const alphabetUsersName = alphabetUsers[k]['name'];
-        let alphabetUserNameWithoutSpace = returnNameWithoutSpaces(alphabetUsersName);
-
-        [alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop] = compareUsersWithAlphabetUsersSecondLoop(i, k, alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, userNameWithoutSpace, alphabetLetterCurrentUser, alphabetUserNameWithoutSpace);
-
-        if (outOfFunctionFirstLoop) {
-            outOfFunctionFirstLoop = false;
-            break;
-        }
-    }
-
-    return [alphabetUsers, lastAddedContactIndex];
-}
-
-
-/**
- * This function loops throuhg the string alphabetUserNameWithoutSpace,
- * and compare the letters with those from the current user from the user array.
- * @param {integer} i is the index number from array users.
- * @param {integer} k  is the index number from array alphabetUsers.
- * @param {(object|array)} alphabetUsers is the status from all current sortet users/contacts. 
- * @param {integer} lastAddedContactIndex is the index number from the current added user/contact in alphabetUsers.
- * @param {boolean} outOfFunctionFirstLoop is the exit to leave the looper in the funtion compareUsersWithAlphabetUsersFirstLoop.
- * @param {string} userNameWithoutSpace is the current user/contact without space from array users.
- * @param {char} alphabetLetterCurrentUser is the current letter from the current user/contact from array users.
- * @param {string} alphabetUserNameWithoutSpace is the current user/contact without space from array alphabetUsers.
- * @returns {(object|array)} alphabetUsers is the status from all current sortet users/contacts.
- * @returns {integer} lastAddedContactIndex is the index number from the current added user/contact in alphabetUsers.
- * @returns {boolean} outOfFunctionFirstLoop is the exit to leave the looper in the funtion compareUsersWithAlphabetUsersFirstLoop.
- */
-function compareUsersWithAlphabetUsersSecondLoop(i, k, alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, userNameWithoutSpace, alphabetLetterCurrentUser, alphabetUserNameWithoutSpace) {
-    let outOfFunctionSecondLoop = false;
-
-    for (let l = 0; l < alphabetUserNameWithoutSpace.length; l++) {
-        const alphabetUserNamerCurrentLetter = alphabetUserNameWithoutSpace[l].toLowerCase();
-        const alphabetLetterCurrentAlphabetUser = alphabet.find(element => element['letter'] == alphabetUserNamerCurrentLetter);
-
-        if (alphabetLetterCurrentUser['number'] > alphabetLetterCurrentAlphabetUser['number'] && k < alphabetUsers.length - 1 && l < 1) {
-            break;
-        }
-
-        [alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, outOfFunctionSecondLoop] = addContactToAlphabetUsers(i, k, l, alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop, outOfFunctionSecondLoop, alphabetLetterCurrentUser, alphabetLetterCurrentAlphabetUser, alphabetUserNameWithoutSpace);
-
-        if (outOfFunctionSecondLoop) {
-            outOfFunctionSecondLoop = false;
-            break;
-        } else {
-            alphabetLetterCurrentUser = alphabet.find(element => element['letter'] == userNameWithoutSpace[l + 1].toLowerCase());
-        }
-    }
-
-    return [alphabetUsers, lastAddedContactIndex, outOfFunctionFirstLoop];
-}
-
-
-/**
- * This function checks whether where a user/contact needs to be classified.
- * @param {*} i is the index number from array users.
- * @param {*} k is the index number from array alphabetUsers.
- * @param {*} l is the index number from the letter in alphabetUserNameWithouSpace.
- * @param {*} alphabetUsers is the status from all current sortet users/contacts.
- * @param {*} lastAddedContactIndex is the index number from the current added user/contact in alphabetUsers.
- * @param {*} outOfFunctionFirstLoop is the exit to leave the looper in function compareUsersWithAlphabetUsersFirstLoop.
- * @param {*} outOfFunctionSecondLoop is the exit to leave the looper in function compareUsersWithAlphabetUsersSecondLoop.
- * @param {*} alphabetLetterCurrentUser is the current letter from the current user/contact from array users.
- * @param {*} alphabetLetterCurrentAlphabetUser is the current letter from the current user/contact from array alphabetUsers.
- * @param {*} alphabetUserNameWithoutSpace is the current user/contact without space from array alphabetUsers.
- * @returns {(object|array)} alphabetUsers is the status from all current sortet users/contacts.
- * @returns {integer} lastAddedContactIndex is the index number from the current added user/contact in alphabetUsers.
- * @returns {boolean} outOfFunctionFirstLoop is the exit to leave the looper in the funtion compareUsersWithAlphabetUsersFirstLoop.
- * @returns {boolean} outOfFunctionSecondLoop is the exit to leave the looper in the funtion compareUsersWithAlphabetUsersSecondLoop.
- */
-function addContactToAlphabetUsers() {
-    if (arguments[7]['number'] > arguments[8]['number']) {
-        if (arguments[1] == arguments[3].length - 1) {
-            arguments[3].splice(arguments[1] + 1, 0, retrunUserJSON(arguments[0]));
-            arguments[5] = true;
-        }
-
-        arguments[6] = true;
-
-        arguments[4] = arguments[1] + 1;
-    } else if (arguments[7]['number'] < arguments[8]['number']) {
-        arguments[3].splice(arguments[1], 0, retrunUserJSON(arguments[0]));
-        arguments[4] = arguments[1];
-        arguments[5] = true;
-        arguments[6] = true;
-    }
-    else if (arguments[2] == arguments[9].length - 1) {
-        arguments[3].splice(arguments[1] + 1, 0, retrunUserJSON(arguments[0]));
-        arguments[4] = arguments[1] + 1;
-        arguments[5] = true;
-        arguments[6] = true;
-    }
-
-    return [arguments[3], arguments[4], arguments[5], arguments[6]];
-}
-
-
-/**
- * This function returns a registered users data as an JSON object.
- * @param {integer} i is the index number from array users.
- * @returns {object} JSON object.
- */
-function retrunUserJSON(i) {
-    return {
-        name: users[i]['name'],
-        email: users[i]['email'],
-        password: users[i]['password'],
-        phone: users[i]['phone']
-    };
-}
-
-
-/**
- * This function splitet the input name and returns this name withouht space.
- * @param {string} name the name from the current user/contact
- * @returns {string} nameWithoutSpace is the input name without space.
- */
-function returnNameWithoutSpaces(name) {
-    let splitName = name.split(' ');
-    let nameWithoutSpaces = '';
-
-    for (let m = 0; m < splitName.length; m++) {
-        nameWithoutSpaces += splitName[m];
-    }
-
-    return nameWithoutSpaces;
-}
-
-/**
- * This function is being called upon logout. It deletes its saved email address from local storage.
- */
-function logoutUser() {
-    window.localStorage.clear();
-}
-
-
-
-
 
 
 /**

@@ -17,12 +17,14 @@
     <!-- scripts -->
     <script src="js/global.js"></script>
     <script src="/js/storage.js"></script>
+    <script src="/js/join.js"></script>
+    <script src="/js/summary.js"></script>
     <script src="/js/add_task.js"></script>
     <script src="/js/html_template.js"></script>
 
 </head>
 
-<body onload="includeHTML()" class="join-body">
+<body class="join-body" onload="initGlobal(); initJoin();">
 
     <!-- sidebar panel -->
     <div class="sidebar-panel">
@@ -30,19 +32,23 @@
 
         <!-- sidebar nav -->
         <nav id="sidebar-nav">
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('summary_html');" id="sidebar-summary">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('summary_html'); setSidebarNavActive('summary')"
+                id="sidebar-summary">
                 <div class="sidebar-icon sidebar-icon-summary"></div>
                 <span class="sidebar-text">Summary</span>
             </a>
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('add_task_html');" id="sidebar-add_task">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('add_task_html'); setSidebarNavActive('add_task')"
+                id="sidebar-add_task">
                 <div class="sidebar-icon sidebar-icon-add_task"></div>
                 <span class="sidebar-text">Add Task</span>
             </a>
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="getBoard();" id="sidebar-board">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('board_html'); setSidebarNavActive('board')"
+                id="sidebar-board">
                 <div class="sidebar-icon sidebar-icon-board"></div>
                 <span class="sidebar-text">Board</span>
             </a>
-            <a class="sidebar-nav-member sidebar-t-d-none" onclick="getContacts();" id="sidebar-contacts">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('contacts_html'); setSidebarNavActive('contacts')"
+                id="sidebar-contacts">
                 <div class="sidebar-icon sidebar-icon-contacts"></div>
                 <span class="sidebar-text">Contacts</span>
             </a>
@@ -66,8 +72,8 @@
                 <img class="topbar-logo" src="assets/img/join_logo.svg" alt="logo">
                 <h3 class="topbar-area-headline">Kanban Project Management Tool</h3>
                 <nav class="topbar-nav" id="topbar-nav">
-                    <a href="#">
-                        <img class="topbar-icon" src="assets/img/icon_help.png" alt="help" onclick="getHelp();">
+                    <a>
+                        <img class="topbar-icon" src="assets/img/icon_help.png" alt="help" onclick="showTemplate('help_html');">
                     </a>
                     <div class="topbar-user-profile" onclick="showOrHideContextMenu()">
                         <span id="topbar-user-profile-letter"></span>

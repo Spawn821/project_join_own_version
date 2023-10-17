@@ -2,28 +2,20 @@
  * This function initialize the landing page and preloads all registered Users to match them against input of the current user of the page.
  */
 async function loginInit() {
-/*     animateJoinLogo(); */
-    await includeHTML();
-    await loadUsers();
-/*     checkRememberLogin(); */
-
-    setTimeout((() => {
-        document.getElementById('login-animation-overlay').classList.add('d-none');
-        document.getElementById('login-animation-logo').classList.add('d-none');
-    }), 900);
+    checkRememberLogin();
+    removeAnimateJoinLogo();
 }
 
 
 /**
- * This function toggles elements of the landing page (index.html) if any other form than "login" is active on the page. 
- * @param {*} filename defines the HTML template name of the current active form.
+ * Animates the JoinLogo upon first loading of the page in desktop screen.
  */
-function toggleUiElements(filename) {
-    if (filename != 'login.html') {
-        document.getElementById('not-a-user-box').classList.add('d-none');
-    } else {
-        document.getElementById('not-a-user-box').classList.remove('d-none');
-    }
+function removeAnimateJoinLogo() {
+    setTimeout((() => {
+        document.getElementById('login-animation-overlay').classList.add('d-none');
+        document.getElementById('login-animation-logo').classList.add('d-none');
+    }), 900);
+
 }
 
 
@@ -48,6 +40,7 @@ class InputState {
         return this.state;
     }
 }
+
 const inputState = new InputState();
 
 
@@ -97,60 +90,23 @@ function toggleReveal(img, id) {
 
 
 /**
- * Animates the JoinLogo upon first loading of the page in desktop screen.
- */
-function animateJoinLogo() {
-    const animationOverlay = document.getElementById("animationOverlay");
-    animationOverlay.classList.remove('d-none');
-    setTimeout(function () {
-        animationOverlay.classList.add('d-none');
-    }, 990);
-    animateIteration = 1;
-}
-
-
-/**
- * If password is reset, it triggers a message.
- */
-function resetPassword() {
-    successMessage('You reset your password');
-}
-
-
-/**
- * If password is sent to user, it triggers a message.
- */
-function forgotPassword() {
-    const message = /*html*/ `
-        <img src="assets/img/email_send.svg"> An Email has been sent to you
-    `;
-    successMessage(message);
-    document.getElementById('btn_sendMail').classList.add('d-none');
-}
-
-
-/**
  * This function handles login of the user and takes actions on UI elements in case of wrong user credentials.
  */
 function login() {
-    const email = document.getElementById("inputEmail");
-    const password = document.getElementById("inputPassword");
+    const email = document.getElementById("login-email");
+    const password = document.getElementById("login-password");
     const user = users.find(u => u.email == email.value && u.password == password.value);
     const wrongPasswordOrUser = users.find(u => u.email != email.value || u.password != password.value);
-    const warning = document.getElementById("password_warning");
-    const passwordTextbox = document.getElementById("inputPassword");
+    const warning = document.getElementById("login-wrong-mail-password");
 
     if (user) {
-        warning.classList.add('invisible');
-        passwordTextbox.classList.remove('redBorder');
+        warning.classList.add('v-hidden');
         rememberLogin(email.value);
         window.location.href = "join.html?name=" + encodeURIComponent(user['name']);
     } else if (wrongPasswordOrUser) {
-        warning.classList.remove('invisible');
-        passwordTextbox.classList.add('redBorder');
+        warning.classList.remove('v-hidden');
     } else {
-        warning.classList.add('invisible');
-        passwordTextbox.classList.remove('redBorder');
+        warning.classList.add('v-hidden');
     }
 }
 
@@ -160,7 +116,7 @@ function login() {
  * @param {*} email user Email address
  */
 function rememberLogin(email) {
-    if (document.getElementById('myCheckbox').checked) {
+    if (document.getElementById('login-checkbox').checked) {
         localStorage.setItem('email', email);
     }
 }
@@ -171,8 +127,10 @@ function rememberLogin(email) {
  */
 function checkRememberLogin() {
     const email = localStorage.getItem('email');
+
     if (email) {
         const user = getUserFromEmail(email);
+
         window.location.href = "join.html?name=" + encodeURIComponent(user);
     }
 }
@@ -180,12 +138,13 @@ function checkRememberLogin() {
 
 /**
  * This function returns the username of registered users linked to a matching email address.
- * @param {*} email 
- * @returns 
+ * @param {*} email is the saved email from local storage.
+ * @returns username.
  */
 function getUserFromEmail(email) {
     for (let i = 0; i < users.length; i++) {
         const element = users[i]['email'];
+
         if (element === email) return users[i]['name']
     }
 }
@@ -194,6 +153,48 @@ function getUserFromEmail(email) {
 /**
  * This function handles login as a "Guest".
  */
-function guest() {
+function loginAsGuest() {
     window.location.href = "join.html?name=" + encodeURIComponent("Guest");
+}
+
+
+/**
+ * This funcion compare the input email with the data in array users.
+ */
+function compareInputEmailWithUsers() {
+    const inputField = document.getElementById('reset-email')
+    const warning = document.getElementById('signup-wrong-mail');
+    let button = document.getElementById('send_mail_btn');
+
+    users.map((user) => {
+        warning.classList.remove('v-hidden');
+        button.disabled = true;
+
+        if (validInput(inputField, user)) {
+            warning.classList.add('v-hidden');
+
+            if (inputField.value == user['email']) {
+                button.disabled = false;
+            }
+        }
+    })
+}
+
+
+function validInput(inputField, user) {
+    const validInput = inputField.value != '';
+    const validWithUsers = user['email'].toLowerCase().includes(inputField.value.toLowerCase());
+    const validWithSign = inputField.value.includes('@');
+
+    return validInput && validWithUsers && validWithSign; 
+}
+
+
+function sendMailResetPassword() {
+    const inputField = document.getElementById('reset-email')
+
+    inputField.value = '';
+
+    showTemplate('login_html');
+    informationSlidebox('Email is send to you');
 }

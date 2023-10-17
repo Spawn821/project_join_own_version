@@ -1,10 +1,3 @@
-let tasks = [];
-
-async function initAddTask() {
-    /*     await loadUsers(); */
-}
-
-
 /* === DROPDOWNS === */
 
 /**
@@ -409,22 +402,44 @@ function changeSubtaskFromShownToEdit(i) {
 
 /* === CREATE TASK === */
 
-function createTask(action) {
+/**
+ * This function create a new task instace in array tasks.
+ * @param {string} action is the action to wich executed.
+ */
+async function createTask(action) {
     const title = document.getElementById('add-task-input-title');
     const description = document.getElementById('add-task-textarea-description');
     const dueDate = document.getElementById('add-task-input-date');
     const category = document.getElementById('add-task-input-category');
 
-    switch (action) {
-        case 'create':
-            tasks.push(returnTask(title, description, dueDate, category));
-            clearTask(title, description, dueDate, category);
-            break;
-        case 'clear':
-            clearTask(title, description, dueDate, category);
-            break;
+    if (action == 'create') {
+        tasks.push(returnTask(title, description, dueDate, category));
+        clearTask(title, description, dueDate, category);
+    } else {
+        clearTask(title, description, dueDate, category);
     }
+
+    await setItem('tasks', JSON.stringify(tasks));
+    informationSlidebox('Task added to board');
 }
+
+
+/**
+ * Is button 'create' in add task is clicked the input in category removes for 1,5 seconds the attribute readonly.
+ */
+document.addEventListener('click', () => {
+    let categoryInput = document.getElementById('add-task-input-category');
+    let createButton = document.getElementById('add-task-button-create');
+
+    createButton.onclick = () => {
+        categoryInput.removeAttribute('readonly');
+
+        setTimeout((() => {
+            categoryInput.setAttribute('readonly', '');
+        }), 1500);
+    }
+})
+
 
 function clearTask(title, description, dueDate, category) {
     title.value = '';
@@ -437,6 +452,7 @@ function clearTask(title, description, dueDate, category) {
     removeMarkedPrio();
     renderSubtaskTask();
 }
+
 
 function returnTask(title, description, dueDate, category) {
     return {
