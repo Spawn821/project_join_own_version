@@ -41,7 +41,7 @@
                     </section>
 
                     <!-- add new task left side assigned to -->
-                    <section class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer" onclick="isolateFromOderEvents(event)">
 
                         <label class="f-s-w-20px-400">Assigned to</label>
 
@@ -59,17 +59,17 @@
                                         f-s-w-20px-400" type="text" id="add-task-input-assigned-to"
                                         placeholder="Select contacts to assign" onkeyup="renderAddTaskContactList()">
 
-                                    <div class="input-img" onclick="showOrHideDropDownAddTask(['add-task-contact-btn-area', 'add-task-wrapper-contact',
-                                        'add-task-contact-arrow-open', 'add-task-contact-arrow-close']);
-                                        renderAddTaskContactList()">
+                                    <div class="input-img">
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
-                                            id="add-task-contact-arrow-open">
+                                            id="add-task-contact-arrow-open" onclick="dropDownAddTask('assigned to', 'open');
+                                            renderAddTaskContactList()">
                                             <img src="/assets/img/drop_down_arrow_down.png">
                                         </div>
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-close d-none"
-                                            id="add-task-contact-arrow-close">
+                                            id="add-task-contact-arrow-close"
+                                            onclick="dropDownAddTask('assigned to', 'close');">
                                             <img src="/assets/img/drop_down_arrow_up.png">
                                         </div>
 
@@ -163,7 +163,7 @@
                     </section>
 
                     <!-- add new task right side category -->
-                    <section class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer" onclick="isolateFromOderEvents(event)">
 
                         <label class="f-s-w-20px-400">
                             Category
@@ -179,31 +179,34 @@
                                 <!-- input -->
                                 <div class="input-img-area">
 
-                                    <input required readonly
+                                    <input required
                                         class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
                                         type="text" id="add-task-input-category" placeholder="Select task category"
-                                        onkeyup="showOrHideCategoryAddImg()">
+                                        onkeyup="dropDownAddTask('category', 'open')">
 
-                                    <div class="input-img id=" id="add-task-input-assign-to-arrow">
+                                    <div class="input-img background-color-white"
+                                        id="add-task-category-arrow-open"
+                                        onclick="dropDownAddTask('category', 'open'); renderCategoryTask();">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
+                                            <img src="/assets/img/drop_down_arrow_down.png">
+                                        </div>
+                                    </div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open d-none"
+                                    <div class="d-none input-img" id="add-task-add-new-category">
+
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
                                             id="add-task-category-add" onclick="addCategoryToList()">
                                             <img src="/assets/img/icon_add.png">
                                         </div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
-                                            id="add-task-category-arrow-open" onclick="showOrHideDropDownAddTask(['add-task-category-list',
-                                            'add-task-wrapper-category', 'add-task-category-arrow-open',
-                                            'add-task-category-arrow-close']); renderCategoryTask();">
-                                            <img src="/assets/img/drop_down_arrow_down.png">
-                                        </div>
+                                        <div class="separator-1px-lightgrey"></div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close d-none"
-                                            id="add-task-category-arrow-close" onclick="showOrHideDropDownAddTask(['add-task-category-list',
-                                            'add-task-wrapper-category', 'add-task-category-arrow-open',
-                                            'add-task-category-arrow-close']);">
+                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                            id="add-task-category-arrow-close"
+                                            onclick="dropDownAddTask('category', 'close');">
                                             <img src="/assets/img/drop_down_arrow_up.png">
                                         </div>
+
 
                                     </div>
 

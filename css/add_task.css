@@ -77,6 +77,10 @@
     width: calc(440px - 42px - 37px);
 }
 
+.input-img-area:has(#add-task-add-new-category:not(.d-none)) .add-new-task-input-dropdown {
+    width: calc(440px - 42px - 37px - 35.5px);
+}
+
 .add-new-task-input-dropdown::placeholder {
     color: black;
 }

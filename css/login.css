@@ -159,10 +159,10 @@
   gap: 35px;
 }
 
-.login-input-waring {
+.login-input-warning {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .login-wrong-mail-password {
@@ -171,13 +171,13 @@
   font-size: 12px;
   line-height: 14px;
   color: rgb(255, 129, 144);
+  margin-bottom: -16px;
 }
 
 .login-options-area {
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-top: -16px;
 }
 
 .login-forgotten-password {

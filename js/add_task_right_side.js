@@ -1,122 +1,3 @@
-/* === DROPDOWNS === */
-
-/**
- * This function show or hide elements, based on the given array list.
- * @param {[string|array]} id is a list from id's.
-*/
-function showOrHideDropDownAddTask(id) {
-    id.map((element) => {
-        let dropdownElement = document.getElementById(element);
-        let categoryInput = document.getElementById('add-task-input-category');
-
-        if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
-            dropdownElement.classList.toggle('b-bottom-left-radius');
-            dropdownElement.classList.toggle('b-bottom-right-radius');
-            categoryInput.toggleAttribute('readonly');
-        } else {
-            dropdownElement.classList.toggle('d-none');
-        }
-    });
-}
-
-
-/* === ASSIGNED TO === */
-
-/**
- * This function rendert the contact list in 'add task' dropdown 'assigend to'.
-*/
-function renderAddTaskContactList() {
-    let search = document.getElementById('add-task-input-assigned-to').value;
-    let contact = document.getElementById('add-task-contact-list');
-    contact.innerHTML = '';
-    let i = 0;
-
-    users.map((element) => {
-        const name = element.name;
-        const initials = getInitials(name);
-
-        if (name.toLowerCase().includes(search.toLowerCase())) {
-            contact.innerHTML += getAddTaskContactCardHTML(name, initials, i);
-        }
-
-        i++;
-    });
-
-    markedUserAsClicked();
-}
-
-let addedUsersToTask = [];
-
-
-function markedUserAsClicked() {
-    addedUsersToTask.map((user) => {
-        const checkbox = document.getElementById(`add-task-checkbox-${user.id}`);
-
-        alreadyMarkedUsersAsClicked(user.id, 'add');
-        checkbox.checked = true;
-    })
-}
-
-
-/**
- * This fuction shows all data from the clicked contact in a separate window.
- * @param {integer} i is the index from arry users.
-*/
-function addedUserToTask(i) {
-    const checkbox = document.getElementById(`add-task-checkbox-${i}`);
-
-    if (checkbox.checked) {
-        addedUsersToTask.push({ name: users[i]['name'], id: i }); //if task createt arry reset to default.
-    } else {
-        addedUsersToTask.splice(removeUserFromTask(i), 1);
-        alreadyMarkedUsersAsClicked(i, 'remove');
-    }
-
-    renderAddedUserToTask();
-}
-
-
-/**
- * This function rendert the area under 'assigned to' with added user to task.
- */
-function renderAddedUserToTask() {
-    let container = document.getElementById('add-task-contact-added-users');
-    container.innerHTML = '';
-
-    addedUsersToTask.map((user) => {
-        const initals = getInitials(user.name);
-        const color = returnContactColor(user.id);
-
-        container.innerHTML += getAddedContactsToTaskHTML(initals, color);
-
-        alreadyMarkedUsersAsClicked(user.id, 'add');
-    });
-}
-
-
-/**
- * This fucntion marked already clicked users.
- * @param {index} i is the index from array users.
- * @param {string} action is the action to remove or add the click style.
- */
-function alreadyMarkedUsersAsClicked(i, action) {
-    const contact = document.getElementById(`add-task-contact-${i}`);
-
-    if (action == 'add') {
-        contact.classList.add('contact-card-click');
-    } else {
-        contact.classList.remove('contact-card-click');
-    }
-}
-
-
-function removeUserFromTask(i) {
-    const index = addedUsersToTask.findIndex((user) => user.id == i);
-
-    return index;
-}
-
-
 /* === CALENDAR === */
 
 /**
@@ -229,9 +110,9 @@ function returnStatusCategoryInput(downArrow, upArrow) {
 
     if (categoryInput.value == '' && upArrow.classList.contains('d-none') && !downArrow.classList.contains('d-none')) {
         return 'input empty, dropdown close';
-    } else if (categoryInput.value == '' && downArrow.classList.contains('d-none') && upArrow.classList.contains('d-none'))
+    } else if (categoryInput.value == '' && downArrow.classList.contains('d-none') && upArrow.classList.contains('d-none')) {
         return 'input empty, dropdown open';
-    else if (categoryInput.value) {
+    } else if (categoryInput.value) {
         return 'write'
     }
 }
@@ -244,7 +125,7 @@ function addCategoryToList() {
     newCategory.value = '';
 
     renderCategoryTask();
-    showOrHideCategoryAddImg();
+/*     showOrHideCategoryAddImg(); */
 }
 
 
@@ -415,30 +296,13 @@ async function createTask(action) {
     if (action == 'create') {
         tasks.push(returnTask(title, description, dueDate, category));
         clearTask(title, description, dueDate, category);
+        informationSlidebox('Task added to board');
     } else {
         clearTask(title, description, dueDate, category);
     }
 
     await setItem('tasks', JSON.stringify(tasks));
-    informationSlidebox('Task added to board');
 }
-
-
-/**
- * Is button 'create' in add task is clicked the input in category removes for 1,5 seconds the attribute readonly.
- */
-document.addEventListener('click', () => {
-    let categoryInput = document.getElementById('add-task-input-category');
-    let createButton = document.getElementById('add-task-button-create');
-
-    createButton.onclick = () => {
-        categoryInput.removeAttribute('readonly');
-
-        setTimeout((() => {
-            categoryInput.setAttribute('readonly', '');
-        }), 1500);
-    }
-})
 
 
 function clearTask(title, description, dueDate, category) {
@@ -450,6 +314,7 @@ function clearTask(title, description, dueDate, category) {
     addedSubtasks = []
 
     removeMarkedPrio();
+    renderAddedUserToTask();
     renderSubtaskTask();
 }
 

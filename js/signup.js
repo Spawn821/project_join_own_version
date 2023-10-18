@@ -7,12 +7,7 @@ async function register() {
     const password = document.getElementById('signup-password');
     const confirmPassword = document.getElementById('signup-confirm-password');
 
-    users.push({
-        name: username.value,
-        email: usermail.value,
-        password: password.value,
-        phone: ""
-    });
+    users.push(returnUser(username, usermail, password));
 
     [users, currentContactIndex] = sortUsers();
 
@@ -20,6 +15,16 @@ async function register() {
     resetForm(username, usermail, password, confirmPassword);
     showTemplate('login_html');
     informationSlidebox('You signed up successfully');
+}
+
+
+function returnUser(username, usermail, password) {
+    return {
+        name: username.value,
+        email: usermail.value,
+        password: password.value,
+        phone: ""
+    };
 }
 
 
@@ -48,14 +53,33 @@ function resetForm(username, usermail, password, confirmPassword) {
 function validateSignUp() {
     let signupBtn = document.getElementById('signup-btn');
     const compareUserNameAndMail = validateUserNameAndMail();
+    const emailExist = vaildateEmailAlreadyExist();
     const comparePasswords = validatePasswords();
     const checkbox = document.getElementById('signup-checkbox').checked;
 
-    if (compareUserNameAndMail && comparePasswords && checkbox) {
+    if (compareUserNameAndMail && comparePasswords && checkbox && !emailExist) {
         signupBtn.disabled = false;
     } else {
         signupBtn.disabled = true;
     }
+}
+
+
+function vaildateEmailAlreadyExist() {
+    let inputField = document.getElementById('signup-mail');
+    let warning = document.getElementById('signup-mail-already-exist');
+    let flag = false;
+
+    users.map((user) => {
+        warning.classList.add('v-hidden');
+
+        if (validInput(inputField, user)) {
+            warning.classList.remove('v-hidden');
+            flag = true;
+        }
+    })
+
+    return flag;
 }
 
 
