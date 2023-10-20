@@ -1,143 +1,184 @@
-<div class="bodyContainer">
-    <div class="headlineBoardMobile">
-        <div class="boardContainMobile">
-            <h1>Board</h1>
-            <div class="headlineBoard1Mobile">
-                <button type="button" class="btn btn-primary headlineButton"
-                    onclick="fillAssignedTo(); openAndCloseAddNewEditContact('add-new-task-include-HTML', 'add-new-task')">
-                    <img class="hlB1" src="assets/img/add.svg" alt="">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/board.css">
+
+</head>
+
+<body>
+
+    <!-- board panel -->
+    <div class="board-panel">
+
+        <!-- board headline area -->
+        <div class="board-headline-area">
+
+            <!-- board headline -->
+            <h1 class="f-s-61px">Board</h1>
+
+            <!-- board search add task area -->
+            <div class="board-search-add-task-area">
+
+                <div class="input-img-area">
+                    <input class="input-whitout-border-right board-search-input f-s-w-20px-400" type="text"
+                        id="board-search" placeholder="Find Task">
+
+                    <div class="input-img">
+                        <div class="separator-1px-lightgrey"></div>
+                        <div class="board-search-img"></div>
+                    </div>
+                </div>
+
+                <button class="board-add-task-button btn-black" type="button">
+                    <span class="f-s-w-21px-700">Add task</span>
+                    <img class="hlB1" src="/assets/img/icon_add_white.png" alt="">
                 </button>
-            </div>
-        </div>
-        <div class="searchContainerMobile">
-            <div class="sC1Mobile">
-                <input class="inputBoard" type="search" id="searchInputMobile" placeholder="Find Task"
-                    oninput="loopAllTasks()">
-                <img class="search" id="searchButton" onclick="searchTasks()" src="assets/img/Frame 122.svg" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="headlineBoard">
-        <h1>Board</h1>
-        <div class="headlineBoard1">
-            <div class="searchContainer">
-                <div class="sC1">
-                    <input class="inputBoard" type="search" id="searchInput" placeholder="Find Task"
-                        oninput="loopAllTasks()">
-                    <img class="search" id="searchButton" onclick="loopAllTasks()" src="assets/img/Frame 122.svg"
-                        alt="">
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary headlineButton"
-                onclick="fillAssignedTo(); openAndCloseAddNewEditContact('add-new-task-include-HTML', 'add-new-task')">
-                <p>Add task</p>
-                <img class="hlB1" src="assets/img/add.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="boardContainer" id="boardContain">
-        <div class="Todo">
-            <div class="hlB">
-                <p>To do</p>
-                <img class="addheadlineButton" src="assets/img/plus button.svg" alt="plus"
-                    onclick="addFeedback('to do')">
-            </div>
-            <div class="noTaskContainer" id="noTask">
-                <span class="noTaskContainer1">
-                    <p>No tasks To do</p>
-                </span>
-            </div>
-            <div class="taskContainer" id="toDoContainer" ondrop="drop(event, 'to do')" ondragover="allowDrop(event)">
+
             </div>
 
         </div>
-        <div class="in_Progress">
-            <div class="hlB">
-                <p> In progress</p>
-                <img class="addheadlineButton" src="assets/img/plus button.svg" alt="plus"
-                    onclick="addFeedback('inProgress')">
-            </div>
-            <div class="noTaskContainer" id="noProgress">
-                <span class="noTaskContainer2">
-                    <p>No tasks Progress</p>
-                </span>
-            </div>
-            <div class="taskContainer" id="inProgressContainer" ondrop="drop(event, 'inProgress')"
-                ondragover="allowDrop(event)">
-            </div>
-        </div>
-        <div class="Feedback">
-            <div class="hlB">
-                <p> Await feedback</p>
-                <img class="addheadlineButton" src="assets/img/plus button.svg" alt="plus"
-                    onclick="addFeedback('feedback')">
-            </div>
-            <div class="noTaskContainer" id="noFeedback">
-                <span class="noTaskContainer2">
-                    <p>No tasks feedback</p>
-                </span>
-            </div>
-            <div class="taskContainer" id="feedbackContainer" ondrop="drop(event, 'feedback')"
-                ondragover="allowDrop(event)">
-            </div>
-        </div>
-        <div class="donecontainer">
-            <div class="hlB">
-                <p>Done</p>
-            </div>
-            <div class="noTaskContainer" id="noDone">
-                <span class="noTaskContainer1">
-                    <p>No tasks Done</p>
-                </span>
-            </div>
-            <div class="taskContainer" id="DoneContainer" ondrop="drop(event, 'done')" ondragover="allowDrop(event)">
-            </div>
-        </div>
-    </div>
-</div>
-<div id="detailCard" style="display: none;">
-    <div class="taskOverlay">
-        <div class="frame203" id="frame203">
-            <span class="frame113" id="frame113">
-                <p id="taskContain"></p>
-            </span>
-            <div id="close1" onclick="closeDetailCard()">
-                <img class="close2" src="assets/img/close.svg" alt="close">
-            </div>
-        </div>
-        <p id="taskOverlayHeadline"></p>
-        <p id="descriptionContain"></p>
-        <div class="frame179">
-            <p class="taskOverlayDate">Due date:</p>
-            <span id="taskOverlayNumber"></span>
-        </div>
-        <div class="frame178">
-            <p class="priority">Priority:</p>
-            <div id="priorityButton">
-                <p id="medium"></p>
-                <span id="prioMedia"></span>
-            </div>
-        </div>
-        <div class="frame214">
-            <p class="assignedTo">Assigned To:</p>
-            <div id="frame204"></div>
-        </div>
-        <div class="frame215">
-            <p class="subtasks">Subtasks</p>
-            <div class="frame204" id="subtaskContain">
+
+        <!-- board status panel -->
+        <div class="board-status-panel" id="board-status-panel">
+
+            <!-- board todo -->
+            <div class="board-status-column">
+
+                <div class="board-status-column-headline">
+                    <span class="f-s-w-20px-700">To do</span>
+                    <div class="board-status-column-headline-img"></div>
+                </div>
+
+                <div class="board-status-no-tasks" id="to-do-no-tasks">
+                    <span class="f-s-w-16px-400">No tasks To do</span>
+                </div>
+
+                <div class="taskContainer" id="toDoContainer" ondrop="drop(event, 'to do')"
+                    ondragover="allowDrop(event)">
+                </div>
 
             </div>
-        </div>
-        <div class="frame20" id="frame20">
-            <div class="deleteContact" onclick="deleteCard()">
-                <div class="deleteContain">
-                    <img src="assets/img/delete.svg" alt="" class="deleteIcon">
+
+            <!-- board in progress -->
+            <div class="board-status-column">
+
+                <div class="board-status-column-headline">
+                    <span class="f-s-w-20px-700">In progress</span>
+                    <div class="board-status-column-headline-img"></div>
                 </div>
-                <p class="deleteText">Delete</p>
+
+                <div class="board-status-no-tasks" id="in-progress-no-tasks">
+                    <span class="f-s-w-16px-400">No tasks in Progress</span>
+                </div>
+
+                <div class="taskContainer" id="inProgressContainer" ondrop="drop(event, 'inProgress')"
+                    ondragover="allowDrop(event)">
+                </div>
+
             </div>
-            <span class="vector3"></span>
-            <div class="editContacts" id="editContacts"></div>
-            <div class="saveContacts" id="saveContacts" style="display: none;"></div>
+
+            <!-- board await feedback -->
+            <div class="board-status-column">
+
+                <div class="board-status-column-headline">
+                    <span class="f-s-w-20px-700">Await feedback</span>
+                    <div class="board-status-column-headline-img"></div>
+                </div>
+
+                <div class="board-status-no-tasks" id="await-feedback-no-tasks">
+                    <span class="f-s-w-16px-400">No tasks await feedback</span>
+                </div>
+
+                <div class="taskContainer" id="feedbackContainer" ondrop="drop(event, 'feedback')"
+                    ondragover="allowDrop(event)">
+                </div>
+
+            </div>
+
+            <!-- board done -->
+            <div class="board-status-column">
+
+                <div class="board-status-column-headline">
+                    <span class="f-s-w-20px-700">Done</span>
+                </div>
+
+                <div class="board-status-no-tasks" id="done-no-tasks">
+                    <span class="f-s-w-16px-400">No tasks done</span>
+                </div>
+
+                <div class="taskContainer" id="DoneContainer" ondrop="drop(event, 'done')"
+                    ondragover="allowDrop(event)">
+                </div>
+
+            </div>
+
         </div>
+
     </div>
-</div>
+
+    <!-- board detail card task -->
+    <div class="board-detail-card-background" id="board-detail-card">
+
+        <div class="board-detail-card-panel">
+
+            <!-- board detail card categroy -->
+            <div class="board-detail-card-category-area">
+                <span id="taskContain">User Story</span>
+                <img src="/assets/img/icon_close.png" alt="close icon">
+            </div>
+
+            <!-- board detail card title -->
+
+
+            <div class="frame179">
+                <p class="taskOverlayDate">Due date:</p>
+                <span id="taskOverlayNumber"></span>
+            </div>
+
+            <div class="frame178">
+                <p class="priority">Priority:</p>
+                <div id="priorityButton">
+                    <p id="medium"></p>
+                    <span id="prioMedia"></span>
+                </div>
+            </div>
+
+            <div class="frame214">
+                <p class="assignedTo">Assigned To:</p>
+                <div id="frame204"></div>
+            </div>
+
+            <div class="frame215">
+                <p class="subtasks">Subtasks</p>
+                <div class="frame204" id="subtaskContain">
+
+                </div>
+            </div>
+
+            <div class="frame20" id="frame20">
+                <div class="deleteContact" onclick="deleteCard()">
+                    <div class="deleteContain">
+                        <img src="assets/img/delete.svg" alt="" class="deleteIcon">
+                    </div>
+                    <p class="deleteText">Delete</p>
+                </div>
+                <span class="vector3"></span>
+                <div class="editContacts" id="editContacts"></div>
+                <div class="saveContacts" id="saveContacts" style="display: none;"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
