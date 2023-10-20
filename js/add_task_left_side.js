@@ -4,7 +4,7 @@ const dropDownIdsAssignedTo = [
     'add-task-contact-btn-area',
     'add-task-wrapper-contact',
     'add-task-contact-arrow-open',
-    'add-task-add-new-category'
+    'add-task-contact-arrow-close'
 ];
 
 const dropDownIdsCategory = [

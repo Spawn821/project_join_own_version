@@ -57,7 +57,8 @@
 
                                     <input class="input-whitout-border-right add-new-task-input-dropdown
                                         f-s-w-20px-400" type="text" id="add-task-input-assigned-to"
-                                        placeholder="Select contacts to assign" onkeyup="renderAddTaskContactList()">
+                                        placeholder="Select contacts to assign" onkeyup="renderAddTaskContactList()"
+                                        onfocus="dropDownAddTask('assigned to', 'open'); renderAddTaskContactList()">
 
                                     <div class="input-img">
 
@@ -182,7 +183,7 @@
                                     <input required
                                         class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
                                         type="text" id="add-task-input-category" placeholder="Select task category"
-                                        onkeyup="dropDownAddTask('category', 'open')">
+                                        onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()">
 
                                     <div class="input-img background-color-white"
                                         id="add-task-category-arrow-open"
@@ -195,7 +196,7 @@
                                     <div class="d-none input-img" id="add-task-add-new-category">
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
-                                            id="add-task-category-add" onclick="addCategoryToList()">
+                                            id="add-task-category-add" onclick="addCategory()">
                                             <img src="/assets/img/icon_add.png">
                                         </div>
 
@@ -214,7 +215,8 @@
 
                                 <!-- category list, wrapper for position absolute -->
                                 <div class="p-absolute add-task-contact-list background-color-white
-                                    b-bottom-left-radius b-bottom-right-radius d-none" id="add-task-category-list">
+                                    b-bottom-left-radius b-bottom-right-radius overflow-y-scroll d-none"
+                                    id="add-task-category-list">
 
                                 </div>
 
@@ -225,14 +227,15 @@
                     </section>
 
                     <!-- add new task right side subtask -->
-                    <section class="add-new-task-subcontainer">
+                    <section class="add-new-task-subcontainer" onclick="isolateFromOderEvents(event)">
 
                         <label class="f-s-w-20px-400">Subtasks</label>
 
                         <div class="input-img-area">
 
-                            <input readonly class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
-                                type="text" id="add-task-input-subtask" placeholder="Add new subtask">
+                            <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
+                                type="text" id="add-task-input-subtask" placeholder="Add new subtask"
+                                onfocus="actionInputSubtask('start input')">
 
                             <div class="input-img background-color-white" id="add-task-subtask-add">
                                 <div class="add-new-task-dropdown-img add-new-task-dropdown-open">

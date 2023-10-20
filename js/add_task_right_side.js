@@ -77,55 +77,22 @@ function renderCategoryTask() {
 }
 
 
-/**
- * This funciton show or hide the images by keyup event in the html file.
- */
-function showOrHideCategoryAddImg() {
-    let addImg = document.getElementById('add-task-category-add');
-    let downArrow = document.getElementById('add-task-category-arrow-open');
-    let upArrow = document.getElementById('add-task-category-arrow-close');
-
-    switch (returnStatusCategoryInput(downArrow, upArrow)) {
-        case 'input empty, dropdown close':
-            addImg.classList.add('d-none'); downArrow.classList.remove('d-none');
-            break;
-        case 'input empty, dropdown open':
-            addImg.classList.add('d-none'); upArrow.classList.remove('d-none');
-            break;
-        case 'write':
-            addImg.classList.remove('d-none'); downArrow.classList.add('d-none'); upArrow.classList.add('d-none');
-            break;
-    }
-}
-
-
-/**
- * This function retrun the status form the input and show or hide the imgaes.
- * @param {object} downArrow is the down arrow image in categories.
- * @param {object} upArrow is the upl arrow image in categories.
- * @returns {string} the status withe a string.
- */
-function returnStatusCategoryInput(downArrow, upArrow) {
-    let categoryInput = document.getElementById('add-task-input-category');
-
-    if (categoryInput.value == '' && upArrow.classList.contains('d-none') && !downArrow.classList.contains('d-none')) {
-        return 'input empty, dropdown close';
-    } else if (categoryInput.value == '' && downArrow.classList.contains('d-none') && upArrow.classList.contains('d-none')) {
-        return 'input empty, dropdown open';
-    } else if (categoryInput.value) {
-        return 'write'
-    }
-}
-
-
-function addCategoryToList() {
+function addCategory() {
     let newCategory = document.getElementById('add-task-input-category');
 
+    if (newCategory.value) {
+        addCategoryToList(newCategory);
+    } else {
+        addSubtaskError(newCategory);
+    }
+}
+
+
+function addCategoryToList(newCategory) {
     categoriesTask.push(newCategory.value);
     newCategory.value = '';
 
     renderCategoryTask();
-/*     showOrHideCategoryAddImg(); */
 }
 
 
@@ -174,12 +141,21 @@ function renderSubtaskTask() {
 /**
  * This function change the images to start input or cancel this.
  */
-function showOrHideSubtaskInputImg() {
+function showOrHideSubtaskInputImg(action) {
     let addImg = document.getElementById('add-task-subtask-add');
     let cancelOrDoneImg = document.getElementById('add-task-add-new-subtask');
 
-    cancelOrDoneImg.classList.toggle('d-none');
-    addImg.classList.toggle('d-none');
+    switch (action) {
+        case 'start input':
+            cancelOrDoneImg.classList.remove('d-none'); addImg.classList.add('d-none');
+            break;
+        case 'add subtask':
+            cancelOrDoneImg.classList.add('d-none'); addImg.classList.remove('d-none');
+            break;
+        case 'cancel input':
+            cancelOrDoneImg.classList.add('d-none'); addImg.classList.remove('d-none');
+            break;
+    }
 }
 
 
@@ -202,12 +178,11 @@ function actionInputSubtask(action) {
             break;
     }
 
-    showOrHideSubtaskInputImg();
+    showOrHideSubtaskInputImg(action);
 }
 
 
 function startInputSubtask(newSubtask) {
-    newSubtask.removeAttribute('readonly');
     newSubtask.focus();
 }
 
@@ -224,7 +199,6 @@ function addSubtaskToArray(newSubtask) {
     addedSubtasks.push(newSubtask.value);
 
     newSubtask.value = '';
-    newSubtask.setAttribute('readonly', '');
 
     renderSubtaskTask();
 }
@@ -244,7 +218,7 @@ function addSubtaskError(newSubtask) {
 
 function cancelInputSubtask(newSubtask) {
     newSubtask.value = '';
-    newSubtask.setAttribute('readonly', '');
+    newSubtask.blur();
 }
 
 
