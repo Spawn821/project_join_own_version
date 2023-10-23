@@ -102,11 +102,89 @@
     background-color: rgb(231, 231, 231);
 }
 
+.board-status-task-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
 
 
 /* ---------------- */
-/* board detal card */
+/* board short card */
 /* ---------------- */
+
+.board-short-card-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: calc(252px - 32px);
+    padding: 16px;
+    border-radius: 24px;
+
+    &:hover {
+        cursor: pointer;
+        transform: rotate(5deg);
+    }
+
+}
+
+.board-short-card-category {
+    padding: 4px 16px;
+    border-radius: 8px;
+    color: white;
+    background-color: rgb(0, 56, 255);
+}
+
+.board-short-card-title-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.board-short-card-subtasks {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.board-short-card-subtasks-progress-bar-should {
+    height: 8px;
+    width: 128px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 8px;
+}
+
+.board-short-card-subtasks-progress-bar-is {
+    width: calc(128px * 0.5);
+    height: 8px;
+    background-color: rgb(69, 137, 255);
+    border-radius: 8px;
+}
+
+.board-short-card-assigned-to-priority {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.board-short-card-assigned-to {
+    display: flex;
+
+    & div {
+        margin-right: -12px;
+    }
+}
+
+
+
+/* ----------------- */
+/* board detail card */
+/* ----------------- */
 
 .board-detail-card-background {
     position: absolute;
@@ -121,12 +199,10 @@
 }
 
 .board-detail-card-panel {
-    max-height: calc(931px - 96px);
-    width: calc(525px - 80px);
+    max-width: calc(525px - 80px);
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
-    background-color: white;
     border-radius: 30px;
     gap: 24px;
 }
@@ -135,4 +211,91 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    & span {
+        padding: 4px 24px;
+        border-radius: 10px;
+        color: white;
+        background-color: rgb(0, 56, 255);
+    }
+}
+
+table {
+    display: flex;
+
+    & td {
+        padding-bottom: 24px;
+        padding-right: 25px;
+    }
+}
+
+.board-detail-card-priority-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.board-detail-card-assigned-to {
+    display: flex;
+    flex-direction: column;
+
+    & ul {
+        list-style-type: none;
+        margin-block-start: 0;
+        margin-block-end: 0;
+
+        & li {
+            margin-top: 16px;
+        }
+    }
+}
+
+.board-detail-card-delete-edit-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.board-detail-card-delete-edit-area:has(.separator-1px-lightgrey) .separator-1px-lightgrey {
+    height: 24px;
+}
+
+.board-detail-card-delete-edit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+        cursor: pointer;
+        color: rgb(41, 170, 227);
+        font-weight: 700;
+
+        & .board-detail-card-delete-img {
+            background-image: url('/assets/img/icon_delete_hover.png');
+        }
+
+        & .board-detail-card-edit-img {
+            background-image: url('/assets/img/icon_edit_hover.png');
+        }
+    }
+}
+
+.board-detail-card-delete-img {
+    height: 24px;
+    width: 24px;
+    background-image: url('/assets/img/icon_delete_white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.board-detail-card-edit-img {
+    height: 24px;
+    width: 24px;
+    background-image: url('/assets/img/icon_edit_black.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }

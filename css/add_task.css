@@ -119,25 +119,6 @@
     border-radius: 10px;
 }
 
-.add-task-contact-name-area {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-}
-
-.add-task-contact-initals-icon {
-    height: 42px;
-    width: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: 2px solid white;
-    background-color: green;
-    border-radius: 50%;
-}
-
 .add-new-contact-button-area {
     padding: 8px;
 }

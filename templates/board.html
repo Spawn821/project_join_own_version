@@ -9,6 +9,7 @@
     <!-- css -->
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/add_task.css">
     <link rel="stylesheet" href="/css/board.css">
 
 </head>
@@ -57,12 +58,48 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="to-do-no-tasks">
+                <div class="board-status-no-tasks d-none" id="to-do-no-tasks">
                     <span class="f-s-w-16px-400">No tasks To do</span>
                 </div>
 
-                <div class="taskContainer" id="toDoContainer" ondrop="drop(event, 'to do')"
+                <div class="board-status-task-container" ondrop="drop(event, 'to do')"
                     ondragover="allowDrop(event)">
+
+
+                    <!-- board short card task -->
+                    <div class="board-short-card-panel background-color-white">
+
+                        <!-- board short card category -->
+                        <span class="board-short-card-category f-s-w-16px-400">User Story</span>
+
+                        <!-- board short card title, description -->
+                        <div class="board-short-card-title-description">
+                            <span class="f-s-w-16px-700">Kochwelt Page & Resipe Recommender</span>
+                            <span class="f-s-w-16px-400 color-grey">Build start page with recipe recommendation...</span>
+                        </div>
+
+                        <!-- board short card subtasks -->
+                        <div class="board-short-card-subtasks">
+                            <div class="board-short-card-subtasks-progress-bar-should">
+                                <div class="board-short-card-subtasks-progress-bar-is"></div>
+                            </div>
+                            <div class="f-s-w-12px-400">
+                                <span>1/2</span>
+                                <span>Subtasks</span>
+                            </div>
+                        </div>
+
+                        <!-- board short card assigned to, priority -->
+                        <div class="board-short-card-assigned-to-priority">
+                            <div class="board-short-card-assigned-to">
+                                <div class="contact-initals-icon">JS</div>
+                                <div class="contact-initals-icon">SS</div>
+                            </div>
+                            <img src="/assets/img/icon_medium_orange.png" alt="priority medium icon">
+                        </div>
+                    </div>
+
+
                 </div>
 
             </div>
@@ -79,7 +116,7 @@
                     <span class="f-s-w-16px-400">No tasks in Progress</span>
                 </div>
 
-                <div class="taskContainer" id="inProgressContainer" ondrop="drop(event, 'inProgress')"
+                <div class="board-status-task-container" ondrop="drop(event, 'inProgress')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -97,7 +134,7 @@
                     <span class="f-s-w-16px-400">No tasks await feedback</span>
                 </div>
 
-                <div class="taskContainer" id="feedbackContainer" ondrop="drop(event, 'feedback')"
+                <div class="board-status-task-container" ondrop="drop(event, 'feedback')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -114,7 +151,7 @@
                     <span class="f-s-w-16px-400">No tasks done</span>
                 </div>
 
-                <div class="taskContainer" id="DoneContainer" ondrop="drop(event, 'done')"
+                <div class="board-status-task-container" ondrop="drop(event, 'done')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -125,54 +162,98 @@
     </div>
 
     <!-- board detail card task -->
-    <div class="board-detail-card-background" id="board-detail-card">
+    <div class="board-detail-card-background d-none" id="board-detail-card">
 
-        <div class="board-detail-card-panel">
+        <div class="board-detail-card-panel background-color-white">
 
             <!-- board detail card categroy -->
             <div class="board-detail-card-category-area">
-                <span id="taskContain">User Story</span>
+                <span class="f-s-w-23px-400" id="board-detail-card-category">User Story</span>
                 <img src="/assets/img/icon_close.png" alt="close icon">
             </div>
 
             <!-- board detail card title -->
+            <h1 class="f-s-61px" id="board-detail-title">Kochwelt Page & Recipe Recommender</h1>
 
+            <!-- board detail card description -->
+            <span class="f-s-w-20px-400">Build start page with recipe recommendation.</span>
 
-            <div class="frame179">
-                <p class="taskOverlayDate">Due date:</p>
-                <span id="taskOverlayNumber"></span>
-            </div>
+            <table>
 
-            <div class="frame178">
-                <p class="priority">Priority:</p>
-                <div id="priorityButton">
-                    <p id="medium"></p>
-                    <span id="prioMedia"></span>
+                <!-- board detail card due date -->
+                <tr class="f-s-w-20px-400">
+                    <td>Due date:</td>
+                    <td id="board-detail-due-date">10/05/2023</td>
+                </tr>
+
+                <!-- board detail card priority -->
+                <tr class="f-s-w-20px-400">
+                    <td>Priority:</td>
+                    <td class="board-detail-card-priority-status">
+                        <span id="board-detail-priority-status-text">Medium</span>
+                        <img src="/assets/img/icon_medium_orange.png" alt="priority status img"
+                            id="board-detail-card-priority-status-img">
+                    </td>
+                </tr>
+
+                <!-- board detail card assigned to -->
+                <tr class="board-detail-card-assigned-to">
+                    <td class="assignedTo">
+                        <span class="f-s-w-20px-400">Assigned To:</span>
+                        <ul>
+                            <li class="contact-name-area">
+                                <div class="contact-initals-icon f-s-w-12px-400">JS</div>
+                                <span class="f-s-w-19px-400">Jenny</span>
+                            </li>
+                            <li class="contact-name-area">
+                                <div class="contact-initals-icon f-s-w-12px-400">SS</div>
+                                <span class="f-s-w-19px-400">Stephan</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- board detail card subtasks -->
+                <tr class="board-detail-card-assigned-to">
+                    <td class="assignedTo">
+                        <span class="f-s-w-20px-400">Subtasks:</span>
+                        <ul>
+                            <li>
+                                <label class="checkbox-text-area">
+                                    <input type="checkbox">
+                                    <div></div>
+                                    <span class="f-s-w-19px-400">Abwaschen</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-text-area">
+                                    <input type="checkbox">
+                                    <div></div>
+                                    <span class="f-s-w-19px-400">Biomülle rausbringen</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </table>
+
+            <!-- board detail card delete, edit area -->
+            <div class="board-detail-card-delete-edit-area">
+
+                <!-- delete -->
+                <div class="board-detail-card-delete-edit f-s-w-16px-400">
+                    <div class="board-detail-card-delete-img"></div>
+                    <span>Delete</span>
                 </div>
-            </div>
 
-            <div class="frame214">
-                <p class="assignedTo">Assigned To:</p>
-                <div id="frame204"></div>
-            </div>
+                <div class="separator-1px-lightgrey"></div>
 
-            <div class="frame215">
-                <p class="subtasks">Subtasks</p>
-                <div class="frame204" id="subtaskContain">
-
+                <!-- edit -->
+                <div class="board-detail-card-delete-edit f-s-w-16px-400">
+                    <div class="board-detail-card-edit-img"></div>
+                    <span>Edit</span>
                 </div>
-            </div>
-
-            <div class="frame20" id="frame20">
-                <div class="deleteContact" onclick="deleteCard()">
-                    <div class="deleteContain">
-                        <img src="assets/img/delete.svg" alt="" class="deleteIcon">
-                    </div>
-                    <p class="deleteText">Delete</p>
-                </div>
-                <span class="vector3"></span>
-                <div class="editContacts" id="editContacts"></div>
-                <div class="saveContacts" id="saveContacts" style="display: none;"></div>
             </div>
 
         </div>

@@ -62,6 +62,10 @@ body {
 /* generic classe color */
 /* -------------------- */
 
+.color-grey {
+    color: rgb(168, 168, 168);
+}
+
 .background-color-white {
     background-color: white;
 }
@@ -106,8 +110,23 @@ body {
     font-weight: 400;
 }
 
+.f-s-w-16px-700 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.f-s-w-19px-400 {
+    font-size: 19px;
+    font-weight: 400;
+}
+
 .f-s-w-20px-400 {
     font-size: 20px;
+    font-weight: 400;
+}
+
+.f-s-w-23px-400 {
+    font-size: 23px;
     font-weight: 400;
 }
 
@@ -384,7 +403,7 @@ select {
 
 
 /* ----------------- */
-/* scrollbar defualt */
+/* scrollbar default */
 /* ----------------- */
 
 ::-webkit-scrollbar {
@@ -414,6 +433,31 @@ select {
     background-image: url('../assets/img/scrollbar_down_arrow.png');
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+
+/* -------------------------- */
+/* contact short card default */
+/* -------------------------- */
+
+.contact-name-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.contact-initals-icon {
+    height: 42px;
+    width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 2px solid white;
+    background-color: green;
+    border-radius: 50%;
 }
 
 

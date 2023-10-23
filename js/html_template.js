@@ -92,8 +92,8 @@ function getAddTaskContactCardHTML(name, initials, i) {
 
     return /*html*/ `
         <div class="add-task-contact" id="add-task-contact-${i}">
-            <div class="add-task-contact-name-area">
-                <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initials}</div>
+            <div class="contact-name-area">
+                <div class="contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initials}</div>
                 <span class="f-s-w-20px-400 contact-name-color-white">${name}</span>
             </div>
             <label class="checkbox-text-area">
@@ -113,7 +113,7 @@ function getAddTaskContactCardHTML(name, initials, i) {
  */
 function getAddedContactsToTaskHTML(initals, color) {
     return /*html*/ `
-        <div class="add-task-contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initals}</div>
+        <div class="contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initals}</div>
     `;
 }
 
