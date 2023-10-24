@@ -5,8 +5,12 @@ let sidebarNavElements = [
     'contacts'
 ]
 
+/**
+ * This fuction initialise starting requirements
+ */
 function initJoin() {
     topbarUserInitials();
+    setSidebarNavActive('summary');
 }
 
 

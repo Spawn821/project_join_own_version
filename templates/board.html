@@ -5,13 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <!-- css -->
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/add_task.css">
-    <link rel="stylesheet" href="/css/board.css">
-
 </head>
 
 <body>
@@ -58,48 +51,13 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks d-none" id="to-do-no-tasks">
+                <div class="board-status-no-tasks" id="to-do-no-tasks">
                     <span class="f-s-w-16px-400">No tasks To do</span>
                 </div>
 
-                <div class="board-status-task-container" ondrop="drop(event, 'to do')"
+                <!-- board to do container -->
+                <div class="board-status-task-container" id="board-to-do-container" ondrop="drop(event, 'to do')"
                     ondragover="allowDrop(event)">
-
-
-                    <!-- board short card task -->
-                    <div class="board-short-card-panel background-color-white">
-
-                        <!-- board short card category -->
-                        <span class="board-short-card-category f-s-w-16px-400">User Story</span>
-
-                        <!-- board short card title, description -->
-                        <div class="board-short-card-title-description">
-                            <span class="f-s-w-16px-700">Kochwelt Page & Resipe Recommender</span>
-                            <span class="f-s-w-16px-400 color-grey">Build start page with recipe recommendation...</span>
-                        </div>
-
-                        <!-- board short card subtasks -->
-                        <div class="board-short-card-subtasks">
-                            <div class="board-short-card-subtasks-progress-bar-should">
-                                <div class="board-short-card-subtasks-progress-bar-is"></div>
-                            </div>
-                            <div class="f-s-w-12px-400">
-                                <span>1/2</span>
-                                <span>Subtasks</span>
-                            </div>
-                        </div>
-
-                        <!-- board short card assigned to, priority -->
-                        <div class="board-short-card-assigned-to-priority">
-                            <div class="board-short-card-assigned-to">
-                                <div class="contact-initals-icon">JS</div>
-                                <div class="contact-initals-icon">SS</div>
-                            </div>
-                            <img src="/assets/img/icon_medium_orange.png" alt="priority medium icon">
-                        </div>
-                    </div>
-
-
                 </div>
 
             </div>
@@ -116,7 +74,8 @@
                     <span class="f-s-w-16px-400">No tasks in Progress</span>
                 </div>
 
-                <div class="board-status-task-container" ondrop="drop(event, 'inProgress')"
+                <!-- board in progress container -->
+                <div class="board-status-task-container" id="board-in-progress-container" ondrop="drop(event, 'inProgress')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -134,7 +93,8 @@
                     <span class="f-s-w-16px-400">No tasks await feedback</span>
                 </div>
 
-                <div class="board-status-task-container" ondrop="drop(event, 'feedback')"
+                <!-- board await feedback container -->
+                <div class="board-status-task-container" id="board-await-feedback-container" ondrop="drop(event, 'feedback')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -151,7 +111,8 @@
                     <span class="f-s-w-16px-400">No tasks done</span>
                 </div>
 
-                <div class="board-status-task-container" ondrop="drop(event, 'done')"
+                <!-- board done contianer -->
+                <div class="board-status-task-container" id="board-done-container" ondrop="drop(event, 'done')"
                     ondragover="allowDrop(event)">
                 </div>
 

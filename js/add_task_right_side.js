@@ -257,18 +257,24 @@ function changeSubtaskFromShownToEdit(i) {
 
 /* === CREATE TASK === */
 
+const prioImgPath = [
+    { priority: 'Urgent', img: '/assets/img/icon_urgent_red.png' },
+    { priority: 'Medium', img: '/assets/img/icon_medium_orange.png' },
+    { priority: 'Low', img: '/assets/img/icon_low_green.png' },
+];
+
 /**
  * This function create a new task instace in array tasks.
  * @param {string} action is the action to wich executed.
  */
-async function createTask(action) {
+async function createTask(action, boardStatus) {
     const title = document.getElementById('add-task-input-title');
     const description = document.getElementById('add-task-textarea-description');
     const dueDate = document.getElementById('add-task-input-date');
     const category = document.getElementById('add-task-input-category');
 
     if (action == 'create') {
-        tasks.push(returnTask(title, description, dueDate, category));
+        tasks.push(returnTask(title, description, dueDate, findPriorityImg(), category, boardStatus));
         clearTask(title, description, dueDate, category);
         informationSlidebox('Task added to board');
     } else {
@@ -276,6 +282,15 @@ async function createTask(action) {
     }
 
     await setItem('tasks', JSON.stringify(tasks));
+}
+
+
+function findPriorityImg() {
+    try {
+        return prioImgPath.find((element) => element.priority == currentPrio).img;
+    } catch {
+        null;
+    }
 }
 
 
@@ -293,15 +308,17 @@ function clearTask(title, description, dueDate, category) {
 }
 
 
-function returnTask(title, description, dueDate, category) {
+function returnTask(title, description, dueDate, prioImg, category, boardStatus) {
     return {
         title: title.value,
         description: description.value,
         assignedTo: addedUsersToTask,
         dueDate: dueDate.value,
+        prioText: currentPrio,
+        prioImg: prioImg,
         category: category.value,
-        prio: currentPrio,
         category: category.value,
-        subtasks: addedSubtasks
+        subtasks: addedSubtasks,
+        boardStatus: boardStatus
     };
 }

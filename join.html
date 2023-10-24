@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/join.css">
     <link rel="stylesheet" href="css/summary.css">
     <link rel="stylesheet" href="css/add_task.css">
+    <link rel="stylesheet" href="css/board.css">
 
     <!-- scripts -->
     <script src="js/global.js"></script>
@@ -22,11 +23,12 @@
     <script src="/js/summary.js"></script>
     <script src="/js/add_task_left_side.js"></script>
     <script src="/js/add_task_right_side.js"></script>
+    <script src="/js/board.js"></script>
     <script src="/js/html_template.js"></script>
 
 </head>
 
-<body class="join-body" onload="initGlobal(); initJoin();"
+<body class="join-body" onload="initGlobal(); initJoin()"
     onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close'); actionInputSubtask('cancel input')">
 
     <!-- sidebar panel -->
@@ -100,6 +102,9 @@
 
         <!-- include add_task.html -->
         <div id="add_task_html" class="d-none overflow-y-scroll" w3-include-html="templates/add_task.html"></div>
+
+        <!-- include board.html -->
+        <div id="board_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/board.html"></div>
 
     </div>
 

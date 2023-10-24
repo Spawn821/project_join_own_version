@@ -167,3 +167,53 @@ function getAddedSubtaskHTML(subtask, i) {
         </div>
     `;
 }
+
+
+function getBoardShortCard(category, title, description) {
+    return /*html*/ `
+        <div class="board-short-card-panel background-color-white">
+
+            <span class="board-short-card-category f-s-w-16px-400">${category}</span>
+
+            <div class="board-short-card-title-description">
+                <span class="f-s-w-16px-700">${title}</span>
+                <span class="f-s-w-16px-400 color-grey">${description}...</span>
+            </div>
+
+
+        </div>
+    `
+}
+
+
+function getBoardShortCardSubtasks(subtasksNumber) {
+    return /*html*/ `
+        <div class="board-short-card-subtasks">
+            <div class="board-short-card-subtasks-progress-bar-should">
+                <div class="board-short-card-subtasks-progress-bar-is"></div>
+            </div>
+            <div class="f-s-w-12px-400">
+                <span>0/${subtasksNumber}</span>
+                <span>Subtasks</span>
+            </div>
+        </div>
+    `
+}
+
+
+function getBoardShortCardAssignedTo(initals) {
+    return /*html*/ `
+        <div class="board-short-card-assigned-to-priority">
+            <div class="board-short-card-assigned-to">
+                <div class="contact-initals-icon">${initals}</div>
+            </div>
+            <img src=${prioImg} alt="priority icon"></img>
+        </div>
+    `
+}
+
+
+function getBoardShortCardPriorityImg(prioImg) {
+    return /*html*/ `
+    `
+}

@@ -81,12 +81,14 @@ let templatesIDIndex = [
     'reset_password_html',
     'summary_html',
     'add_task_html',
-    'borad_html',
+    'board_html',
     'contacts_html',
     'help_html'
 ]
 
-
+/**
+ * This fuction initialise starting requirements
+ */
 async function initGlobal() {
     await loadUsers();
     await loadTasks();
@@ -200,9 +202,10 @@ function informationSlidebox(message) {
 function showTemplate(name) {
     hideAllTemplates();
 
-    let header = document.getElementById('login-header-right');
-
+    const header = document.getElementById('login-header-right');
     document.getElementById(`${name}`).classList.remove('d-none');
+
+    name == 'board_html' ? renderBoardShortCards() : null;
 
     try {
         if (name != 'login_html') {
