@@ -51,12 +51,12 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="to-do-no-tasks">
+                <div class="board-status-no-tasks" id="to-do-no-tasks" ondrop="boardDrop('To do')" ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks To do</span>
                 </div>
 
                 <!-- board to do container -->
-                <div class="board-status-task-container" id="board-to-do-container" ondrop="drop(event, 'to do')"
+                <div class="board-status-task-container" id="board-to-do-container" ondrop="boardDrop('To do')"
                     ondragover="allowDrop(event)">
                 </div>
 
@@ -70,13 +70,13 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="in-progress-no-tasks">
+                <div class="board-status-no-tasks" id="in-progress-no-tasks" ondrop="boardDrop('In progress')" ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks in Progress</span>
                 </div>
 
                 <!-- board in progress container -->
-                <div class="board-status-task-container" id="board-in-progress-container" ondrop="drop(event, 'inProgress')"
-                    ondragover="allowDrop(event)">
+                <div class="board-status-task-container" id="board-in-progress-container"
+                    ondrop="boardDrop('In progress')" ondragover="allowDrop(event)">
                 </div>
 
             </div>
@@ -89,13 +89,13 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="await-feedback-no-tasks">
+                <div class="board-status-no-tasks" id="await-feedback-no-tasks" ondrop="boardDrop('Await feedback')" ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks await feedback</span>
                 </div>
 
                 <!-- board await feedback container -->
-                <div class="board-status-task-container" id="board-await-feedback-container" ondrop="drop(event, 'feedback')"
-                    ondragover="allowDrop(event)">
+                <div class="board-status-task-container" id="board-await-feedback-container"
+                    ondrop="boardDrop('Await feedback')" ondragover="allowDrop(event)">
                 </div>
 
             </div>
@@ -107,12 +107,12 @@
                     <span class="f-s-w-20px-700">Done</span>
                 </div>
 
-                <div class="board-status-no-tasks" id="done-no-tasks">
+                <div class="board-status-no-tasks" id="done-no-tasks" ondrop="boardDrop('Done')" ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks done</span>
                 </div>
 
                 <!-- board done contianer -->
-                <div class="board-status-task-container" id="board-done-container" ondrop="drop(event, 'done')"
+                <div class="board-status-task-container" id="board-done-container" ondrop="boardDrop('Done')"
                     ondragover="allowDrop(event)">
                 </div>
 

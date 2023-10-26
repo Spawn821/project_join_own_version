@@ -64,7 +64,7 @@
 
 .board-status-column {
     max-height: 688px;
-    width: 246px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -102,9 +102,26 @@
     background-color: rgb(231, 231, 231);
 }
 
+.board-status-column:has(.board-short-card-panel) #to-do-no-tasks {
+    display: none;
+}
+
+.board-status-column:has(.board-short-card-panel) #in-progress-no-tasks {
+    display: none;
+}
+
+.board-status-column:has(.board-short-card-panel) #await-feedback-no-tasks {
+    display: none;
+}
+
+.board-status-column:has(.board-short-card-panel) #done-no-tasks {
+    display: none;
+}
+
 .board-status-task-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-grow: 1;
     gap: 16px;
 }
 

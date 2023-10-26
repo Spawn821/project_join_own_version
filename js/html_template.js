@@ -169,51 +169,43 @@ function getAddedSubtaskHTML(subtask, i) {
 }
 
 
-function getBoardShortCard(category, title, description) {
+function getBoardShortCardHTML(i, category, title, description, numberSubtasks, prioImg) {
     return /*html*/ `
-        <div class="board-short-card-panel background-color-white">
+    <div>
+        <div class="board-short-card-panel background-color-white" draggable="true" ondragstart="boardDrag(${i})">
 
             <span class="board-short-card-category f-s-w-16px-400">${category}</span>
 
             <div class="board-short-card-title-description">
                 <span class="f-s-w-16px-700">${title}</span>
-                <span class="f-s-w-16px-400 color-grey">${description}...</span>
+                <span class="f-s-w-16px-400 color-grey" id="board-short-card-description_${i}">${description}...</span>
             </div>
 
+            <div class="board-short-card-subtasks" id="board-short-card-subtasks_${i}">
+                <div class="board-short-card-subtasks-progress-bar-should">
+                    <div class="board-short-card-subtasks-progress-bar-is"></div>
+                </div>
+                <div class="f-s-w-12px-400">
+                    <span>0/${numberSubtasks}</span>
+                    <span>Subtasks</span>
+                </div>
+            </div>
+
+            <div class="board-short-card-assigned-to-priority">
+                <div class="board-short-card-assigned-to" id="board-short-card-contacts_${i}">
+
+                </div>
+                <img src=${prioImg} alt="priority icon" id="board-short-card-priority_${i}"></img>
+            </div>
 
         </div>
-    `
+</div>
+    `;
 }
 
 
-function getBoardShortCardSubtasks(subtasksNumber) {
+function getBoardShortCardContactsHTML(initals, backgroundColor) {
     return /*html*/ `
-        <div class="board-short-card-subtasks">
-            <div class="board-short-card-subtasks-progress-bar-should">
-                <div class="board-short-card-subtasks-progress-bar-is"></div>
-            </div>
-            <div class="f-s-w-12px-400">
-                <span>0/${subtasksNumber}</span>
-                <span>Subtasks</span>
-            </div>
-        </div>
-    `
-}
-
-
-function getBoardShortCardAssignedTo(initals) {
-    return /*html*/ `
-        <div class="board-short-card-assigned-to-priority">
-            <div class="board-short-card-assigned-to">
-                <div class="contact-initals-icon">${initals}</div>
-            </div>
-            <img src=${prioImg} alt="priority icon"></img>
-        </div>
-    `
-}
-
-
-function getBoardShortCardPriorityImg(prioImg) {
-    return /*html*/ `
-    `
+        <div class="contact-initals-icon" style="background-color: ${backgroundColor}">${initals}</div>
+    `;
 }

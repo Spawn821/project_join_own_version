@@ -8,18 +8,62 @@ const boardStatus = [
 function renderBoardShortCards() {
     boardStatus.map((status) => resetBoardStatus(status));
 
+    let i = 0;
+
     tasks.map((task) => {
         let boardStatusContainer = document.getElementById(selectBoardStatus(task.boardStatus));
 
-        boardStatusContainer.innerHTML += getBoardShortCard(task.category, task.title, task.description)
+        boardStatusContainer.innerHTML += getBoardShortCardHTML(i, task.category, task.title, task.description,
+            task['subtasks'].length, task.prioImg);
+
+        addContactsToBoardShortCard(i, task.assignedTo)
+
+        removeElementsFromShortCard(i, task);
+
+        i++;
     });
 }
 
 
-function addSectionsToShortCard() {
-    boardStatusContainer.innerHTML += getBoardShortCardProgressBar(task['subtasks'].length)
-    boardStatusContainer.innerHTML += getBoardShortCard(task.category, task.title, task.description, task.prioImg)
-    boardStatusContainer.innerHTML += getBoardShortCard(task.category, task.title, task.description, task.prioImg)
+function addContactsToBoardShortCard(i, assignedTo) {
+    let shortCardContacts = document.getElementById(`board-short-card-contacts_${i}`);
+
+    assignedTo.map((contact) => {
+        const initials = getInitials(contact.name);
+        const backgroundColor = returnContactColor(contact.id);
+
+        shortCardContacts.innerHTML += getBoardShortCardContactsHTML(initials, backgroundColor);
+    });
+}
+
+
+let boardShortCardIdList = [
+    'board-short-card-description',
+    'board-short-card-subtasks',
+    'board-short-card-contacts',
+    'board-short-card-priority'
+]
+
+function removeElementsFromShortCard(i, task) {
+    for (key in task) {
+        if (task[key] == '' || task[key] == []) {
+            document.getElementById(selectBoardShortCardElement(key) + `_${i}`).classList.add('d-none');
+        }
+    }
+}
+
+
+function selectBoardShortCardElement(section) {
+    switch (section) {
+        case 'description':
+            return 'board-short-card-description';
+        case 'subtasks':
+            return 'board-short-card-subtasks';
+        case 'assignedTo':
+            return 'board-short-card-contacts';
+        case 'prioText':
+            return 'board-short-card-priority';
+    }
 }
 
 
@@ -52,4 +96,23 @@ function resetBoardStatus(status) {
             document.getElementById('board-done-container').innerHTML = '';
             break;
     }
+}
+
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+
+let currentTask = 0;
+
+function boardDrag(i) {
+    currentTask = i;
+    console.log(i);
+}
+
+
+function boardDrop(status) {
+    tasks[currentTask].boardStatus = status;
+    renderBoardShortCards();
 }
