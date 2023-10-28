@@ -23,7 +23,7 @@
 
                 <div class="input-img-area">
                     <input class="input-whitout-border-right board-search-input f-s-w-20px-400" type="text"
-                        id="board-search" placeholder="Find Task">
+                        id="board-search" placeholder="Find Task" onkeyup="renderBoardShortCards()">
 
                     <div class="input-img">
                         <div class="separator-1px-lightgrey"></div>
@@ -47,7 +47,7 @@
             <div class="board-status-column">
 
                 <div class="board-status-column-headline">
-                    <span class="f-s-w-20px-700">To do</span>
+                    <span class="f-s-w-20px-700" id="board-status-column-headline">To do</span>
                     <div class="board-status-column-headline-img"></div>
                 </div>
 

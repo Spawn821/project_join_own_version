@@ -63,17 +63,23 @@
 }
 
 .board-status-column {
-    max-height: 688px;
+    min-height: 688px;
     width: 280px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
 .board-status-column-headline {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(245, 245, 245);
+    padding: 16px;
+    z-index: 1;
+    border-radius: 10px;
+
 }
 
 .board-status-column-headline-img {
@@ -121,6 +127,7 @@
 .board-status-task-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-grow: 1;
     gap: 16px;
 }
@@ -195,6 +202,11 @@
     & div {
         margin-right: -12px;
     }
+}
+
+.board-short-card-mark-dropped {
+    color: white;
+    background-color: rgb(42, 54, 71);
 }
 
 

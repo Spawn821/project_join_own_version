@@ -276,7 +276,8 @@ async function createTask(action, boardStatus) {
     if (action == 'create') {
         tasks.push(returnTask(title, description, dueDate, findPriorityImg(), category, boardStatus));
         clearTask(title, description, dueDate, category);
-        informationSlidebox('Task added to board');
+        showNewTaskOnBoard();
+/*         informationSlidebox('Task added to board'); */
     } else {
         clearTask(title, description, dueDate, category);
     }
@@ -285,11 +286,19 @@ async function createTask(action, boardStatus) {
 }
 
 
+function showNewTaskOnBoard() {
+    showTemplate('board_html');
+    setSidebarNavActive('board');
+    currentTask = tasks.length - 1;
+    showDroppedShortCard();
+}
+
+
 function findPriorityImg() {
     try {
         return prioImgPath.find((element) => element.priority == currentPrio).img;
     } catch {
-        null;
+        return '/assets/img/icon_low_green.png'; //default
     }
 }
 

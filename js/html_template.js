@@ -169,10 +169,20 @@ function getAddedSubtaskHTML(subtask, i) {
 }
 
 
+/**
+ * This function returns html code which is need for task short card on board in the status columns.
+ * @param {integer} i is the index number from array tasks.
+ * @param {string} category is the category from the task.
+ * @param {string} title is the title from the task.
+ * @param {string} description is the descripten from the task.
+ * @param {integer} numberSubtasks is the number from the subtask in the task.
+ * @param {string} prioImg is the url from the priority img.
+ * @returns html code.
+ */
 function getBoardShortCardHTML(i, category, title, description, numberSubtasks, prioImg) {
     return /*html*/ `
     <div>
-        <div class="board-short-card-panel background-color-white" draggable="true" ondragstart="boardDrag(${i})">
+        <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}" draggable="true" ondragstart="boardDrag(${i})">
 
             <span class="board-short-card-category f-s-w-16px-400">${category}</span>
 
@@ -204,6 +214,12 @@ function getBoardShortCardHTML(i, category, title, description, numberSubtasks, 
 }
 
 
+/**
+ * This fuction returns html code which is need for only contact in the task.
+ * @param {string} initals is the initials from the contact.
+ * @param {string} backgroundColor is the respective rgb color from the contact.
+ * @returns html code.
+ */
 function getBoardShortCardContactsHTML(initals, backgroundColor) {
     return /*html*/ `
         <div class="contact-initals-icon" style="background-color: ${backgroundColor}">${initals}</div>
