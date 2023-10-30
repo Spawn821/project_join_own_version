@@ -225,10 +225,11 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0 0 0 / 30%);
+    z-index: 3;
 }
 
 .board-detail-card-panel {
-    max-width: calc(525px - 80px);
+    width: calc(525px - 80px);
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
@@ -246,6 +247,17 @@
         border-radius: 10px;
         color: white;
         background-color: rgb(0, 56, 255);
+    }
+
+    & img {
+        height: 32px;
+        width: 32px;
+    }
+
+    & img:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 5%);
+        border-radius: 50%;
     }
 }
 

@@ -19,8 +19,10 @@ function renderBoardShortCards() {
         let boardStatusContainer = document.getElementById(selectBoardStatus(task.boardStatus));
 
         if (task.title.toLowerCase().includes(search.toLowerCase())) {
-            boardStatusContainer.innerHTML += getBoardShortCardHTML(i, task.category, task.title, task.description,
-                task['subtasks'].length, task.prioImg);
+            const categoryBackgroundColor = returnContactColor(task.category.id);
+
+            boardStatusContainer.innerHTML += getBoardShortCardHTML(i, task.category.category,
+                categoryBackgroundColor, task.title, task.description, task['subtasks'].length, task.prioImg);
 
             addContactsToBoardShortCard(i, task.assignedTo)
 
@@ -177,4 +179,156 @@ function scrollToDroppedShortCard() {
         block: "end",
         behavior: "smooth"
     });
+}
+
+
+/**
+ * This function open the detail card.
+ */
+function openDetailCard(i) {
+    let detailCard = document.getElementById('board-detail-card');
+
+    detailCard.classList.remove('d-none')
+
+    fillDetailCard(i);
+}
+
+
+function closeDetailCard(i) {
+    let detailCard = document.getElementById('board-detail-card');
+
+    detailCard.classList.add('d-none')
+}
+
+
+/**
+ * This function starts to fill the detail card with all task details.
+ * @param {integer} i is the index from the task form array tasks.
+ */
+function fillDetailCard(i) {
+    showDetailCardRows();
+
+    for (section in tasks[i]) {
+        let element = document.getElementById(returnDetailCardSectionId(section));
+
+        if (element) {
+            element.innerHTML = '';
+
+            structureBySection(section, i, element)
+        }
+    }
+}
+
+let detailCardRowIds = [
+    'board-detail-card-description',
+    'board-detail-card-priority-row',
+    'board-detail-card-assigned-to-row',
+    'board-detail-card-subtasks-row'
+]
+
+/**
+ * This function remove the class 'd-none' from all row elements in the detail card.
+ */
+function showDetailCardRows() {
+    detailCardRowIds.map((id) => {
+        document.getElementById(id).classList.remove('d-none');
+    });
+}
+
+
+/**
+ * This fuction fill individual elements with the content from the task or add the class 'd-none' for
+ * elments with no entries.
+ * @param {string} section is the entrie from the task.
+ * @param {integer} i is the index from the task from array tasks.
+ * @param {object} element is the html element from the detail card.
+ */
+function structureBySection(section, i, element) {
+    if (tasks[i][section] == "" || tasks[i][section] == []) {
+        hideDetailCardRow(section);
+    } else {
+        fillDetailCardSection(section, i, element);
+    }
+}
+
+
+/**
+ * This function add the class 'd-none' for elements with no entries.
+ * @param {string} section is the entrie from the task.
+ */
+function hideDetailCardRow(section) {
+    let row = document.getElementById(detailCardRowIds.find((element) => element.includes(section.substring(1, 4))));
+    row.classList.add('d-none');
+}
+
+
+/**
+ * This fuction fill individual elements with the content from the task.
+ * @param {string} section is the entrie from the task.
+ * @param {integer} i is the index from the task from array tasks.
+ * @param {object} element is the html element from the detail card.
+ */
+function fillDetailCardSection(section, i, element) {
+    if (section == 'category') {
+        element.innerHTML = tasks[i][section].category;
+        element.style = `background-color: ${returnContactColor(tasks[i][section].id)}`;
+    } else if (section == 'assignedTo') {
+        fillDetailCardAssignedTo(tasks[i].assignedTo, element);
+    } else if (section == 'prioImg') {
+        element.src = tasks[i][section];
+    } else if (section == 'subtasks') {
+        fillDetailCardSubtasks(tasks[i].subtasks, element);
+    } else {
+        element.innerHTML = tasks[i][section];
+    }
+}
+
+
+/**
+ * This fuctioin redert the section assiged to on the detail card.
+ * @param {array} assignedTo is the list with the contacts for the task.
+ * @param {object} element is the html element from the detail card.
+ */
+function fillDetailCardAssignedTo(assignedTo, element) {
+    assignedTo.map((contact) => {
+        const initals = getInitials(contact.name);
+        const name = contact.name;
+        const backgroundColor = returnContactColor(contact.id);
+
+        element.innerHTML += getBoardDetialCardContactsHTML(initals, name, backgroundColor);
+    });
+}
+
+
+/**
+ * This fuctioin redert the section subtasks on the detail card.
+ * @param {array} subtasks is the list with the subtasks for the task.
+ * @param {object} element is the html element from the detail card.
+ */
+function fillDetailCardSubtasks(subtasks, element) {
+    subtasks.map((subtask) => {
+        element.innerHTML += getBoardDetialCardSubtasksHTML(subtask);
+    });
+}
+
+
+function returnDetailCardSectionId(section) {
+    switch (section) {
+        case 'category':
+            return 'board-detail-card-category';
+        case 'title':
+            return 'board-detail-card-title';
+        case 'description':
+            return 'board-detail-card-description';
+        case 'dueDate':
+            return 'board-detail-card-due-date';
+        case 'prioText':
+            return 'board-detail-card-priority-text';
+        case 'prioImg':
+            return 'board-detail-card-priority-img';
+        case 'assignedTo':
+            return 'board-detail-card-assigned-to';
+        case 'subtasks':
+            return 'board-detail-card-subtasks';
+    }
 }

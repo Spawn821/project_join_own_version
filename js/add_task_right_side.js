@@ -56,23 +56,15 @@ function removeMarkedPrio(id) {
 
 /* === CATEGORY === */
 
-let categoriesTask = [
-    'Technical Task',
-    'User Story'
-]
-
 /**
  * This function rendert all categories in 'add task' dropdown 'category'.
  */
 function renderCategoryTask() {
     let categorieContainer = document.getElementById('add-task-category-list');
     categorieContainer.innerHTML = '';
-    let i = 0;
 
     categoriesTask.map((category) => {
-        categorieContainer.innerHTML += getCategoryEntryHTML(category, i);
-
-        i++
+        categorieContainer.innerHTML += getCategoryEntryHTML(category.category);
     });
 }
 
@@ -80,33 +72,47 @@ function renderCategoryTask() {
 function addCategory() {
     let newCategory = document.getElementById('add-task-input-category');
 
-    if (newCategory.value) {
+    if (categoryExist(newCategory.value)) {
+        addSubtaskError(newCategory, 'Is already exist!');
+    } else if (newCategory.value) {
         addCategoryToList(newCategory);
     } else {
-        addSubtaskError(newCategory);
+        addSubtaskError(newCategory, 'The field is empty!');
     }
 }
 
 
+function categoryExist(category) {
+    return categoriesTask.find((element) => element['category'].toLowerCase() == category.toLowerCase());
+}
+
+
 function addCategoryToList(newCategory) {
-    categoriesTask.push(newCategory.value);
+    categoriesTask.push({ category: newCategory.value, id: categoriesTask.length });
     newCategory.value = '';
 
+    setItem('categoriesTask', JSON.stringify(categoriesTask));
     renderCategoryTask();
 }
 
 
-function deleteCategoryFromList(i) {
-    categoriesTask.splice(i, 1);
+function deleteCategoryFromList(category) {
+    categoriesTask.splice(categoryIndex(category), 1);
 
     renderCategoryTask();
 }
 
 
-function selectCategory(i) {
+function categoryIndex(category) {
+    return categoriesTask.findIndex((element) => element.category == category);
+}
+
+
+function selectCategory(category) {
     let input = document.getElementById('add-task-input-category');
 
-    input.value = categoriesTask[i];
+    input.value = category;
+    dropDownAddTask('category', 'close');
 }
 
 
@@ -191,7 +197,7 @@ function addSubtask(newSubtask) {
     if (newSubtask.value) {
         addSubtaskToArray(newSubtask);
     } else {
-        addSubtaskError(newSubtask);
+        addSubtaskError(newSubtask, 'The field is empty!');
     }
 }
 
@@ -203,9 +209,9 @@ function addSubtaskToArray(newSubtask) {
     renderSubtaskTask();
 }
 
-function addSubtaskError(newSubtask) {
+function addSubtaskError(newSubtask, message) {
     newSubtask.style.color = 'red';
-    newSubtask.value = 'The field is empty!'
+    newSubtask.value = message;
 
     setTimeout(() => {
         newSubtask.value = '';
@@ -274,10 +280,9 @@ async function createTask(action, boardStatus) {
     const category = document.getElementById('add-task-input-category');
 
     if (action == 'create') {
-        tasks.push(returnTask(title, description, dueDate, findPriorityImg(), category, boardStatus));
+        tasks.push(returnTask(title, description, dueDate, findPriorityImg(), categoryExist(category.value), boardStatus));
         clearTask(title, description, dueDate, category);
         showNewTaskOnBoard();
-/*         informationSlidebox('Task added to board'); */
     } else {
         clearTask(title, description, dueDate, category);
     }
@@ -325,8 +330,7 @@ function returnTask(title, description, dueDate, prioImg, category, boardStatus)
         dueDate: dueDate.value,
         prioText: currentPrio,
         prioImg: prioImg,
-        category: category.value,
-        category: category.value,
+        category: category,
         subtasks: addedSubtasks,
         boardStatus: boardStatus
     };

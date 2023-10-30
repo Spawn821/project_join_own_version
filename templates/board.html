@@ -51,7 +51,8 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="to-do-no-tasks" ondrop="boardDrop('To do')" ondragover="allowDrop(event)">
+                <div class="board-status-no-tasks" id="to-do-no-tasks" ondrop="boardDrop('To do')"
+                    ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks To do</span>
                 </div>
 
@@ -70,7 +71,8 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="in-progress-no-tasks" ondrop="boardDrop('In progress')" ondragover="allowDrop(event)">
+                <div class="board-status-no-tasks" id="in-progress-no-tasks" ondrop="boardDrop('In progress')"
+                    ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks in Progress</span>
                 </div>
 
@@ -89,7 +91,8 @@
                     <div class="board-status-column-headline-img"></div>
                 </div>
 
-                <div class="board-status-no-tasks" id="await-feedback-no-tasks" ondrop="boardDrop('Await feedback')" ondragover="allowDrop(event)">
+                <div class="board-status-no-tasks" id="await-feedback-no-tasks" ondrop="boardDrop('Await feedback')"
+                    ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks await feedback</span>
                 </div>
 
@@ -107,7 +110,8 @@
                     <span class="f-s-w-20px-700">Done</span>
                 </div>
 
-                <div class="board-status-no-tasks" id="done-no-tasks" ondrop="boardDrop('Done')" ondragover="allowDrop(event)">
+                <div class="board-status-no-tasks" id="done-no-tasks" ondrop="boardDrop('Done')"
+                    ondragover="allowDrop(event)">
                     <span class="f-s-w-16px-400">No tasks done</span>
                 </div>
 
@@ -130,38 +134,39 @@
             <!-- board detail card categroy -->
             <div class="board-detail-card-category-area">
                 <span class="f-s-w-23px-400" id="board-detail-card-category">User Story</span>
-                <img src="/assets/img/icon_close.png" alt="close icon">
+                <img src="/assets/img/icon_close.png" alt="close icon" onclick="closeDetailCard()">
             </div>
 
             <!-- board detail card title -->
-            <h1 class="f-s-61px" id="board-detail-title">Kochwelt Page & Recipe Recommender</h1>
+            <h1 class="f-s-61px" id="board-detail-card-title">Kochwelt Page & Recipe Recommender</h1>
 
             <!-- board detail card description -->
-            <span class="f-s-w-20px-400">Build start page with recipe recommendation.</span>
+            <span class="f-s-w-20px-400" id="board-detail-card-description">Build start page with recipe
+                recommendation.</span>
 
             <table>
 
                 <!-- board detail card due date -->
                 <tr class="f-s-w-20px-400">
                     <td>Due date:</td>
-                    <td id="board-detail-due-date">10/05/2023</td>
+                    <td id="board-detail-card-due-date">10/05/2023</td>
                 </tr>
 
                 <!-- board detail card priority -->
-                <tr class="f-s-w-20px-400">
+                <tr class="f-s-w-20px-400" id="board-detail-card-priority-row">
                     <td>Priority:</td>
                     <td class="board-detail-card-priority-status">
-                        <span id="board-detail-priority-status-text">Medium</span>
+                        <span id="board-detail-card-priority-text">Medium</span>
                         <img src="/assets/img/icon_medium_orange.png" alt="priority status img"
-                            id="board-detail-card-priority-status-img">
+                            id="board-detail-card-priority-img">
                     </td>
                 </tr>
 
                 <!-- board detail card assigned to -->
-                <tr class="board-detail-card-assigned-to">
+                <tr class="board-detail-card-assigned-to" id="board-detail-card-assigned-to-row">
                     <td class="assignedTo">
                         <span class="f-s-w-20px-400">Assigned To:</span>
-                        <ul>
+                        <ul id="board-detail-card-assigned-to">
                             <li class="contact-name-area">
                                 <div class="contact-initals-icon f-s-w-12px-400">JS</div>
                                 <span class="f-s-w-19px-400">Jenny</span>
@@ -175,10 +180,10 @@
                 </tr>
 
                 <!-- board detail card subtasks -->
-                <tr class="board-detail-card-assigned-to">
+                <tr class="board-detail-card-assigned-to" id="board-detail-card-subtasks-row">
                     <td class="assignedTo">
                         <span class="f-s-w-20px-400">Subtasks:</span>
-                        <ul>
+                        <ul id="board-detail-card-subtasks">
                             <li>
                                 <label class="checkbox-text-area">
                                     <input type="checkbox">

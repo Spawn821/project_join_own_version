@@ -174,7 +174,7 @@
     display: block;
     position: relative;
     max-width: calc(100vw - 232px);
-    z-index: 1;
+    z-index: 2;
 }
 
 

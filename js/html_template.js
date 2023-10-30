@@ -124,11 +124,11 @@ function getAddedContactsToTaskHTML(initals, color) {
  * @param {integer} i is the index from array categoriesTask. 
  * @returns html code.
  */
-function getCategoryEntryHTML(category, i) {
+function getCategoryEntryHTML(category) {
     return /*html*/ `
-        <div class="add-task-category" onclick="selectCategory(${i})">
+        <div class="add-task-category" onclick="selectCategory('${category}')">
             <span class="f-s-w-20px-400">${category}</span>
-            <img src="/assets/img/icon_delete_white.png" onclick="deleteCategoryFromList(${i}); isolateFromOderEvents(event)">
+            <img src="/assets/img/icon_delete_white.png" onclick="deleteCategoryFromList('${category}'); isolateFromOderEvents(event)">
         </div>
     `;
 }
@@ -179,12 +179,13 @@ function getAddedSubtaskHTML(subtask, i) {
  * @param {string} prioImg is the url from the priority img.
  * @returns html code.
  */
-function getBoardShortCardHTML(i, category, title, description, numberSubtasks, prioImg) {
+function getBoardShortCardHTML(i, category, categoryBackgroundColor,title, description, numberSubtasks, prioImg) {
     return /*html*/ `
     <div>
-        <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}" draggable="true" ondragstart="boardDrag(${i})">
+        <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}"
+            draggable="true" ondragstart="boardDrag(${i})" onclick="openDetailCard(${i})">
 
-            <span class="board-short-card-category f-s-w-16px-400">${category}</span>
+            <span class="board-short-card-category f-s-w-16px-400" style="background-color: ${categoryBackgroundColor}">${category}</span>
 
             <div class="board-short-card-title-description">
                 <span class="f-s-w-16px-700">${title}</span>
@@ -223,5 +224,28 @@ function getBoardShortCardHTML(i, category, title, description, numberSubtasks, 
 function getBoardShortCardContactsHTML(initals, backgroundColor) {
     return /*html*/ `
         <div class="contact-initals-icon" style="background-color: ${backgroundColor}">${initals}</div>
+    `;
+}
+
+
+function getBoardDetialCardContactsHTML(initals, name, backgroundColor) {
+    return /*html*/ `
+        <li class="contact-name-area">
+            <div class="contact-initals-icon f-s-w-12px-400" style="background-color: ${backgroundColor}">${initals}</div>
+            <span class="f-s-w-19px-400">${name}</span>
+        </li>
+    `;
+}
+
+
+function getBoardDetialCardSubtasksHTML(subtask) {
+    return /*html*/ `
+        <li>
+            <label class="checkbox-text-area">
+                <input type="checkbox">
+                <div></div>
+                <span class="f-s-w-19px-400">${subtask}</span>
+            </label>
+        </li>
     `;
 }

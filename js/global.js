@@ -2,6 +2,8 @@ let users = [];
 
 let tasks = [];
 
+let categoriesTask = [];
+
 let contactColors = [
     {
         'number': 1,
@@ -75,6 +77,7 @@ let contactColors = [
     }
 ]
 
+
 let templatesIDIndex = [
     'login_html',
     'signup_html',
@@ -92,6 +95,7 @@ let templatesIDIndex = [
 async function initGlobal() {
     await loadUsers();
     await loadTasks();
+    await loadCategoriesTask();
     await includeHTML();
 }
 
@@ -109,6 +113,15 @@ async function loadUsers() {
  */
 async function loadTasks() {
     tasks = JSON.parse(await getItem('tasks'));
+}
+
+
+
+/**
+ * This function loads all tasks from backend.
+ */
+async function loadCategoriesTask() {
+    categoriesTask = JSON.parse(await getItem('categoriesTask'));
 }
 
 
