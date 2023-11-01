@@ -332,3 +332,46 @@ function returnDetailCardSectionId(section) {
             return 'board-detail-card-subtasks';
     }
 }
+
+
+function openOrCloseAddTaskCard(action) {
+    let addTaskCardBackground = document.getElementById('add_task_card_background_html');
+    let addTaskCardClose = document.getElementById('add-task-card-close-icon');
+    let addTask = document.getElementById('add_task_html');
+
+    if (action == 'open') {
+        openAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask);
+    } else {
+        closeAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask);
+    }
+
+}
+
+
+function openAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask) {
+    addTaskCardBackground.classList.remove('d-none');
+    addTaskCardClose.classList.remove('d-none');
+    addTask.classList.remove('d-none');
+    addTask.classList.remove('overflow-y-scroll');
+    addTask.classList.add('add-task-card');
+    addTask.classList.remove('add-task-card-slide-out');
+    addTask.classList.add('add-task-card-slide-in');
+}
+
+
+function closeAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask) {
+    if (!addTaskCardClose.classList.contains('d-none')) {
+        addTask.classList.remove('add-task-card-slide-in');
+        addTask.classList.add('add-task-card-slide-out');
+
+        setTimeout(() => {
+            addTaskCardBackground.classList.add('d-none');
+            addTaskCardClose.classList.add('d-none');
+            addTask.classList.add('d-none');
+            addTask.classList.add('overflow-y-scroll');
+            addTask.classList.remove('add-task-card');
+        }, 700);
+    } else {
+        addTaskCardBackground.classList.add('d-none');
+    }
+}

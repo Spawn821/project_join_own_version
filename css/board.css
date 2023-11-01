@@ -248,17 +248,6 @@
         color: white;
         background-color: rgb(0, 56, 255);
     }
-
-    & img {
-        height: 32px;
-        width: 32px;
-    }
-
-    & img:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 5%);
-        border-radius: 50%;
-    }
 }
 
 table {

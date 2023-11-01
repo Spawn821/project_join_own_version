@@ -202,7 +202,7 @@ function getBoardShortCardHTML(i, category, categoryBackgroundColor,title, descr
                 </div>
             </div>
 
-            <div class="board-short-card-assigned-to-priority">
+            <div class="board-short-card-assigned-to-priority" id="board-short-card-assigned-to-priority">
                 <div class="board-short-card-assigned-to" id="board-short-card-contacts_${i}">
 
                 </div>

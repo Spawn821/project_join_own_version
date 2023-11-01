@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <button class="board-add-task-button btn-black" type="button">
+                <button class="board-add-task-button btn-black" type="button" onclick="openOrCloseAddTaskCard('open')">
                     <span class="f-s-w-21px-700">Add task</span>
                     <img class="hlB1" src="/assets/img/icon_add_white.png" alt="">
                 </button>
@@ -134,7 +134,7 @@
             <!-- board detail card categroy -->
             <div class="board-detail-card-category-area">
                 <span class="f-s-w-23px-400" id="board-detail-card-category">User Story</span>
-                <img src="/assets/img/icon_close.png" alt="close icon" onclick="closeDetailCard()">
+                <img class="overlay-close-icon" src="/assets/img/icon_close.png" alt="close icon" onclick="closeDetailCard()">
             </div>
 
             <!-- board detail card title -->

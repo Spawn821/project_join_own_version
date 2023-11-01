@@ -29,6 +29,7 @@ function dropDownAddTask(area, action) {
         } else {
             closeDropDonwsAddTask(element, dropdownElement)
         }
+
     });
 }
 

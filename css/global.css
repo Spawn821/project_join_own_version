@@ -4,6 +4,7 @@ body {
     background-color: rgb(245, 245, 245);
     height: 100vh;
     transition: all ease-in-out 75ms;
+    overflow: hidden;
 }
 
 
@@ -402,6 +403,26 @@ select {
     justify-content: center;
     align-items: center;
     gap: 32px;
+}
+
+
+
+/* ------------------ */
+/* overlay close icon */
+/* ------------------ */
+
+.overlay-close-icon {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    height: 32px;
+    width: 32px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 5%);
+        border-radius: 50%;
+    }
 }
 
 

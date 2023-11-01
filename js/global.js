@@ -218,7 +218,7 @@ function showTemplate(name) {
     const header = document.getElementById('login-header-right');
     document.getElementById(`${name}`).classList.remove('d-none');
 
-    name == 'board_html' ? renderBoardShortCards() : null;
+    actionsOnTamplates(name);
 
     try {
         if (name != 'login_html') {
@@ -228,6 +228,13 @@ function showTemplate(name) {
         }
     } catch {
         return;
+    }
+}
+
+
+function actionsOnTamplates(name) {
+    if (name == 'board_html') {
+        renderBoardShortCards();
     }
 }
 

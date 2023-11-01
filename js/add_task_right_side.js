@@ -283,8 +283,10 @@ async function createTask(action, boardStatus) {
         tasks.push(returnTask(title, description, dueDate, findPriorityImg(), categoryExist(category.value), boardStatus));
         clearTask(title, description, dueDate, category);
         showNewTaskOnBoard();
+        openOrCloseAddTaskCard('close');
     } else {
         clearTask(title, description, dueDate, category);
+        openOrCloseAddTaskCard('close');
     }
 
     await setItem('tasks', JSON.stringify(tasks));
@@ -313,8 +315,9 @@ function clearTask(title, description, dueDate, category) {
     description.value = '';
     addedUsersToTask = [];
     dueDate.value = '';
+    currentPrio = '';
     category.value = '';
-    addedSubtasks = []
+    addedSubtasks = [];
 
     removeMarkedPrio();
     renderAddedUserToTask();

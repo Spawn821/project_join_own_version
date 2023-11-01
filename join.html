@@ -28,8 +28,7 @@
 
 </head>
 
-<body class="join-body" onload="initGlobal(); initJoin()"
-    onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close'); actionInputSubtask('cancel input')">
+<body class="join-body" onload="initGlobal(); initJoin()">
 
     <!-- sidebar panel -->
     <div class="sidebar-panel">
@@ -100,7 +99,16 @@
         <div id="summary_html" class="overflow-y-scroll" w3-include-html="templates/summary.html"></div>
 
         <!-- include add_task.html -->
-        <div id="add_task_html" class="d-none overflow-y-scroll" w3-include-html="templates/add_task.html"></div>
+        <div id="add_task_card_background_html" class="add-task-card-background d-none">
+        </div>
+
+        <div class="d-none overflow-y-scroll" id="add_task_html">
+            <img class="overlay-close-icon d-none" src="/assets/img/icon_close.png" alt="close icon" id="add-task-card-close-icon"
+                onclick="openOrCloseAddTaskCard('close')">
+            <div w3-include-html="templates/add_task.html" onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
+            actionInputSubtask('cancel input')">
+            </div>
+        </div>
 
         <!-- include board.html -->
         <div id="board_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/board.html"></div>
