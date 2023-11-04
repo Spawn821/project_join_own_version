@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 48px;
+    gap: 160px;
 }
 
 
@@ -369,56 +369,11 @@
 /* add task card */
 /* ------------- */
 
-.add-task-card-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0 0 0 / 30%);
-    z-index: 3;
-}
-
 .add-task-card {
     position: absolute;
-    top: calc(50vh - (770px / 2));
-    left: calc(50vw - (1029px / 2));
-    z-index: 3;
     border-radius: 30px;
     background-color: white;
     padding-right: 48px;
     padding-bottom: 48px;
-}
-
-.add-task-card-slide-in {
-    animation-duration: 750ms;
-    animation-name: add-task-card-slide-in;
-}
-
-@keyframes add-task-card-slide-in {
-    from {
-        left: calc(50vw + 1500px);
-    }
-
-    to {
-        left: calc(50vw - (1029px / 2));
-    }
-}
-
-.add-task-card-slide-out {
-    animation-duration: 750ms;
-    animation-name: add-task-card-slide-out;
-}
-
-@keyframes add-task-card-slide-out {
-    from {
-        left: calc(50vw - (1029px / 2));
-    }
-
-    to {
-        left: calc(50vw + 1500px);
-    }
+    z-index: 4;
 }

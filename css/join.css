@@ -279,3 +279,27 @@
     color: rgb(255, 255, 255);
     background-color: rgb(10, 25, 49);
 }
+
+
+
+/* ######################### */
+/* JOIN */
+/* ######################### */
+
+.join-transparent-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0 0 0 / 30%);
+    z-index: 3;
+}
+
+
+.join-overlay {
+    position: absolute;
+}

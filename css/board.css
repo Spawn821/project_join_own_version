@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     gap: 60px;
-    flex-grow: 1;
     margin-top: 96px;
     margin-left: 48px;
 }
@@ -215,32 +214,19 @@
 /* board detail card */
 /* ----------------- */
 
-.board-detail-card-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0 0 0 / 30%);
-    z-index: 3;
-}
-
 .board-detail-card-panel {
+    position: relative;
     width: calc(525px - 80px);
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
     gap: 24px;
+    z-index: 4;
 }
 
 .board-detail-card-category-area {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 
     & span {
         padding: 4px 24px;

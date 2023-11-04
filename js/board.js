@@ -65,9 +65,22 @@ let boardShortCardIdList = [
  * @param {object} task is the task from array tasks.
  */
 function removeElementsFromShortCard(i, task) {
+    let assignedToPrioText = '';
+
     for (key in task) {
         if (task[key] == '' || task[key] == []) {
-            document.getElementById(selectBoardShortCardElement(key) + `_${i}`).classList.add('d-none');
+
+            try {
+                document.getElementById(selectBoardShortCardElement(key) + `_${i}`).classList.add('d-none');
+            } catch {
+                assignedToPrioText += key;
+
+                if (assignedToPrioText == 'assignedToprioText') {
+                    document.getElementById(selectBoardShortCardElement(assignedToPrioText) + `_${i}`).classList.add('d-none');
+                }
+
+                continue;
+            }
         }
     }
 }
@@ -84,10 +97,8 @@ function selectBoardShortCardElement(section) {
             return 'board-short-card-description';
         case 'subtasks':
             return 'board-short-card-subtasks';
-        case 'assignedTo':
-            return 'board-short-card-contacts';
-        case 'prioText':
-            return 'board-short-card-priority';
+        case 'assignedToprioText':
+            return 'board-short-card-assigned-to-priority';
     }
 }
 
@@ -186,18 +197,30 @@ function scrollToDroppedShortCard() {
  * This function open the detail card.
  */
 function openDetailCard(i) {
-    let detailCard = document.getElementById('board-detail-card');
+    currentTask = i;
+    let transparentBackground = document.getElementById('join-transparent-background');
+    let detailCard = document.getElementById('board_detail_card_task_html');
 
-    detailCard.classList.remove('d-none')
+    transparentBackground.classList.remove('d-none');
+    detailCard.classList.remove('d-none');
 
     fillDetailCard(i);
+    overlayWindowPosition('open', detailCard);
+
+    currentOverlay = detailCard;
 }
 
 
-function closeDetailCard(i) {
-    let detailCard = document.getElementById('board-detail-card');
+function closeDetailCard() {
+    let transparentBackground = document.getElementById('join-transparent-background');
+    let detailCard = document.getElementById('board_detail_card_task_html');
 
-    detailCard.classList.add('d-none')
+    overlayWindowPosition('close', detailCard);
+
+    setTimeout(() => {
+        transparentBackground.classList.add('d-none');
+        detailCard.classList.add('d-none');
+    }, 240);
 }
 
 
@@ -334,44 +357,55 @@ function returnDetailCardSectionId(section) {
 }
 
 
+function deleteTask() {
+    tasks.splice(currentTask, 1);
+
+    setItem('tasks', JSON.stringify(tasks));
+    closeDetailCard();
+    renderBoardShortCards();
+}
+
+
+/**
+ * This function show the 'add task' webside as overlay or turn back as webside.
+ * @param {string} action is the action open (show) or close (turn back).
+ */
 function openOrCloseAddTaskCard(action) {
-    let addTaskCardBackground = document.getElementById('add_task_card_background_html');
+    let transparentBackground = document.getElementById('join-transparent-background');
     let addTaskCardClose = document.getElementById('add-task-card-close-icon');
     let addTask = document.getElementById('add_task_html');
 
     if (action == 'open') {
-        openAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask);
+        openAddTaskCard(transparentBackground, addTaskCardClose, addTask);
     } else {
-        closeAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask);
+        closeAddTaskCard(transparentBackground, addTaskCardClose, addTask);
     }
-
 }
 
 
-function openAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask) {
-    addTaskCardBackground.classList.remove('d-none');
+function openAddTaskCard(transparentBackground, addTaskCardClose, addTask) {
+    transparentBackground.classList.remove('d-none')
     addTaskCardClose.classList.remove('d-none');
     addTask.classList.remove('d-none');
     addTask.classList.remove('overflow-y-scroll');
     addTask.classList.add('add-task-card');
-    addTask.classList.remove('add-task-card-slide-out');
-    addTask.classList.add('add-task-card-slide-in');
+
+    overlayWindowPosition('open', addTask)
+
+    currentOverlay = addTask;
 }
 
 
-function closeAddTaskCard(addTaskCardBackground, addTaskCardClose, addTask) {
+function closeAddTaskCard(transparentBackground, addTaskCardClose, addTask) {
     if (!addTaskCardClose.classList.contains('d-none')) {
-        addTask.classList.remove('add-task-card-slide-in');
-        addTask.classList.add('add-task-card-slide-out');
+        overlayWindowPosition('close', addTask)
 
         setTimeout(() => {
-            addTaskCardBackground.classList.add('d-none');
+            transparentBackground.classList.add('d-none')
             addTaskCardClose.classList.add('d-none');
             addTask.classList.add('d-none');
             addTask.classList.add('overflow-y-scroll');
             addTask.classList.remove('add-task-card');
-        }, 700);
-    } else {
-        addTaskCardBackground.classList.add('d-none');
+        }, 240);
     }
 }

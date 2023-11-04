@@ -37,6 +37,7 @@ function openDropDonwsAddTask(element, dropdownElement) {
     if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
         dropdownElement.classList.remove('b-bottom-left-radius');
         dropdownElement.classList.remove('b-bottom-right-radius');
+        dropdownElement.classList.add('box-shadow-0-2-4-0');
     } else {
         if (element == 'add-task-contact-arrow-open' || element == 'add-task-category-arrow-open') {
             dropdownElement.classList.add('d-none');
@@ -50,6 +51,7 @@ function closeDropDonwsAddTask(element, dropdownElement) {
     if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
         dropdownElement.classList.add('b-bottom-left-radius');
         dropdownElement.classList.add('b-bottom-right-radius');
+        dropdownElement.classList.remove('box-shadow-0-2-4-0');
     } else {
         if (element == 'add-task-contact-arrow-open' || element == 'add-task-category-arrow-open') {
             dropdownElement.classList.remove('d-none');

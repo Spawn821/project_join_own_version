@@ -96,15 +96,12 @@
         </div>
 
         <!-- include summary.html -->
-        <div id="summary_html" class="overflow-y-scroll" w3-include-html="templates/summary.html"></div>
+        <div id="summary_html" class="overflow-y-scroll flex-grow" w3-include-html="templates/summary.html"></div>
 
         <!-- include add_task.html -->
-        <div id="add_task_card_background_html" class="add-task-card-background d-none">
-        </div>
-
-        <div class="d-none overflow-y-scroll" id="add_task_html">
-            <img class="overlay-close-icon d-none" src="/assets/img/icon_close.png" alt="close icon" id="add-task-card-close-icon"
-                onclick="openOrCloseAddTaskCard('close')">
+        <div class="d-none overflow-y-scroll flex-grow" id="add_task_html">
+            <img class="overlay-close-icon d-none" src="/assets/img/icon_close.png" alt="close icon"
+                id="add-task-card-close-icon" onclick="openOrCloseAddTaskCard('close')">
             <div w3-include-html="templates/add_task.html" onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
             actionInputSubtask('cancel input')">
             </div>
@@ -113,6 +110,13 @@
         <!-- include board.html -->
         <div id="board_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/board.html"></div>
 
+        <div id="board_detail_card_task_html" class="p-absolute d-none" w3-include-html="templates/board_detail_card_task.html">
+        </div>
+
+    </div>
+
+    <!-- transparent background -->
+    <div id="join-transparent-background" class="join-transparent-background d-none">
     </div>
 
     <!-- information slider -->
