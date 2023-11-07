@@ -227,6 +227,7 @@
 
 .board-detail-card-category-area {
     display: flex;
+    justify-content: space-between;
 
     & span {
         padding: 4px 24px;

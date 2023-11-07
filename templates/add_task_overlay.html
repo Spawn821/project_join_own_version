@@ -10,10 +10,14 @@
 <body>
 
     <!-- add task panel -->
-    <div class="add-task-panel">
+    <div class="add-task-panel-overlay background-color-white">
 
         <!-- add task headline -->
-        <h1 class="f-s-61px" id="add-task-headline">Add Task</h1>
+        <div class="add-task-overlay-headline-area">
+            <h1 class="f-s-61px" id="add-task-headline">Add Task</h1>
+            <img class="overlay-close-icon" src="/assets/img/icon_close.png" alt="close icon"
+                onclick="closeDetailCard()">
+        </div>
 
         <!-- add new task area' -->
         <form class="add-new-task-area" onsubmit="createTask('create', 'To do'); return false;">
@@ -185,8 +189,7 @@
                                         type="text" id="add-task-input-category" placeholder="Select task category"
                                         onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()">
 
-                                    <div class="input-img background-color-white"
-                                        id="add-task-category-arrow-open"
+                                    <div class="input-img background-color-white" id="add-task-category-arrow-open"
                                         onclick="dropDownAddTask('category', 'open'); renderCategoryTask();">
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
                                             <img src="/assets/img/drop_down_arrow_down.png">
@@ -298,7 +301,6 @@
         </form>
 
     </div>
-
 </body>
 
 </html>

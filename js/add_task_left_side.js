@@ -14,6 +14,8 @@ const dropDownIdsCategory = [
     'add-task-add-new-category'
 ];
 
+let currentAddTask = '';
+
 /**
  * This function show or hide elements, based on the given array list.
  * @param {[string|array]} id is a list from id's.
@@ -22,7 +24,7 @@ function dropDownAddTask(area, action) {
     let ids = area == 'assigned to' ? dropDownIdsAssignedTo : dropDownIdsCategory;
 
     ids.map((element) => {
-        let dropdownElement = document.getElementById(element);
+        let dropdownElement = document.getElementById(currentAddTask).querySelector('#' + element);
 
         if (action == 'open') {
             openDropDonwsAddTask(element, dropdownElement)
@@ -35,8 +37,10 @@ function dropDownAddTask(area, action) {
 
 function openDropDonwsAddTask(element, dropdownElement) {
     if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
-        dropdownElement.classList.remove('b-bottom-left-radius');
-        dropdownElement.classList.remove('b-bottom-right-radius');
+        if (dropdownElement.querySelector('.p-absolute')) {
+            dropdownElement.classList.remove('b-bottom-left-radius');
+            dropdownElement.classList.remove('b-bottom-right-radius');
+        }
         dropdownElement.classList.add('box-shadow-0-2-4-0');
     } else {
         if (element == 'add-task-contact-arrow-open' || element == 'add-task-category-arrow-open') {
@@ -68,8 +72,8 @@ function closeDropDonwsAddTask(element, dropdownElement) {
  * This function rendert the contact list in 'add task' dropdown 'assigend to'.
 */
 function renderAddTaskContactList() {
-    let search = document.getElementById('add-task-input-assigned-to').value;
-    let contact = document.getElementById('add-task-contact-list');
+    let search = document.getElementById(currentAddTask).querySelector('#add-task-input-assigned-to').value;
+    let contact = document.getElementById(currentAddTask).querySelector('#add-task-contact-list');
     contact.innerHTML = '';
     let i = 0;
 
@@ -92,10 +96,15 @@ let addedUsersToTask = [];
 
 function markedUserAsClicked() {
     addedUsersToTask.map((user) => {
-        const checkbox = document.getElementById(`add-task-checkbox-${user.id}`);
+        const checkbox = document.getElementById(currentAddTask).querySelector(`#add-task-checkbox-${user.id}`);
 
         alreadyMarkedUsersAsClicked(user.id, 'add');
+
+        try {
         checkbox.checked = true;
+        } catch {
+            return;
+        }
     })
 }
 
@@ -105,7 +114,7 @@ function markedUserAsClicked() {
  * @param {integer} i is the index from arry users.
 */
 function addedUserToTask(i) {
-    const checkbox = document.getElementById(`add-task-checkbox-${i}`);
+    const checkbox = document.getElementById(currentAddTask).querySelector(`#add-task-checkbox-${i}`);
 
     if (checkbox.checked) {
         addedUsersToTask.push({ name: users[i]['name'], id: i }); //if task createt arry reset to default.
@@ -122,7 +131,7 @@ function addedUserToTask(i) {
  * This function rendert the area under 'assigned to' with added user to task.
  */
 function renderAddedUserToTask() {
-    let container = document.getElementById('add-task-contact-added-users');
+    let container = document.getElementById(currentAddTask).querySelector('#add-task-contact-added-users');
     container.innerHTML = '';
 
     addedUsersToTask.map((user) => {
@@ -142,12 +151,16 @@ function renderAddedUserToTask() {
  * @param {string} action is the action to remove or add the click style.
  */
 function alreadyMarkedUsersAsClicked(i, action) {
-    const contact = document.getElementById(`add-task-contact-${i}`);
+    let contact = document.getElementById(currentAddTask).querySelector(`#add-task-contact-${i}`);
 
-    if (action == 'add') {
-        contact.classList.add('contact-card-click');
-    } else {
-        contact.classList.remove('contact-card-click');
+    try {
+        if (action == 'add') {
+            contact.classList.add('contact-card-click');
+        } else {
+            contact.classList.remove('contact-card-click');
+        }
+    } catch {
+        return;
     }
 }
 

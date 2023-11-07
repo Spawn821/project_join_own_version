@@ -416,9 +416,6 @@ select {
 /* ------------------ */
 
 .overlay-close-icon {
-    position: absolute;
-    top: 48px;
-    right: 32px;
     height: 32px;
     width: 32px;
 

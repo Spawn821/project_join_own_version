@@ -181,36 +181,36 @@ function getAddedSubtaskHTML(subtask, i) {
  */
 function getBoardShortCardHTML(i, category, categoryBackgroundColor,title, description, numberSubtasks, prioImg) {
     return /*html*/ `
-    <div>
-        <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}"
-            draggable="true" ondragstart="boardDrag(${i})" onclick="openDetailCard(${i})">
+        <div>
+            <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}"
+                draggable="true" ondragstart="boardDrag(${i})" onclick="openDetailCard(${i})">
 
-            <span class="board-short-card-category f-s-w-16px-400" style="background-color: ${categoryBackgroundColor}">${category}</span>
+                <span class="board-short-card-category f-s-w-16px-400" style="background-color: ${categoryBackgroundColor}">${category}</span>
 
-            <div class="board-short-card-title-description">
-                <span class="f-s-w-16px-700">${title}</span>
-                <span class="f-s-w-16px-400 color-grey" id="board-short-card-description_${i}">${description}...</span>
-            </div>
-
-            <div class="board-short-card-subtasks" id="board-short-card-subtasks_${i}">
-                <div class="board-short-card-subtasks-progress-bar-should">
-                    <div class="board-short-card-subtasks-progress-bar-is"></div>
+                <div class="board-short-card-title-description">
+                    <span class="f-s-w-16px-700">${title}</span>
+                    <span class="f-s-w-16px-400 color-grey" id="board-short-card-description_${i}">${description}...</span>
                 </div>
-                <div class="f-s-w-12px-400">
-                    <span>0/${numberSubtasks}</span>
-                    <span>Subtasks</span>
+
+                <div class="board-short-card-subtasks" id="board-short-card-subtasks_${i}">
+                    <div class="board-short-card-subtasks-progress-bar-should">
+                        <div class="board-short-card-subtasks-progress-bar-is"></div>
+                    </div>
+                    <div class="f-s-w-12px-400">
+                        <span>0/${numberSubtasks}</span>
+                        <span>Subtasks</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="board-short-card-assigned-to-priority" id="board-short-card-assigned-to-priority_${i}">
-                <div class="board-short-card-assigned-to" id="board-short-card-contacts_${i}">
+                <div class="board-short-card-assigned-to-priority" id="board-short-card-assigned-to-priority_${i}">
+                    <div class="board-short-card-assigned-to" id="board-short-card-contacts_${i}">
 
+                    </div>
+                    <img src=${prioImg} alt="priority icon"></img>
                 </div>
-                <img src=${prioImg} alt="priority icon"></img>
-            </div>
 
+            </div>
         </div>
-</div>
     `;
 }
 

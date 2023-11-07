@@ -28,7 +28,7 @@ let currentPrio = '';
 function markedPrioAsClicked(id) {
     removeMarkedPrio(id);
 
-    let prioBtn = document.getElementById(id);
+    let prioBtn = document.getElementById(currentAddTask).querySelector('#' + id);
     currentPrio = prioBtn.children[0].innerHTML;
 
     switch (id) {
@@ -47,7 +47,7 @@ function markedPrioAsClicked(id) {
 
 function removeMarkedPrio(id) {
     idPrioBtn.map((element) => {
-        let prioBtn = document.getElementById(element.id);
+        let prioBtn = document.getElementById(currentAddTask).querySelector('#' + element.id);
 
         element.id != id ? prioBtn.classList.remove(element.class) : null;
     });
@@ -60,7 +60,7 @@ function removeMarkedPrio(id) {
  * This function rendert all categories in 'add task' dropdown 'category'.
  */
 function renderCategoryTask() {
-    let categorieContainer = document.getElementById('add-task-category-list');
+    let categorieContainer = document.getElementById(currentAddTask).querySelector('#add-task-category-list');
     categorieContainer.innerHTML = '';
 
     categoriesTask.map((category) => {
@@ -70,7 +70,7 @@ function renderCategoryTask() {
 
 
 function addCategory() {
-    let newCategory = document.getElementById('add-task-input-category');
+    let newCategory = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
 
     if (categoryExist(newCategory.value)) {
         addSubtaskError(newCategory, 'Is already exist!');
@@ -109,7 +109,7 @@ function categoryIndex(category) {
 
 
 function selectCategory(category) {
-    let input = document.getElementById('add-task-input-category');
+    let input = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
 
     input.value = category;
     dropDownAddTask('category', 'close');
@@ -132,7 +132,7 @@ let addedSubtasks = [];
  * This function rendert all subtasks in 'add task' dropdown 'category'.
  */
 function renderSubtaskTask() {
-    let subtaskContainer = document.getElementById('add-task-subtask-list');
+    let subtaskContainer = document.getElementById(currentAddTask).querySelector('#add-task-subtask-list');
     subtaskContainer.innerHTML = '';
     let i = 0;
 
@@ -148,8 +148,8 @@ function renderSubtaskTask() {
  * This function change the images to start input or cancel this.
  */
 function showOrHideSubtaskInputImg(action) {
-    let addImg = document.getElementById('add-task-subtask-add');
-    let cancelOrDoneImg = document.getElementById('add-task-add-new-subtask');
+    let addImg = document.getElementById(currentAddTask).querySelector('#add-task-subtask-add');
+    let cancelOrDoneImg = document.getElementById(currentAddTask).querySelector('#add-task-add-new-subtask');
 
     switch (action) {
         case 'start input':
@@ -170,7 +170,7 @@ function showOrHideSubtaskInputImg(action) {
  * @param {string} action is the action which to be executed.
  */
 function actionInputSubtask(action) {
-    let newSubtask = document.getElementById('add-task-input-subtask');
+    let newSubtask = document.getElementById(currentAddTask).querySelector('#add-task-input-subtask');
 
     switch (action) {
         case 'start input':
@@ -274,18 +274,19 @@ const prioImgPath = [
  * @param {string} action is the action to wich executed.
  */
 async function createTask(action, boardStatus) {
-    const title = document.getElementById('add-task-input-title');
-    const description = document.getElementById('add-task-textarea-description');
-    const dueDate = document.getElementById('add-task-input-date');
-    const category = document.getElementById('add-task-input-category');
+    let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
+    let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
+    let assignedTo = document.getElementById(currentAddTask).querySelector('#add-task-input-assigned-to');
+    let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
+    let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
 
     if (action == 'create') {
         tasks.push(returnTask(title, description, dueDate, findPriorityImg(), categoryExist(category.value), boardStatus));
-        clearTask(title, description, dueDate, category);
+        clearTask(title, description, assignedTo, dueDate, category);
         showNewTaskOnBoard();
         openOrCloseAddTaskCard('close');
     } else {
-        clearTask(title, description, dueDate, category);
+        clearTask(title, description, assignedTo, dueDate, category);
         openOrCloseAddTaskCard('close');
     }
 
@@ -310,9 +311,10 @@ function findPriorityImg() {
 }
 
 
-function clearTask(title, description, dueDate, category) {
+function clearTask(title, description, assignedTo, dueDate, category) {
     title.value = '';
     description.value = '';
+    assignedTo.value = '';
     addedUsersToTask = [];
     dueDate.value = '';
     currentPrio = '';

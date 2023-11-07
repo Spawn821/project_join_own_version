@@ -6,6 +6,8 @@ const boardStatus = [
 ]
 
 
+/* === BOARD SHORT CARDS === */
+
 /**
  * This function rendert the status columns in board with the respective task from array tasks.
  */
@@ -193,6 +195,9 @@ function scrollToDroppedShortCard() {
 }
 
 
+
+/* === BOARD DETAIL CARD === */
+
 /**
  * This function open the detail card.
  */
@@ -366,46 +371,85 @@ function deleteTask() {
 }
 
 
+function editTask() {
+    let detailCard = document.getElementById('board_detail_card_task_html');
+    let addTaskMobileOverlay = document.getElementById('add_task_mobile_overlay_html');
+
+    detailCard.classList.add('d-none');
+    addTaskMobileOverlay.classList.remove('d-none');
+
+    currentOverlay = addTaskMobileOverlay;
+    currentAddTask = 'add_task_mobile_overlay_html';
+
+    overlayWindowPosition('open', addTaskMobileOverlay);
+    fillEditTask();
+}
+
+
+function fillEditTask() {
+    let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
+    let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
+    let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
+
+    title.value = tasks[currentTask]['title'];
+    description.value = tasks[currentTask]['description'];
+    addedUsersToTask = tasks[currentTask]['assignedTo'];
+    dueDate.value = tasks[currentTask]['dueDate'];
+    currentPrio = tasks[currentTask]['prioText'];
+    addedSubtasks = tasks[currentTask]['subtasks'];
+
+    renderAddedUserToTask();
+    markedPrioAsClicked(idPrioBtn.find((element) => element['id'].toLocaleLowerCase().includes(currentPrio.toLocaleLowerCase())).id);
+    renderSubtaskTask();
+}
+
+
+function closeEditTask() {
+    let addTaskMobileOverlay = document.getElementById('add_task_mobile_overlay_html');
+    addTaskMobileOverlay.classList.add('d-none');
+
+    openDetailCard(currentTask);
+    createTask('clear');
+}
+
+
+
+/* === BOARD ADD TASK OVERLAY === */
+
 /**
  * This function show the 'add task' webside as overlay or turn back as webside.
  * @param {string} action is the action open (show) or close (turn back).
  */
 function openOrCloseAddTaskCard(action) {
     let transparentBackground = document.getElementById('join-transparent-background');
-    let addTaskCardClose = document.getElementById('add-task-card-close-icon');
-    let addTask = document.getElementById('add_task_html');
+    let addTaskOverlay = document.getElementById('add_task_overlay_html');
 
     if (action == 'open') {
-        openAddTaskCard(transparentBackground, addTaskCardClose, addTask);
+        openAddTaskCard(transparentBackground, addTaskOverlay);
     } else {
-        closeAddTaskCard(transparentBackground, addTaskCardClose, addTask);
+        closeAddTaskCard(transparentBackground, addTaskOverlay);
     }
 }
 
 
-function openAddTaskCard(transparentBackground, addTaskCardClose, addTask) {
-    transparentBackground.classList.remove('d-none')
-    addTaskCardClose.classList.remove('d-none');
-    addTask.classList.remove('d-none');
-    addTask.classList.remove('overflow-y-scroll');
-    addTask.classList.add('add-task-card');
+function openAddTaskCard(transparentBackground, addTaskOverlay) {
+    transparentBackground.classList.remove('d-none');
+    addTaskOverlay.classList.remove('d-none');
 
-    overlayWindowPosition('open', addTask)
+    currentOverlay = addTaskOverlay;
+    currentAddTask = 'add_task_overlay_html';
 
-    currentOverlay = addTask;
+    overlayWindowPosition('open', addTaskOverlay);
 }
 
 
-function closeAddTaskCard(transparentBackground, addTaskCardClose, addTask) {
-    if (!addTaskCardClose.classList.contains('d-none')) {
-        overlayWindowPosition('close', addTask)
+function closeAddTaskCard(transparentBackground, addTaskOverlay) {
+    if (currentAddTask == 'add_task_overlay_html') {
+        overlayWindowPosition('close', addTaskOverlay);
 
         setTimeout(() => {
-            transparentBackground.classList.add('d-none')
-            addTaskCardClose.classList.add('d-none');
-            addTask.classList.add('d-none');
-            addTask.classList.add('overflow-y-scroll');
-            addTask.classList.remove('add-task-card');
+            transparentBackground.classList.add('d-none');
+            addTaskOverlay.classList.add('d-none');
         }, 240);
     }
 }

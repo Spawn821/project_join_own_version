@@ -365,15 +365,89 @@
 
 
 
-/* ------------- */
-/* add task card */
-/* ------------- */
+/* ---------------- */
+/* add task overlay */
+/* ---------------- */
 
-.add-task-card {
-    position: absolute;
+.add-task-panel-overlay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 60px;
+    flex-grow: 1;
+    padding: 64px;
     border-radius: 30px;
-    background-color: white;
-    padding-right: 48px;
-    padding-bottom: 48px;
     z-index: 4;
+}
+
+.add-task-overlay-headline-area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+}
+
+
+
+/* --------------- */
+/* add task mobile */
+/* --------------- */
+
+#add_task_mobile_html:not(.add-new-task-btn-left) .add-new-task-area {
+    align-items: center;
+    gap: 80px;
+}
+
+#add_task_mobile_html:not(.add-new-task-btn-left) .add-new-task-required-buttons-area{
+    width: 102%;
+    position: sticky;
+    bottom: 0;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: rgb(245, 245, 245);
+}
+
+
+
+/* ----------------------- */
+/* add task mobile oberlay */
+/* ----------------------- */
+
+#add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
+    height: calc(930px - 96px);
+    gap: 40px;
+    padding: 48px;
+    padding-right: 8px;
+}
+
+#add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-overlay-headline-area {
+    justify-content: flex-end;
+
+    & .overlay-close-icon {
+        margin-right: 24px;
+    }
+}
+
+#add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-new-task-area {
+    align-items: center;
+    gap: 16px;
+}
+
+.add-task-input-area-overlay {
+    height: 690px;
+}
+
+#add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-new-task-input-area {
+    padding-left: 1px;
+}
+
+#add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-new-task-required-buttons-area {
+    justify-content: flex-end;
+
+    & .add-new-task-btn-right {
+        width: 98px;
+        margin-right: 24px;
+    }
 }

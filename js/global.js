@@ -235,6 +235,8 @@ function showTemplate(name) {
 function actionsOnTamplates(name) {
     if (name == 'board_html') {
         renderBoardShortCards();
+    } else if (name == 'add_task_html') {
+        currentAddTask = name;
     }
 }
 
