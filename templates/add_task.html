@@ -16,7 +16,7 @@
         <h1 class="f-s-61px" id="add-task-headline">Add Task</h1>
 
         <!-- add new task area' -->
-        <form class="add-new-task-area" onsubmit="createTask('create', 'To do'); return false;">
+        <form class="add-new-task-area" onsubmit="createOrEditTask('create', 'To do'); return false;">
 
             <div class="add-new-task-input-area">
 
@@ -281,7 +281,7 @@
                 <!-- add new task button area -->
                 <div class="button-area">
 
-                    <button type="button" class="add-new-task-btn-left btn-white" onclick="createTask('clear');">
+                    <button type="button" class="add-new-task-btn-left btn-white" onclick="clearTask();">
                         <span class="f-s-w-20px-400">Clear</span>
                         <div class="btn-white-img"></div>
                     </button>

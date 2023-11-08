@@ -137,7 +137,7 @@ function renderSubtaskTask() {
     let i = 0;
 
     addedSubtasks.map((subtask) => {
-        subtaskContainer.innerHTML += getAddedSubtaskHTML(subtask, i);
+        subtaskContainer.innerHTML += getAddedSubtaskHTML(subtask.subtask, i);
 
         i++;
     })
@@ -202,7 +202,7 @@ function addSubtask(newSubtask) {
 }
 
 function addSubtaskToArray(newSubtask) {
-    addedSubtasks.push(newSubtask.value);
+    addedSubtasks.push({subtask: newSubtask.value, checked: false});
 
     newSubtask.value = '';
 
@@ -229,9 +229,10 @@ function cancelInputSubtask(newSubtask) {
 
 
 function editSubtask(i) {
-    let changedSubtask = document.getElementById(`add-task-input-edit-subtask${i}`);
+    const changedSubtask = document.getElementById(`add-task-input-edit-subtask${i}`);
+    const checked = addedSubtasks[i].checked;
 
-    addedSubtasks.splice(i, 1, changedSubtask.value);
+    addedSubtasks.splice(i, 1, {subtask: changedSubtask.value, checked: checked});
     renderSubtaskTask();
 }
 
@@ -255,7 +256,7 @@ function changeSubtaskFromShownToEdit(i) {
     editTask.classList.remove('d-none');
     shownTask.classList.add('d-none');
 
-    input.value = addedSubtasks[i];
+    input.value = addedSubtasks[i].subtask;
     input.focus();
 }
 
@@ -269,28 +270,46 @@ const prioImgPath = [
     { priority: 'Low', img: '/assets/img/icon_low_green.png' },
 ];
 
+const addTaskInputIds = [
+    '#add-task-input-title',
+    '#add-task-textarea-description',
+    '#add-task-input-assigned-to',
+    '#add-task-input-date',
+    '#add-task-input-category'
+];
+
 /**
  * This function create a new task instace in array tasks.
  * @param {string} action is the action to wich executed.
  */
-async function createTask(action, boardStatus) {
+async function createOrEditTask(action, boardStatus) {
     let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
     let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
-    let assignedTo = document.getElementById(currentAddTask).querySelector('#add-task-input-assigned-to');
     let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
-    let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
+    let prioImg = findPriorityImg();
 
     if (action == 'create') {
-        tasks.push(returnTask(title, description, dueDate, findPriorityImg(), categoryExist(category.value), boardStatus));
-        clearTask(title, description, assignedTo, dueDate, category);
-        showNewTaskOnBoard();
-        openOrCloseAddTaskCard('close');
-    } else {
-        clearTask(title, description, assignedTo, dueDate, category);
-        openOrCloseAddTaskCard('close');
+        createTask(title, description, dueDate, prioImg, boardStatus);
+    } else if (action == 'edit') {
+        editTask(title, description, dueDate, prioImg, boardStatus);
     }
 
     await setItem('tasks', JSON.stringify(tasks));
+}
+
+
+function createTask(title, description, dueDate, prioImg, boardStatus) {
+    let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
+    tasks.push(returnTask(title, description, dueDate, prioImg, categoryExist(category.value), boardStatus));
+    openOrCloseAddTaskCard('close');
+    showNewTaskOnBoard();
+}
+
+
+function editTask(title, description, dueDate, prioImg, boardStatus) {
+    tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory, boardStatus));
+    closeEditTask();
+    renderBoardShortCards();
 }
 
 
@@ -306,19 +325,19 @@ function findPriorityImg() {
     try {
         return prioImgPath.find((element) => element.priority == currentPrio).img;
     } catch {
-        return '/assets/img/icon_low_green.png'; //default
+        return '';
     }
 }
 
 
-function clearTask(title, description, assignedTo, dueDate, category) {
-    title.value = '';
-    description.value = '';
-    assignedTo.value = '';
+function clearTask() {
+    addTaskInputIds.map((id) => {
+        let inputField = document.getElementById(currentAddTask).querySelector(id);
+        inputField ? inputField.value = '' : null;
+    })
+
     addedUsersToTask = [];
-    dueDate.value = '';
     currentPrio = '';
-    category.value = '';
     addedSubtasks = [];
 
     removeMarkedPrio();

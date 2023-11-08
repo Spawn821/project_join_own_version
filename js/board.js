@@ -178,7 +178,6 @@ async function showDroppedShortCard() {
     let shortCard = document.getElementById(`board-short-card-panel_${currentTask}`);
 
     for (let i = 1; i < 5; i++) {
-        console.log(currentTask);
         setTimeout(function () {
             shortCard.classList.toggle('board-short-card-mark-dropped');
         }, 350 * i);
@@ -225,6 +224,8 @@ function closeDetailCard() {
     setTimeout(() => {
         transparentBackground.classList.add('d-none');
         detailCard.classList.add('d-none');
+        taskEdit ? showDroppedShortCard() : null;
+        taskEdit = false;
     }, 240);
 }
 
@@ -297,17 +298,21 @@ function hideDetailCardRow(section) {
  * @param {object} element is the html element from the detail card.
  */
 function fillDetailCardSection(section, i, element) {
-    if (section == 'category') {
-        element.innerHTML = tasks[i][section].category;
-        element.style = `background-color: ${returnContactColor(tasks[i][section].id)}`;
-    } else if (section == 'assignedTo') {
-        fillDetailCardAssignedTo(tasks[i].assignedTo, element);
-    } else if (section == 'prioImg') {
-        element.src = tasks[i][section];
-    } else if (section == 'subtasks') {
-        fillDetailCardSubtasks(tasks[i].subtasks, element);
-    } else {
-        element.innerHTML = tasks[i][section];
+    try {
+        if (section == 'category') {
+            element.innerHTML = tasks[i][section].category;
+            element.style = `background-color: ${returnContactColor(tasks[i][section].id)}`;
+        } else if (section == 'assignedTo') {
+            fillDetailCardAssignedTo(tasks[i].assignedTo, element);
+        } else if (section == 'prioImg') {
+            element.src = tasks[i][section];
+        } else if (section == 'subtasks') {
+            fillDetailCardSubtasks(tasks[i].subtasks, element);
+        } else {
+            element.innerHTML = tasks[i][section];
+        }
+    } catch {
+        return;
     }
 }
 
@@ -335,7 +340,7 @@ function fillDetailCardAssignedTo(assignedTo, element) {
  */
 function fillDetailCardSubtasks(subtasks, element) {
     subtasks.map((subtask) => {
-        element.innerHTML += getBoardDetialCardSubtasksHTML(subtask);
+        element.innerHTML += getBoardDetialCardSubtasksHTML(subtask.subtask);
     });
 }
 
@@ -371,7 +376,7 @@ function deleteTask() {
 }
 
 
-function editTask() {
+function openEditTask() {
     let detailCard = document.getElementById('board_detail_card_task_html');
     let addTaskMobileOverlay = document.getElementById('add_task_mobile_overlay_html');
 
@@ -386,30 +391,48 @@ function editTask() {
 }
 
 
+let editCategory;
+
 function fillEditTask() {
     let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
     let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
     let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
 
-    title.value = tasks[currentTask]['title'];
-    description.value = tasks[currentTask]['description'];
-    addedUsersToTask = tasks[currentTask]['assignedTo'];
-    dueDate.value = tasks[currentTask]['dueDate'];
-    currentPrio = tasks[currentTask]['prioText'];
-    addedSubtasks = tasks[currentTask]['subtasks'];
-
+    fillInputFieldsAndVariables(title, description, dueDate);
     renderAddedUserToTask();
     markedPrioAsClicked(idPrioBtn.find((element) => element['id'].toLocaleLowerCase().includes(currentPrio.toLocaleLowerCase())).id);
     renderSubtaskTask();
 }
 
 
+function fillInputFieldsAndVariables(title, description, dueDate) {
+    title.value = tasks[currentTask]['title'];
+    description.value = tasks[currentTask]['description'];
+    addedUsersToTask = tasks[currentTask]['assignedTo'];
+    dueDate.value = tasks[currentTask]['dueDate'];
+    currentPrio = tasks[currentTask]['prioText'];
+    editCategory = tasks[currentTask]['category'];
+    addedSubtasks = tasks[currentTask]['subtasks'];
+}
+
+let taskEdit = false;
+
 function closeEditTask() {
+    clearTask();
+
     let addTaskMobileOverlay = document.getElementById('add_task_mobile_overlay_html');
     addTaskMobileOverlay.classList.add('d-none');
 
     openDetailCard(currentTask);
-    createTask('clear');
+}
+
+
+function changeTask() {
+    let boardStatus = tasks[currentTask]['boardStatus'];
+
+    createOrEditTask('edit', boardStatus);
+
+    taskEdit = true;
 }
 
 
@@ -444,12 +467,11 @@ function openAddTaskCard(transparentBackground, addTaskOverlay) {
 
 
 function closeAddTaskCard(transparentBackground, addTaskOverlay) {
-    if (currentAddTask == 'add_task_overlay_html') {
-        overlayWindowPosition('close', addTaskOverlay);
+    clearTask();
+    overlayWindowPosition('close', addTaskOverlay);
 
-        setTimeout(() => {
-            transparentBackground.classList.add('d-none');
-            addTaskOverlay.classList.add('d-none');
-        }, 240);
-    }
+    setTimeout(() => {
+        transparentBackground.classList.add('d-none');
+        addTaskOverlay.classList.add('d-none');
+    }, 240);
 }
