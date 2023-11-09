@@ -278,6 +278,8 @@ const addTaskInputIds = [
     '#add-task-input-category'
 ];
 
+let setBoardStatus = '';
+
 /**
  * This function create a new task instace in array tasks.
  * @param {string} action is the action to wich executed.
@@ -287,27 +289,28 @@ async function createOrEditTask(action, boardStatus) {
     let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
     let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
     let prioImg = findPriorityImg();
+    setBoardStatus == '' ? setBoardStatus = boardStatus : null;
 
     if (action == 'create') {
-        createTask(title, description, dueDate, prioImg, boardStatus);
+        createTask(title, description, dueDate, prioImg);
     } else if (action == 'edit') {
-        editTask(title, description, dueDate, prioImg, boardStatus);
+        editTask(title, description, dueDate, prioImg);
     }
 
     await setItem('tasks', JSON.stringify(tasks));
 }
 
 
-function createTask(title, description, dueDate, prioImg, boardStatus) {
+function createTask(title, description, dueDate, prioImg) {
     let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
-    tasks.push(returnTask(title, description, dueDate, prioImg, categoryExist(category.value), boardStatus));
+    tasks.push(returnTask(title, description, dueDate, prioImg, categoryExist(category.value)));
     openOrCloseAddTaskCard('close');
     showNewTaskOnBoard();
 }
 
 
-function editTask(title, description, dueDate, prioImg, boardStatus) {
-    tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory, boardStatus));
+function editTask(title, description, dueDate, prioImg) {
+    tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory));
     closeEditTask();
     renderBoardShortCards();
 }
@@ -325,7 +328,7 @@ function findPriorityImg() {
     try {
         return prioImgPath.find((element) => element.priority == currentPrio).img;
     } catch {
-        return '';
+        return '/assets/img/icon_low_green.png'; //default
     }
 }
 
@@ -338,6 +341,7 @@ function clearTask() {
 
     addedUsersToTask = [];
     currentPrio = '';
+    setBoardStatus = '';
     addedSubtasks = [];
 
     removeMarkedPrio();
@@ -346,7 +350,7 @@ function clearTask() {
 }
 
 
-function returnTask(title, description, dueDate, prioImg, category, boardStatus) {
+function returnTask(title, description, dueDate, prioImg, category) {
     return {
         title: title.value,
         description: description.value,
@@ -356,6 +360,6 @@ function returnTask(title, description, dueDate, prioImg, category, boardStatus)
         prioImg: prioImg,
         category: category,
         subtasks: addedSubtasks,
-        boardStatus: boardStatus
+        boardStatus: setBoardStatus
     };
 }

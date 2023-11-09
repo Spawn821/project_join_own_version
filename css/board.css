@@ -188,6 +188,11 @@
     border-radius: 8px;
 }
 
+.board-short-card-text-subtasks{
+    display: flex;
+    gap: 4px;
+}
+
 .board-short-card-assigned-to-priority {
     width: 100%;
     display: flex;

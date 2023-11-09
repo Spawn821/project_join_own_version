@@ -117,7 +117,7 @@ function addedUserToTask(i) {
     const checkbox = document.getElementById(currentAddTask).querySelector(`#add-task-checkbox-${i}`);
 
     if (checkbox.checked) {
-        addedUsersToTask.push({ name: users[i]['name'], id: i }); //if task createt arry reset to default.
+        addedUsersToTask.push({ name: users[i]['name'], id: i }); //if task createt array reset to default.
     } else {
         addedUsersToTask.splice(removeUserFromTask(i), 1);
         alreadyMarkedUsersAsClicked(i, 'remove');

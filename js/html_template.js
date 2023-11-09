@@ -179,7 +179,7 @@ function getAddedSubtaskHTML(subtask, i) {
  * @param {string} prioImg is the url from the priority img.
  * @returns html code.
  */
-function getBoardShortCardHTML(i, category, categoryBackgroundColor,title, description, numberSubtasks, prioImg) {
+function getBoardShortCardHTML(i, category, categoryBackgroundColor, title, description, numberSubtasks, prioImg) {
     return /*html*/ `
         <div>
             <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}"
@@ -194,10 +194,14 @@ function getBoardShortCardHTML(i, category, categoryBackgroundColor,title, descr
 
                 <div class="board-short-card-subtasks" id="board-short-card-subtasks_${i}">
                     <div class="board-short-card-subtasks-progress-bar-should">
-                        <div class="board-short-card-subtasks-progress-bar-is"></div>
+                        <div class="board-short-card-subtasks-progress-bar-is" id="board-short-card-progress-bar-is_${i}"></div>
                     </div>
-                    <div class="f-s-w-12px-400">
-                        <span>0/${numberSubtasks}</span>
+                    <div class="board-short-card-text-subtasks f-s-w-12px-400">
+                        <div class="d-flex">
+                            <span id="board-short-card-checked-subtasks_${i}">0</span>
+                            <span>/</span>
+                            <span>${numberSubtasks}</span>
+                        </div>
                         <span>Subtasks</span>
                     </div>
                 </div>
@@ -238,11 +242,11 @@ function getBoardDetialCardContactsHTML(initals, name, backgroundColor) {
 }
 
 
-function getBoardDetialCardSubtasksHTML(subtask) {
+function getBoardDetialCardSubtasksHTML(i, subtask) {
     return /*html*/ `
         <li>
-            <label class="checkbox-text-area">
-                <input type="checkbox">
+            <label class="checkbox-text-area" onclick="isSubtaskChecked(${i})">
+                <input type="checkbox" id="detailCardSubtask-${i}">
                 <div></div>
                 <span class="f-s-w-19px-400">${subtask}</span>
             </label>

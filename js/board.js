@@ -26,13 +26,29 @@ function renderBoardShortCards() {
             boardStatusContainer.innerHTML += getBoardShortCardHTML(i, task.category.category,
                 categoryBackgroundColor, task.title, task.description, task['subtasks'].length, task.prioImg);
 
-            addContactsToBoardShortCard(i, task.assignedTo)
-
+            addContactsToBoardShortCard(i, task.assignedTo);
+            updateProgressbarSubtasks(i, task);
             removeElementsFromShortCard(i, task);
 
             i++;
         }
     });
+}
+
+
+function updateProgressbarSubtasks(i, task) {
+    let progressBarIs = document.getElementById(`board-short-card-progress-bar-is_${i}`);
+    let checkedSubtasks = document.getElementById(`board-short-card-checked-subtasks_${i}`);
+    let isChecked = 0;
+    let progress = 0;
+
+    task.subtasks.map((subtask) => {
+        subtask.checked == true ? isChecked++ : null;
+    });
+
+    progress = 128 / task['subtasks'].length * isChecked;
+    progressBarIs.style = `width: ${progress}px`;
+    checkedSubtasks.innerHTML = isChecked;
 }
 
 
@@ -339,9 +355,31 @@ function fillDetailCardAssignedTo(assignedTo, element) {
  * @param {object} element is the html element from the detail card.
  */
 function fillDetailCardSubtasks(subtasks, element) {
+    let i = 0;
+
     subtasks.map((subtask) => {
-        element.innerHTML += getBoardDetialCardSubtasksHTML(subtask.subtask);
+        element.innerHTML += getBoardDetialCardSubtasksHTML(i, subtask.subtask);
+
+        let checkbox = document.getElementById(`detailCardSubtask-${i}`);
+        subtask.checked == true ? checkbox.setAttribute('checked', '') : null;
+
+        i++;
     });
+}
+
+
+function isSubtaskChecked(i) {
+    let subtask = document.getElementById(`detailCardSubtask-${i}`);
+
+    if (subtask.checked) {
+        tasks[currentTask]['subtasks'][i]['checked'] = true;
+    } else {
+        tasks[currentTask]['subtasks'][i]['checked'] = false;
+    }
+
+    setItem('tasks', JSON.stringify(tasks));
+    renderBoardShortCards();
+    taskEdit = true;
 }
 
 
@@ -443,9 +481,10 @@ function changeTask() {
  * This function show the 'add task' webside as overlay or turn back as webside.
  * @param {string} action is the action open (show) or close (turn back).
  */
-function openOrCloseAddTaskCard(action) {
+function openOrCloseAddTaskCard(action, boardStatus) {
     let transparentBackground = document.getElementById('join-transparent-background');
     let addTaskOverlay = document.getElementById('add_task_overlay_html');
+    setBoardStatus = boardStatus;
 
     if (action == 'open') {
         openAddTaskCard(transparentBackground, addTaskOverlay);
@@ -474,4 +513,6 @@ function closeAddTaskCard(transparentBackground, addTaskOverlay) {
         transparentBackground.classList.add('d-none');
         addTaskOverlay.classList.add('d-none');
     }, 240);
+
+    setBoardStatus = '';
 }

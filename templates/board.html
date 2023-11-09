@@ -48,7 +48,7 @@
 
                 <div class="board-status-column-headline">
                     <span class="f-s-w-20px-700" id="board-status-column-headline">To do</span>
-                    <div class="board-status-column-headline-img"></div>
+                    <div class="board-status-column-headline-img" onclick="openOrCloseAddTaskCard('open')"></div>
                 </div>
 
                 <div class="board-status-no-tasks" id="to-do-no-tasks" ondrop="boardDrop('To do')"
@@ -68,7 +68,7 @@
 
                 <div class="board-status-column-headline">
                     <span class="f-s-w-20px-700">In progress</span>
-                    <div class="board-status-column-headline-img"></div>
+                    <div class="board-status-column-headline-img" onclick="openOrCloseAddTaskCard('open', 'In progress')"></div>
                 </div>
 
                 <div class="board-status-no-tasks" id="in-progress-no-tasks" ondrop="boardDrop('In progress')"
@@ -88,7 +88,7 @@
 
                 <div class="board-status-column-headline">
                     <span class="f-s-w-20px-700">Await feedback</span>
-                    <div class="board-status-column-headline-img"></div>
+                    <div class="board-status-column-headline-img" onclick="openOrCloseAddTaskCard('open', 'Await feedback')"></div>
                 </div>
 
                 <div class="board-status-no-tasks" id="await-feedback-no-tasks" ondrop="boardDrop('Await feedback')"
