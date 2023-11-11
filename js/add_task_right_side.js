@@ -25,22 +25,19 @@ let currentPrio = '';
  * @param {string} id is the id from the respective priority button.
  */
 
-function markedPrioAsClicked(id) {
-    removeMarkedPrio(id);
+function markedPrioAsClicked(prioText) {
+    currentPrio = prioText;
 
-    let prioBtn = document.getElementById(currentAddTask).querySelector('#' + id);
-    currentPrio = prioBtn.children[0].innerHTML;
+    if (currentPrio != '') {
+        let prioId = idPrioBtn.find((element) => element['id'].toLocaleLowerCase().includes(currentPrio.toLocaleLowerCase())).id;
+        let prioClass = idPrioBtn.find((element) => element['id'].toLocaleLowerCase().includes(currentPrio.toLocaleLowerCase())).class;
+        let prioBtn = document.getElementById(currentAddTask).querySelector('#' + prioId);
 
-    switch (id) {
-        case 'add-task-btn-urgent':
-            prioBtn.classList.toggle('add-new-task-priority-color-red');
-            break;
-        case 'add-task-btn-medium':
-            prioBtn.classList.toggle('add-new-task-priority-color-orange');
-            break;
-        case 'add-task-btn-low':
-            prioBtn.classList.toggle('add-new-task-priority-color-green');
-            break;
+        removeMarkedPrio(prioId);
+
+        prioBtn.classList.toggle(prioClass);
+
+        !prioBtn.classList.contains(prioClass) ? currentPrio = '': null;
     }
 }
 
@@ -202,7 +199,7 @@ function addSubtask(newSubtask) {
 }
 
 function addSubtaskToArray(newSubtask) {
-    addedSubtasks.push({subtask: newSubtask.value, checked: false});
+    addedSubtasks.push({ subtask: newSubtask.value, checked: false });
 
     newSubtask.value = '';
 
@@ -232,7 +229,7 @@ function editSubtask(i) {
     const changedSubtask = document.getElementById(`add-task-input-edit-subtask${i}`);
     const checked = addedSubtasks[i].checked;
 
-    addedSubtasks.splice(i, 1, {subtask: changedSubtask.value, checked: checked});
+    addedSubtasks.splice(i, 1, { subtask: changedSubtask.value, checked: checked });
     renderSubtaskTask();
 }
 
