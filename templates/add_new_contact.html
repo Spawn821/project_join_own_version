@@ -7,41 +7,92 @@
 </head>
 
 <body>
-    <div class="add-new-contact-panel">
-        <div class="add-new-contact-area" id="add-new-contact">
-            <div class="add-new-contact-sidebar">
+
+    <!-- add new contact panel -->
+    <div class="add-new-contact-panel" id="add-new-contact">
+
+        <!-- add new contact left side -->
+        <section class="add-new-contact-left-side">
+            <div>
                 <img class="add-new-contact-logo" src="./assets/img/join_logo_white.png" alt="">
-                <h1 class="add-new-contact-headline">Add contact</h1>
-                <span class="add-new-contact-text">Tasks are better with a team!</span>
-                <div class="add-new-contact-separator"></div>
+                <h1 class="f-s-61px m-0">Add contact</h1>
+                <span class="f-s-w-27px-400">Tasks are better with a team!</span>
+                <div class="add-new-contact-separator separator-3px-blue"></div>
             </div>
-            <div class="add-new-contact-input-mask">
-                <div class="add-new-contact-close"
-                    onclick="openAndCloseAddNewEditContact('add-new-contact-include-HTML', 'add-new-contact')"></div>
-                <span class="add-new-contact-profile-icon"></span>
-                <form class="add-new-contact-form" onsubmit="addNewContact(); return false">
-                    <input class="add-new-contact-input-name add-new-contact-input" type="text" placeholder="Name"
-                        required id="add-new-name">
-                    <input class="add-new-contact-input-email add-new-contact-input" type="email" placeholder="Email"
-                        required id="add-new-email">
-                    <input class="add-new-contact-input-phone add-new-contact-input" type="number" placeholder="Phone"
-                        required id="add-new-phone">
-                    <div class="add-new-contact-button-area">
-                        <button type="reset"
-                            onclick="openAndCloseAddNewEditContact('add-new-contact-include-HTML', 'add-new-contact')"
-                            class="add-new-contact-button-left">
-                            <span>Cancel</span>
-                            <div class="add-new-contact-button-left-icon"></div>
-                        </button>
-                        <button type="submit" class="add-new-contact-button-right" onclick="initAddTask();">
-                            <span>Create contact</span>
-                            <img class="add-new-contact-button-right-icon" src="./assets/img/check.svg" alt="">
-                        </button>
-                    </div>
-                </form>
+        </section>
+
+        <!-- add new contact right side -->
+        <section class="add-new-contact-right-side background-color-white">
+
+            <!-- add new contact first child -->
+            <div>
+
+                <!-- add new contact right side close icon -->
+                <img class="overlay-close-icon" src="/assets/img/icon_close.png" alt="close icon"
+                    onclick="openAndCloseAddNewEditContact('add-new-contact-include-HTML', 'add-new-contact')">
+
+                <!-- add new contact second child -->
+                <div>
+
+                    <!-- add new contact profile icon -->
+                    <span class="add-new-contact-profile-icon contact-initals-icon"></span>
+
+                    <form class="add-new-contact-form" onsubmit="addNewContact(); return false">
+
+                        <!-- add new contact input name -->
+                        <div class="input-img-area">
+                            <input required class="input-whitout-border-right f-s-w-20px-400" type="text"
+                                placeholder="Name" id="add-new-name">
+
+                            <div class="input-img">
+                                <img src="/assets/img/icon_person_gray.png" alt="icon person image">
+                            </div>
+                        </div>
+
+                        <!-- add new contact input email -->
+                        <div class="input-img-area">
+                            <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
+                                placeholder="Email" id="add-new-email">
+
+                            <div class="input-img">
+                                <img src="/assets/img/icon_mail.png" alt="icon email image">
+                            </div>
+                        </div>
+
+                        <!-- add new contact input phone -->
+                        <div class="input-img-area">
+                            <input required class="input-whitout-border-right f-s-w-20px-400" type="number"
+                                placeholder="Phone" id="add-new-phone">
+
+                            <div class="input-img">
+                                <img src="/assets/img/icon_phone.png" alt="icon phone image">
+                            </div>
+                        </div>
+
+                        <!-- add new contact button area -->
+                        <div class="add-new-contact-button-area">
+                            <button type="button"
+                                onclick="openAndCloseAddNewEditContact('add-new-contact-include-HTML', 'add-new-contact')"
+                                class="add-new-contact-btn-left btn-white">
+                                <span class="f-s-w-20px-400">Cancel</span>
+                                <div class="btn-white-img"></div>
+                            </button>
+                            <button type="submit" class="add-new-contact-btn-right btn-black">
+                                <span class="f-s-w-21px-700">Create contact</span>
+                                <img src="/assets/img/icon_done_white_small.png" alt="">
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
             </div>
-        </div>
+
+        </section>
+
     </div>
+
 </body>
 
 </html>

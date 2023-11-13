@@ -33,6 +33,18 @@ body {
     overflow-y: scroll;
 }
 
+.p-relative {
+    position: relative;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+.m-0 {
+    margin: 0;
+}
+
 .b-top-left-radius {
     border-top-left-radius: 10px;
 }
@@ -47,14 +59,6 @@ body {
 
 .b-bottom-right-radius {
     border-bottom-right-radius: 10px;
-}
-
-.p-relative {
-    position: relative;
-}
-
-.p-absolute {
-    position: absolute;
 }
 
 .width-100-prozent {
@@ -143,6 +147,11 @@ body {
     font-weight: 400;
 }
 
+.f-s-w-27px-400 {
+    font-size: 27px;
+    font-weight: 400;
+}
+
 .f-s-w-20px-700 {
     font-size: 20px;
     font-weight: 700;
@@ -207,9 +216,14 @@ input::placeholder {
     color: rgb(209, 209, 209);
 }
 
-input:not(:read-only):focus {
+input:focus {
     box-shadow: none;
     border-color: rgb(41, 170, 227);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 .input-whitout-border-right {
@@ -486,7 +500,7 @@ select {
     align-items: center;
     color: white;
     border: 2px solid white;
-    background-color: green;
+    background-color: rgb(209, 209, 209);
     border-radius: 50%;
 }
 
