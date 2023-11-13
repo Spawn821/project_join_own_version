@@ -174,26 +174,6 @@ function returnContactColor(i) {
 
 
 /**
- * This function returns the index of the color assigned to a user.
- * @param {string} name defines the name of the user.
- * @returns {string} is the rgb color style.
- */
-function returnContactColorByName(name) {
-    let index = 0;
-
-    for (let i = 0; i < users.length; i++) {
-        const userName = users[i]['name'];
-        if (userName == name) {
-            index = i;
-            break;
-        }
-    }
-
-    return returnContactColor(index);
-}
-
-
-/**
  * Animates a message (sliding up box) upon successfull registration and other events.
  */
 function informationSlidebox(message) {
@@ -237,6 +217,8 @@ function actionsOnTamplates(name) {
         renderBoardShortCards();
     } else if (name == 'add_task_html') {
         currentAddTask = name;
+    } else if (name == 'contacts_html') {
+        renderContacts();
     }
 }
 

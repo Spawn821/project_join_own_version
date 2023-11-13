@@ -1,37 +1,29 @@
 let existLetterHeadline = '';
 
-
-/**
- * This function initalized the function to load the contacts side.
- */
-async function initContacts() {
-    await loadUsers();
-    renderContacts();
-    userInitials();
-}
-
+/* ================== */
+/* CONTACTS LEFT SIDE */
+/* ================== */
 
 /**
  * This function rendes the contacts in the contactlist.
  */
 function renderContacts() {
     let contactsList = document.getElementById('contacts-list');
+    let i = 0;
+
     contactsList.innerHTML = '';
-    let colorNumberIndex = 0;
 
-    for (let i = 0; i < users.length; i++) {
-        const [name, email] = [users[i]['name'], users[i]['email']];
-        const firstLetter = users[i]['name'].charAt(0);
-        const colorStyle = returnContactColor(i);
+    users.map((user) => {
+        const backgroundColor = returnContactColor(i);
+        const initals = getInitials(user.name);
 
-        addLetterHeadline(firstLetter, contactsList);
+        addLetterHeadline(user['name'].charAt(0), contactsList);
 
-        let firstLetters = getInitials(name);
-        contactsList.innerHTML += getContactCardHTML(i, colorStyle, firstLetters, name, email)
+        contactsList.innerHTML += getContactCardHTML(i, backgroundColor, initals, user.name, user.email)
 
-        colorNumberIndex++;
-        colorNumberIndex >= contactColors.length ? colorNumberIndex = 0 : null;
-    }
+        i++;
+        i >= contactColors.length ? i = 0 : null;
+    });
 }
 
 
@@ -43,51 +35,59 @@ function renderContacts() {
  */
 function addLetterHeadline(firstLetter, contactsList) {
     if (existLetterHeadline.toLocaleLowerCase() != firstLetter.toLocaleLowerCase() || existLetterHeadline == '') {
-        contactsList.innerHTML += getLetterHeadlineHTML(firstLetter.toUpperCase());
+        contactsList.innerHTML += getContactsLetterHeadlineHTML(firstLetter.toUpperCase());
         existLetterHeadline = firstLetter;
     }
 }
 
 
+
+/* =================== */
+/* CONTACTS RIGHT SIDE */
+/* =================== */
+
 /**
  * This fuction shows all data from the clicked contcat in a separate window.
  * @param {integer} i is the index from arry users.
  */
-function openContactData(i) {
+function openOrCloseContactData(i) {
     let contactCard = document.getElementById(`contactCard-${i}`);
-    let conatacts = document.getElementById('contacts');
-    let contactData = document.getElementById('contact-data');
-    let windowSize = window.matchMedia('(max-width: 1350px)');
 
     if (contactCard.classList.contains('contact-card-click')) {
-        contactCard.classList.remove('contact-card-click');
+        closeAllContactClicks();
         clearContactData();
     } else {
-        if (windowSize.matches) {
-            conatacts.classList.add('contact-data-d-none');
-            contactData.classList.remove('contact-data-d-none');
-        } else {
-            closeAllContactClicks();
-            contactCard.classList.add('contact-card-click');
-        }
+        closeAllContactClicks();
+        contactCard.classList.toggle('contact-card-click');
         renderContactData(i);
+        contactDataSlideInAnimation();
     }
 
     currentContactIndex = i;
 }
 
 
-/**
- * This fuction close the contact data which were shown in a separate window.
- */
-function closeContactData() {
-    let conatacts = document.getElementById('contacts');
-    let contactData = document.getElementById('contact-data');
+function contactDataSlideInAnimation() {
+    let contactData = document.getElementById('contact-data-content-parent');
 
-    conatacts.classList.remove('contact-data-d-none');
-    contactData.classList.add('contact-data-d-none');
+    contactData.animate([
+        { left: `${document.documentElement.clientWidth + 50}px` },
+        { left: 0 }
+    ], {
+        duration: 250
+    })
+}
 
-    closeAllContactClicks();
+
+function contactDataSlideOutAnimation() {
+    let contactData = document.getElementById('contact-data-content-parent');
+
+    contactData.animate([
+        { left: 0 },
+        { left: `${document.documentElement.clientWidth + 50}px` }
+    ], {
+        duration: 250
+    })
 }
 
 
@@ -101,15 +101,14 @@ function renderContactData(i) {
     let content = document.getElementById('contact-data-content');
     content.innerHTML = '';
 
-
     const name = users[i]['name'];
     const email = users[i]['email'];
     const phone = users[i]['phone'];
-    const firstLetters = getInitials(name);
-    const colorStyle = returnContactColor(i);
+    const initals = getInitials(name);
+    const backgroundColor = returnContactColor(i);
 
     setTimeout(() => {
-        content.innerHTML = getContactDataHTML(i, colorStyle, firstLetters, name, email, phone)
+        content.innerHTML = getContactDataHTML(i, backgroundColor, initals, name, email, phone)
         content.classList.add('contact-slide-animation')
     }, 50);
 }
@@ -119,10 +118,12 @@ function renderContactData(i) {
  * This function clears the container with the contactdatas.
  */
 function clearContactData() {
-    let content = document.getElementById('contact-data-content');
+    contactDataSlideOutAnimation();
 
-    content.innerHTML = '';
-    content.classList.remove('contact-slide-animation');
+    setTimeout(() => {
+        let content = document.getElementById('contact-data-content');
+        content.innerHTML = '';
+    }, 240);
 }
 
 
@@ -130,8 +131,6 @@ function clearContactData() {
  * This function search contacts that have been highlighted as clicket and removed this. 
  */
 function closeAllContactClicks() {
-    clearContactData();
-
     let allClicks = document.querySelectorAll('div.contact-card-click');
 
     for (let i = 0; i < allClicks.length; i++) {
@@ -140,61 +139,3 @@ function closeAllContactClicks() {
         currentClick.classList.remove('contact-card-click');
     }
 }
-
-
-/**
- * open the ponit menu in the responsive view and lets it slide in.
- */
-function openEditContactPointMenu() {
-    let editContactPointMenu = document.getElementById('contact-data-name-edit-del-area')
-
-    editContactPointMenu.classList.remove('contact-data-name-edit-del-area-slideout-animation');
-    editContactPointMenu.classList.add('contact-data-name-edit-del-area-slidein-animation');
-
-    editContactPointMenu.classList.remove('contacts-point-menu-d-none');
-}
-
-function closeEditContactPointMenu() {
-    let editContactPointMenu = document.getElementById('contact-data-name-edit-del-area')
-
-    editContactPointMenu.classList.remove('contact-data-name-edit-del-area-slidein-animation');
-    editContactPointMenu.classList.add('contact-data-name-edit-del-area-slideout-animation');
-
-    setTimeout(() => {
-        editContactPointMenu.classList.add('contacts-point-menu-d-none');
-    }, 500);
-}
-
-
-/**
- * This function excludes a child container from the parent container's onclick method. 
- */
-function notToClose(event) {
-    event.stopPropagation();
-}
-
-
-/**
- * This function switch between contactlist and contactdata if media matches.
- */
-window.addEventListener('resize', () => {
-    let contactCard = document.getElementById(`contactCard-${currentContactIndex}`);
-    let contacts = document.getElementById('contacts');
-    let contactData = document.getElementById('contact-data');
-    let contactDataContent = document.getElementById('contact-data-content');
-    let windowSize = window.matchMedia('(max-width: 1350px)');
-    let flag = false;
-    try {
-        contactDataContent.childNodes.length == 1 ? contactDataContent.innerHTML = '' : null;
-        if (windowSize.matches && contactDataContent.innerHTML > '') {
-            contacts.classList.add('contact-data-d-none');
-            contactData.classList.remove('contact-data-d-none');
-            flag = true;
-        } else {
-            contacts.classList.remove('contact-data-d-none');
-            contactData.classList.add('contact-data-d-none');
-        }
-
-        flag == true ? contactCard.classList.add('contact-card-click') : null;
-    } catch (e) { }
-});

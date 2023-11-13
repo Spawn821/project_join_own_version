@@ -119,7 +119,7 @@ function fillDetailCardSection(section, i, element) {
 
 
 /**
- * This fuctioin redert the section assiged to on the detail card.
+ * This function redert the section assiged to on the detail card.
  * @param {array} assignedTo is the list with the contacts for the task.
  * @param {object} element is the html element from the detail card.
  */
@@ -135,7 +135,7 @@ function fillDetailCardAssignedTo(assignedTo, element) {
 
 
 /**
- * This fuctioin redert the section subtasks on the detail card.
+ * This function redert the section subtasks on the detail card.
  * @param {array} subtasks is the list with the subtasks for the task.
  * @param {object} element is the html element from the detail card.
  */
@@ -199,6 +199,9 @@ function deleteTask() {
 }
 
 
+/**
+ * This fuction opens the edit task overlay.
+ */
 function openEditTask() {
     let detailCard = document.getElementById('board_detail_card_task_html');
     let addTaskMobileOverlay = document.getElementById('add_task_mobile_overlay_html');
@@ -216,6 +219,9 @@ function openEditTask() {
 
 let editCategory;
 
+/**
+ * This function fill the task sections with the current task data.
+ */
 function fillEditTask() {
     let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
     let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');

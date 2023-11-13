@@ -75,6 +75,10 @@ body {
     color: rgb(168, 168, 168);
 }
 
+.color-blue {
+    color: rgb(0, 124, 237);
+}
+
 .background-color-white {
     background-color: white;
 }
@@ -528,29 +532,3 @@ select {
         bottom: -80px;
     }
 }
-
-/* .contact-added-slideBox {
-    right: -320px;
-    bottom: 48px;
-    animation-duration: 1.5s;
-    animation-name: moveUp;
-    animation-delay: 150ms;
-} */
-
-/* @keyframes info-slide-up-down {
-    25% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    50% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    75% {
-        right: calc(100vw - 232px - 456px - 303px);
-    }
-
-    100% {
-        right: -320px;
-    }
-} */
