@@ -1,41 +1,66 @@
+let numberToDo = 0, numberInPogress = 0, numberAwaitFeedback = 0, numberDone = 0;
+let priorityText = []; priorityImg = []; deadlineDates = [];
+let deadline;
+
 /**
  * This function initialize the summary page.
  */
-async function initSummary() {
-/*     renderSummary(); */
-/*     mobileGreetings(); */
+function initSummary() {
+    renderSummary();
+    upcomingDeadline();
 }
+
 
 /**
  * This function renders all elements of summary page with dynamic data.
  */
 function renderSummary() {
-    document.getElementById('variablePanel1').innerHTML = tasks.length;
-    document.getElementById('variablePanel2').innerHTML = filterTasks('column', 'inProgress');
-    document.getElementById('variablePanel3').innerHTML = filterTasks('column', 'feedback');
-    document.getElementById('variablePanel4').innerHTML = filterTasks('prio', 'urgent');
-    document.getElementById('deadlineDate').innerHTML = upcomingDeadline();
-    document.getElementById('variablePanel5').innerHTML = filterTasks('column', 'to do');
-    document.getElementById('variablePanel6').innerHTML = filterTasks('column', 'done');
-    document.getElementById('greetingName').innerHTML = queryUserName();
+    let numberAllTasks = tasks.length;
+    let deadline = upcomingDeadline();
+
+    structureTasksInformations();
+
+    document.getElementById('summary-to-do-number').innerHTML = numberToDo;
+    document.getElementById('summary-progress-number').innerHTML = numberInPogress;
+    document.getElementById('summary-feedback-number').innerHTML = numberAwaitFeedback;
+    document.getElementById('summary-done-number').innerHTML = numberDone;
+    document.getElementById('summary-all-tasks-number').innerHTML = numberAllTasks;
+    document.getElementById('summary-priority-number').innerHTML = numberDueDate;
+    document.getElementById('summary-priority-date').innerHTML = deadline;
 }
 
-/**
- * This function returns the number of tasks of a category "key" filtered by "filter".
- * @param {string} key key to be used in JSON object.
- * @param {string} filter criteria to filter for
- * @returns total number of tasks which match criteria "filter" in element "key" of a task-object. 
- */
-function filterTasks(key, filter) {
-    let count = 0;
-    for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i][key];
-        if (element === filter) {
-            count += 1;
+
+function structureTasksInformations() {
+    tasks.map((task) => {
+        if (task.boardStatus == 'To do') {
+            numberToDo++;
+        } else if (task.boardStatus == 'In progress') {
+            numberInPogress++;
+        } else if (task.boardStatus == 'Await feedback') {
+            numberAwaitFeedback++;
+        } else if (task.boardStatus == 'Done') {
+            numberDone++;
         }
-    }
-    return count;
+    });
 }
+
+
+function test() {
+    const currentDate = new Date();
+    
+    const tasksDate = tasks.filter((task) => {
+        const date = new Date(task.dueDate);
+
+        if (date > currentDate) {
+            return task;
+        }
+    });
+
+    tasksDate.sort((a, b) => a - b);
+
+    console.log(tasksDate);
+}
+
 
 /**
  * This function returns the most closest upcoming date of all task".
@@ -43,7 +68,7 @@ function filterTasks(key, filter) {
 function upcomingDeadline() {
     let deadline;
     const currentDate = new Date();
-    const taskDates = tasks.map(task => new Date(task['date']));
+    const taskDates = tasks.map(task => new Date(task['dueDate']));
     const futureDates = taskDates.filter(taskDate => taskDate > currentDate);
 
     if (futureDates.length > 0) {
@@ -56,17 +81,6 @@ function upcomingDeadline() {
     } else {
         deadline = null;
     }
+
     return deadline;
 }
-
-/**
- * This function sets the Username into the Greeting animation.
- */
-function mobileGreetings() {
-    const username = queryUserName();
-    
-    document.getElementById('greetingMobileMessage').innerHTML = `Welcome,`;
-    document.getElementById('greetingMobileName').innerHTML = username;
-
-}
-     

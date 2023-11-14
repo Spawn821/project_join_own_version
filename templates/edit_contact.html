@@ -4,81 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
 
-    <!-- add new contact panel -->
+    <!-- edit contact panel -->
     <div class="add-new-contact-panel" id="add-new-contact">
 
-        <!-- add new contact left side -->
+        <!-- edit contact left side -->
         <section class="add-new-contact-left-side">
             <div>
                 <img class="add-new-contact-logo" src="./assets/img/join_logo_white.png" alt="">
-                <h1 class="f-s-61px m-0">Add contact</h1>
-                <span class="f-s-w-27px-400">Tasks are better with a team!</span>
+                <h1 class="f-s-61px m-0">Edit contact</h1>
                 <div class="add-new-contact-separator separator-3px-blue"></div>
             </div>
         </section>
 
-        <!-- add new contact right side -->
+        <!-- edit contact right side -->
         <section class="add-new-contact-right-side background-color-white">
 
-            <!-- add new contact first child -->
+            <!-- edit contact first child -->
             <div>
 
-                <!-- add new contact right side close icon -->
+                <!-- edit contact right side close icon -->
                 <img class="overlay-close-icon" src="/assets/img/icon_close.png" alt="close icon"
-                    onclick="openOrCloseAddNewEditContact('add_new_contact_html', 'close')">
+                    onclick="openOrCloseAddNewEditContact('edit_contact_html', 'close')">
 
-                <!-- add new contact second child -->
+                <!-- edit contact second child -->
                 <div>
 
-                    <!-- add new contact profile icon -->
-                    <span class="add-new-contact-profile-icon-background add-new-contact-profile-icon contact-initals-icon"></span>
+                    <!-- edit contact profile icon -->
+                    <span class="add-new-contact-profile-icon-background contact-initals-icon f-s-w-47px-500" id="edit-contact-profile-icon"></span>
 
-                    <form class="add-new-contact-form" onsubmit="addNewContact(); return false">
+                    <form class="add-new-contact-form" onsubmit="editContact(); return false">
 
-                        <!-- add new contact input name -->
+                        <!-- edit contact input name -->
                         <div class="input-img-area">
                             <input required class="input-whitout-border-right f-s-w-20px-400" type="text"
-                                placeholder="Name" id="add-new-name">
+                                placeholder="Name" id="edit-name">
 
                             <div class="input-img">
                                 <img src="/assets/img/icon_person_gray.png" alt="icon person image">
                             </div>
                         </div>
 
-                        <!-- add new contact input email -->
+                        <!-- edit contact input email -->
                         <div class="input-img-area">
                             <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
-                                placeholder="Email" id="add-new-email">
+                                placeholder="Email" id="edit-email">
 
                             <div class="input-img">
                                 <img src="/assets/img/icon_mail.png" alt="icon email image">
                             </div>
                         </div>
 
-                        <!-- add new contact input phone -->
+                        <!-- edit contact input phone -->
                         <div class="input-img-area">
                             <input required class="input-whitout-border-right f-s-w-20px-400" type="number"
-                                placeholder="Phone" id="add-new-phone">
+                                placeholder="Phone" id="edit-phone">
 
                             <div class="input-img">
                                 <img src="/assets/img/icon_phone.png" alt="icon phone image">
                             </div>
                         </div>
 
-                        <!-- add new contact button area -->
+                        <!-- edit contact button area -->
                         <div class="add-new-contact-button-area">
                             <button type="button"
-                                onclick="openOrCloseAddNewEditContact('add_new_contact_html', 'close')"
-                                class="add-new-contact-btn-left btn-white">
-                                <span class="f-s-w-20px-400">Cancel</span>
-                                <div class="btn-white-img"></div>
+                                onclick="deleteContact()"
+                                class="edit-contact-btn-left btn-white">
+                                <span class="f-s-w-20px-400">Delete</span>
                             </button>
-                            <button type="submit" class="add-new-contact-btn-right btn-black">
-                                <span class="f-s-w-21px-700">Create contact</span>
+                            <button type="submit" class="edit-contact-btn-right btn-black">
+                                <span class="f-s-w-21px-700">Save</span>
                                 <img src="/assets/img/icon_done_white_small.png" alt="">
                             </button>
                         </div>

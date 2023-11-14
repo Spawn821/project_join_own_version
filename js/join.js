@@ -113,12 +113,12 @@ let currentOverlay;
  * @param {string} aciton is the acion of open or close an overly.
  * @param {object} overlayCard is the html element from the overlay.
  */
-function overlayWindowPosition(aciton, overlayCard) {
+function overlayWindowPosition(action, overlayCard) {
     let { topMiddel, leftMiddel } = calculateOverlayWindowPosition(overlayCard);
 
     overlayCard.style = `top: ${topMiddel}px; left: ${leftMiddel}px`;
 
-    overlaySlideAnimtaion(aciton, overlayCard, leftMiddel);
+    overlaySlideAnimtaion(action, overlayCard, leftMiddel);
 }
 
 

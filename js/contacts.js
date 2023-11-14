@@ -10,11 +10,12 @@ let existLetterHeadline = '';
 function renderContacts() {
     let contactsList = document.getElementById('contacts-list');
     let i = 0;
+    let iColor = 0;
 
     contactsList.innerHTML = '';
 
     users.map((user) => {
-        const backgroundColor = returnContactColor(i);
+        const backgroundColor = returnContactColor(iColor);
         const initals = getInitials(user.name);
 
         addLetterHeadline(user['name'].charAt(0), contactsList);
@@ -22,7 +23,8 @@ function renderContacts() {
         contactsList.innerHTML += getContactCardHTML(i, backgroundColor, initals, user.name, user.email)
 
         i++;
-        i >= contactColors.length ? i = 0 : null;
+        iColor++;
+        iColor >= contactColors.length ? iColor = 0 : null;
     });
 }
 

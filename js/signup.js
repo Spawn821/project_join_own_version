@@ -14,7 +14,7 @@ async function register() {
     await setItem('users', JSON.stringify(users));
     resetForm(username, usermail, password, confirmPassword);
     showTemplate('login_html');
-    informationSlidebox('You signed up successfully');
+    informationSlidebox('information-slidebox-vertical', 'You signed up successfully');
 }
 
 

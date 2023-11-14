@@ -176,15 +176,15 @@ function returnContactColor(i) {
 /**
  * Animates a message (sliding up box) upon successfull registration and other events.
  */
-function informationSlidebox(message) {
-    const slidebox = document.getElementById("information-slidebox");
+function informationSlidebox(id, message) {
+    let slidebox = document.getElementById(id);
 
     slidebox.classList.remove('d-none');
     slidebox.innerHTML = message;
 
     setTimeout(function () {
         slidebox.classList.add('d-none');
-    }, 1500);
+    }, 1050);
 }
 
 
@@ -213,7 +213,9 @@ function showTemplate(name) {
 
 
 function actionsOnTamplates(name) {
-    if (name == 'board_html') {
+    if (name == 'summary_html') {
+        initSummary();
+    } else if (name == 'board_html') {
         renderBoardShortCards();
     } else if (name == 'add_task_html') {
         currentAddTask = name;

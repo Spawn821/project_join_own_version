@@ -196,5 +196,5 @@ function sendMailResetPassword() {
     inputField.value = '';
 
     showTemplate('login_html');
-    informationSlidebox('Email is send to you');
+    informationSlidebox('information-slidebox-vertical', 'Email is send to you');
 }

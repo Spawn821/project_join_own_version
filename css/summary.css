@@ -130,6 +130,7 @@
 
     .summary-edit-icon {
         background-image: url('/assets/img/icon_edit_black.png');
+        background-size: 40px;
     }
 
     .summary-done {

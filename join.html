@@ -137,18 +137,22 @@
         <!-- contacts.html -->
         <div id="contacts_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/contacts.html"></div>
 
-        <div id="add_new_contact_html" class="p-absolute"
+        <div id="add_new_contact_html" class="p-absolute d-none"
             w3-include-html="templates/add_new_contact.html">
+        </div>
+
+        <div id="edit_contact_html" class="p-absolute d-none"
+            w3-include-html="templates/edit_contact.html">
         </div>
 
     </div>
 
     <!-- transparent background -->
-    <div id="join-transparent-background" class="join-transparent-background">
+    <div id="join-transparent-background" class="join-transparent-background d-none">
     </div>
 
-    <!-- information slider -->
-    <div class="information-slidebox f-s-w-20px-400 d-none" id="information-slidebox">
+    <!-- information slider horizontal -->
+    <div class="information-slidebox information-slidebox-horizontal f-s-w-20px-400 d-none" id="information-slidebox-horizontal">
         <span id="information-slidebox-text">Contact succesfully created</span>
     </div>
 
