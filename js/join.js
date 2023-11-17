@@ -2,15 +2,19 @@ let sidebarNavElements = [
     'summary',
     'add_task',
     'board',
-    'contacts'
+    'contacts',
+    'privacy_policy',
+    'legal_notice'
 ]
 
 /**
  * This fuction initialise starting requirements
  */
-function initJoin() {
+async function initJoin() {
+    await initGlobal();
     topbarUserInitials();
     setSidebarNavActive('summary');
+    renderSummary();
 }
 
 
@@ -33,8 +37,18 @@ function setSidebarNavActive(pageName) {
         }
     }
 
+    setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon);
+}
+
+
+function setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon) {
     document.getElementById(`sidebar-${pageName}`).classList.add(`${sidebarClickedText}`);
-    document.getElementById(`sidebar-${pageName}`).children[0].classList.add(`${sidebarClickedIcon}`);
+
+    try {
+        document.getElementById(`sidebar-${pageName}`).children[0].classList.add(`${sidebarClickedIcon}`);
+    } catch {
+        return;
+    }
 }
 
 

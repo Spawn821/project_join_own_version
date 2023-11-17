@@ -86,7 +86,9 @@ let templatesIDIndex = [
     'add_task_html',
     'board_html',
     'contacts_html',
-    'help_html'
+    'help_html',
+    'privacy_policy_html',
+    'legal_notice_html'
 ]
 
 /**
@@ -214,13 +216,15 @@ function showTemplate(name) {
 
 function actionsOnTamplates(name) {
     if (name == 'summary_html') {
-        initSummary();
+        renderSummary();
     } else if (name == 'board_html') {
         renderBoardShortCards();
     } else if (name == 'add_task_html') {
         currentAddTask = name;
     } else if (name == 'contacts_html') {
         renderContacts();
+    } else if (name == 'help_html') {
+        removeSibebarNavActive();
     }
 }
 

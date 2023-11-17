@@ -161,18 +161,36 @@
 }
 
 .summary-priority-icon {
-    background-color: rgb(255, 61, 0);
     width: 60px;
     height: 60px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.summary-priority-icon-img {
-    height: 25px;
-    object-fit: contain;
+    &:has(img[src='/assets/img/icon_urgent_white.png']) {
+        background-color: rgb(255, 61, 0);
+
+        & .summary-priority-icon-img {
+            height: 24px;
+        }
+    }
+
+    &:has(img[src='/assets/img/icon_medium_white.png']) {
+        background-color: rgb(255, 168, 0);
+
+        & .summary-priority-icon-img {
+            height: 12px;
+        }
+    }
+
+    &:has(img[src='/assets/img/icon_low_white.png']) {
+        background-color: rgb(122, 226, 40);
+
+        & .summary-priority-icon-img {
+            height: 24px;
+        }
+    }
 }
 
 .summary-priority-separator {

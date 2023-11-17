@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="css/contacts.css">
     <link rel="stylesheet" href="css/add_new_contact.css">
+    <link rel="stylesheet" href="css/info_pages.css">
 
     <!-- scripts -->
     <script src="js/global.js"></script>
@@ -33,7 +34,7 @@
 
 </head>
 
-<body class="join-body" onload="initGlobal(); initJoin()">
+<body class="join-body" onload="initJoin()">
 
     <!-- sidebar panel -->
     <div class="sidebar-panel">
@@ -65,9 +66,12 @@
 
         <!-- sidebar footer -->
         <footer class="sidebar-footer">
-            <a href="privacypolicy.html" class="sidebar-nav-member sidebar-t-d-none" target="_blank">Privacy
-                Policy</a>
-            <a href="legalnotice.html" class="sidebar-nav-member sidebar-t-d-none" target="_blank">Legal Notice</a>
+            <a class="sidebar-nav-member sidebar-t-d-none"
+                onclick="showTemplate('privacy_policy_html'), setSidebarNavActive('privacy_policy')" id="sidebar-privacy_policy"
+                >Privacy Policy</a>
+            <a  class="sidebar-nav-member sidebar-t-d-none"
+                onclick="showTemplate('legal_notice_html'), setSidebarNavActive('legal_notice')" id="sidebar-legal_notice"
+                >Legal Notice</a>
         </footer>
     </div>
 
@@ -144,6 +148,13 @@
         <div id="edit_contact_html" class="p-absolute d-none"
             w3-include-html="templates/edit_contact.html">
         </div>
+
+        <!-- info pages.html -->
+        <div id="help_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/help.html"></div>
+
+        <div id="privacy_policy_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/privacy_policy.html"></div>
+
+        <div id="legal_notice_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/legal_notice.html"></div>
 
     </div>
 

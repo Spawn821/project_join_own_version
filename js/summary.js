@@ -1,35 +1,33 @@
 let numberToDo = 0, numberInPogress = 0, numberAwaitFeedback = 0, numberDone = 0;
-let priorityText = []; priorityImg = []; deadlineDates = [];
+let priorityText = ''; priorityImg = '';
 let deadline;
-
-/**
- * This function initialize the summary page.
- */
-function initSummary() {
-    renderSummary();
-    upcomingDeadline();
-}
-
 
 /**
  * This function renders all elements of summary page with dynamic data.
  */
 function renderSummary() {
     let numberAllTasks = tasks.length;
-    let deadline = upcomingDeadline();
 
     structureTasksInformations();
+    findTasksFromCurrentDate();
+    findPriorityImgAndColor();
 
     document.getElementById('summary-to-do-number').innerHTML = numberToDo;
+    document.getElementById('summary-done-number').innerHTML = numberDone;
+    document.getElementById('summary-priority-img').src = priorityImg;
+    document.getElementById('summary-priority-text').innerHTML = priorityText;
+    document.getElementById('summary-priority-date').innerHTML = deadline;
+    document.getElementById('summary-all-tasks-number').innerHTML = numberAllTasks;
     document.getElementById('summary-progress-number').innerHTML = numberInPogress;
     document.getElementById('summary-feedback-number').innerHTML = numberAwaitFeedback;
-    document.getElementById('summary-done-number').innerHTML = numberDone;
-    document.getElementById('summary-all-tasks-number').innerHTML = numberAllTasks;
-    document.getElementById('summary-priority-number').innerHTML = numberDueDate;
-    document.getElementById('summary-priority-date').innerHTML = deadline;
+
+    [numberToDo, numberInPogress, numberAwaitFeedback, numberDone] = [0, 0, 0, 0,];
 }
 
 
+/**
+ * This function structure the number of the respective board status ('to do', 'in progress'...).
+ */
 function structureTasksInformations() {
     tasks.map((task) => {
         if (task.boardStatus == 'To do') {
@@ -45,9 +43,12 @@ function structureTasksInformations() {
 }
 
 
-function test() {
+/**
+ * This function search after all dates that are after the current date.
+ */
+function findTasksFromCurrentDate() {
     const currentDate = new Date();
-    
+
     const tasksDate = tasks.filter((task) => {
         const date = new Date(task.dueDate);
 
@@ -56,31 +57,35 @@ function test() {
         }
     });
 
-    tasksDate.sort((a, b) => a - b);
+    tasksDate.sort((a, b) => new Date(a['dueDate']) - new Date(b['dueDate']));
 
-    console.log(tasksDate);
+    [priorityText, deadline] = [tasksDate[0].prioText, convertDate(new Date(tasksDate[0].dueDate))];
+}
+
+
+/**
+ * This function the respective priority image in the current chosen task.
+ */
+function findPriorityImgAndColor() {
+    if (priorityText == 'Urgent') {
+        priorityImg = '/assets/img/icon_urgent_white.png';
+    } else if (priorityText == 'Medium') {
+        priorityImg = '/assets/img/icon_medium_white.png';
+    } else if (priorityText == 'Low') {
+        priorityImg = '/assets/img/icon_low_white.png';
+    }
 }
 
 
 /**
  * This function returns the most closest upcoming date of all task".
  */
-function upcomingDeadline() {
-    let deadline;
-    const currentDate = new Date();
-    const taskDates = tasks.map(task => new Date(task['dueDate']));
-    const futureDates = taskDates.filter(taskDate => taskDate > currentDate);
+function convertDate(dueDate) {
+    dueDate = dueDate.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
 
-    if (futureDates.length > 0) {
-        futureDates.sort((a, b) => a - b);
-        deadline = futureDates[0].toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-        });
-    } else {
-        deadline = null;
-    }
-
-    return deadline;
+    return dueDate;
 }
