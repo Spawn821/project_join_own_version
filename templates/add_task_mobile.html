@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    
+
     <!-- add task panel -->
     <div class="add-task-panel">
 
@@ -25,19 +25,38 @@
 
                     <!-- add new task left side title -->
                     <section class="add-new-task-subcontainer">
+
                         <label class="f-s-w-20px-400">
                             Title
                             <span style="color: red">*</span>
                         </label>
+
                         <input required class="add-new-task-input f-s-w-20px-400" type="text" id="add-task-input-title"
                             placeholder="Enter a title">
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task left side description -->
                     <section class="add-new-task-subcontainer">
-                        <label class="f-s-w-20px-400">Description</label>
-                        <textarea class="add-new-task-textarea f-s-w-20px-400" id="add-task-textarea-description"
+
+                        <label class="f-s-w-20px-400">
+                            Description
+                            <span style="color: red">*</span>
+                        </label>
+
+                        <textarea required class="add-new-task-textarea f-s-w-20px-400" id="add-task-textarea-description"
                             placeholder="Enter a Description"></textarea>
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task right side prio -->
@@ -75,65 +94,80 @@
 
                     <!-- add new task right side due date -->
                     <section class="add-new-task-subcontainer">
+
                         <label class=" f-s-w-20px-400">
                             Due date
                             <span style="color: red">*</span>
                         </label>
+
                         <input required class="add-new-task-input f-s-w-20px-400" type="date" id="add-task-input-date"
                             onmouseover="setDateOfTodayForDatepicker('add-task-input-date');">
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task right side category -->
                     <section class="add-new-task-subcontainer" onclick="isolateFromOderEvents(event)">
 
-                        <label class="f-s-w-20px-400">
-                            Category
-                            <span style="color: red">*</span>
-                        </label>
+                        <div class="add-task-category-headline-area">
+                            <label class="f-s-w-20px-400">
+                                Category
+                                <span style="color: red">*</span>
+                            </label>
+
+                            <!-- warning this field is required -->
+                            <span class="add-new-task-wrong-message-under-inputs">
+                                This field is required
+                            </span>
+                        </div>
 
                         <div class="add-new-task-input-dropdown-area background-color-white b-top-left-radius b-top-right-radius
                         b-bottom-left-radius b-bottom-right-radius" id="add-task-wrapper-category">
 
-                                <!-- input -->
-                                <div class="input-img-area">
+                            <!-- input -->
+                            <div class="input-img-area">
 
-                                    <input required
-                                        class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
-                                        type="text" id="add-task-input-category" placeholder="Select task category"
-                                        onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()">
+                                <input required
+                                    class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
+                                    type="text" id="add-task-input-category" placeholder="Select task category"
+                                    onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()">
 
-                                    <div class="input-img background-color-white" id="add-task-category-arrow-open"
-                                        onclick="dropDownAddTask('category', 'open'); renderCategoryTask();">
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
-                                            <img src="/assets/img/drop_down_arrow_down.png">
-                                        </div>
+                                <div class="input-img background-color-white" id="add-task-category-arrow-open"
+                                    onclick="dropDownAddTask('category', 'open'); renderCategoryTask();">
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
+                                        <img src="/assets/img/drop_down_arrow_down.png">
+                                    </div>
+                                </div>
+
+                                <div class="d-none input-img" id="add-task-add-new-category">
+
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
+                                        id="add-task-category-add" onclick="addCategory()">
+                                        <img src="/assets/img/icon_add.png">
                                     </div>
 
-                                    <div class="d-none input-img" id="add-task-add-new-category">
+                                    <div class="separator-1px-lightgrey"></div>
 
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
-                                            id="add-task-category-add" onclick="addCategory()">
-                                            <img src="/assets/img/icon_add.png">
-                                        </div>
-
-                                        <div class="separator-1px-lightgrey"></div>
-
-                                        <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
-                                            id="add-task-category-arrow-close"
-                                            onclick="dropDownAddTask('category', 'close');">
-                                            <img src="/assets/img/drop_down_arrow_up.png">
-                                        </div>
-
+                                    <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
+                                        id="add-task-category-arrow-close"
+                                        onclick="dropDownAddTask('category', 'close');">
+                                        <img src="/assets/img/drop_down_arrow_up.png">
                                     </div>
 
                                 </div>
 
-                                <!-- category list -->
-                                <div class="add-task-contact-list background-color-white
+                            </div>
+
+                            <!-- category list -->
+                            <div class="add-task-contact-list background-color-white
                                     b-bottom-left-radius b-bottom-right-radius overflow-y-scroll box-shadow-0-2-4-0 d-none"
-                                    id="add-task-category-list">
+                                id="add-task-category-list">
 
-                                </div>
+                            </div>
 
                         </div>
 

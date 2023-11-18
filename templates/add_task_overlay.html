@@ -29,19 +29,38 @@
 
                     <!-- add new task left side title -->
                     <section class="add-new-task-subcontainer">
+
                         <label class="f-s-w-20px-400">
                             Title
                             <span style="color: red">*</span>
                         </label>
+
                         <input required class="add-new-task-input f-s-w-20px-400" type="text" id="add-task-input-title"
                             placeholder="Enter a title">
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task left side description -->
                     <section class="add-new-task-subcontainer">
-                        <label class="f-s-w-20px-400">Description</label>
-                        <textarea class="add-new-task-textarea f-s-w-20px-400" id="add-task-textarea-description"
-                            placeholder="Enter a Description"></textarea>
+
+                        <label class="f-s-w-20px-400">
+                            Description
+                            <span style="color: red">*</span>
+                        </label>
+
+                        <textarea required class="add-new-task-textarea f-s-w-20px-400"
+                            id="add-task-textarea-description" placeholder="Enter a Description"></textarea>
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task left side assigned to -->
@@ -127,12 +146,20 @@
 
                     <!-- add new task right side due date -->
                     <section class="add-new-task-subcontainer">
+
                         <label class=" f-s-w-20px-400">
                             Due date
                             <span style="color: red">*</span>
                         </label>
+
                         <input required class="add-new-task-input f-s-w-20px-400" type="date" id="add-task-input-date"
                             onmouseover="setDateOfTodayForDatepicker('add-task-input-date');">
+
+                        <!-- warning this field is required -->
+                        <span class="add-new-task-wrong-message-under-inputs">
+                            This field is required
+                        </span>
+
                     </section>
 
                     <!-- add new task right side prio -->
@@ -171,10 +198,17 @@
                     <!-- add new task right side category -->
                     <section class="add-new-task-subcontainer" onclick="isolateFromOderEvents(event)">
 
-                        <label class="f-s-w-20px-400">
-                            Category
-                            <span style="color: red">*</span>
-                        </label>
+                        <div class="add-task-category-headline-area">
+                            <label class="f-s-w-20px-400">
+                                Category
+                                <span style="color: red">*</span>
+                            </label>
+
+                            <!-- warning this field is required -->
+                            <span class="add-new-task-wrong-message-under-inputs">
+                                This field is required
+                            </span>
+                        </div>
 
                         <div class="add-new-task-input-dropdown-area background-color-white b-top-left-radius b-top-right-radius
                         b-bottom-left-radius b-bottom-right-radius" id="add-task-wrapper-category">
@@ -285,7 +319,8 @@
                 <!-- add new task button area -->
                 <div class="button-area">
 
-                    <button type="button" class="add-new-task-btn-left btn-white" onclick="openOrCloseAddTaskCard('close');">
+                    <button type="button" class="add-new-task-btn-left btn-white"
+                        onclick="openOrCloseAddTaskCard('close');">
                         <span class="f-s-w-20px-400">Clear</span>
                         <div class="btn-white-img"></div>
                     </button>
