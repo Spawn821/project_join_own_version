@@ -55,6 +55,38 @@
     gap: 8px;
 }
 
+.add-new-task-wrong-message-under-inputs {
+    visibility: hidden;
+    width: 100%;
+    font-family: "Poppins";
+    font-size: 12px;
+    line-height: 14px;
+    color: rgb(255, 129, 144);
+    margin-bottom: -16px;
+}
+
+.add-new-task-subcontainer:has(:focus:invalid) {
+    &>input {
+        border-color: rgb(255, 129, 144);
+    }
+
+    & .input-img-area >input {
+        border-color: rgb(255, 129, 144);
+    }
+
+    & .input-img {
+        border-color: rgb(255, 129, 144);
+    }
+
+    &>textarea {
+        border-color: rgb(255, 129, 144);
+    }
+    
+    & .add-new-task-wrong-message-under-inputs {
+        visibility: visible;
+    }
+}
+
 .add-new-task-input {
     height: calc(48px - 24px);
     width: calc(440px - 42px);
@@ -235,6 +267,22 @@
     }
 }
 
+.add-task-category-headline-area {
+    width: 100%;
+    display: inline-flex;
+    align-items: flex-end;
+
+    &>label {
+        display: flex;
+        gap: 4px;
+    }
+
+    & .add-new-task-wrong-message-under-inputs {
+        margin-bottom: 0 !important;
+        text-align: right;
+    }
+}
+
 .add-task-category {
     display: flex;
     justify-content: space-between;
@@ -399,7 +447,7 @@
     gap: 80px;
 }
 
-#add_task_mobile_html:not(.add-new-task-btn-left) .add-new-task-required-buttons-area{
+#add_task_mobile_html:not(.add-new-task-btn-left) .add-new-task-required-buttons-area {
     width: 102%;
     position: sticky;
     bottom: 0;

@@ -254,7 +254,7 @@ input::-webkit-inner-spin-button {
     gap: 4px;
 }
 
-.input-img-area:has(input:not(:read-only)):focus-within .input-img {
+.input-img-area:focus-within .input-img {
     border-color: rgb(41, 170, 227);
 }
 
@@ -277,6 +277,7 @@ textarea::placeholder {
 textarea:focus {
     border-color: rgb(41, 170, 227);
 }
+
 
 
 
