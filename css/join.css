@@ -37,7 +37,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    width: 232px;
+    min-width: 232px;
     background-color: rgb(42, 54, 71);
 }
 
@@ -224,6 +224,10 @@
     height: 32px;
     width: 32px;
     object-fit: contain;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .topbar-user-profile {
@@ -298,7 +302,6 @@
     z-index: 3;
 }
 
-
-.join-overlay {
-    position: absolute;
+.join-transparent-background-overlay-add-new-contact {
+    z-index: 4;
 }

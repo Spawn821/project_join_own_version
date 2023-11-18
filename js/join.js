@@ -14,6 +14,7 @@ async function initJoin() {
     await initGlobal();
     topbarUserInitials();
     setSidebarNavActive('summary');
+    lastSelectedTemplate = 'summary_html';
     renderSummary();
 }
 
@@ -183,5 +184,9 @@ function heightAndWidthFromElement(element) {
 
 
 window.addEventListener('resize', () => {
-    overlayWindowPosition('open', currentOverlay);
+    try {
+        overlayWindowPosition('open', currentOverlay);
+    } catch {
+        return;
+    }
 });

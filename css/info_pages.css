@@ -1,11 +1,9 @@
 .contentContainerInfo {
-    height: calc(100dvh - 96px);
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    padding-left: 96px;
-    padding-right: 96px;
-    background-color: #F6F7F8;
+    margin-top: 96px;
+    margin-left: 96px;
+    margin-right: 96px;
 
     &>h1 {
         font-size: 61px;
@@ -38,17 +36,27 @@
         letter-spacing: 0em;
         text-align: left;
     }
+
+    &>.lightBlue {
+        color: #29ABE2;
+    }
+
+    &>.row {
+        display: flex;
+        margin-bottom: 16px;
+    }
+
+    &>.row h2 {
+        margin: 0 48px 0 0 !important;
+    }
 }
 
-.lightBlue {
-    color: #29ABE2;
-}
-
-.row {
+.info-page-headline-area {
     display: flex;
-    margin-bottom: 16px;
-}
+    justify-content: space-between;
+    align-items: center;
 
-.row h2 {
-    margin: 0 48px 0 0 !important;
+    &>img:hover {
+        cursor: pointer;
+    }
 }

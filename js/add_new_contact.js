@@ -8,7 +8,7 @@ let currentContactIndex = 0;
  * @param {integer} i is the index number from the array users and have a default value.
  */
 function openOrCloseAddNewEditContact(id, action, edit=false) {
-    let transparentBackground = document.getElementById('join-transparent-background');
+    let transparentBackground = document.getElementById('join-transparent-background-overlay-add-new-contact');
     let addNewEditContact = document.getElementById(id)
 
     if (action == 'open') {
@@ -80,7 +80,8 @@ async function addNewContact() {
 
     await setItem('users', JSON.stringify(users))
     openOrCloseAddNewEditContact('add_new_contact_html', 'close');
-    showNewContact();
+    lastSelectedTemplate == 'contacts_html' ? showNewContact() : renderAddTaskContactList();
+    addNewContactClear();
 }
 
 
@@ -98,7 +99,6 @@ function showNewContact() {
         behavior: "smooth"
     });
 
-    addNewContactClear();
     openOrCloseAddNewEditContact('edit_contact_html', 'close');
     informationSlidebox('information-slidebox-horizontal', 'Contact is succesfully created');
 }

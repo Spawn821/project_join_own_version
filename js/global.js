@@ -189,6 +189,7 @@ function informationSlidebox(id, message) {
     }, 1050);
 }
 
+let lastSelectedTemplate = '';
 
 /**
  * This function show the in 'name' saved template.
@@ -202,12 +203,12 @@ function showTemplate(name) {
 
     actionsOnTamplates(name);
 
+    if (name != 'help_html' && name != 'privacy_policy_html' && name != 'legal_notice_html') {
+        lastSelectedTemplate = name;
+    }
+
     try {
-        if (name != 'login_html') {
-            header.classList.add('d-none');
-        } else {
-            header.classList.remove('d-none');
-        }
+        name != 'login_html' ? header.classList.add('d-none') : header.classList.remove('d-none');
     } catch {
         return;
     }
@@ -215,6 +216,8 @@ function showTemplate(name) {
 
 
 function actionsOnTamplates(name) {
+    let [helpIcon, topbarNav] = hideTobparNav();
+
     if (name == 'summary_html') {
         renderSummary();
     } else if (name == 'board_html') {
@@ -225,7 +228,21 @@ function actionsOnTamplates(name) {
         renderContacts();
     } else if (name == 'help_html') {
         removeSibebarNavActive();
+        helpIcon.classList.add('v-hidden');
+    } else if (name == 'privacy_policy_html' || name == 'legal_notice_html') {
+        topbarNav.classList.add('v-hidden');
     }
+}
+
+
+function hideTobparNav() {
+    let helpIcon = document.getElementById('topbar-help-icon');
+    let topbarNav = document.getElementById('topbar-nav');
+
+    helpIcon.classList.remove('v-hidden');
+    topbarNav.classList.remove('v-hidden');
+
+    return [helpIcon, topbarNav];
 }
 
 
@@ -242,4 +259,10 @@ function hideAllTemplates() {
             continue;
         }
     }
+}
+
+
+function callLastTemplate() {
+    showTemplate(lastSelectedTemplate);
+    setSidebarNavActive(lastSelectedTemplate.substring(0, lastSelectedTemplate.length - 5));
 }
