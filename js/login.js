@@ -4,6 +4,9 @@
 async function loginInit() {
     checkRememberLogin();
     removeAnimateJoinLogo();
+
+    lastSelectedTemplate = 'login_html';
+    currentWebsite = 'index';
 }
 
 
@@ -186,7 +189,7 @@ function validInput(inputField, user) {
     const validWithUsers = user['email'].toLowerCase().includes(inputField.value.toLowerCase());
     const validWithSign = inputField.value.includes('@');
 
-    return validInput && validWithUsers && validWithSign; 
+    return validInput && validWithUsers && validWithSign;
 }
 
 

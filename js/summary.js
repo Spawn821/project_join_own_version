@@ -11,7 +11,14 @@ function renderSummary() {
     structureTasksInformations();
     findTasksFromCurrentDate();
     findPriorityImgAndColor();
+    setInfoValues(numberAllTasks);
+    greetingsName();
 
+    [numberToDo, numberInPogress, numberAwaitFeedback, numberDone] = [0, 0, 0, 0,];
+}
+
+
+function setInfoValues(numberAllTasks) {
     document.getElementById('summary-to-do-number').innerHTML = numberToDo;
     document.getElementById('summary-done-number').innerHTML = numberDone;
     document.getElementById('summary-priority-img').src = priorityImg;
@@ -20,8 +27,6 @@ function renderSummary() {
     document.getElementById('summary-all-tasks-number').innerHTML = numberAllTasks;
     document.getElementById('summary-progress-number').innerHTML = numberInPogress;
     document.getElementById('summary-feedback-number').innerHTML = numberAwaitFeedback;
-
-    [numberToDo, numberInPogress, numberAwaitFeedback, numberDone] = [0, 0, 0, 0,];
 }
 
 
@@ -88,4 +93,13 @@ function convertDate(dueDate) {
     });
 
     return dueDate;
+}
+
+
+/**
+ * This function sets the current user name as greeting.
+ */
+function greetingsName() {
+    const userName = queryUserName();
+    document.getElementById('summary-greeting-name').innerHTML = userName;
 }

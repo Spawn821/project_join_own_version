@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- sidebar panel -->
+    <div class="sidebar-panel">
+        <img class="sidebar-logo" src="assets/img/join_logo_white.png" alt="join logo image">
+
+        <!-- sidebar nav -->
+        <nav id="sidebar-nav">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('summary_html')" id="sidebar-summary">
+                <div class="sidebar-icon sidebar-icon-summary"></div>
+                <span class="sidebar-text">Summary</span>
+            </a>
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('add_task_html')"
+                id="sidebar-add_task">
+                <div class="sidebar-icon sidebar-icon-add_task"></div>
+                <span class="sidebar-text">Add Task</span>
+            </a>
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('board_html')" id="sidebar-board">
+                <div class="sidebar-icon sidebar-icon-board"></div>
+                <span class="sidebar-text">Board</span>
+            </a>
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('contacts_html')"
+                id="sidebar-contacts">
+                <div class="sidebar-icon sidebar-icon-contacts"></div>
+                <span class="sidebar-text">Contacts</span>
+            </a>
+        </nav>
+
+        <!-- sidebar footer -->
+        <footer class="sidebar-footer">
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('privacy_policy_html')"
+                id="sidebar-privacy_policy">Privacy Policy</a>
+            <a class="sidebar-nav-member sidebar-t-d-none" onclick="showTemplate('legal_notice_html')"
+                id="sidebar-legal_notice">Legal Notice</a>
+        </footer>
+    </div>
+
+</body>
+
+</html>

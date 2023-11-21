@@ -77,20 +77,6 @@ let contactColors = [
     }
 ]
 
-
-let templatesIDIndex = [
-    'login_html',
-    'signup_html',
-    'reset_password_html',
-    'summary_html',
-    'add_task_html',
-    'board_html',
-    'contacts_html',
-    'help_html',
-    'privacy_policy_html',
-    'legal_notice_html'
-]
-
 /**
  * This fuction initialise starting requirements
  */
@@ -189,33 +175,113 @@ function informationSlidebox(id, message) {
     }, 1050);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let templatesLoginIds = [
+    'login-area',
+    'login_html',
+    'signup_html',
+    'reset_password_html',
+    'info-pages-area',
+    'privacy_policy_html',
+    'legal_notice_html'
+];
+
+let templatesJoinIds = [
+    'summary_html',
+    'add_task_html',
+    'board_html',
+    'contacts_html',
+    'help_html',
+    'privacy_policy_html',
+    'legal_notice_html'
+];
+
 let lastSelectedTemplate = '';
 
-/**
- * This function show the in 'name' saved template.
- * @param {string} name is the name from the template.
- */
-function showTemplate(name) {
-    hideAllTemplates();
+let currentWebsite = '';
 
-    const header = document.getElementById('login-header-right');
+function showTemplate(name) {
+    let templatesIDIndex = [];
+    currentWebsite == 'index' ? templatesIDIndex = templatesLoginIds : templatesIDIndex = templatesJoinIds;
+
+    hideAllTemplates(templatesIDIndex);
+
     document.getElementById(`${name}`).classList.remove('d-none');
 
-    actionsOnTamplates(name);
+    currentWebsite == 'index' ? templatesLogin(name) : templatesJoin(name);
 
-    if (name != 'help_html' && name != 'privacy_policy_html' && name != 'legal_notice_html') {
+    if (name != 'privacy_policy_html' && name != 'legal_notice_html' && name != 'help_html') {
         lastSelectedTemplate = name;
     }
 
-    try {
-        name != 'login_html' ? header.classList.add('d-none') : header.classList.remove('d-none');
-    } catch {
-        return;
+}
+
+
+function templatesLogin(name) {
+    if (name == 'login_html' || name == 'signup_html' || name == 'reset_password_html') {
+        actionsOnTamplatesLogin(name);
+    } else {
+        actionsOnTamplatesInfoPages(name);
     }
 }
 
 
-function actionsOnTamplates(name) {
+function actionsOnTamplatesLogin(name) {
+    let loginArea = document.getElementById('login-area');
+    let header = document.getElementById('login-header-right');
+
+    loginArea.classList.remove('d-none');
+
+    name == 'login_html' ? header.classList.remove('d-none') : header.classList.add('d-none');
+}
+
+
+function actionsOnTamplatesInfoPages(name) {
+    let infoPagesArea = document.getElementById('info-pages-area');
+    let sidebarNav = document.getElementById('sidebar-nav');
+    let topbarNav = document.getElementById('topbar-nav');
+    const highlightId = name.substring(0, name.length - 5)
+
+    infoPagesArea.classList.remove('d-none');
+    sidebarNav.classList.add('v-hidden');
+    topbarNav.classList.add('v-hidden');
+    setSidebarNavActive(highlightId);
+}
+
+
+function templatesJoin(name) {
+    const highlightId = name.substring(0, name.length - 5)
+
+    actionsOnTamplatesJoin(name);
+
+    highlightId != 'help' ? setSidebarNavActive(highlightId) : null;
+}
+
+
+function actionsOnTamplatesJoin(name) {
     let [helpIcon, topbarNav] = hideTobparNav();
 
     if (name == 'summary_html') {
@@ -246,10 +312,7 @@ function hideTobparNav() {
 }
 
 
-/**
- * This function close all templates on the index side.
- */
-function hideAllTemplates() {
+function hideAllTemplates(templatesIDIndex) {
     for (let i = 0; i < templatesIDIndex.length; i++) {
         const template = document.getElementById(`${templatesIDIndex[i]}`);
 
@@ -261,8 +324,70 @@ function hideAllTemplates() {
     }
 }
 
+let sidebarNavElements = [
+    'summary',
+    'add_task',
+    'board',
+    'contacts',
+    'privacy_policy',
+    'legal_notice'
+]
+
+
+/**
+ * This function highlighted the current pagename in the navarea on the sidebar that was clicked.
+ * @param {*} pageName defines the name of the page to be linked to.
+ */
+function setSidebarNavActive(pageName) {
+    removeSibebarNavActive();
+
+    let sidebarClickedIcon = '';
+    let sidebarClickedText = '';
+
+    for (let i = 0; i < sidebarNavElements.length; i++) {
+        const navElement = sidebarNavElements[i];
+
+        if (navElement == pageName) {
+            sidebarClickedText = 'sidebar-t-highlighted';
+            sidebarClickedIcon = `sidebar-icon-${navElement}-highlighted`;
+        }
+    }
+
+    setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon);
+}
+
+
+function setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon) {
+    document.getElementById(`sidebar-${pageName}`).classList.add(`${sidebarClickedText}`);
+
+    try {
+        document.getElementById(`sidebar-${pageName}`).children[0].classList.add(`${sidebarClickedIcon}`);
+    } catch {
+        return;
+    }
+}
+
+
+/**
+ * This function removed all highlightes in the navarea on sidebar.
+ */
+function removeSibebarNavActive() {
+    for (let i = 0; i < sidebarNavElements.length; i++) {
+        const navElement = sidebarNavElements[i];
+
+        try {
+            document.getElementById(`sidebar-${navElement}`).classList.remove('sidebar-t-highlighted');
+            document.getElementById(`sidebar-${navElement}`).children[0].classList.remove(`sidebar-icon-${navElement}-highlighted`);
+        } catch {
+            continue;
+        }
+    }
+}
+
 
 function callLastTemplate() {
     showTemplate(lastSelectedTemplate);
-    setSidebarNavActive(lastSelectedTemplate.substring(0, lastSelectedTemplate.length - 5));
+    if (lastSelectedTemplate != 'login_html' && lastSelectedTemplate && 'signup_html' && lastSelectedTemplate != 'reset_password_html') {
+        setSidebarNavActive(lastSelectedTemplate.substring(0, lastSelectedTemplate.length - 5));
+    }
 }

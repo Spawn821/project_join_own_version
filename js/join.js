@@ -1,12 +1,3 @@
-let sidebarNavElements = [
-    'summary',
-    'add_task',
-    'board',
-    'contacts',
-    'privacy_policy',
-    'legal_notice'
-]
-
 /**
  * This fuction initialise starting requirements
  */
@@ -14,69 +5,10 @@ async function initJoin() {
     await initGlobal();
     topbarUserInitials();
     setSidebarNavActive('summary');
-    lastSelectedTemplate = 'summary_html';
     renderSummary();
-}
 
-
-/**
- * This function highlighted the current pagename in the navarea on the sidebar that was clicked.
- * @param {*} pageName defines the name of the page to be linked to.
- */
-function setSidebarNavActive(pageName) {
-    removeSibebarNavActive();
-
-    let sidebarClickedIcon = '';
-    let sidebarClickedText = '';
-
-    for (let i = 0; i < sidebarNavElements.length; i++) {
-        const navElement = sidebarNavElements[i];
-
-        if (navElement == pageName) {
-            sidebarClickedText = 'sidebar-t-highlighted';
-            sidebarClickedIcon = `sidebar-icon-${navElement}-highlighted`;
-        }
-    }
-
-    setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon);
-}
-
-
-function setClassSidebar(pageName, sidebarClickedText, sidebarClickedIcon) {
-    document.getElementById(`sidebar-${pageName}`).classList.add(`${sidebarClickedText}`);
-
-    try {
-        document.getElementById(`sidebar-${pageName}`).children[0].classList.add(`${sidebarClickedIcon}`);
-    } catch {
-        return;
-    }
-}
-
-
-/**
- * This function removed all highlightes in the navarea on sidebar.
- */
-function removeSibebarNavActive() {
-    for (let i = 0; i < sidebarNavElements.length; i++) {
-        const navElement = sidebarNavElements[i];
-
-        try {
-            document.getElementById(`sidebar-${navElement}`).classList.remove('sidebar-t-highlighted');
-            document.getElementById(`sidebar-${navElement}`).children[0].classList.remove(`sidebar-icon-${navElement}-highlighted`);
-        } catch {
-            continue;
-        }
-    }
-}
-
-
-/**
- * This function is called on onload of pages privacypolicy and legalnotice.
- */
-async function initInfoPage() {
-    await includeHTML();
-    document.getElementById('sidebar-nav').style.display = "none";
-    document.getElementById('topbar-nav').style.display = "none";
+    lastSelectedTemplate = 'summary_html';
+    currentWebsite = 'join';
 }
 
 
@@ -85,9 +17,9 @@ async function initInfoPage() {
  * @returns username.
  */
 function queryUserName() {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var userName = urlParams.get('name');
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let userName = urlParams.get('name');
 
     return userName;
 }

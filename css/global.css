@@ -234,6 +234,12 @@ input::-webkit-inner-spin-button {
     border-bottom-left-radius: 10px;
 }
 
+@media (max-width: 700px) {
+    .input-whitout-border-right {
+        width: calc(364px - 42px - 37px);
+    }
+}
+
 .input-img-area {
     display: flex;
     align-items: center;
@@ -426,6 +432,14 @@ select {
     justify-content: center;
     align-items: center;
     gap: 32px;
+}
+
+@media (max-width: 700px) {
+    .button-area {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+    }
 }
 
 

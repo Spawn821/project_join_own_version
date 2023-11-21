@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/topbar.css">
+  <link rel="stylesheet" href="css/info_pages.css">
 
   <!-- scripts -->
   <script src="js/global.js"></script>
@@ -20,43 +23,87 @@
   <script src="js/signup.js"></script>
 </head>
 
-<body class="login-body" onload="initGlobal(); loginInit();">
+<body onload="initGlobal(); loginInit();">
 
-  <!-- login animation overlay join logo -->
-  <div class="login-animation-overlay background-color-white" id="login-animation-overlay">
-  </div>
-  <img class="login-animation-join-logo login-animation-logo" src="assets/img/logo_join.png" id="login-animation-logo">
+  <!-- login area -->
+  <div class="login-area" id="login-area">
 
-  <!-- login header area join -->
-  <header class="login-header">
+    <!-- login animation overlay join logo -->
+    <div class="login-animation-overlay background-color-white" id="login-animation-overlay">
+    </div>
+    <img class="login-animation-join-logo login-animation-logo" src="assets/img/logo_join.png"
+      id="login-animation-logo">
 
-    <!-- login header join logo -->
-    <img class="login-join-logo" src="assets/img/logo_join.png" alt="join logo image">
+    <!-- login header area join -->
+    <header class="login-header">
 
-    <!-- login header right area -->
-    <div class="login-header-right" id="login-header-right">
-      <span class="f-s-w-20px-400">Not a Join user?</span>
-      <button type="button" class="btn-black login-btn-signup f-s-w-16px-700" onclick="showTemplate('signup_html')">
-        Sign up
-      </button>
+      <!-- login header join logo -->
+      <img class="login-join-logo" src="assets/img/logo_join.png" alt="join logo image">
+
+      <!-- login header right area -->
+      <div class="login-header-right login-header-right-top" id="login-header-right">
+        <span class="f-s-w-20px-400">Not a Join user?</span>
+        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700"
+          onclick="showTemplate('signup_html')">
+          Sign up
+        </button>
+      </div>
+
+    </header>
+
+    <!-- include login.html -->
+    <div id="login_html" w3-include-html="components/login.html"></div>
+
+    <!-- include signup.html -->
+    <div id="signup_html" class="d-none" w3-include-html="components/signup.html"></div>
+
+    <!-- include reset_password.html -->
+    <div id="reset_password_html" class="d-none" w3-include-html="components/reset_password.html"></div>
+
+    <!-- login bottom area -->
+    <div class="login-bottom-area">
+
+      <!-- login signup -->
+      <div class="login-header-right login-header-right-bottom" id="login-header-right">
+        <span class="f-s-w-20px-400">Not a Join user?</span>
+        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700"
+          onclick="showTemplate('signup_html')">
+          Sign up
+        </button>
+      </div>
+
+      <!-- login footer -->
+      <footer class="login-footer">
+        <a class="login-link f-s-w-16px-400" onclick="showTemplate('privacy_policy_html')">Privacy Policy</a>
+        <a class="login-link f-s-w-16px-400" onclick="showTemplate('legal_notice_html')">Legal Notice</a>
+      </footer>
+
     </div>
 
-  </header>
+  </div>
 
-  <!-- include login.html -->
-  <div id="login_html" w3-include-html="templates/login.html"></div>
+  <!-- info pages area -->
+  <div class="info-pages-area d-none" id="info-pages-area">
 
-  <!-- include signup.html -->
-  <div id="signup_html" class="d-none" w3-include-html="templates/signup.html"></div>
+    <!-- include sidebar.html -->
+    <div id="sidebar_html" w3-include-html="components/sidebar.html"></div>
 
-  <!-- include reset_password.html -->
-  <div id="reset_password_html" class="d-none" w3-include-html="templates/reset_password.html"></div>
+    <!-- info pages topbar infopage area -->
+    <div class="info-pages-area-subcontainer">
 
-  <!-- login footer -->
-  <footer class="login-footer">
-    <a class="login-link f-s-w-16px-400" href="privacypolicy.html" target="_blank">Privacy Policy</a>
-    <a class="login-link f-s-w-16px-400" href="legalnotice.html" target="_blank">Legal Notice</a>
-  </footer>
+      <!-- include topbar.html -->
+      <div id="topbar_html" w3-include-html="components/topbar.html"></div>
+
+      <!-- info pages.html -->
+      <div id="privacy_policy_html" class="overflow-y-scroll flex-grow"
+        w3-include-html="components/privacy_policy.html"></div>
+
+      <div id="legal_notice_html" class="d-none overflow-y-scroll flex-grow"
+        w3-include-html="components/legal_notice.html"></div>
+
+    </div>
+
+  </div>
 
 
   <!-- information slider vertical -->
