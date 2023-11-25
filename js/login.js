@@ -11,7 +11,7 @@ async function loginInit() {
 
 
 /**
- * Animates the JoinLogo upon first loading of the page in desktop screen.
+ * This function remove the join logo on the login screen after the animation.
  */
 function removeAnimateJoinLogo() {
     setTimeout((() => {

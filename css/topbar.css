@@ -24,6 +24,19 @@
     padding-right: 40px;
 }
 
+@media (max-width: 900px) {
+    .topbar-panel {
+        height: 80px;
+        padding: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        &>.f-s-w-20px-400 {
+            display: none;
+        }
+    }
+}
+
 
 
 /* ----------- */
@@ -34,9 +47,12 @@
     display: none;
 }
 
-.topbar-area-headline {
-    font-size: 20px;
-    font-weight: 400;
+@media (max-width: 900px) {
+    .topbar-logo {
+        display: block;
+        height: 39px;
+        width: 32px;
+    }
 }
 
 

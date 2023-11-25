@@ -6,9 +6,35 @@ async function initJoin() {
     topbarUserInitials();
     setSidebarNavActive('summary');
     renderSummary();
+    removeAnimateGreetings();
+
 
     lastSelectedTemplate = 'summary_html';
     currentWebsite = 'join';
+}
+
+
+/**
+ * This function remove the greeting on the summary page after the animation.
+ */
+function removeAnimateGreetings() {
+    const windowSize = window.matchMedia("(max-width: 1200px)");
+    let panel = document.getElementById('summary-panel');
+    let greetings = document.getElementById('summary-greeting-background');
+    let greetingsText = document.getElementById('summary-greeting-text');
+
+    if (windowSize) {
+        panel.classList.add('summary-panel-animation');
+        greetings.classList.remove('d-none');
+
+        setTimeout(() => greetingsText.classList.remove('v-hidden'), 150);
+
+        setTimeout((() => {
+            panel.classList.remove('summary-panel-animation');
+            greetingsText.classList.add('v-hidden');
+            greetings.classList.add('d-none');
+        }), 2800);
+    }
 }
 
 

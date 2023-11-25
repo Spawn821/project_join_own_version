@@ -101,5 +101,11 @@ function convertDate(dueDate) {
  */
 function greetingsName() {
     const userName = queryUserName();
-    document.getElementById('summary-greeting-name').innerHTML = userName;
+    const elements = document.querySelectorAll('#summary-greeting-name');
+
+    for (let i = 0; i < elements.length; i++) {
+        let element = elements[i]
+
+        element.innerHTML = userName;
+    }
 }

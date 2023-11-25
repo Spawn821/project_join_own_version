@@ -10,7 +10,7 @@
 <body>
 
     <!-- summary panel -->
-    <div class="summary-panel">
+    <div class="summary-panel summary-panel-animation" id="summary-panel">
 
         <!-- summary headline -->
         <div class="summary-headline-area">
@@ -29,7 +29,7 @@
 
                 <!-- summary information first row container -->
                 <div class="summary-information-row">
-                    <div class="summary-container-medium" onclick="getBoard();">
+                    <div class="summary-container-medium" onclick="showTemplate('board_html');">
                         <div class="summary-edit">
                             <div class="summary-edit-icon"></div>
                         </div>
@@ -38,7 +38,7 @@
                             <span class="f-s-w-20px-400">To-Do</span>
                         </div>
                     </div>
-                    <div class="summary-container-medium" onclick="getBoard();">
+                    <div class="summary-container-medium" onclick="showTemplate('board_html');">
                         <div class="summary-done">
                             <div class="summary-done-icon"></div>
                         </div>
@@ -50,11 +50,11 @@
                 </div>
 
                 <!-- summary information second row -->
-                <div class="summary-container-large" onclick="getBoard();">
+                <div class="summary-container-large" onclick="showTemplate('board_html');">
                     <div class="summary-priority-task">
                         <div class="summary-priority-icon" id="summary-priority-icon">
-                            <img class="summary-priority-icon-img" src="/assets/img/icon_urgent_white.png" alt="priority image"
-                                id="summary-priority-img">
+                            <img class="summary-priority-icon-img" src="/assets/img/icon_urgent_white.png"
+                                alt="priority image" id="summary-priority-img">
                         </div>
                         <div class="summary-text-container">
                             <span class="f-s-w-64px-600" id="summary-priority-number">1</span>
@@ -70,15 +70,15 @@
 
                 <!-- summary information third row -->
                 <div class="summary-information-row">
-                    <div class="summary-container-small" onclick="getBoard();">
+                    <div class="summary-container-small" onclick="showTemplate('board_html');">
                         <span class="f-s-w-64px-600" id="summary-all-tasks-number">1</span>
                         <span class="f-s-w-20px-400">Tasks in<br>Board</span>
                     </div>
-                    <div class="summary-container-small" onclick="getBoard();">
+                    <div class="summary-container-small" onclick="showTemplate('board_html');">
                         <span class="f-s-w-64px-600" id="summary-progress-number">1</span>
                         <span class="f-s-w-20px-400">Tasks in<br>Progress</span>
                     </div>
-                    <div class="summary-container-small" onclick="getBoard();">
+                    <div class="summary-container-small" onclick="showTemplate('board_html');">
                         <span class="f-s-w-64px-600" id="summary-feedback-number">1</span>
                         <span class="f-s-w-20px-400">Awaiting<br>Feedback</span>
                     </div>
@@ -87,13 +87,21 @@
             </div>
 
             <!-- summary information greeting -->
-            <div class="summary-greeting">
+            <div class="summary-greeting summary-greeting-desktop">
                 <span class="f-s-w-47px-500" id="summary-greeting">Welcome,</span>
-                <span class="f-s-w-64px-700" style="color: #29ABE2;" id="summary-greeting-name">Guest</span>
+                <span class="f-s-w-64px-700" style="color: #29ABE2;" id="summary-greeting-name"></span>
             </div>
 
         </div>
 
+    </div>
+
+    <!-- summary information greeting mobile -->
+    <div class="summary-greeting-background" id="summary-greeting-background">
+        <div class="summary-greeting v-hidden" id="summary-greeting-text">
+            <span class="f-s-w-47px-500" id="summary-greeting">Welcome,</span>
+            <span class="f-s-w-64px-700" style="color: #29ABE2;" id="summary-greeting-name"></span>
+        </div>
     </div>
 
 </body>

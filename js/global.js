@@ -175,30 +175,6 @@ function informationSlidebox(id, message) {
     }, 1050);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let templatesLoginIds = [
     'login-area',
     'login_html',
@@ -223,6 +199,11 @@ let lastSelectedTemplate = '';
 
 let currentWebsite = '';
 
+/**
+ * This functions show's the template 'login.html', 'summary.html', 'contacts.html'...
+ * she decides between 'index.html' and 'join.hmtl' the main pages.
+ * @param {string} name is the name from the template.
+ */
 function showTemplate(name) {
     let templatesIDIndex = [];
     currentWebsite == 'index' ? templatesIDIndex = templatesLoginIds : templatesIDIndex = templatesJoinIds;
@@ -240,6 +221,10 @@ function showTemplate(name) {
 }
 
 
+/**
+ * This function calls all actions to load the template like hide or visible elements from login page.
+ * @param {string} name is the name from the template.
+ */
 function templatesLogin(name) {
     if (name == 'login_html' || name == 'signup_html' || name == 'reset_password_html') {
         actionsOnTamplatesLogin(name);
@@ -251,11 +236,18 @@ function templatesLogin(name) {
 
 function actionsOnTamplatesLogin(name) {
     let loginArea = document.getElementById('login-area');
-    let header = document.getElementById('login-header-right');
+    let headerRight = document.getElementById('login-header-right');
+    let headerBottom = document.getElementById('login-header-bottom');
 
     loginArea.classList.remove('d-none');
 
-    name == 'login_html' ? header.classList.remove('d-none') : header.classList.add('d-none');
+    if (name == 'login_html') {
+        headerRight.classList.remove('d-none');
+        headerBottom.classList.remove('d-none');
+    } else {
+        headerRight.classList.add('d-none');
+        headerBottom.classList.add('d-none');
+    }
 }
 
 
@@ -272,6 +264,10 @@ function actionsOnTamplatesInfoPages(name) {
 }
 
 
+/**
+ * This function calls all actions to load the template like hide or visible elements from login page.
+ * @param {string} name is the name from the template.
+ */
 function templatesJoin(name) {
     const highlightId = name.substring(0, name.length - 5)
 
@@ -333,7 +329,6 @@ let sidebarNavElements = [
     'legal_notice'
 ]
 
-
 /**
  * This function highlighted the current pagename in the navarea on the sidebar that was clicked.
  * @param {*} pageName defines the name of the page to be linked to.
@@ -385,9 +380,12 @@ function removeSibebarNavActive() {
 }
 
 
+/**
+ * This function go's back to the last template expet the info pages.
+ */
 function callLastTemplate() {
     showTemplate(lastSelectedTemplate);
-    if (lastSelectedTemplate != 'login_html' && lastSelectedTemplate && 'signup_html' && lastSelectedTemplate != 'reset_password_html') {
+    if (lastSelectedTemplate != 'login_html' && lastSelectedTemplate != 'signup_html' && lastSelectedTemplate != 'reset_password_html') {
         setSidebarNavActive(lastSelectedTemplate.substring(0, lastSelectedTemplate.length - 5));
     }
 }

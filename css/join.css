@@ -6,6 +6,12 @@
     display: flex;
 }
 
+@media (max-width: 900px) {
+    .join-body {
+        flex-direction: column-reverse;
+    }
+}
+
 /* ---------- */
 /* join panel */
 /* ---------- */
@@ -14,6 +20,12 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+@media (max-width: 900px) {
+    #summary_html {
+        overflow: hidden;
+    }
 }
 
 .join-transparent-background {
