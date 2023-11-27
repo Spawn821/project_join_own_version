@@ -264,7 +264,7 @@
 @media (max-width: 900px) {
     .summary-container-large {
         height: 110px;
-        width: 396px;
+        width: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -388,7 +388,7 @@
 @media (max-width: 900px) {
     .summary-container-small {
         height: 116px;
-        width: 116px;
+        width: 114.75px;
 
         &>.f-s-w-64px-600 {
             font-size: 47px;
@@ -461,6 +461,15 @@
 
     .summary-greeting {
         align-items: center;
+        text-align: center;
+
+        &>.f-s-w-47px-500 {
+            font-size: 36px;
+        }
+
+        &>.f-s-w-64px-700 {
+            font-size: 47px;
+        }
     }
 
     .summary-greeting-desktop {

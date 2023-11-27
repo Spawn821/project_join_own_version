@@ -84,10 +84,10 @@
         gap: 4px;
         border-radius: 10px;
         padding: 0;
-    }
 
-    &>f-s-w-16px-400 {
-        font-size: 14px;
+        &>.f-s-w-16px-400 {
+            font-size: 14px;
+        }
     }
 }
 

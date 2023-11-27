@@ -23,7 +23,7 @@ function removeAnimateGreetings() {
     let greetings = document.getElementById('summary-greeting-background');
     let greetingsText = document.getElementById('summary-greeting-text');
 
-    if (windowSize) {
+    if (windowSize.matches) {
         panel.classList.add('summary-panel-animation');
         greetings.classList.remove('d-none');
 
@@ -65,8 +65,23 @@ function topbarUserInitials() {
  */
 function showOrHideContextMenu() {
     let contextMenu = document.getElementById('context-menu-panel');
+    const windowSize = window.matchMedia("(max-width: 900px)");
 
-    contextMenu.classList.toggle('d-none');
+    if (!windowSize.matches) {
+        contextMenu.classList.toggle('d-none');
+    } else {
+        if (contextMenu.classList.contains('d-none')) {
+            contextMenu.classList.remove('d-none');
+            contextMenu.classList.add('context-menu-panel-in');
+            contextMenu.classList.remove('context-menu-panel-out');
+        } else {
+            contextMenu.classList.remove('context-menu-panel-in');
+            contextMenu.classList.add('context-menu-panel-out');
+            setTimeout(() => {
+                contextMenu.classList.add('d-none');
+            }, 250);
+        }
+    }
 }
 
 
@@ -146,5 +161,32 @@ window.addEventListener('resize', () => {
         overlayWindowPosition('open', currentOverlay);
     } catch {
         return;
+    }
+});
+
+
+window.addEventListener(('resize'), () => {
+    const windowSize = window.matchMedia('(max-width: 1300px)');
+    const addTaskSidebar = document.getElementById('sidebar-add_task');
+    let addTask = document.getElementById('add_task_html');
+    let addTaskMobile = document.getElementById('add_task_mobile_html');
+
+    if (addTaskSidebar.classList.contains('sidebar-t-highlighted')) {
+        if (windowSize.matches) {
+            addTask.classList.add('d-none');
+            addTaskMobile.classList.remove('d-none');
+        } else {
+            addTask.classList.remove('d-none');
+            addTaskMobile.classList.add('d-none');
+        }
+    }
+});
+
+
+window.addEventListener('resize', () => {
+    const windowSize = window.matchMedia('(max-width: 1200px)');
+
+    if (windowSize.matches) {
+        removeAnimateGreetings();
     }
 });

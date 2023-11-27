@@ -78,6 +78,12 @@
     }
 }
 
+@media (max-width: 900px) {
+    .topbar-icon {
+        display: none;
+    }
+}
+
 .topbar-user-profile {
     display: flex;
     justify-content: center;
@@ -89,11 +95,19 @@
     font-size: 24px;
     font-weight: bold;
     color: rgb(41, 170, 227);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(226, 230, 236);
+    }
 }
 
-.topbar-user-profile:hover {
-    cursor: pointer;
-    background-color: rgb(226, 230, 236);
+@media (max-width: 900px) {
+    .topbar-user-profile {
+        height: 40px;
+        width: 40px;
+        font-size: 16px;
+    }
 }
 
 
@@ -103,7 +117,6 @@
 /* ------------ */
 
 #context-menu-panel {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,4 +142,43 @@
 .context-menu-member:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(10, 25, 49);
+}
+
+@media (max-width: 900px) {
+    #context-menu-panel {
+        top: 62px;
+    }
+
+    .context-menu-panel-in {
+        right: 16px;
+        animation-duration: 300ms;
+        animation-name: context-menu-panel-in;
+    }
+
+    @keyframes context-menu-panel-in {
+        from {
+            right: calc(-150px - 50px);
+        }
+
+        to {
+            right: 16px;
+        }
+    }
+
+    .context-menu-panel-out {
+        top: 62px;
+        right: calc(-150px - 50px);
+        animation-duration: 300ms;
+        animation-name: context-menu-panel-out;
+    }
+
+    @keyframes context-menu-panel-out {
+        from {
+            right: 16px;
+        }
+
+        to {
+            right: calc(-150px - 50px);
+        }
+    }
 }

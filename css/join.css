@@ -12,6 +12,8 @@
     }
 }
 
+
+
 /* ---------- */
 /* join panel */
 /* ---------- */
@@ -22,9 +24,15 @@
     flex-grow: 1;
 }
 
+@media (max-width: 550px) {
+    #add_task_mobile_html::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 @media (max-width: 900px) {
-    #summary_html {
-        overflow: hidden;
+    #summary_html::-webkit-scrollbar {
+        display: none;
     }
 }
 

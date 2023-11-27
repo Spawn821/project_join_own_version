@@ -271,7 +271,7 @@ input::-webkit-inner-spin-button {
 /* ---------------- */
 
 textarea {
-    padding: 12px 21px;
+    padding: 18px 16px;
     border: 1px solid lightgrey;
     outline: none;
 }

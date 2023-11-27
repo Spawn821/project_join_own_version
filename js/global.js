@@ -188,6 +188,7 @@ let templatesLoginIds = [
 let templatesJoinIds = [
     'summary_html',
     'add_task_html',
+    'add_task_mobile_html',
     'board_html',
     'contacts_html',
     'help_html',
@@ -206,18 +207,16 @@ let currentWebsite = '';
  */
 function showTemplate(name) {
     let templatesIDIndex = [];
+
     currentWebsite == 'index' ? templatesIDIndex = templatesLoginIds : templatesIDIndex = templatesJoinIds;
 
     hideAllTemplates(templatesIDIndex);
-
-    document.getElementById(`${name}`).classList.remove('d-none');
 
     currentWebsite == 'index' ? templatesLogin(name) : templatesJoin(name);
 
     if (name != 'privacy_policy_html' && name != 'legal_notice_html' && name != 'help_html') {
         lastSelectedTemplate = name;
     }
-
 }
 
 
@@ -226,6 +225,8 @@ function showTemplate(name) {
  * @param {string} name is the name from the template.
  */
 function templatesLogin(name) {
+    document.getElementById(`${name}`).classList.remove('d-none');
+
     if (name == 'login_html' || name == 'signup_html' || name == 'reset_password_html') {
         actionsOnTamplatesLogin(name);
     } else {
@@ -269,7 +270,14 @@ function actionsOnTamplatesInfoPages(name) {
  * @param {string} name is the name from the template.
  */
 function templatesJoin(name) {
-    const highlightId = name.substring(0, name.length - 5)
+    const highlightId = name.substring(0, name.length - 5);
+    const windowSize = window.matchMedia('(max-width: 1300px)');
+
+    if (windowSize.matches && name == 'add_task_html') {
+        document.getElementById('add_task_mobile_html').classList.remove('d-none');
+    } else {
+        document.getElementById(`${name}`).classList.remove('d-none');
+    }
 
     actionsOnTamplatesJoin(name);
 
@@ -284,7 +292,7 @@ function actionsOnTamplatesJoin(name) {
         renderSummary();
     } else if (name == 'board_html') {
         renderBoardShortCards();
-    } else if (name == 'add_task_html') {
+    } else if (name == 'add_task_html' || name == 'add_task_mobile_html') {
         currentAddTask = name;
     } else if (name == 'contacts_html') {
         renderContacts();
