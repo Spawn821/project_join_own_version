@@ -28,11 +28,23 @@
     #add_task_mobile_html::-webkit-scrollbar {
         display: none;
     }
+
+    #board_html::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
     #summary_html::-webkit-scrollbar {
         display: none;
+    }
+
+    #add_task_mobile_html {
+        height: calc(100vh - 160px);
+    }
+
+    #board_html {
+        height: calc(100vh - 160px);
     }
 }
 

@@ -279,21 +279,21 @@ function templatesJoin(name) {
         document.getElementById(`${name}`).classList.remove('d-none');
     }
 
-    actionsOnTamplatesJoin(name);
+    actionsOnTamplatesJoin(name, windowSize);
 
     highlightId != 'help' ? setSidebarNavActive(highlightId) : null;
 }
 
 
-function actionsOnTamplatesJoin(name) {
+function actionsOnTamplatesJoin(name, windowSize) {
     let [helpIcon, topbarNav] = hideTobparNav();
 
     if (name == 'summary_html') {
         renderSummary();
     } else if (name == 'board_html') {
         renderBoardShortCards();
-    } else if (name == 'add_task_html' || name == 'add_task_mobile_html') {
-        currentAddTask = name;
+    } else if (name == 'add_task_html') {
+        windowSize.matches ? currentAddTask = 'add_task_mobile_html': currentAddTask = name;
     } else if (name == 'contacts_html') {
         renderContacts();
     } else if (name == 'help_html') {

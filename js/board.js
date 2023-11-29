@@ -220,12 +220,17 @@ function scrollToDroppedShortCard() {
 function openOrCloseAddTaskCard(action, boardStatus) {
     let transparentBackground = document.getElementById('join-transparent-background');
     let addTaskOverlay = document.getElementById('add_task_overlay_html');
+    const windowSize = window.matchMedia('(max-width: 1150px)');
     setBoardStatus = boardStatus;
 
-    if (action == 'open') {
-        openAddTaskCard(transparentBackground, addTaskOverlay);
+    if (!windowSize.matches) {
+        if (action == 'open') {
+            openAddTaskCard(transparentBackground, addTaskOverlay);
+        } else {
+            closeAddTaskCard(transparentBackground, addTaskOverlay);
+        }
     } else {
-        closeAddTaskCard(transparentBackground, addTaskOverlay);
+        showTemplate('add_task_html');
     }
 }
 

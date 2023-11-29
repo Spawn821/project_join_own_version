@@ -507,6 +507,14 @@ select {
 
 }
 
+@media (max-width: 550px) {
+    .contact-name-area {
+        &>.f-s-w-20px-400 {
+            font-size: 16px;
+        }
+    }
+}
+
 .contact-initals-icon {
     height: 42px;
     width: 42px;

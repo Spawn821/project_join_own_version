@@ -149,6 +149,12 @@
     align-items: center;
 }
 
+@media (max-width: 550px) {
+    .add-new-task-input-dropdown-area {
+        width: 396px;
+    }
+}
+
 .add-new-task-input-dropdown {
     width: calc(440px - 42px - 37px);
 }
@@ -209,12 +215,25 @@
 }
 
 .add-new-contact-button-area {
+    display: flex;
+    justify-content: center;
     padding: 8px;
 }
 
 .add-new-contact-button {
     height: calc(56px - 24px);
     width: calc(408px - 24px);
+}
+
+@media (max-width: 550px) {
+    .add-new-contact-button {
+        height: calc(51px - 24px);
+        width: calc(374px - 24px);
+
+        &>.f-s-w-21px-700 {
+            font-size: 18px;
+        }
+    }
 }
 
 .add-new-contact-button-icon {
@@ -365,6 +384,14 @@
     padding: 12px 16px;
 }
 
+@media (max-width: 550px) {
+    .add-task-category {
+        &>.f-s-w-20px-400 {
+            font-size: 16px;
+        }
+    }
+}
+
 .add-task-category:hover {
     cursor: pointer;
     background-color: rgba(0 0 0 / 10%);
@@ -385,6 +412,7 @@
 @media (max-width: 550px) {
     .add-new-task-input-subtask {
         width: calc(396px - 42px - 37px);
+        font-size: 16px;
     }
 }
 
@@ -394,7 +422,7 @@
 
 @media (max-width: 550px) {
     .input-img-area:has(#add-task-add-new-subtask:not(.d-none)) .add-new-task-input-subtask {
-        width: calc(440px - 42px - 37px - 35.5px);
+        width: calc(396px - 42px - 37px - 35.5px);
     }
 }
 
@@ -467,6 +495,24 @@
 
         .v-hidden {
             visibility: visible;
+        }
+    }
+
+    @media (max-width: 550px) {
+        & .add-new-task-input-subtask {
+            width: calc(396px - 42px - 37px - 35.5px);
+        }
+
+        & .input-whitout-border-right {
+            height: 34px;
+        }
+
+        & .input-img {
+            height: 34px;
+        }
+
+        & li {
+            margin-top: 14px;
         }
     }
 }
@@ -575,12 +621,6 @@
     padding-top: 16px;
     padding-bottom: 16px;
     background-color: rgb(245, 245, 245);
-}
-
-@media (max-width: 900px) {
-    #add_task_mobile_html {
-        height: calc(100vh - 160px);
-    }
 }
 
 

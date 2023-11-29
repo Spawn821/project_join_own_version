@@ -175,9 +175,11 @@ window.addEventListener(('resize'), () => {
         if (windowSize.matches) {
             addTask.classList.add('d-none');
             addTaskMobile.classList.remove('d-none');
+            currentAddTask = 'add_task_mobile_html';
         } else {
             addTask.classList.remove('d-none');
             addTaskMobile.classList.add('d-none');
+            currentAddTask = 'add_task_html';
         }
     }
 });
