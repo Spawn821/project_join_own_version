@@ -318,6 +318,14 @@
             height: 24px;
         }
     }
+
+    &:has(img[src='/assets/img/icon_help.png']) {
+        background-color: rgb(255, 255, 255);
+
+        & .summary-priority-icon-img {
+            height: 48px;
+        }
+    }
 }
 
 @media (max-width: 900px) {

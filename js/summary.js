@@ -53,13 +53,18 @@ function structureTasksInformations() {
  */
 function findTasksFromCurrentDate() {
     const currentDate = new Date();
+    let i = 0;
 
     const tasksDate = tasks.filter((task) => {
         const date = new Date(task.dueDate);
 
         if (date > currentDate) {
             return task;
+        } else if (i == tasks.length - 1) {
+            return task;
         }
+
+        i++
     });
 
     tasksDate.sort((a, b) => new Date(a['dueDate']) - new Date(b['dueDate']));
@@ -78,6 +83,8 @@ function findPriorityImgAndColor() {
         priorityImg = '/assets/img/icon_medium_white.png';
     } else if (priorityText == 'Low') {
         priorityImg = '/assets/img/icon_low_white.png';
+    } else {
+        priorityImg = '/assets/img/icon_help.png';
     }
 }
 

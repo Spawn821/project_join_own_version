@@ -276,6 +276,12 @@ textarea {
     outline: none;
 }
 
+@media (max-width: 550px) {
+    textarea {
+        padding: 18px 21px;
+    }
+}
+
 textarea::placeholder {
     color: rgb(209, 209, 209);
 }

@@ -159,6 +159,7 @@ function heightAndWidthFromElement(element) {
 window.addEventListener('resize', () => {
     try {
         overlayWindowPosition('open', currentOverlay);
+        addOrRemoveScrollbarDetailCard();
     } catch {
         return;
     }

@@ -161,6 +161,17 @@
     background-image: url('/assets/img/icon_contacts_side_hover.png') !important;
 }
 
+@media (max-width: 900px) {
+    .sidebar-add-task_board {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: calc((100% - 160px) / 3);
+    }
+}
+
 
 
 /* -------------- */

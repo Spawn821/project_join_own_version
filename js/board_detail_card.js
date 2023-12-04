@@ -11,6 +11,7 @@ function openDetailCard(i) {
 
     fillDetailCard(i);
     overlayWindowPosition('open', detailCard);
+    addOrRemoveScrollbarDetailCard();
 
     currentOverlay = detailCard;
 }
@@ -28,6 +29,19 @@ function closeDetailCard() {
         taskEdit ? showDroppedShortCard() : null;
         taskEdit = false;
     }, 240);
+}
+
+
+function addOrRemoveScrollbarDetailCard() {
+    const detailCardHeight = document.getElementById('board-detail-card-panel').offsetHeight;
+    const windowHeight = document.documentElement.clientHeight;
+    let table = document.getElementById('board-detail-card-table');
+
+    if (detailCardHeight >= windowHeight - 64 - 32) {
+        table.classList.add('overflow-y-scroll');
+    } else {
+        table.classList.remove('overflow-y-scroll');
+    }
 }
 
 

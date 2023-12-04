@@ -300,14 +300,18 @@ async function createOrEditTask(action, boardStatus) {
 
 function createTask(title, description, dueDate, prioImg) {
     let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
+    const windowSize = window.matchMedia('(max-width: 1150px)');
+
     tasks.push(returnTask(title, description, dueDate, prioImg, categoryExist(category.value)));
-    openOrCloseAddTaskCard('close');
+
+    windowSize.matches ? clearTask() : openOrCloseAddTaskCard('close', '');
     showNewTaskOnBoard();
 }
 
 
 function editTask(title, description, dueDate, prioImg) {
     tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory));
+
     closeEditTask();
     renderBoardShortCards();
 }
