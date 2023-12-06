@@ -22,6 +22,7 @@
         width: 400px;
         margin-top: 40px;
         margin-left: calc((100vw - 400px) / 2);
+        margin-right: 0;
     }
 }
 
@@ -163,6 +164,7 @@
 }
 
 .board-status-column {
+    position: relative;
     min-height: 688px;
     width: 280px;
     display: flex;
@@ -191,6 +193,7 @@
 
 @media (max-width: 1550px) {
     .board-status-column-headline {
+        position: static;
         padding: 0;
         padding-bottom: 16px;
 

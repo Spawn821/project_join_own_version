@@ -3,7 +3,7 @@ const boardStatus = [
     'In progress',
     'Await feedback',
     'Done'
-]
+];
 
 
 /* === BOARD SHORT CARDS === */
