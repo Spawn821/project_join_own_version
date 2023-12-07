@@ -292,7 +292,6 @@ function actionsOnTamplatesJoin(name, windowSize) {
         renderSummary();
     } else if (name == 'board_html') {
         renderBoardShortCards();
-/*         boardElementsForDragAndDropMobile(); */
     } else if (name == 'add_task_html') {
         windowSize.matches ? currentAddTask = 'add_task_mobile_html': currentAddTask = name;
     } else if (name == 'contacts_html') {
@@ -319,7 +318,7 @@ function hideTobparNav() {
 
 function hideAllTemplates(templatesIDIndex) {
     for (let i = 0; i < templatesIDIndex.length; i++) {
-        const template = document.getElementById(`${templatesIDIndex[i]}`);
+        let template = document.getElementById(`${templatesIDIndex[i]}`);
 
         try {
             template.classList.add('d-none');

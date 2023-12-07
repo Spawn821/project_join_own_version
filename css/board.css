@@ -13,6 +13,7 @@
 
 @media (max-width: 1550px) {
     .board-panel {
+        margin-right: 0;
         gap: 24px;
     }
 }
@@ -22,7 +23,6 @@
         width: 400px;
         margin-top: 40px;
         margin-left: calc((100vw - 400px) / 2);
-        margin-right: 0;
     }
 }
 
@@ -271,7 +271,7 @@
     .board-status-task-container {
         display: flex;
         flex-direction: row;
-        overflow-x: scroll;
+        overflow: scroll;
         padding: 8px;
 
         &::-webkit-scrollbar {
