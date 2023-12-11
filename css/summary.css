@@ -149,7 +149,7 @@
 }
 
 .summary-edit-icon {
-    background-image: url('/assets/img/icon_edit_white.png');
+    background-image: url('../assets/img/icon_edit_white.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -180,7 +180,7 @@
 }
 
 .summary-done-icon {
-    background-image: url('/assets/img/icon_done_white.png');
+    background-image: url('../assets/img/icon_done_white.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -231,7 +231,7 @@
     }
 
     .summary-edit-icon {
-        background-image: url('/assets/img/icon_edit_black.png');
+        background-image: url('../assets/img/icon_edit_black.png');
         background-size: 40px;
     }
 
@@ -246,7 +246,7 @@
     }
 
     .summary-done-icon {
-        background-image: url('/assets/img/icon_done_black.png');
+        background-image: url('../assets/img/icon_done_black.png');
     }
 }
 
@@ -295,7 +295,7 @@
     justify-content: center;
     align-items: center;
 
-    &:has(img[src='/assets/img/icon_urgent_white.png']) {
+    &:has(img[src='assets/img/icon_urgent_white.png']) {
         background-color: rgb(255, 61, 0);
 
         & .summary-priority-icon-img {
@@ -303,7 +303,7 @@
         }
     }
 
-    &:has(img[src='/assets/img/icon_medium_white.png']) {
+    &:has(img[src='assets/img/icon_medium_white.png']) {
         background-color: rgb(255, 168, 0);
 
         & .summary-priority-icon-img {
@@ -311,7 +311,7 @@
         }
     }
 
-    &:has(img[src='/assets/img/icon_low_white.png']) {
+    &:has(img[src='assets/img/icon_low_white.png']) {
         background-color: rgb(122, 226, 40);
 
         & .summary-priority-icon-img {
@@ -319,7 +319,7 @@
         }
     }
 
-    &:has(img[src='/assets/img/icon_help.png']) {
+    &:has(img[src='assets/img/icon_help.png']) {
         background-color: rgb(255, 255, 255);
 
         & .summary-priority-icon-img {

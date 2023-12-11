@@ -78,13 +78,13 @@ function findTasksFromCurrentDate() {
  */
 function findPriorityImgAndColor() {
     if (priorityText == 'Urgent') {
-        priorityImg = '/assets/img/icon_urgent_white.png';
+        priorityImg = 'assets/img/icon_urgent_white.png';
     } else if (priorityText == 'Medium') {
-        priorityImg = '/assets/img/icon_medium_white.png';
+        priorityImg = 'assets/img/icon_medium_white.png';
     } else if (priorityText == 'Low') {
-        priorityImg = '/assets/img/icon_low_white.png';
+        priorityImg = 'assets/img/icon_low_white.png';
     } else {
-        priorityImg = '/assets/img/icon_help.png';
+        priorityImg = 'assets/img/icon_help.png';
     }
 }
 

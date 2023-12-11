@@ -99,19 +99,19 @@
 }
 
 .sidebar-icon-summary {
-    background-image: url('/assets/img/icon_summary_side.png');
+    background-image: url('../assets/img/icon_summary_side.png');
 }
 
 .sidebar-icon-add_task {
-    background-image: url('/assets/img/icon_add_task_side.png');
+    background-image: url('../assets/img/icon_add_task_side.png');
 }
 
 .sidebar-icon-board {
-    background-image: url('/assets/img/icon_board_side.png');
+    background-image: url('../assets/img/icon_board_side.png');
 }
 
 .sidebar-icon-contacts {
-    background-image: url('/assets/img/icon_contacs_side.png');
+    background-image: url('../assets/img/icon_contacs_side.png');
 }
 
 .sidebar-t-d-none {
@@ -129,36 +129,36 @@
     background-color: rgb(10, 25, 49);
 
     .sidebar-icon-summary {
-        background-image: url('/assets/img/icon_summary_side_hover.png');
+        background-image: url('../assets/img/icon_summary_side_hover.png');
     }
 
     .sidebar-icon-add_task {
-        background-image: url('/assets/img/icons_add_task_side_hover.png');
+        background-image: url('../assets/img/icons_add_task_side_hover.png');
     }
 
     .sidebar-icon-board {
-        background-image: url('/assets/img/icon_board_side_hover.png');
+        background-image: url('../assets/img/icon_board_side_hover.png');
     }
 
     .sidebar-icon-contacts {
-        background-image: url('/assets/img/icon_contacts_side_hover.png');
+        background-image: url('../assets/img/icon_contacts_side_hover.png');
     }
 }
 
 .sidebar-icon-summary-highlighted {
-    background-image: url('/assets/img/icon_summary_side_hover.png') !important;
+    background-image: url('../assets/img/icon_summary_side_hover.png') !important;
 }
 
 .sidebar-icon-add_task-highlighted {
-    background-image: url('/assets/img/icons_add_task_side_hover.png') !important;
+    background-image: url('../assets/img/icons_add_task_side_hover.png') !important;
 }
 
 .sidebar-icon-board-highlighted {
-    background-image: url('/assets/img/icon_board_side_hover.png') !important;
+    background-image: url('../assets/img/icon_board_side_hover.png') !important;
 }
 
 .sidebar-icon-contacts-highlighted {
-    background-image: url('/assets/img/icon_contacts_side_hover.png') !important;
+    background-image: url('../assets/img/icon_contacts_side_hover.png') !important;
 }
 
 @media (max-width: 900px) {
