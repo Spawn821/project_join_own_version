@@ -159,7 +159,7 @@
     .board-status-panel {
         display: flex;
         flex-direction: column;
-        gap: calc(24px - 8px);
+        gap: 40px;
     }
 }
 
@@ -269,6 +269,7 @@
 
 @media (max-width: 1550px) {
     .board-status-task-container {
+        min-height: 120px;
         display: flex;
         flex-direction: row;
         overflow: scroll;

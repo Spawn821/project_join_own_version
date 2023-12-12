@@ -193,7 +193,7 @@ async function showDroppedShortCard() {
 
     let shortCard = document.getElementById(`board-short-card-panel_${currentTask}`);
 
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 7; i++) {
         setTimeout(function () {
             shortCard.classList.toggle('board-short-card-mark-dropped');
         }, 350 * i);

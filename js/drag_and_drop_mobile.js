@@ -11,6 +11,9 @@ let boardScrollTop;
 let onScroll;
 let lastTouch = null;
 let saveScroll = 0;
+let taskStartY;
+let taskNextY;
+let board;
 
 document.addEventListener('touchstart', e => {
     onScroll = false;
@@ -24,12 +27,14 @@ document.addEventListener('touchstart', e => {
 function startDragAndDropMobile(e) {
     let task = e.target;
 
+    console.log(task);
+
     if (task.classList.contains('board-short-card-panel')) {
         lookForScrollAction();
 
         setTimeout(() => {
             touchstartShortCardMobile(task, e);
-        }, 300);
+        }, 500);
     }
 }
 
@@ -78,7 +83,7 @@ function touchstartShortCardMobile(task, e) {
     setElementsForDragAndDropMobile();
 
     let taskStartX = e.touches[0].clientX;
-    let taskStartY = e.touches[0].clientY;
+    taskStartY = e.touches[0].clientY;
     currentTask = task.id.split('_')[1];
 
     task.style.opacity = 0.6;
@@ -93,13 +98,19 @@ function touchmoveShortCardMobile(task, taskStartX, taskStartY) {
         if (e.cancelable) e.preventDefault();
 
         let taskNextX = e.changedTouches[0].clientX;
-        let taskNextY = e.changedTouches[0].clientY;
-        let board = document.querySelector('#board_html');
+        taskNextY = e.changedTouches[0].clientY;
+        board = document.querySelector('#board_html');
+        let boardPanel = document.querySelector('.board-panel');
         let currentTouch = e.changedTouches[0];
 
         if (lastTouch) {
-            board.scrollTop += currentTouch.clientY - lastTouch.clientY;
-            saveScroll += currentTouch.clientY - lastTouch.clientY;
+            if (board.scrollTop < boardPanel.offsetHeight - board.offsetHeight) {
+                board.scrollTop += currentTouch.clientY - lastTouch.clientY;
+            }
+
+            if (board.scrollTop != 0 && board.scrollTop < boardPanel.offsetHeight - board.offsetHeight) {
+                saveScroll += currentTouch.clientY - lastTouch.clientY;
+            }
         }
 
         task.style.left = taskNextX - taskStartX + task.offsetWidth / 2 + 'px';
@@ -133,13 +144,13 @@ function insertShortCardInContainer(task) {
     let shortCardPos = task.getBoundingClientRect();
     let taskNumber = tasks[task.id.split('_')[1]];
 
-    if (shortCardPos.bottom < toDoRowPos.bottom) {
+    if (shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll < toDoRowPos.bottom) {
         taskNumber.boardStatus = 'To do';
-    } else if (shortCardPos.bottom < inProgressRowPos.bottom) {
+    } else if (shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll > inProgressRowPos.top && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < awaitFeedbackRowPos.top) {
         taskNumber.boardStatus = 'In progress';
-    } else if (shortCardPos.bottom < awaitFeedbackRowPos.bottom) {
+    } else if (shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll > awaitFeedbackRowPos.top && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < doneRowPos.top) {
         taskNumber.boardStatus = 'Await feedback';
-    } else if (shortCardPos.bottom < doneRowPos.bottom) {
+    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > doneRowPos.top) {
         taskNumber.boardStatus = 'Done';
     }
 }
