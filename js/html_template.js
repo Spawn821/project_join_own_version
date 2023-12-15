@@ -108,8 +108,10 @@ function getAddedSubtaskHTML(subtask, i) {
 function getBoardShortCardHTML(i, category, categoryBackgroundColor, title, description, numberSubtasks, prioImg) {
     return /*html*/ `
         <div>
-            <div class="board-short-card-panel background-color-white" id="board-short-card-panel_${i}"
+            <div class="board-short-card-panel board-short-card-panel-content background-color-white" id="board-short-card-panel_${i}"
                 draggable="true" ondragstart="boardDrag(${i})" onclick="openDetailCard(${i})">
+
+                <div class="board-short-card-separator separator-3px-blue d-none" id="board-short-card-separator_${i}"></div>
 
                 <span class="board-short-card-category f-s-w-16px-400" style="background-color: ${categoryBackgroundColor}">${category}</span>
 

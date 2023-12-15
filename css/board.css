@@ -286,8 +286,15 @@
 /* ---------------- */
 /* board short card */
 /* ---------------- */
+.board-short-card-separator {
+    position: absolute;
+    top: 2px;
+    left: 32px;
+    right: 32px;
+}
 
 .board-short-card-panel {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -300,7 +307,21 @@
         cursor: pointer;
         transform: rotate(5deg);
     }
+}
 
+@media (max-width: 550px) {
+    .board-short-card-panel-content::before {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        content: 'Touch \A here \A 1 sec.';
+        white-space: pre-wrap;
+        margin-bottom: -64px;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        color: rgba(0 0 0 / 30%);
+    }
 }
 
 .board-short-card-category {
