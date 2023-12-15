@@ -269,7 +269,7 @@
 
 @media (max-width: 1550px) {
     .board-status-task-container {
-        min-height: 120px;
+        min-height: 160px;
         display: flex;
         flex-direction: row;
         overflow: scroll;
@@ -309,7 +309,7 @@
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 1550px) {
     .board-short-card-panel-content::before {
         width: 100%;
         display: flex;

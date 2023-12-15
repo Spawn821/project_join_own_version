@@ -28,6 +28,9 @@ document.addEventListener('touchstart', e => {
  */
 function startDragAndDropMobile(e) {
     let task = e.target;
+    let shortCards = document.querySelectorAll('#board-short-card-panel');
+
+    shortCards.forEach((shortCard) => shortCard.style = 'background-color: black');
 
     if (task.classList.contains('board-short-card-panel')) {
         lookForScrollAction();
@@ -152,7 +155,7 @@ function considerScrollIfMoveShortCard(currentTouch) {
  * @param {number} taskStartY is the start coordinate from the shrot card in y.
  */
 function addShortCardStyleToHover(task, taskNextX, taskNextY, taskStartX, taskStartY) {
-    task.style.left = taskNextX - taskStartX + task.offsetWidth / 2 + 'px';
+    task.style.left = taskNextX - taskStartX + 'px';
     task.style.top = taskNextY - taskStartY + saveScroll + 'px';
     task.style.zIndex = 9;
     task.style.position = 'absolute';
@@ -190,17 +193,17 @@ function removeShortCardStyleToHover(task) {
 function insertShortCardInContainer(task) {
     let [shortCardPos, taskNumber] = [task.getBoundingClientRect(), tasks[task.id.split('_')[1]]];
 
-    if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > toDoRowPos.top + saveScroll &&
-        shortCardPos.top + (taskNextY - taskStartY) + saveScroll < toDoRowPos.bottom + saveScroll) {
+    if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > toDoRowPos.top + (taskNextY - taskStartY)
+        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < toDoRowPos.bottom + (taskNextY - taskStartY)) {
         taskNumber.boardStatus = 'To do';
-    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > inProgressRowPos.top + saveScroll
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < inProgressRowPos.bottom + saveScroll) {
+    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > inProgressRowPos.top + (taskNextY - taskStartY)
+        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < inProgressRowPos.bottom + (taskNextY - taskStartY)) {
         taskNumber.boardStatus = 'In progress';
-    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > awaitFeedbackRowPos.top + saveScroll
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < awaitFeedbackRowPos.bottom + saveScroll) {
+    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > awaitFeedbackRowPos.top + (taskNextY - taskStartY)
+        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < awaitFeedbackRowPos.bottom + (taskNextY - taskStartY)) {
         taskNumber.boardStatus = 'Await feedback';
-    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > doneRowPos.top + saveScroll
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll > doneRowPos.bottom + saveScroll) {
+    } else if (shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll > doneRowPos.top + (taskNextY - taskStartY)
+        && shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll < doneRowPos.bottom + (taskNextY - taskStartY)) {
         taskNumber.boardStatus = 'Done';
     }
 }
