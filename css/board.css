@@ -18,10 +18,15 @@
     }
 }
 
+@media (max-width: 900px) {
+    .board-panel {
+        margin-top: 40px;
+    }
+}
+
 @media (max-width: 550px) {
     .board-panel {
         width: 400px;
-        margin-top: 40px;
         margin-left: calc((100vw - 400px) / 2);
     }
 }

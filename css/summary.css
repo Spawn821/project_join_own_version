@@ -46,22 +46,19 @@
 /* summary headline */
 /* ---------------- */
 
-.summary-headline-area {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
+.summary-headline-area,
 .summary-headline-subContainer {
     display: flex;
     align-items: center;
     gap: 30px;
+
+    & .separator-3px-blue {
+        height: 59px;
+    }
 }
 
 .summary-headline-separator {
     height: 59px;
-    border: 3px solid rgb(41, 170, 227);
-    border-radius: 3px;
     margin-top: 8px;
     margin-bottom: 8px;
 }
@@ -87,11 +84,11 @@
         &>.f-s-27px {
             font-size: 20px;
         }
-    }
 
-    .summary-headline-separator {
-        height: 0;
-        width: 90px;
+        & .separator-3px-blue {
+            height: 0;
+            width: 90px;
+        }
     }
 }
 

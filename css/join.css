@@ -46,6 +46,10 @@
     #board_html {
         height: calc(100vh - 160px);
     }
+
+    #contacts_html {
+        height: calc(100vh - 160px);
+    }
 }
 
 .join-transparent-background {

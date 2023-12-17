@@ -210,7 +210,7 @@ function getContactsLetterHeadlineHTML(firstLetter) {
  */
 function getContactCardHTML(i, backgroundColor, initals, name, email) {
     return /*html*/`
-        <div class="contact-card" onclick="openOrCloseContactData(${i})" id='contactCard-${i}'>
+        <div class="contact-card" onclick="contactData(${i})" id='contactCard-${i}'>
             <div class="contact-initals-icon f-s-w-12px-400" style="background-color: ${backgroundColor}">${initals}</div>
             <div class="contact">
                 <span class="f-s-w-20px-400 contact-name-color-white">${name}</span>

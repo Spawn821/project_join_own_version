@@ -64,4 +64,14 @@
 .info-page-arrow {
     position: fixed;
     right: 96px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 1400px) {
+    .info-page-arrow {
+        right: 16px;
+    }
 }

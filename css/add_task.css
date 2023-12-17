@@ -12,10 +12,15 @@
     margin-left: 48px;
 }
 
+@media (max-width: 900px) {
+    .add-task-panel {
+        margin-top: 40px;
+    }
+}
+
 @media (max-width: 550px) {
     .add-task-panel {
         gap: 48px;
-        margin-top: 40px;
         margin-left: calc((100vw - 400px) / 2);
 
         &>.f-s-61px {

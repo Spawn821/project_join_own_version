@@ -52,20 +52,42 @@ function addLetterHeadline(firstLetter, contactsList) {
  * This fuction shows all data from the clicked contcat in a separate window.
  * @param {integer} i is the index from arry users.
  */
-function openOrCloseContactData(i) {
+function contactData(i) {
     let contactCard = document.getElementById(`contactCard-${i}`);
+    let windowSize = window.matchMedia('(max-width: 1400px)');
 
     if (contactCard.classList.contains('contact-card-click')) {
         closeAllContactClicks();
         clearContactData();
     } else {
-        closeAllContactClicks();
-        contactCard.classList.toggle('contact-card-click');
-        renderContactData(i);
-        contactDataSlideInAnimation();
+        if (!windowSize.matches) {
+            openOrCloseContactDataDesktop(i, contactCard);
+        } else {
+            openOrCloseContactDataMobile(i, contactCard);
+        }
     }
 
     currentContactIndex = i;
+}
+
+
+function openOrCloseContactDataDesktop(i, contactCard) {
+    closeAllContactClicks();
+    renderContactData(i);
+    contactCard.classList.toggle('contact-card-click');
+    contactDataSlideInAnimation();
+}
+
+
+function openOrCloseContactDataMobile(i, contactCard) {
+    let contactsLeftSide = document.getElementById('contacts');
+    let contactsRightSide = document.getElementById('contact-data');
+
+    contactsLeftSide.classList.toggle('contacts-half-side-mobile');
+    contactsRightSide.classList.toggle('contacts-half-side-mobile');
+
+    closeAllContactClicks();
+    renderContactData(i);
 }
 
 
