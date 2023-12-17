@@ -8,11 +8,10 @@ let inProgressRowPos;
 let awaitFeedbackRowPos;
 let doneRowPos;
 let onScroll;
-let lastTouch = null;
-let saveScroll = 0;
-let taskStartY;
-let taskNextY;
+let saveScroll;
 let board;
+let taskMoveX;
+let taskMoveY;
 
 document.addEventListener('touchstart', e => {
     onScroll = false;
@@ -89,20 +88,18 @@ function setElementsForDragAndDropMobile() {
  */
 function touchstartShortCardMobile(task, e) {
     let detailCard = document.getElementById('board_detail_card_task_html');
-    let taskStartX = e.touches[0].clientX;
 
     if (!detailCard.classList.contains('d-none')) return;
     else if (onScroll) return;
 
-    taskStartY = e.touches[0].clientY;
+    let taskStartX = e.touches[0].clientX;
+    let taskStartY = e.touches[0].clientY;
     currentTask = task.id.split('_')[1];
-    lastTouch = e.touches[0];
+    let scrollStartY = e.touches[0].clientY;
     task.style.opacity = 0.6;
 
-    document.getElementById('board-short-card-separator_' + currentTask).classList.remove('d-none');
-
     setElementsForDragAndDropMobile();
-    touchmoveShortCardMobile(task, taskStartX, taskStartY);
+    touchmoveShortCardMobile(task, taskStartX, taskStartY, scrollStartY);
     touchendShortCardMobile(task);
 }
 
@@ -113,35 +110,100 @@ function touchstartShortCardMobile(task, e) {
  * @param {number} taskStartX is the coordinate to start the short card in x.
  * @param {number} taskStartY is the coordinate to start the short card in y. 
  */
-function touchmoveShortCardMobile(task, taskStartX, taskStartY) {
+function touchmoveShortCardMobile(task, taskStartX, taskStartY, scrollStartY) {
     task.addEventListener('touchmove', e => {
         if (e.cancelable) e.preventDefault();
 
-        let taskNextX = e.changedTouches[0].clientX;
-        taskNextY = e.changedTouches[0].clientY;
-        let currentTouch = e.changedTouches[0];
+        let [taskNextX, taskNextY] = [e.changedTouches[0].clientX, e.changedTouches[0].clientY];
+        [taskMoveX, taskMoveY] = [taskNextX - taskStartX, taskNextY - taskStartY];
+        let scrollNextY = e.changedTouches[0].clientY;
+        let scrollMoveY = scrollNextY - scrollStartY;
 
-        considerScrollIfMoveShortCard(currentTouch);
-        addShortCardStyleToHover(task, taskNextX, taskNextY, taskStartX, taskStartY);
+        considerScrollIfMoveShortCard(scrollMoveY);
+        addShortCardStyleToHover(task);
+        showNoDropWithColor(task);
 
-        lastTouch = currentTouch;
+        scrollStartY = scrollNextY;
     });
 }
 
 
 /**
- * This funcion takes into account the scrolling behavior of the page.
- * @param {object} currentTouch is the object from the current touch if touchmove.
+ * This function make the short card red if the area can't droped.
+ * @param {object} task is the short card element.
  */
-function considerScrollIfMoveShortCard(currentTouch) {
+function showNoDropWithColor(task) {
+    if (statusRowPosTopToShortCardCenter('To do', task) && statusRowPosBottomToShortCardCenter('To do', task)) {
+        task.classList.remove('background-color-red');
+    } else if (statusRowPosTopToShortCardCenter('In progress', task) && statusRowPosBottomToShortCardCenter('In progress', task)) {
+        task.classList.remove('background-color-red');
+    } else if (statusRowPosTopToShortCardCenter('Await feedback', task) && statusRowPosBottomToShortCardCenter('Await feedback', task)) {
+        task.classList.remove('background-color-red');
+    } else if (statusRowPosTopToShortCardCenter('Done', task) && statusRowPosBottomToShortCardCenter('Done', task)) {
+        task.classList.remove('background-color-red');
+    } else {
+        task.classList.add('background-color-red');
+    }
+}
+
+
+/**
+ * This function returns if the shord card position center and the status area position top matches.
+ * @param {string} status is the name of the status area.
+ * @param {object} task is the short card element.
+ * @returns true or false.
+ */
+function statusRowPosTopToShortCardCenter(status, task) {
+    let shortCardPos = task.getBoundingClientRect();
+    let shortCardPosYCenter = shortCardPos.top + (shortCardPos.height / 2) + taskMoveY + saveScroll;
+
+    switch (status) {
+        case 'To do':
+            return shortCardPosYCenter > toDoRowPos.top + taskMoveY;
+        case 'In progress':
+            return shortCardPosYCenter > inProgressRowPos.top + taskMoveY;
+        case 'Await feedback':
+            return shortCardPosYCenter > awaitFeedbackRowPos.top + taskMoveY;
+        case 'Done':
+            return shortCardPosYCenter > doneRowPos.top + taskMoveY;
+    }
+}
+
+
+/**
+ * This function returns if the shord card position center and the status area position bottom matches.
+ * @param {string} status is the name of the status area.
+ * @param {object} task is the short card element.
+ * @returns true or false.
+ */
+function statusRowPosBottomToShortCardCenter(status, task) {
+    let shortCardPos = task.getBoundingClientRect();
+    let shortCardPosYCenter = shortCardPos.top + (shortCardPos.height / 2) + taskMoveY + saveScroll;
+
+    switch (status) {
+        case 'To do':
+            return shortCardPosYCenter < toDoRowPos.bottom + taskMoveY;
+        case 'In progress':
+            return shortCardPosYCenter < inProgressRowPos.bottom + taskMoveY;
+        case 'Await feedback':
+            return shortCardPosYCenter < awaitFeedbackRowPos.bottom + taskMoveY;
+        case 'Done':
+            return shortCardPosYCenter < doneRowPos.bottom + taskMoveY;
+    }
+}
+
+
+/**
+ * This funcion takes into account the scrolling behavior of the page.
+ * @param {object} scrollNextY is the object from the current touch if touchmove.
+ */
+function considerScrollIfMoveShortCard(scrollMoveY) {
     let boardPanel = document.querySelector('.board-panel');
 
-    if (lastTouch) {
-        board.scrollTop += currentTouch.clientY - lastTouch.clientY;
+    board.scrollTop += scrollMoveY;
 
-        if (board.scrollTop != 0 && board.scrollTop < boardPanel.offsetHeight - board.offsetHeight) {
-            saveScroll += currentTouch.clientY - lastTouch.clientY;
-        }
+    if (board.scrollTop != 0 && board.scrollTop < boardPanel.offsetHeight - board.offsetHeight) {
+        saveScroll += scrollMoveY;
     }
 }
 
@@ -154,9 +216,9 @@ function considerScrollIfMoveShortCard(currentTouch) {
  * @param {number} taskStartX is the start coordinate from the shrot card in x.
  * @param {number} taskStartY is the start coordinate from the shrot card in y.
  */
-function addShortCardStyleToHover(task, taskNextX, taskNextY, taskStartX, taskStartY) {
-    task.style.left = taskNextX - taskStartX + 'px';
-    task.style.top = taskNextY - taskStartY + saveScroll + 'px';
+function addShortCardStyleToHover(task) {
+    task.style.left = taskMoveX + 'px';
+    task.style.top = taskMoveY + saveScroll + 'px';
     task.style.zIndex = 9;
     task.style.position = 'absolute';
 }
@@ -191,19 +253,15 @@ function removeShortCardStyleToHover(task) {
  * @param {object} task is the short card element. 
  */
 function insertShortCardInContainer(task) {
-    let [shortCardPos, taskNumber] = [task.getBoundingClientRect(), tasks[task.id.split('_')[1]]];
+    let taskNumber = tasks[task.id.split('_')[1]];
 
-    if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > toDoRowPos.top + (taskNextY - taskStartY)
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < toDoRowPos.bottom + (taskNextY - taskStartY)) {
+    if (statusRowPosTopToShortCardCenter('To do', task) && statusRowPosBottomToShortCardCenter('To do', task)) {
         taskNumber.boardStatus = 'To do';
-    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > inProgressRowPos.top + (taskNextY - taskStartY)
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < inProgressRowPos.bottom + (taskNextY - taskStartY)) {
+    } else if (statusRowPosTopToShortCardCenter('In progress', task) && statusRowPosBottomToShortCardCenter('In progress', task)) {
         taskNumber.boardStatus = 'In progress';
-    } else if (shortCardPos.top + (taskNextY - taskStartY) + saveScroll > awaitFeedbackRowPos.top + (taskNextY - taskStartY)
-        && shortCardPos.top + (taskNextY - taskStartY) + saveScroll < awaitFeedbackRowPos.bottom + (taskNextY - taskStartY)) {
+    } else if (statusRowPosTopToShortCardCenter('Await feedback', task) && statusRowPosBottomToShortCardCenter('Await feedback', task)) {
         taskNumber.boardStatus = 'Await feedback';
-    } else if (shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll > doneRowPos.top + (taskNextY - taskStartY)
-        && shortCardPos.bottom + (taskNextY - taskStartY) + saveScroll < doneRowPos.bottom + (taskNextY - taskStartY)) {
+    } else if (statusRowPosTopToShortCardCenter('Done', task) && statusRowPosBottomToShortCardCenter('Done', task)) {
         taskNumber.boardStatus = 'Done';
     }
 }

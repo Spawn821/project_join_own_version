@@ -87,6 +87,10 @@ body {
     background-color: white;
 }
 
+.background-color-red {
+    background-color: rgba(255 0 0 / 50%);
+}
+
 .contact-card-click {
     background-color: rgb(42, 54, 71);
     border-radius: 10px;
