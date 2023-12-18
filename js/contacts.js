@@ -163,3 +163,18 @@ function closeAllContactClicks() {
         currentClick.classList.remove('contact-card-click');
     }
 }
+
+
+function openOrClosePointMenu(action) {
+    let pointMenu = document.getElementById('contact-data-name-edit-del-area');
+
+    if (action == 'open') {
+        pointMenu.classList.remove('contact-data-point-menu-d-none');
+        pointMenu.classList.add('contact-data-point-menu-slide-in');
+        pointMenu.classList.remove('contact-data-point-menu-slide-out');
+    } else {
+        pointMenu.classList.remove('contact-data-point-menu-slide-in');
+        pointMenu.classList.add('contact-data-point-menu-slide-out');
+        setTimeout(() => pointMenu.classList.add('contact-data-point-menu-d-none'), 400);
+    }
+}
