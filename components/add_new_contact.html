@@ -11,8 +11,14 @@
     <!-- add new contact panel -->
     <div class="add-new-contact-panel" id="add-new-contact">
 
+
         <!-- add new contact left side -->
         <section class="add-new-contact-left-side">
+
+            <!-- add new contact left side close icon -->
+            <img class="overlay-close-icon" src="/assets/img/icon_close_white.png" alt="close icon"
+                onclick="openOrCloseAddNewEditContact('add_new_contact_html', 'close')">
+
             <div>
                 <img class="add-new-contact-logo" src="./assets/img/join_logo_white.png" alt="">
                 <h1 class="f-s-61px m-0">Add contact</h1>
@@ -35,7 +41,8 @@
                 <div>
 
                     <!-- add new contact profile icon -->
-                    <span class="add-new-contact-profile-icon-background add-new-contact-profile-icon contact-initals-icon"></span>
+                    <span
+                        class="add-new-contact-profile-icon-background add-new-contact-profile-icon contact-initals-icon"></span>
 
                     <form class="add-new-contact-form" onsubmit="addNewContact(); return false">
 

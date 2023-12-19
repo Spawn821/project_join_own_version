@@ -22,8 +22,7 @@ function renderContacts() {
 
         contactsList.innerHTML += getContactCardHTML(i, backgroundColor, initals, user.name, user.email)
 
-        i++;
-        iColor++;
+        i++, iColor++;
         iColor >= contactColors.length ? iColor = 0 : null;
     });
 }
@@ -56,15 +55,10 @@ function contactData(i) {
     let contactCard = document.getElementById(`contactCard-${i}`);
     let windowSize = window.matchMedia('(max-width: 1400px)');
 
-    if (contactCard.classList.contains('contact-card-click')) {
-        closeAllContactClicks();
-        clearContactData();
+    if (!windowSize.matches) {
+        openOrCloseContactDataDesktop(i, contactCard);
     } else {
-        if (!windowSize.matches) {
-            openOrCloseContactDataDesktop(i, contactCard);
-        } else {
-            openOrCloseContactDataMobile(i, contactCard);
-        }
+        openOrCloseContactDataMobile(i, contactCard);
     }
 
     currentContactIndex = i;
@@ -72,14 +66,20 @@ function contactData(i) {
 
 
 function openOrCloseContactDataDesktop(i, contactCard) {
-    closeAllContactClicks();
-    renderContactData(i);
-    contactCard.classList.toggle('contact-card-click');
-    contactDataSlideInAnimation();
+    if (contactCard.classList.contains('contact-card-click')) {
+        closeAllContactClicks();
+        clearContactData();
+    }
+    else {
+        closeAllContactClicks();
+        renderContactData(i);
+        contactCard.classList.toggle('contact-card-click');
+        contactDataSlideInAnimation();
+    }
 }
 
 
-function openOrCloseContactDataMobile(i, contactCard) {
+function openOrCloseContactDataMobile(i, contactData = true) {
     let contactsLeftSide = document.getElementById('contacts');
     let contactsRightSide = document.getElementById('contact-data');
 
@@ -87,7 +87,7 @@ function openOrCloseContactDataMobile(i, contactCard) {
     contactsRightSide.classList.toggle('contacts-half-side-mobile');
 
     closeAllContactClicks();
-    renderContactData(i);
+    if (contactData) renderContactData(i);
 }
 
 
@@ -121,7 +121,7 @@ function contactDataSlideOutAnimation() {
  * and show this with a slide effect.
  * @param {integer} i is the index number from the array users.
  */
-function renderContactData(i) {
+function renderContactData(i, slideAnimation = true) {
     let content = document.getElementById('contact-data-content');
     content.innerHTML = '';
 
@@ -131,10 +131,14 @@ function renderContactData(i) {
     const initals = getInitials(name);
     const backgroundColor = returnContactColor(i);
 
-    setTimeout(() => {
-        content.innerHTML = getContactDataHTML(i, backgroundColor, initals, name, email, phone)
-        content.classList.add('contact-slide-animation')
-    }, 50);
+    if (slideAnimation) {
+        setTimeout(() => {
+            content.innerHTML = getContactDataHTML(i, backgroundColor, initals, name, email, phone);
+            content.classList.add('contact-slide-animation');
+        }, 50);
+    } else {
+        content.innerHTML = getContactDataHTML(i, backgroundColor, initals, name, email, phone);
+    }
 }
 
 
@@ -178,3 +182,12 @@ function openOrClosePointMenu(action) {
         setTimeout(() => pointMenu.classList.add('contact-data-point-menu-d-none'), 400);
     }
 }
+
+
+window.addEventListener('resize', () => {
+    const windowSize = window.matchMedia('(max-width: 1400px)');
+
+    console.log(windowSize);
+
+    if (windowSize.matches) closeAllContactClicks();
+})

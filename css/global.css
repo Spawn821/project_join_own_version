@@ -609,3 +609,31 @@ select {
         right: calc(-326px - 50px);
     }
 }
+
+@media (max-width: 1400px) {
+    .information-slidebox-horizontal {
+        right: calc(50vw - 151.5px);
+        bottom: -80px;
+        animation-duration: 1s;
+        animation-name: info-slide-up-down;
+        animation-delay: 200ms;
+    }
+
+    @keyframes info-slide-in-out {
+        25% {
+            bottom: 50vh;
+        }
+
+        50% {
+            bottom: 50vh;
+        }
+
+        75% {
+            bottom: 50vh;
+        }
+
+        100% {
+            bottom: -80px;
+        }
+    }
+}

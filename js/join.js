@@ -106,11 +106,22 @@ function overlayWindowPosition(action, overlayCard) {
 
     overlayCard.style = `top: ${topMiddel}px; left: ${leftMiddel}px`;
 
-    overlaySlideAnimtaion(action, overlayCard, leftMiddel);
+    overlaySlideAnimtaion(action, overlayCard, topMiddel, leftMiddel);
 }
 
 
-function overlaySlideAnimtaion(action, overlayCard, leftMiddel) {
+function overlaySlideAnimtaion(action, overlayCard, topMiddel, leftMiddel) {
+    const windowSize = window.matchMedia('(max-width: 1350px)');
+
+    if (!windowSize.matches) {
+        overlaySlideFromRightToCenter(action, overlayCard, leftMiddel);
+    } else {
+        overlaySlideFromBottomToCenter(action, overlayCard, topMiddel);
+    }
+}
+
+
+function overlaySlideFromRightToCenter(action, overlayCard, leftMiddel) {
     if (action == 'open') {
         overlayCard.animate([
             { left: `${document.documentElement.clientWidth + 50}px` },
@@ -122,6 +133,25 @@ function overlaySlideAnimtaion(action, overlayCard, leftMiddel) {
         overlayCard.animate([
             { left: `${leftMiddel}px` },
             { left: `${document.documentElement.clientWidth + 50}px` },
+        ], {
+            duration: 250,
+        })
+    }
+}
+
+
+function overlaySlideFromBottomToCenter(action, overlayCard, topMiddel) {
+    if (action == 'open') {
+        overlayCard.animate([
+            { top: `${document.documentElement.clientHeight + 50}px` },
+            { top: `${topMiddel}px` },
+        ], {
+            duration: 250,
+        })
+    } else {
+        overlayCard.animate([
+            { top: `${topMiddel}px` },
+            { top: `${document.documentElement.clientHeight + 50}px` },
         ], {
             duration: 250,
         })

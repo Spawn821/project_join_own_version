@@ -76,7 +76,7 @@
 @media (max-width: 900px) {
     .sidebar-nav-member {
         height: 76px;
-        width: 80px;
+        min-width: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;

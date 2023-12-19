@@ -52,7 +52,7 @@ function renderEditContact() {
 
 
     editProfileIcon.innerHTML = getInitials(users[currentContactIndex]['name']);
-    editProfileIcon.style = `background-color: ${backgroundColor}; margin-bottom: 48px;`;
+    editProfileIcon.style = `background-color: ${backgroundColor}`;
 
     inputEditName.value = users[currentContactIndex]['name'];
     inputEditEmail.value = users[currentContactIndex]['email'];
@@ -91,7 +91,7 @@ async function addNewContact() {
 */
 function showNewContact() {
     renderContacts();
-    openOrCloseContactData(currentContactIndex);
+    contactData(currentContactIndex);
 
     let scrollPositionElement = document.getElementById(`contactCard-${currentContactIndex}`);
     scrollPositionElement.scrollIntoView({
@@ -99,7 +99,6 @@ function showNewContact() {
         behavior: "smooth"
     });
 
-    openOrCloseAddNewEditContact('edit_contact_html', 'close');
     informationSlidebox('information-slidebox-horizontal', 'Contact is succesfully created');
 }
 
@@ -128,10 +127,8 @@ async function editContact() {
     users[currentContactIndex]['phone'] = inputPhone;
 
     await setItem('users', JSON.stringify(users))
-
-    renderContacts();
-    renderContactData(currentContactIndex);
-    showNewContact();
+    openOrCloseAddNewEditContact('edit_contact_html', 'close');
+    renderContactData(currentContactIndex, false);
     informationSlidebox('information-slidebox-horizontal', 'Contact changed');
 }
 
@@ -143,16 +140,15 @@ async function editContact() {
  * @param {boolean} openFalse decides whether the function is executed or not, default is true.
  */
 async function deleteContact(i = currentContactIndex, openFalse = true) {
+    const windowSize = window.matchMedia('(max-width: 1400px)');
+
     users.splice(i, 1);
 
     await setItem('users', JSON.stringify(users));
-
     renderContacts();
     clearContactData();
-
-    if (openFalse) {
-        openOrCloseAddNewEditContact('edit_contact_html', 'close');
-    }
-
     informationSlidebox('information-slidebox-horizontal', 'Contact delete');
+
+    if (windowSize.matches) openOrCloseContactDataMobile(currentContactIndex, false);
+    if (openFalse) openOrCloseAddNewEditContact('edit_contact_html', 'close');
 }
