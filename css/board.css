@@ -87,13 +87,13 @@
 .board-search-img {
     height: 32px;
     width: 32px;
-    background-image: url('/assets/img/icon_search.png');
+    background-image: url('../assets/img/icon_search.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 
     &:hover {
-        background-image: url('/assets/img/icon_search_hover.png');
+        background-image: url('../assets/img/icon_search_hover.png');
     }
 }
 
@@ -211,14 +211,14 @@
 .board-status-column-headline-img {
     height: 24px;
     width: 24px;
-    background-image: url('/assets/img/icon_add_status_board.png');
+    background-image: url('../assets/img/icon_add_status_board.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 
     &:hover {
         cursor: pointer;
-        background-image: url('/assets/img/icon_add_status_board_hover.png');
+        background-image: url('../assets/img/icon_add_status_board_hover.png');
     }
 }
 
@@ -503,11 +503,11 @@ table {
         font-weight: 700;
 
         & .board-detail-card-delete-img {
-            background-image: url('/assets/img/icon_delete_hover.png');
+            background-image: url('../assets/img/icon_delete_hover.png');
         }
 
         & .board-detail-card-edit-img {
-            background-image: url('/assets/img/icon_edit_hover.png');
+            background-image: url('../assets/img/icon_edit_hover.png');
         }
     }
 }
@@ -515,7 +515,7 @@ table {
 .board-detail-card-delete-img {
     height: 24px;
     width: 24px;
-    background-image: url('/assets/img/icon_delete_white.png');
+    background-image: url('../assets/img/icon_delete_white.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -524,7 +524,7 @@ table {
 .board-detail-card-edit-img {
     height: 24px;
     width: 24px;
-    background-image: url('/assets/img/icon_edit_black.png');
+    background-image: url('../assets/img/icon_edit_black.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

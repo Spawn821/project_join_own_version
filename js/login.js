@@ -2,6 +2,7 @@
  * This function initialize the landing page and preloads all registered Users to match them against input of the current user of the page.
  */
 async function loginInit() {
+    await loadUsers();
     checkRememberLogin();
     removeAnimateJoinLogo();
 
@@ -17,6 +18,7 @@ function removeAnimateJoinLogo() {
     setTimeout((() => {
         document.getElementById('login-animation-overlay').classList.add('d-none');
         document.getElementById('login-animation-logo').classList.add('d-none');
+        document.getElementById('login-join-logo').classList.remove('v-hidden');
     }), 900);
 
 }
@@ -58,12 +60,12 @@ function updateInputState(element, idToToggle) {
 
     if (password.value == "") {
         inputState.setState("empty");
-        passwordInput.src = "/assets/img/icon_lock.png";
+        passwordInput.src = "assets/img/icon_lock.png";
         password.type = "password";
     } else {
         inputState.setState("filled");
         if (password.value.length == 1) {
-            passwordInput.src = "/assets/img/icon_eye_visibility_off.png";
+            passwordInput.src = "assets/img/icon_eye_visibility_off.png";
         }
     }
 }
@@ -79,11 +81,11 @@ function toggleReveal(img, id) {
 
     if (inputState.getState() == "filled") {
         if (password.type == "password") {
-            img.src = "/assets/img/icon_eye_visibility_on.png";
+            img.src = "assets/img/icon_eye_visibility_on.png";
             password.type = "text";
         }
         else {
-            img.src = "/assets/img/icon_eye_visibility_off.png";
+            img.src = "assets/img/icon_eye_visibility_off.png";
             password.type = "password";
         }
     }

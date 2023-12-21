@@ -6,8 +6,6 @@
     margin-right: 96px;
 
     &>h1 {
-        font-size: 61px;
-        font-weight: 700;
         line-height: 73px;
         letter-spacing: 0em;
         text-align: left;
@@ -51,6 +49,18 @@
     }
 }
 
+@media (max-width: 900px) {
+    .contentContainerInfo {
+        margin-top: 40px;
+        margin-left: 16px;
+        margin-right: 16px;
+
+        & .f-s-61px {
+            font-size: 47px;
+        }
+    }
+}
+
 .info-page-headline-area {
     display: flex;
     justify-content: space-between;
@@ -70,7 +80,7 @@
     }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 900px) {
     .info-page-arrow {
         right: 16px;
     }

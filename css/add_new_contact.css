@@ -165,7 +165,7 @@
 }
 
 .add-new-contact-profile-icon {
-    background-image: url('/assets/img/icon_person_white.png');
+    background-image: url('../assets/img/icon_person_white.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 43px;

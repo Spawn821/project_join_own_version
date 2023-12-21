@@ -177,17 +177,19 @@ function openOrClosePointMenu(action) {
         pointMenu.classList.add('contact-data-point-menu-slide-in');
         pointMenu.classList.remove('contact-data-point-menu-slide-out');
     } else {
-        pointMenu.classList.remove('contact-data-point-menu-slide-in');
-        pointMenu.classList.add('contact-data-point-menu-slide-out');
-        setTimeout(() => pointMenu.classList.add('contact-data-point-menu-d-none'), 400);
+        try {
+            pointMenu.classList.remove('contact-data-point-menu-slide-in');
+            pointMenu.classList.add('contact-data-point-menu-slide-out');
+            setTimeout(() => pointMenu.classList.add('contact-data-point-menu-d-none'), 400);
+        } catch {
+            return;
+        }
     }
 }
 
 
 window.addEventListener('resize', () => {
     const windowSize = window.matchMedia('(max-width: 1400px)');
-
-    console.log(windowSize);
 
     if (windowSize.matches) closeAllContactClicks();
 })

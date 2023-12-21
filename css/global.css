@@ -313,29 +313,29 @@ input[type="checkbox"] {
 
 /* checkbox black empty */
 input[type="checkbox"]+div {
-    content: url('/assets/img/icon_checkbox_empty.png');
+    content: url('../assets/img/icon_checkbox_empty.png');
     margin-right: 4px;
 }
 
 /* checkbox black empty hover */
 input[type="checkbox"]:hover+div {
-    content: url('/assets/img/icon_checkbox_empty_hover.png');
+    content: url('../assets/img/icon_checkbox_empty_hover.png');
     margin-right: 4px;
 }
 
 /* checkbox black checked */
 input[type="checkbox"]:checked+div {
-    content: url('/assets/img/icon_checkbox_marked.png');
+    content: url('../assets/img/icon_checkbox_marked.png');
 }
 
 /* checkbox black checked hover */
 input[type="checkbox"]:checked:hover+div {
-    content: url('/assets/img/icon_checkbox_marked_hover.png');
+    content: url('../assets/img/icon_checkbox_marked_hover.png');
 }
 
 /* checkbox white checked */
 input[type="checkbox"]:checked+#add-task-check {
-    content: url('/assets/img/icon_checkbox_marked_white.png');
+    content: url('../assets/img/icon_checkbox_marked_white.png');
 }
 
 
@@ -424,7 +424,7 @@ select {
     box-shadow: 0 4px 0 rgba(0 0 0 / 15%);
 
     .btn-white-img {
-        background-image: url('/assets/img/icon_close_hover.png');
+        background-image: url('../assets/img/icon_close_hover.png');
         background-repeat: no-repeat;
     }
 }
@@ -432,7 +432,7 @@ select {
 .btn-white-img {
     height: 24px;
     width: 24px;
-    background-image: url('/assets/img/icon_close.png');
+    background-image: url('../assets/img/icon_close.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -585,7 +585,7 @@ select {
 
 
 .information-slidebox-horizontal {
-    right: calc(-303px - 50px);
+    right: calc(-326px - 50px);
     bottom: 80px;
     animation-duration: 1s;
     animation-name: info-slide-in-out;
@@ -594,15 +594,15 @@ select {
 
 @keyframes info-slide-in-out {
     25% {
-        right: calc(50vw - 250px);
+        right: calc(100vw - 232px - 458px - 326px);
     }
 
     50% {
-        right: calc(50vw - 250px);
+        right: calc(100vw - 232px - 458px - 326px);
     }
 
     75% {
-        right: calc(50vw - 250px);
+        right: calc(100vw - 232px - 458px - 326px);
     }
 
     100% {

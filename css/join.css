@@ -50,6 +50,12 @@
     #contacts_html {
         height: calc(100vh - 160px);
     }
+
+    #help_htlml,
+    #privacy_policy_html,
+    #legal_notice_html {
+        height: calc(100vh - 160px);
+    }
 }
 
 .join-transparent-background {

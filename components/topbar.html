@@ -15,13 +15,13 @@
         <!-- topbar panel -->
         <div class="topbar-panel">
             <h3 class="f-s-w-20px-400">Kanban Project Management Tool</h3>
-            <img class="topbar-logo" src="/assets/img/logo_join.png" alt="join logo image">
+            <img class="topbar-logo" src="assets/img/logo_join.png" alt="join logo image">
             <nav class="topbar-nav" id="topbar-nav">
                 <a id="topbar-help-icon">
                     <img class="topbar-icon" src="assets/img/icon_help.png" alt="help"
                         onclick="showTemplate('help_html');">
                 </a>
-                <div class="topbar-user-profile" onclick="showOrHideContextMenu()">
+                <div class="topbar-user-profile" onclick="showOrHideContextMenu('open'); isolateFromOderEvents(event)">
                     <span id="topbar-user-profile-letter"></span>
                 </div>
             </nav>
@@ -29,11 +29,11 @@
 
         <!-- context menu panel -->
         <div id="context-menu-panel" class="d-none">
-            <a class="context-menu-member sidebar-t-d-none" onclick="showTemplate('legal_notice_html'), setSidebarNavActive('legal_notice');
-                    showOrHideContextMenu()">
+            <a class="context-menu-member sidebar-t-d-none"
+                onclick="showTemplate('legal_notice_html'), setSidebarNavActive('legal_notice')">
                 Legal Notice</a>
-            <a class="context-menu-member sidebar-t-d-none" onclick="showTemplate('privacy_policy_html'), setSidebarNavActive('privacy_policy');
-                    showOrHideContextMenu()">
+            <a class="context-menu-member sidebar-t-d-none"
+                onclick="showTemplate('privacy_policy_html'), setSidebarNavActive('privacy_policy')">
                 Privacy Policy</a>
             <a href="index.html" class="context-menu-member sidebar-t-d-none" onclick="logoutUser()">Log out</a>
         </div>

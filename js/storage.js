@@ -27,38 +27,3 @@ async function getItem(key) {
         } throw `Could not find data with key "${key}".`;
     });
 }
-
-
-/**
- * This function changes datas in the backend
- * @param {string} database 
- * @param {integer} index 
- * @param {string} newValue 
- */
-async function updateItem(database, index, newValue) {
-    let allItems = JSON.parse(await getItem(database));
-
-    if (index >= 0 && index < allItems.length) {
-        allItems[index] = newValue;
-        await setItem(database, JSON.stringify(allItems));
-    } else {
-        console.log(database + "nicht aktualisiert!");
-    }
-}
-
-
-/**
- * This fuction delete datas in the backend
- * @param {string} database 
- * @param {integer} indexToDelete 
- */
-async function deleteItem(database, indexToDelete) {
-    let allItems = JSON.parse(await getItem(database));
-
-    if (indexToDelete >= 0 && indexToDelete < allItems.length) {
-        allItems.splice(indexToDelete, 1);
-        await setItem(database, JSON.stringify(allItems));
-    } else {
-        console.log(database + " nicht gelöscht!");
-    }
-}

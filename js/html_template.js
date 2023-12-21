@@ -47,9 +47,9 @@ function getAddedContactsToTaskHTML(initals, color) {
  */
 function getCategoryEntryHTML(category) {
     return /*html*/ `
-        <div class="add-task-category" onclick="selectCategory('${category}')">
+        <div class="add-task-category" onclick="selectCategory('${category}'); checkDisabledCreateTask()">
             <span class="f-s-w-20px-400">${category}</span>
-            <img src="/assets/img/icon_delete_white.png" onclick="deleteCategoryFromList('${category}'); isolateFromOderEvents(event)">
+            <img src="assets/img/icon_delete_white.png" onclick="deleteCategoryFromList('${category}'); isolateFromOderEvents(event)">
         </div>
     `;
 }
@@ -68,9 +68,9 @@ function getAddedSubtaskHTML(subtask, i) {
                 <input class="input-whitout-border-right add-new-task-input-subtask f-s-w-20px-400"
                     type="text" id="add-task-input-edit-subtask${i}" placeholder="Add new subtask">
                 <div class="input-img" id="add-task-input-change-subtask">
-                    <img src="/assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
+                    <img src="assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
                     <div class="separator-1px-lightgrey"></div>
-                    <img src="/assets/img/icon_done_black_small.png" onclick="editSubtask(${i})">
+                    <img src="assets/img/icon_done_black_small.png" onclick="editSubtask(${i})">
                 </div>
             </div>
 
@@ -80,9 +80,9 @@ function getAddedSubtaskHTML(subtask, i) {
                     ${subtask}
                 </li>
                 <div class="input-img v-hidden" id="add-task-list-change-subtask">
-                    <img src="/assets/img/icon_edit_black.png" onclick="changeSubtaskFromShownToEdit(${i})">
+                    <img src="assets/img/icon_edit_black.png" onclick="changeSubtaskFromShownToEdit(${i})">
                     <div class="separator-1px-lightgrey"></div>
-                    <img src="/assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
+                    <img src="assets/img/icon_delete_white.png" onclick="deleteSubtask(${i})">
                 </div>
             </div>
         </div>

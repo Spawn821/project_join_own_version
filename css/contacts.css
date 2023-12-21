@@ -28,8 +28,8 @@
 
 @media (max-width: 1400px) {
     .contacts {
-        position: relative;
         width: 100%;
+        z-index: 1;
     }
 }
 
@@ -57,7 +57,7 @@
 
 @media (max-width: 1400px) {
     .contact-btn-area {
-        position: fixed;
+        position: absolute;
         top: unset;
         right: 32px;
         bottom: 32px;
@@ -142,6 +142,12 @@
     overflow: hidden;
 }
 
+@media (max-width: 900px) {
+    .contact-data {
+        position: relative;
+    }
+}
+
 @media (max-width: 1400px) {
     .contacts-half-side-mobile {
         display: none;
@@ -174,7 +180,7 @@
 
 @media (max-width: 1400px) {
     .contact-data-arrow {
-        position: fixed;
+        position: absolute;
         display: block;
         right: 16px;
 
@@ -190,10 +196,10 @@
 
 @media (max-width: 750px) {
     .contact-data-point-menu {
+        position: absolute;
         display: block;
-        position: fixed;
         right: 16px;
-        bottom: calc(32px + 80px);
+        bottom: 32px;
     }
 }
 
@@ -310,8 +316,8 @@
         height: 100px;
         width: 116px;
         position: fixed;
-        bottom: calc(24px + 80px);
         right: 16px;
+        bottom: calc(24px + 80px);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -371,11 +377,11 @@
     }
 
     & .contact-data-name-edit {
-        background-image: url('/assets/img/icon_edit_black.png');
+        background-image: url('../assets/img/icon_edit_black.png');
     }
 
     & .contact-data-name-delete {
-        background-image: url('/assets/img/icon_delete_white.png');
+        background-image: url('../assets/img/icon_delete_white.png');
     }
 }
 
@@ -393,11 +399,11 @@
 
 
     .contact-data-name-edit {
-        background-image: url('/assets/img/icon_edit_hover.png');
+        background-image: url('../assets/img/icon_edit_hover.png');
     }
 
     .contact-data-name-delete {
-        background-image: url('/assets/img/icon_delete_hover.png');
+        background-image: url('../assets/img/icon_delete_hover.png');
     }
 
     .f-s-w-16px-400 {

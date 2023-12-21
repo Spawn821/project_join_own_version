@@ -3,8 +3,6 @@
 /* ------------------------ */
 
 .topbar-context-menu-area {
-    display: block;
-    position: relative;
     z-index: 2;
 }
 

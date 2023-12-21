@@ -29,22 +29,20 @@
   <div class="login-area" id="login-area">
 
     <!-- login animation overlay join logo -->
-    <div class="login-animation-overlay background-color-white" id="login-animation-overlay">
+    <div class="login-animation-overlay" id="login-animation-overlay">
     </div>
-    <img class="login-animation-join-logo login-animation-logo" src="assets/img/logo_join.png"
-      id="login-animation-logo">
+    <div class="login-animation-join-logo login-animation-logo" id="login-animation-logo"></div>
 
     <!-- login header area join -->
     <header class="login-header">
 
       <!-- login header join logo -->
-      <img class="login-join-logo" src="assets/img/logo_join.png" alt="join logo image">
+      <div class="login-join-logo v-hidden" id="login-join-logo"></div>
 
       <!-- login header right area -->
       <div class="login-header-right login-header-right-top" id="login-header-right">
         <span class="f-s-w-20px-400">Not a Join user?</span>
-        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700"
-          onclick="showTemplate('signup_html')">
+        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700" onclick="showTemplate('signup_html')">
           Sign up
         </button>
       </div>
@@ -66,8 +64,7 @@
       <!-- login signup -->
       <div class="login-header-right login-header-right-bottom" id="login-header-bottom">
         <span class="f-s-w-20px-400">Not a Join user?</span>
-        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700"
-          onclick="showTemplate('signup_html')">
+        <button type="button" class="btn-black login-btn-signup f-s-w-16px-700" onclick="showTemplate('signup_html')">
           Sign up
         </button>
       </div>
@@ -86,7 +83,7 @@
   <div class="info-pages-area d-none" id="info-pages-area">
 
     <!-- include sidebar.html -->
-    <div id="sidebar_html" w3-include-html="components/sidebar.html"></div>
+    <div class="info-pages-mobile" id="sidebar_html" w3-include-html="components/sidebar.html"></div>
 
     <!-- info pages topbar infopage area -->
     <div class="info-pages-area-subcontainer">

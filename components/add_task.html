@@ -32,7 +32,8 @@
                         </label>
 
                         <input required class="add-new-task-input f-s-w-20px-400" type="text" id="add-task-input-title"
-                            placeholder="Enter a title">
+                            placeholder="Enter a title" onkeyup="checkDisabledCreateTask()"
+                            onkeypress="checkDisabledCreateTask()">
 
                         <!-- warning this field is required -->
                         <span class="add-new-task-wrong-message-under-inputs">
@@ -50,7 +51,8 @@
                         </label>
 
                         <textarea required class="add-new-task-textarea f-s-w-20px-400"
-                            id="add-task-textarea-description" placeholder="Enter a Description"></textarea>
+                            id="add-task-textarea-description" placeholder="Enter a Description"
+                            onkeyup="checkDisabledCreateTask()" onkeypress="checkDisabledCreateTask()"></textarea>
 
                         <!-- warning this field is required -->
                         <span class="add-new-task-wrong-message-under-inputs">
@@ -84,13 +86,13 @@
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
                                             id="add-task-contact-arrow-open" onclick="dropDownAddTask('assigned to', 'open');
                                             renderAddTaskContactList()">
-                                            <img src="/assets/img/drop_down_arrow_down.png">
+                                            <img src="assets/img/drop_down_arrow_down.png">
                                         </div>
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-close d-none"
                                             id="add-task-contact-arrow-close"
                                             onclick="dropDownAddTask('assigned to', 'close');">
-                                            <img src="/assets/img/drop_down_arrow_up.png">
+                                            <img src="assets/img/drop_down_arrow_up.png">
                                         </div>
 
                                     </div>
@@ -114,7 +116,7 @@
                                             <span class="f-s-w-21px-700">Add new contact</span>
                                             <div>
                                                 <img class="add-new-contact-button-icon"
-                                                    src="/assets/img/icon_person_add.png">
+                                                    src="assets/img/icon_person_add.png">
                                             </div>
                                         </div>
 
@@ -149,7 +151,9 @@
                         </label>
 
                         <input required class="add-new-task-input f-s-w-20px-400" type="date" id="add-task-input-date"
-                            onmouseover="setDateOfTodayForDatepicker('add-task-input-date');">
+                            onmouseover="setDateOfTodayForDatepicker('add-task-input-date')"
+                            onchange="checkDisabledCreateTask()" onkeyup="checkDisabledCreateTask()"
+                            onkeypress="checkDisabledCreateTask()">
 
                         <!-- warning this field is required -->
                         <span class="add-new-task-wrong-message-under-inputs">
@@ -218,12 +222,13 @@
                                     <input required
                                         class="input-whitout-border-right add-new-task-input-dropdown f-s-w-20px-400"
                                         type="text" id="add-task-input-category" placeholder="Select task category"
-                                        onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()">
+                                        onfocus="dropDownAddTask('category', 'open'); renderCategoryTask()"
+                                        onkeyup="checkDisabledCreateTask()" onkeypress="checkDisabledCreateTask()">
 
                                     <div class="input-img background-color-white" id="add-task-category-arrow-open"
                                         onclick="dropDownAddTask('category', 'open'); renderCategoryTask();">
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
-                                            <img src="/assets/img/drop_down_arrow_down.png">
+                                            <img src="assets/img/drop_down_arrow_down.png">
                                         </div>
                                     </div>
 
@@ -231,7 +236,7 @@
 
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-open"
                                             id="add-task-category-add" onclick="addCategory()">
-                                            <img src="/assets/img/icon_add.png">
+                                            <img src="assets/img/icon_add.png">
                                         </div>
 
                                         <div class="separator-1px-lightgrey"></div>
@@ -239,7 +244,7 @@
                                         <div class="add-new-task-dropdown-img add-new-task-dropdown-close"
                                             id="add-task-category-arrow-close"
                                             onclick="dropDownAddTask('category', 'close');">
-                                            <img src="/assets/img/drop_down_arrow_up.png">
+                                            <img src="assets/img/drop_down_arrow_up.png">
                                         </div>
 
                                     </div>
@@ -272,20 +277,20 @@
 
                             <div class="input-img background-color-white" id="add-task-subtask-add">
                                 <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
-                                    <img src="/assets/img/icon_add.png" onclick="actionInputSubtask('start input');">
+                                    <img src="assets/img/icon_add.png" onclick="actionInputSubtask('start input');">
                                 </div>
                             </div>
 
                             <div class="d-none input-img" id="add-task-add-new-subtask">
 
                                 <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
-                                    <img src="/assets/img/icon_close.png" onclick="actionInputSubtask('cancel input')">
+                                    <img src="assets/img/icon_close.png" onclick="actionInputSubtask('cancel input')">
                                 </div>
 
                                 <div class="separator-1px-lightgrey"></div>
 
                                 <div class="add-new-task-dropdown-img add-new-task-dropdown-open">
-                                    <img src="/assets/img/icon_done_black_small.png"
+                                    <img src="assets/img/icon_done_black_small.png"
                                         onclick="actionInputSubtask('add subtask')">
                                 </div>
 
@@ -320,9 +325,9 @@
                         <div class="btn-white-img"></div>
                     </button>
 
-                    <button type="submit" class="add-new-task-btn-right btn-black" id="add-task-button-create">
+                    <button disabled type="submit" class="add-new-task-btn-right btn-black" id="add-task-button-create">
                         <span class="f-s-w-21px-700">Create Task</span>
-                        <img src="/assets/img/icon_done_white_small.png">
+                        <img src="assets/img/icon_done_white_small.png">
                     </button>
 
                 </div>

@@ -96,6 +96,7 @@ function addCategoryToList(newCategory) {
 function deleteCategoryFromList(category) {
     categoriesTask.splice(categoryIndex(category), 1);
 
+    setItem('categoriesTask', JSON.stringify(categoriesTask));
     renderCategoryTask();
 }
 
@@ -262,9 +263,9 @@ function changeSubtaskFromShownToEdit(i) {
 /* === CREATE TASK === */
 
 const prioImgPath = [
-    { priority: 'Urgent', img: '/assets/img/icon_urgent_red.png' },
-    { priority: 'Medium', img: '/assets/img/icon_medium_orange.png' },
-    { priority: 'Low', img: '/assets/img/icon_low_green.png' },
+    { priority: 'Urgent', img: 'assets/img/icon_urgent_red.png' },
+    { priority: 'Medium', img: 'assets/img/icon_medium_orange.png' },
+    { priority: 'Low', img: 'assets/img/icon_low_green.png' },
 ];
 
 const addTaskInputIds = [
@@ -329,7 +330,7 @@ function findPriorityImg() {
     try {
         return prioImgPath.find((element) => element.priority == currentPrio).img;
     } catch {
-        return '/assets/img/icon_low_green.png'; //default
+        return 'assets/img/icon_low_green.png'; //default
     }
 }
 
@@ -363,4 +364,24 @@ function returnTask(title, description, dueDate, prioImg, category) {
         subtasks: addedSubtasks,
         boardStatus: setBoardStatus
     };
+}
+
+let inputsDisabledCreateTask = [
+    '#add-task-input-title',
+    '#add-task-textarea-description',
+    '#add-task-input-date',
+    '#add-task-input-category'
+]
+
+function checkDisabledCreateTask() {
+    let i = 0;
+
+    inputsDisabledCreateTask.map((input) => {
+        const inputField = document.getElementById(currentAddTask).querySelector(input);
+        let createTaskButton = document.getElementById(currentAddTask).querySelector('#add-task-button-create');
+
+        if (inputField.value) i++;
+
+        i == inputsDisabledCreateTask.length ? createTaskButton.disabled = false : createTaskButton.disabled = true;
+    });
 }

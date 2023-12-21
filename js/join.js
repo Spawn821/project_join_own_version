@@ -63,24 +63,36 @@ function topbarUserInitials() {
 /**
  * This function toggles visibility of the menu on top right of the top-navigation bar.
  */
-function showOrHideContextMenu() {
+function showOrHideContextMenu(action) {
     let contextMenu = document.getElementById('context-menu-panel');
-    const windowSize = window.matchMedia("(max-width: 900px)");
 
-    if (!windowSize.matches) {
-        contextMenu.classList.toggle('d-none');
+    if (action == 'open') {
+        openContextMenu(contextMenu);
     } else {
-        if (contextMenu.classList.contains('d-none')) {
-            contextMenu.classList.remove('d-none');
-            contextMenu.classList.add('context-menu-panel-in');
-            contextMenu.classList.remove('context-menu-panel-out');
-        } else {
-            contextMenu.classList.remove('context-menu-panel-in');
-            contextMenu.classList.add('context-menu-panel-out');
-            setTimeout(() => {
-                contextMenu.classList.add('d-none');
-            }, 250);
-        }
+        closeContextMenu(contextMenu);
+    }
+}
+
+
+function openContextMenu(contextMenu) {
+    contextMenu.classList.remove('d-none');
+    contextMenu.classList.add('context-menu-panel-in');
+    contextMenu.classList.remove('context-menu-panel-out');
+}
+
+
+function closeContextMenu(contextMenu) {
+    const windowSize = window.matchMedia('(max-width: 900px)');
+
+    contextMenu.classList.remove('context-menu-panel-in');
+    contextMenu.classList.add('context-menu-panel-out');
+
+    if (windowSize.matches) {
+        setTimeout(() => {
+            contextMenu.classList.add('d-none');
+        }, 250);
+    } else {
+        contextMenu.classList.add('d-none');
     }
 }
 

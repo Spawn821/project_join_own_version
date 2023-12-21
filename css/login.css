@@ -28,6 +28,13 @@
   bottom: 0;
   animation-duration: 1s;
   animation-name: login-animation-overlay;
+  background-color: white;
+}
+
+@media (max-width: 700px) {
+  .login-animation-overlay {
+    background-color: rgb(42, 54, 71);
+  }
 }
 
 @keyframes login-animation-overlay {
@@ -41,17 +48,30 @@
 }
 
 .login-animation-join-logo {
+  background-image: url('../assets/img/logo_join.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   top: 16px;
   left: 24px;
-  height: 122px;
+  height: 123px;
+  width: 100px;
   object-fit: contain;
   animation-duration: 1s;
   animation-name: login-logo-animation;
 }
 
+@media (max-width: 700px) {
+  .login-animation-join-logo {
+    height: 78px;
+    width: 64px;
+  }
+}
+
 @keyframes login-logo-animation {
   0% {
+    background-image: url('../assets/img/join_logo_white.png');
     top: 50vh;
     left: 50vw;
     transform: scale(3);
@@ -59,6 +79,7 @@
   }
 
   100% {
+    background-image: url('../assets/img/logo_join.png');
     position: absolute;
     top: 16px;
     left: 24px;
@@ -108,15 +129,21 @@
   padding-right: 24px;
 }
 
-@media (max-width: 700px) {
-  .login-header {
-    width: 396px;
-  }
+.login-join-logo {
+  background-image: url('../assets/img/logo_join.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 122px;
+  width: 100px;
+  object-fit: contain;
 }
 
-.login-join-logo {
-  height: 122px;
-  object-fit: contain;
+@media (max-width: 700px) {
+  .login-join-logo {
+    height: 78px;
+    width: 64px;
+  }
 }
 
 .login-header-right {
@@ -420,7 +447,13 @@
 /* ---------------------------- */
 
 .info-pages-area-subcontainer {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media (max-width: 900px) {
+  .info-pages-mobile {
+    display: none;
+  }
 }
