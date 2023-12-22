@@ -71,11 +71,13 @@ function vaildateEmailAlreadyExist() {
     let flag = false;
 
     users.map((user) => {
-        warning.classList.add('v-hidden');
+        if (!flag) {
+            warning.classList.add('v-hidden');
 
-        if (validInput(inputField, user)) {
-            warning.classList.remove('v-hidden');
-            flag = true;
+            if (validInput(inputField, user)) {
+                warning.classList.remove('v-hidden');
+                flag = true;
+            }
         }
     })
 

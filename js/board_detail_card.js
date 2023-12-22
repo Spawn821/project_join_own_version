@@ -177,7 +177,7 @@ function isSubtaskChecked(i) {
     }
 
     setItem('tasks', JSON.stringify(tasks));
-    renderBoardShortCards();
+    startCreateBoardShortCards();
     taskEdit = true;
 }
 
@@ -209,7 +209,7 @@ function deleteTask() {
 
     setItem('tasks', JSON.stringify(tasks));
     closeDetailCard();
-    renderBoardShortCards();
+    startCreateBoardShortCards();
 }
 
 

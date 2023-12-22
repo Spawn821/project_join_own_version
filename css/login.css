@@ -26,7 +26,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  animation-duration: 1s;
+  animation-duration: 1.25s;
   animation-name: login-animation-overlay;
   background-color: white;
 }
@@ -39,6 +39,10 @@
 
 @keyframes login-animation-overlay {
   0% {
+    opacity: 1;
+  }
+
+  25% {
     opacity: 1;
   }
 
@@ -58,7 +62,7 @@
   height: 123px;
   width: 100px;
   object-fit: contain;
-  animation-duration: 1s;
+  animation-duration: 1.25s;
   animation-name: login-logo-animation;
 }
 
@@ -71,7 +75,15 @@
 
 @keyframes login-logo-animation {
   0% {
-    background-image: url('../assets/img/join_logo_white.png');
+    background-image: url('../assets/img/logo_join.png');
+    top: 50vh;
+    left: 50vw;
+    transform: scale(3);
+    display: block;
+  }
+
+  25% {
+    background-image: url('../assets/img/logo_join.png');
     top: 50vh;
     left: 50vw;
     transform: scale(3);
@@ -85,6 +97,35 @@
     left: 24px;
     transform: scale(1);
     display: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  @keyframes login-logo-animation {
+    0% {
+      background-image: url('../assets/img/join_logo_white.png');
+      top: 50vh;
+      left: 50vw;
+      transform: scale(3);
+      display: block;
+    }
+
+    25% {
+      background-image: url('../assets/img/join_logo_white.png');
+      top: 50vh;
+      left: 50vw;
+      transform: scale(3);
+      display: block;
+    }
+
+    100% {
+      background-image: url('../assets/img/logo_join.png');
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      transform: scale(1);
+      display: none !important;
+    }
   }
 }
 

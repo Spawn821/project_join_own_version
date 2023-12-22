@@ -35,8 +35,8 @@
 }
 
 @media (max-width: 900px) {
-    #summary_html::-webkit-scrollbar {
-        display: none;
+    #summary_html {
+        height: calc(100vh - 160px);
     }
 
     #add_task_mobile_html {
@@ -55,6 +55,12 @@
     #privacy_policy_html,
     #legal_notice_html {
         height: calc(100vh - 160px);
+    }
+}
+
+@media (max-width: 750px) or (min-height: 900px) {
+    #summary_html::-webkit-scrollbar {
+        display: none;
     }
 }
 

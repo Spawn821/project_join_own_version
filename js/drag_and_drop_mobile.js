@@ -233,7 +233,7 @@ function touchendShortCardMobile(task) {
         insertShortCardInContainer(task);
         removeShortCardStyleToHover(task);
         setItem('tasks', JSON.stringify(tasks));
-        renderBoardShortCards();
+        startCreateBoardShortCards();
         showDroppedShortCard();
     });
 }

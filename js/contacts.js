@@ -4,16 +4,24 @@ let existLetterHeadline = '';
 /* CONTACTS LEFT SIDE */
 /* ================== */
 
-/**
- * This function rendes the contacts in the contactlist.
- */
-function renderContacts() {
+function startCreateContacts() {
     let contactsList = document.getElementById('contacts-list');
     let i = 0;
     let iColor = 0;
 
     contactsList.innerHTML = '';
 
+    renderContacts(contactsList, i, iColor);
+}
+
+
+/**
+ * This function rendes the contacts in the contactlist.
+ * @param {object} contactsList is the html element to list the contacts.
+ * @param {number} i is the index from array users.
+ * @param {number} iColor is the index from the contact color array.
+ */
+function renderContacts(contactsList, i, iColor) {
     users.map((user) => {
         const backgroundColor = returnContactColor(iColor);
         const initals = getInitials(user.name);
@@ -72,7 +80,7 @@ function openOrCloseContactDataDesktop(i, contactCard) {
     }
     else {
         closeAllContactClicks();
-        renderContactData(i);
+        startCreateContactData(i);
         contactCard.classList.toggle('contact-card-click');
         contactDataSlideInAnimation();
     }
@@ -87,7 +95,7 @@ function openOrCloseContactDataMobile(i, contactData = true) {
     contactsRightSide.classList.toggle('contacts-half-side-mobile');
 
     closeAllContactClicks();
-    if (contactData) renderContactData(i);
+    if (contactData) startCreateContactData(i);
 }
 
 
@@ -117,11 +125,11 @@ function contactDataSlideOutAnimation() {
 
 /* render the screen 'contactdata' with the datas from clicked contact */
 /**
- * This function renders the contactdata in separate window,
+ * This function start to create the contactdata in separate window,
  * and show this with a slide effect.
  * @param {integer} i is the index number from the array users.
  */
-function renderContactData(i, slideAnimation = true) {
+function startCreateContactData(i, slideAnimation = true) {
     let content = document.getElementById('contact-data-content');
     content.innerHTML = '';
 
@@ -131,6 +139,11 @@ function renderContactData(i, slideAnimation = true) {
     const initals = getInitials(name);
     const backgroundColor = returnContactColor(i);
 
+    renderContactData(content, slideAnimation, i, backgroundColor, initals, name, email, phone)
+}
+
+
+function renderContactData(content, slideAnimation, i, backgroundColor, initals, name, email, phone) {
     if (slideAnimation) {
         setTimeout(() => {
             content.innerHTML = getContactDataHTML(i, backgroundColor, initals, name, email, phone);

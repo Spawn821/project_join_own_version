@@ -90,7 +90,7 @@ async function addNewContact() {
 * and highlightetd the current card in the contactlist.
 */
 function showNewContact() {
-    renderContacts();
+    startCreateContacts();
     contactData(currentContactIndex);
 
     let scrollPositionElement = document.getElementById(`contactCard-${currentContactIndex}`);
@@ -128,7 +128,7 @@ async function editContact() {
 
     await setItem('users', JSON.stringify(users))
     openOrCloseAddNewEditContact('edit_contact_html', 'close');
-    renderContactData(currentContactIndex, false);
+    startCreateContactData(currentContactIndex, false);
     informationSlidebox('information-slidebox-horizontal', 'Contact changed');
 }
 
@@ -145,7 +145,7 @@ async function deleteContact(i = currentContactIndex, openFalse = true) {
     users.splice(i, 1);
 
     await setItem('users', JSON.stringify(users));
-    renderContacts();
+    startCreateContacts();
     clearContactData();
     informationSlidebox('information-slidebox-horizontal', 'Contact delete');
 

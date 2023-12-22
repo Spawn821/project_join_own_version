@@ -40,65 +40,65 @@
 <body class="join-body" onload="initJoin()" onclick="showOrHideContextMenu('close')">
 
     <!-- include sidebar.html -->
-    <div id="sidebar_html" w3-include-html="components/sidebar.html"></div>
+    <div id="sidebar_html" w3-include-html="templates/sidebar.html"></div>
 
     <div class="join-panel">
 
         <!-- include topbar.html -->
-        <div id="topbar_html" w3-include-html="components/topbar.html"></div>
+        <div id="topbar_html" w3-include-html="templates/topbar.html"></div>
 
         <!-- include summary.html -->
-        <div id="summary_html" class="overflow-y-scroll flex-grow p-relative" w3-include-html="components/summary.html"></div>
+        <div id="summary_html" class="overflow-y-scroll flex-grow p-relative" w3-include-html="templates/summary.html"></div>
 
         <!-- include add_task.html -->
-        <div id="add_task_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="components/add_task.html"
+        <div id="add_task_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/add_task.html"
             onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
             actionInputSubtask('cancel input')">
         </div>
 
         <!-- include add_task_overlay.html -->
-        <div id="add_task_overlay_html" class="p-absolute d-none" w3-include-html="components/add_task_overlay.html"
+        <div id="add_task_overlay_html" class="p-absolute d-none" w3-include-html="templates/add_task_overlay.html"
             onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
             actionInputSubtask('cancel input')">
         </div>
 
         <!-- include add_task_mobile.html -->
         <div id="add_task_mobile_html" class="d-none overflow-y-scroll flex-grow"
-            w3-include-html="components/add_task_mobile.html" onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
+            w3-include-html="templates/add_task_mobile.html" onclick="dropDownAddTask('assigned to', 'close'); dropDownAddTask('category', 'close');
             actionInputSubtask('cancel input')">
         </div>
 
         <!-- include add_task_mobile_overlay.html -->
         <div id="add_task_mobile_overlay_html" class="p-absolute d-none"
-            w3-include-html="components/add_task_mobile_overlay.html" onclick="dropDownAddTask('assigned to', 'close');
+            w3-include-html="templates/add_task_mobile_overlay.html" onclick="dropDownAddTask('assigned to', 'close');
             actionInputSubtask('cancel input')">
         </div>
 
         <!-- include board.html -->
-        <div id="board_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="components/board.html"></div>
+        <div id="board_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/board.html"></div>
 
         <div id="board_detail_card_task_html" class="p-absolute d-none"
-            w3-include-html="components/board_detail_card_task.html">
+            w3-include-html="templates/board_detail_card_task.html">
         </div>
 
         <!-- contacts.html -->
-        <div id="contacts_html" class="d-none flex-grow" w3-include-html="components/contacts.html">
+        <div id="contacts_html" class="d-none flex-grow" w3-include-html="templates/contacts.html">
         </div>
 
-        <div id="add_new_contact_html" class="p-absolute d-none" w3-include-html="components/add_new_contact.html">
+        <div id="add_new_contact_html" class="p-absolute d-none" w3-include-html="templates/add_new_contact.html">
         </div>
 
-        <div id="edit_contact_html" class="p-absolute d-none" w3-include-html="components/edit_contact.html">
+        <div id="edit_contact_html" class="p-absolute d-none" w3-include-html="templates/edit_contact.html">
         </div>
 
         <!-- info pages.html -->
-        <div id="help_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="components/help.html"></div>
+        <div id="help_html" class="d-none overflow-y-scroll flex-grow" w3-include-html="templates/help.html"></div>
 
         <div id="privacy_policy_html" class="d-none overflow-y-scroll flex-grow"
-            w3-include-html="components/privacy_policy.html"></div>
+            w3-include-html="templates/privacy_policy.html"></div>
 
         <div id="legal_notice_html" class="d-none overflow-y-scroll flex-grow"
-            w3-include-html="components/legal_notice.html"></div>
+            w3-include-html="templates/legal_notice.html"></div>
 
     </div>
 

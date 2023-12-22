@@ -199,6 +199,7 @@ function addSubtask(newSubtask) {
     }
 }
 
+
 function addSubtaskToArray(newSubtask) {
     addedSubtasks.push({ subtask: newSubtask.value, checked: false });
 
@@ -206,6 +207,7 @@ function addSubtaskToArray(newSubtask) {
 
     renderSubtaskTask();
 }
+
 
 function addSubtaskError(newSubtask, message) {
     newSubtask.style.color = 'red';
@@ -314,7 +316,7 @@ function editTask(title, description, dueDate, prioImg) {
     tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory));
 
     closeEditTask();
-    renderBoardShortCards();
+    startCreateBoardShortCards();
 }
 
 

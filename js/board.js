@@ -8,15 +8,22 @@ const boardStatus = [
 
 /* === BOARD SHORT CARDS === */
 
-/**
- * This function rendert the status columns in board with the respective task from array tasks.
- */
-function renderBoardShortCards() {
+function startCreateBoardShortCards() {
     boardStatus.map((status) => resetBoardStatus(status));
 
     let search = document.getElementById('board-search').value;
     let i = 0;
 
+    renderBoardShortCards(search, i);
+}
+
+
+/**
+ * This function rendert the status columns in board with the respective task from array tasks.
+ * @param {string} search is the value from the search bar.
+ * @param {number} i is the index from array task. 
+ */
+function renderBoardShortCards(search, i) {
     tasks.map((task) => {
         let boardStatusContainer = document.getElementById(selectBoardStatus(task.boardStatus));
 
@@ -183,7 +190,7 @@ function boardDrop(status) {
 
     setItem('tasks', JSON.stringify(tasks))
 
-    renderBoardShortCards();
+    startCreateBoardShortCards();
     showDroppedShortCard();
 }
 

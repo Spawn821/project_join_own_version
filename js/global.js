@@ -291,11 +291,11 @@ function actionsOnTamplatesJoin(name, windowSize) {
     if (name == 'summary_html') {
         renderSummary();
     } else if (name == 'board_html') {
-        renderBoardShortCards();
+        startCreateBoardShortCards();
     } else if (name == 'add_task_html') {
-        windowSize.matches ? currentAddTask = 'add_task_mobile_html': currentAddTask = name;
+        windowSize.matches ? currentAddTask = 'add_task_mobile_html' : currentAddTask = name;
     } else if (name == 'contacts_html') {
-        renderContacts();
+        startCreateContacts();
     } else if (name == 'help_html') {
         removeSibebarNavActive();
         helpIcon.classList.add('v-hidden');

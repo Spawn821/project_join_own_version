@@ -2,9 +2,9 @@
  * This function initialize the landing page and preloads all registered Users to match them against input of the current user of the page.
  */
 async function loginInit() {
+    removeAnimateJoinLogo();
     await loadUsers();
     checkRememberLogin();
-    removeAnimateJoinLogo();
 
     lastSelectedTemplate = 'login_html';
     currentWebsite = 'index';
@@ -19,7 +19,7 @@ function removeAnimateJoinLogo() {
         document.getElementById('login-animation-overlay').classList.add('d-none');
         document.getElementById('login-animation-logo').classList.add('d-none');
         document.getElementById('login-join-logo').classList.remove('v-hidden');
-    }), 900);
+    }), 1150);
 
 }
 
@@ -170,19 +170,28 @@ function compareInputEmailWithUsers() {
     const inputField = document.getElementById('reset-email')
     const warning = document.getElementById('signup-wrong-mail');
     let button = document.getElementById('send_mail_btn');
+    let flag = false;
 
     users.map((user) => {
-        warning.classList.remove('v-hidden');
-        button.disabled = true;
-
-        if (validInput(inputField, user)) {
-            warning.classList.add('v-hidden');
-
-            if (inputField.value == user['email']) {
-                button.disabled = false;
-            }
+        if (!flag) {
+            flag = iterateAllEmailaddresses(inputField, warning, user, button);
         }
     })
+}
+
+
+function iterateAllEmailaddresses(inputField, warning, user, button, flag) {
+    warning.classList.remove('v-hidden');
+    button.disabled = true;
+
+    if (validInput(inputField, user)) {
+        warning.classList.add('v-hidden');
+
+        if (inputField.value == user['email']) {
+            button.disabled = false;
+            return true;
+        }
+    }
 }
 
 
