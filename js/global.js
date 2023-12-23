@@ -294,6 +294,7 @@ function actionsOnTamplatesJoin(name, windowSize) {
         startCreateBoardShortCards();
     } else if (name == 'add_task_html') {
         windowSize.matches ? currentAddTask = 'add_task_mobile_html' : currentAddTask = name;
+        document.getElementById(currentAddTask).querySelector('#add-task-btn-medium').classList.add('add-new-task-priority-color-orange');
     } else if (name == 'contacts_html') {
         startCreateContacts();
     } else if (name == 'help_html') {

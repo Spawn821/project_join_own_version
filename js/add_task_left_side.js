@@ -114,11 +114,14 @@ function markedUserAsClicked() {
  * @param {integer} i is the index from arry users.
 */
 function addedUserToTask(i) {
+    const contact = document.getElementById(currentAddTask).querySelector(`#add-task-contact-${i}`);
     const checkbox = document.getElementById(currentAddTask).querySelector(`#add-task-checkbox-${i}`);
 
-    if (checkbox.checked) {
+    if (!contact.classList.contains('contact-card-click')) {
+        checkbox.checked = true;
         addedUsersToTask.push({ name: users[i]['name'], id: i }); //if task createt array reset to default.
     } else {
+        checkbox.checked = false;
         addedUsersToTask.splice(removeUserFromTask(i), 1);
         alreadyMarkedUsersAsClicked(i, 'remove');
     }

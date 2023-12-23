@@ -12,13 +12,13 @@ function getAddTaskContactCardHTML(name, initials, i) {
     const color = returnContactColor(i);
 
     return /*html*/ `
-        <div class="add-task-contact" id="add-task-contact-${i}">
+        <div class="add-task-contact" id="add-task-contact-${i}" onclick="addedUserToTask(${i})">
             <div class="contact-name-area">
                 <div class="contact-initals-icon f-s-w-12px-400" style="background-color: ${color}">${initials}</div>
                 <span class="f-s-w-20px-400 contact-name-color-white">${name}</span>
             </div>
             <label class="checkbox-text-area">
-                <input class="contact-card-click-check" type="checkbox" id="add-task-checkbox-${i}" onclick="addedUserToTask(${i})">
+                <input class="contact-card-click-check" type="checkbox" id="add-task-checkbox-${i}">
                 <div id="add-task-check"></div>
             </label>
         </div>

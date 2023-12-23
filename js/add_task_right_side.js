@@ -13,9 +13,9 @@ function setDateOfTodayForDatepicker(id) {
 /* === PRIO === */
 
 let idPrioBtn = [
-    { id: 'add-task-btn-urgent', class: 'add-new-task-priority-color-red' },
-    { id: 'add-task-btn-medium', class: 'add-new-task-priority-color-orange' },
-    { id: 'add-task-btn-low', class: 'add-new-task-priority-color-green' }
+    { id: 'add-task-btn-urgent', class: 'add-new-task-priority-color-red'},
+    { id: 'add-task-btn-medium', class: 'add-new-task-priority-color-orange'},
+    { id: 'add-task-btn-low', class: 'add-new-task-priority-color-green'}
 ]
 
 let currentPrio = '';
@@ -37,16 +37,21 @@ function markedPrioAsClicked(prioText) {
 
         prioBtn.classList.toggle(prioClass);
 
-        !prioBtn.classList.contains(prioClass) ? currentPrio = '': null;
+        !prioBtn.classList.contains(prioClass) ? currentPrio = '' : null;
     }
 }
 
 
-function removeMarkedPrio(id) {
+function removeMarkedPrio(id, clear = false) {
     idPrioBtn.map((element) => {
         let prioBtn = document.getElementById(currentAddTask).querySelector('#' + element.id);
 
-        element.id != id ? prioBtn.classList.remove(element.class) : null;
+        if (element.id == 'add-task-btn-medium' && clear) {
+            prioBtn.classList.add(element.class);
+            return;
+        } else if (element.id != id) {
+            prioBtn.classList.remove(element.class);
+        }
     });
 }
 
@@ -348,7 +353,7 @@ function clearTask() {
     setBoardStatus = '';
     addedSubtasks = [];
 
-    removeMarkedPrio();
+    removeMarkedPrio('', true);
     renderAddedUserToTask();
     renderSubtaskTask();
 }

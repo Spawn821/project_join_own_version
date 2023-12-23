@@ -227,7 +227,10 @@ function scrollToDroppedShortCard() {
 function openOrCloseAddTaskCard(action, boardStatus) {
     let transparentBackground = document.getElementById('join-transparent-background');
     let addTaskOverlay = document.getElementById('add_task_overlay_html');
+    let prioMediumButton = document.getElementById('add_task_overlay_html').querySelector('#add-task-btn-medium')
     const windowSize = window.matchMedia('(max-width: 1150px)');
+
+    prioMediumButton.classList.add('add-new-task-priority-color-orange');
     setBoardStatus = boardStatus;
 
     if (!windowSize.matches) {
