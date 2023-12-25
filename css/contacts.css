@@ -149,8 +149,8 @@
 }
 
 @media (max-width: 1400px) {
-    .contacts-half-side-mobile {
-        display: none;
+    .contacts-half-side-desktop {
+        display: none !important;
     }
 }
 
@@ -171,6 +171,13 @@
 @media (max-width: 550px) {
     .contact-data-area {
         margin-left: 16px;
+    }
+}
+
+@media (max-height: 700px) {
+    .contact-data-area {
+        margin-top: 16px;
+        gap: 32px;
     }
 }
 
@@ -200,6 +207,7 @@
         display: block;
         right: 16px;
         bottom: 32px;
+        z-index: 2;
     }
 }
 
@@ -273,6 +281,20 @@
     }
 }
 
+@media (max-width: 400px) {
+    .contact-data-name-area {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-height: 700px) {
+    .contact-data-name-area {
+        margin-bottom: 32px;
+    }
+}
+
 .contact-data-name-icon {
     height: 120px;
     width: 120px;
@@ -313,11 +335,21 @@
 
 @media (max-width: 750px) {
     .contact-data-name-edit-del-area {
+        display: none;
+    }
+}
+
+.contact-data-name-edit-del-area-mobile {
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .contact-data-name-edit-del-area-mobile {
         height: 100px;
         width: 116px;
-        position: fixed;
+        position: absolute;
         right: 16px;
-        bottom: calc(24px + 80px);
+        bottom: 24px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -326,6 +358,7 @@
         background-color: white;
         box-shadow: 0 4px 4px rgba(0 0 0 / 15%);
         border-radius: 20px 20px 0 20px;
+        z-index: 3;
     }
 
     .contact-data-point-menu-d-none {
@@ -424,8 +457,32 @@
     gap: 40px;
 }
 
+@media (max-height: 900px) {
+    .contact-data-info-area {
+        gap: 24px;
+    }
+}
+
+@media (max-height: 700px) {
+    .contact-data-info-area {
+        gap: 20px;
+    }
+}
+
 .contact-data-info-content {
     display: flex;
     flex-direction: column;
     gap: 21px;
+}
+
+@media (max-height: 900px) {
+    .contact-data-info-content {
+        gap: 12px;
+    }
+}
+
+@media (max-height: 700px) {
+    .contact-data-info-content {
+        gap: 12px;
+    }
 }

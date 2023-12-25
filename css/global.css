@@ -49,6 +49,10 @@ body {
     cursor: pointer;
 }
 
+.t-align-center {
+    text-align: center;
+}
+
 .b-top-left-radius {
     border-top-left-radius: 10px;
 }

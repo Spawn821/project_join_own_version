@@ -31,6 +31,13 @@
     }
 }
 
+@media (max-width: 400px) {
+    .board-panel {
+        width: 320px;
+        margin-left: calc((100vw - 320px) / 2);
+    }
+}
+
 
 
 /* -------------- */
@@ -81,6 +88,12 @@
 @media (max-width: 550px) {
     .board-search-input {
         width: calc(396px - 42px - 50.4px);
+    }
+}
+
+@media (max-width: 400px) {
+    .board-search-input {
+        width: calc(320px - 42px - 50.4px);
     }
 }
 
@@ -146,6 +159,12 @@
         &>.f-s-w-21px-700 {
             display: none;
         }
+    }
+}
+
+@media (max-width: 400px) {
+    .board-headline {
+        width: 320px;
     }
 }
 
@@ -419,6 +438,12 @@
         .f-s-w-19px-400 {
             font-size: 16px;
         }
+    }
+}
+
+@media (max-width: 400px) {
+    .board-detail-card-panel {
+        width: calc(320px - 64px);
     }
 }
 

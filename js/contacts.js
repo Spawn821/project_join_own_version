@@ -91,8 +91,8 @@ function openOrCloseContactDataMobile(i, contactData = true) {
     let contactsLeftSide = document.getElementById('contacts');
     let contactsRightSide = document.getElementById('contact-data');
 
-    contactsLeftSide.classList.toggle('contacts-half-side-mobile');
-    contactsRightSide.classList.toggle('contacts-half-side-mobile');
+    contactsLeftSide.classList.toggle('contacts-half-side-desktop');
+    contactsRightSide.classList.toggle('contacts-half-side-desktop');
 
     closeAllContactClicks();
     if (contactData) startCreateContactData(i);
@@ -183,7 +183,7 @@ function closeAllContactClicks() {
 
 
 function openOrClosePointMenu(action) {
-    let pointMenu = document.getElementById('contact-data-name-edit-del-area');
+    let pointMenu = document.getElementById('contact-data-name-edit-del-area-mobile');
 
     if (action == 'open') {
         pointMenu.classList.remove('contact-data-point-menu-d-none');

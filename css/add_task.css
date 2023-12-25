@@ -29,6 +29,12 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-task-panel {
+        margin-left: calc((100vw - 320px) / 2);
+    }
+}
+
 
 
 /* ----------------- */
@@ -146,6 +152,18 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-new-task-input {
+        width: calc(320px - 42px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .add-new-task-input {
+            width: calc(285px - 42px);
+        }
+    }
+}
+
 .add-new-task-textarea {
     font-family: "Inter", "Sans-serif";
     height: calc(120px - 36px);
@@ -163,6 +181,18 @@
     #add_task_mobile_overlay_html {
         .add-new-task-textarea {
             width: calc(348px - 42px);
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .add-new-task-textarea {
+        width: calc(320px - 42px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .add-new-task-textarea {
+            width: calc(285px - 42px);
         }
     }
 }
@@ -185,6 +215,18 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-new-task-input-dropdown-area {
+        width: 320px;
+    }
+
+    #add_task_mobile_overlay_html {
+        .add-new-task-input-dropdown-area {
+            width: 285px;
+        }
+    }
+}
+
 .add-new-task-input-dropdown {
     width: calc(440px - 42px - 37px);
 }
@@ -202,6 +244,18 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-new-task-input-dropdown {
+        width: calc(320px - 42px - 37px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .add-new-task-input-dropdown {
+            width: calc(285px - 42px - 37px);
+        }
+    }
+}
+
 .input-img-area:has(#add-task-add-new-category:not(.d-none)) .add-new-task-input-dropdown {
     width: calc(440px - 42px - 37px - 35.5px);
 }
@@ -214,6 +268,18 @@
     #add_task_mobile_overlay_html {
         .input-img-area:has(#add-task-add-new-category:not(.d-none)) .add-new-task-input-dropdown {
             width: calc(348px - 42px - 37px - 35.5px);
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .input-img-area:has(#add-task-add-new-category:not(.d-none)) .add-new-task-input-dropdown {
+        width: calc(320px - 42px - 37px - 35.5px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .input-img-area:has(#add-task-add-new-category:not(.d-none)) .add-new-task-input-dropdown {
+            width: calc(285px - 42px - 37px - 35.5px);
         }
     }
 }
@@ -302,6 +368,12 @@
     gap: 16px;
 }
 
+@media (max-width: 400px) {
+    .add-new-task-priority-area {
+        gap: 8px;
+    }
+}
+
 .add-new-task-priority-button {
     display: flex;
     justify-content: center;
@@ -328,6 +400,16 @@
     #add_task_mobile_overlay_html {
         .add-new-task-priority-button {
             width: 104px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .add-new-task-priority-button {
+        width: 101px;
+
+        &>.f-s-w-20px-400 {
+            font-size: 15px;
         }
     }
 }
@@ -470,6 +552,18 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-new-task-input-subtask {
+        width: calc(320px - 42px - 37px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .add-new-task-input-subtask {
+            width: calc(285px - 42px - 37px);
+        }
+    }
+}
+
 .input-img-area:has(#add-task-add-new-subtask:not(.d-none)) .add-new-task-input-subtask {
     width: calc(440px - 42px - 37px - 35.5px);
 }
@@ -482,6 +576,18 @@
     #add_task_mobile_overlay_html {
         .input-img-area:has(#add-task-add-new-subtask:not(.d-none)) .add-new-task-input-subtask {
             width: calc(348px - 42px - 37px - 35.5px);
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .input-img-area:has(#add-task-add-new-subtask:not(.d-none)) .add-new-task-input-subtask {
+        width: calc(320px - 42px - 37px - 35.5px);
+    }
+
+    #add_task_mobile_overlay_html {
+        .input-img-area:has(#add-task-add-new-subtask:not(.d-none)) .add-new-task-input-subtask {
+            width: calc(285px - 42px - 37px - 35.5px);
         }
     }
 }
@@ -523,6 +629,12 @@
             height: 48px;
         }
     }
+
+    @media (max-width: 400px) {
+        & .add-new-task-input-subtask {
+            width: calc(320px - 42px - 37px - 35.5px);
+        }
+    }
 }
 
 @media (max-width: 550px) {
@@ -530,6 +642,16 @@
         .input-img-area:has(#add-task-input-change-subtask) {
             & .add-new-task-input-subtask {
                 width: calc(348px - 42px - 37px - 35.5px);
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #add_task_mobile_overlay_html {
+        .input-img-area:has(#add-task-input-change-subtask) {
+            & .add-new-task-input-subtask {
+                width: calc(285px - 42px - 37px - 35.5px);
             }
         }
     }
@@ -585,6 +707,12 @@
             margin-top: 14px;
         }
     }
+
+    @media (max-width: 400px) {
+        & .add-new-task-input-subtask {
+            width: calc(320px - 42px - 37px - 35.5px);
+        }
+    }
 }
 
 @media (max-width: 550px) {
@@ -592,6 +720,16 @@
         .input-img-area:has(#add-task-list-change-subtask) {
             & .add-new-task-input-subtask {
                 width: calc(348px - 42px - 37px - 35.5px);
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #add_task_mobile_overlay_html {
+        .input-img-area:has(#add-task-list-change-subtask) {
+            & .add-new-task-input-subtask {
+                width: calc(285px - 42px - 37px - 35.5px);
             }
         }
     }
@@ -657,6 +795,17 @@
     }
 }
 
+@media (max-width: 400px) {
+    .add-new-task-btn-right {
+        height: 51px;
+        width: 105px;
+
+        &>.f-s-w-21px-700 {
+            font-size: 16px;
+        }
+    }
+}
+
 
 
 /* ---------------- */
@@ -703,6 +852,12 @@
     background-color: rgb(245, 245, 245);
 }
 
+@media (max-width: 320px) {
+    #add_task_mobile_html:not(.add-new-task-btn-left) .add-new-task-required-buttons-area {
+        width: 100%;
+    }
+}
+
 
 
 /* ----------------------- */
@@ -724,7 +879,28 @@
     }
 }
 
+@media (max-width: 550px) {
+    #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
+        padding-left: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
+        padding-top: 12px;
+        padding-left: 8px;
+        padding-bottom: 12px;
+        border-radius: 20px;
+    }
+}
+
 @media (max-height: 900px) {
+    #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
+        height: calc(100vh - 64px - 32px);
+    }
+}
+
+@media (max-height: 700px) {
     #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
         height: calc(100vh - 64px - 32px);
     }
@@ -747,15 +923,15 @@
     height: 730px;
 }
 
-@media (max-width: 550px) and (max-height: 900px) {
-    .add-task-input-area-overlay {
-        height: 540px !important;
-    }
-}
-
 @media (max-height: 900px) {
     .add-task-input-area-overlay {
         height: 519px;
+    }
+}
+
+@media (max-height: 700px) {
+    .add-task-input-area-overlay {
+        height: 450px;
     }
 }
 
@@ -769,5 +945,15 @@
     & .add-new-task-btn-right {
         width: 98px;
         margin-right: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+    #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-new-task-priority-button {
+        width: 90px;
+
+        &>.f-s-w-20px-400 {
+            font-size: 14px;
+        }
     }
 }

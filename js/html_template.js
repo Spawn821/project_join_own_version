@@ -237,7 +237,7 @@ function getContactDataHTML(i, backgroundColor, initals, name, email, phone) {
             <span class="contact-data-name-icon contact-initals-icon f-s-w-47px-500" style="background-color: ${backgroundColor}">${initals}</span>
             <div class="contact-data-name-headline">
                 <h1 class="contact-data-name f-s-w-47px-500">${name}</h1>
-                <div class="contact-data-name-edit-del-area contact-data-point-menu-d-none" id="contact-data-name-edit-del-area"
+                <div class="contact-data-name-edit-del-area"
                     onclick="isolateFromOderEvents(event)">
                     <div class="contact-data-name-edit-del" onclick="openOrCloseAddNewEditContact('edit_contact_html', 'open', true)">
                         <div class="contact-data-name-edit"></div>

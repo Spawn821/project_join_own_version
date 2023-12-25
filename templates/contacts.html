@@ -35,18 +35,13 @@
         </section>
 
         <!-- contacts right side -->
-        <section class="contact-data contacts-half-side-mobile" id="contact-data" onclick="openOrClosePointMenu('close')">
+        <section class="contact-data contacts-half-side-desktop" id="contact-data"
+            onclick="openOrClosePointMenu('close')">
 
             <div class="contact-data-area">
 
                 <img class="contact-data-arrow" src="assets/img/icon_arrow_left.png" alt="arrow left image"
                     onclick="contactData(currentContactIndex); isolateFromOderEvents(event)">
-
-                <!-- btn new contact -->
-                <button class="contacts-btn contact-data-point-menu btn-black"
-                    onclick="openOrClosePointMenu('open'); isolateFromOderEvents(event)">
-                    <img src="assets/img/icon_ponit_menu.png" alt="person">
-                </button>
 
                 <!-- contact data headline -->
                 <div class="contact-data-headline">
@@ -63,6 +58,26 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- btn for point menu -->
+            <button class="contacts-btn contact-data-point-menu btn-black"
+                onclick="openOrClosePointMenu('open'); isolateFromOderEvents(event)">
+                <img src="assets/img/icon_ponit_menu.png" alt="person">
+            </button>
+
+            <!-- btn ponint menu -->
+            <div class="contact-data-name-edit-del-area-mobile contact-data-point-menu-d-none"
+                id="contact-data-name-edit-del-area-mobile" onclick="isolateFromOderEvents(event)">
+                <div class="contact-data-name-edit-del"
+                    onclick="openOrCloseAddNewEditContact('edit_contact_html', 'open', true)">
+                    <div class="contact-data-name-edit"></div>
+                    <span class="f-s-w-16px-400">Edit</span>
+                </div>
+                <div class="contact-data-name-edit-del" onclick="deleteContact(currentContactIndex, false)">
+                    <div class="contact-data-name-delete"></div>
+                    <span class="f-s-w-16px-400">Delete</span>
+                </div>
             </div>
 
         </section>
