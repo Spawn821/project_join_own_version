@@ -64,6 +64,7 @@
   object-fit: contain;
   animation-duration: 1.25s;
   animation-name: login-logo-animation;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 700px) {
@@ -154,6 +155,13 @@
   }
 }
 
+@media (max-width: 400px) {
+  .login-panel {
+    height: 470px;
+    width: 320px;
+  }
+}
+
 
 
 /* ------------ */
@@ -178,6 +186,7 @@
   height: 122px;
   width: 100px;
   object-fit: contain;
+  margin-bottom: 8px;
 }
 
 @media (max-width: 700px) {
@@ -258,11 +267,23 @@
   gap: 32px;
 }
 
+@media (max-width: 400px) {
+  .login-form-area {
+    gap: 20px;
+  }
+}
+
 .login-form-input-area {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 35px;
+}
+
+@media (max-width: 400px) {
+  .login-form-input-area {
+    gap: 19px;
+  }
 }
 
 .login-input-warning {
@@ -284,6 +305,14 @@
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+@media (max-width: 400px) {
+  .login-options-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .login-forgotten-password {
@@ -331,7 +360,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  margin-top: 8px;
+  gap: 40px;
+}
+
+@media (max-width: 400px) {
+  .login-bottom-area {
+    gap: 8px;
+  }
 }
 
 
@@ -380,6 +416,13 @@
   }
 }
 
+@media (max-width: 400px) {
+  .signup-panel {
+    height: 520px !important;
+    width: 320px !important;
+  }
+}
+
 
 
 /* ----------------- */
@@ -391,6 +434,12 @@
   position: absolute;
   top: 32px;
   left: 32px;
+}
+
+@media (max-width: 400px) {
+  .signup-back-arrow {
+    left: 16px;
+  }
 }
 
 
@@ -451,6 +500,13 @@
   .reset-password-panel {
     height: 348px !important;
     width: 396px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .reset-password-panel {
+    height: 320px !important;
+    width: 320px !important;
   }
 }
 

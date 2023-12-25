@@ -61,6 +61,16 @@
     }
 }
 
+@media (max-width: 400px) {
+    .contentContainerInfo {
+        margin-left: 8px;
+
+        & .f-s-61px {
+            font-size: 39px;
+        }
+    }
+}
+
 .info-page-headline-area {
     display: flex;
     justify-content: space-between;
