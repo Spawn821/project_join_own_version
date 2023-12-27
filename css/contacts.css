@@ -4,12 +4,12 @@
 
 .contacts-panel {
     display: flex;
-    height: calc(100vh - 96px);
+    height: calc(100dvh - 96px);
 }
 
 @media (max-width: 900px) {
     .contacts-panel {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 }
 
@@ -115,6 +115,13 @@
     gap: 35px;
     padding: 15px 24px;
     border-radius: 10px;
+}
+
+@media (max-width: 400px) {
+    .contact-card {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .contact-card:hover {

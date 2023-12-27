@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: "Inter", "Sans-serif";
     background-color: rgb(245, 245, 245);
-    height: 100vh;
+    height: 100dvh;
     transition: all ease-in-out 75ms;
     overflow: hidden;
 }
@@ -587,15 +587,15 @@ select {
 
 @keyframes info-slide-up-down {
     25% {
-        bottom: 50vh;
+        bottom: 50dvh;
     }
 
     50% {
-        bottom: 50vh;
+        bottom: 50dvh;
     }
 
     75% {
-        bottom: 50vh;
+        bottom: 50dvh;
     }
 
     100% {
@@ -641,15 +641,15 @@ select {
 
     @keyframes info-slide-in-out {
         25% {
-            bottom: 50vh;
+            bottom: 50dvh;
         }
 
         50% {
-            bottom: 50vh;
+            bottom: 50dvh;
         }
 
         75% {
-            bottom: 50vh;
+            bottom: 50dvh;
         }
 
         100% {

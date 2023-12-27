@@ -896,13 +896,13 @@
 
 @media (max-height: 900px) {
     #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
-        height: calc(100vh - 64px - 32px);
+        height: calc(100dvh - 64px - 32px);
     }
 }
 
 @media (max-height: 700px) {
     #add_task_mobile_overlay_html:not(.add-new-task-btn-left) .add-task-panel-overlay {
-        height: calc(100vh - 64px - 32px);
+        height: calc(100dvh - 64px - 32px);
     }
 }
 

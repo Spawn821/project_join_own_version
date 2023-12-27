@@ -36,25 +36,25 @@
 
 @media (max-width: 900px) {
     #summary_html {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 
     #add_task_mobile_html {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 
     #board_html {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 
     #contacts_html {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 
     #help_htlml,
     #privacy_policy_html,
     #legal_notice_html {
-        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
     }
 }
 

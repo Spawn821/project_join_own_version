@@ -30,7 +30,7 @@
     .summary-panel {
         width: 400px;
         gap: 30px;
-        margin-top: calc((100vh - 556px - 160px) / 2);
+        margin-top: calc((100dvh - 556px - 160px) / 2);
     }
 }
 
@@ -43,7 +43,7 @@
 @media (max-width: 400px) {
     .summary-panel {
         width: 320px;
-        margin-top: calc((100vh - 496px - 160px) / 2);
+        margin-top: calc((100dvh - 496px - 160px) / 2);
         margin-left: calc((100vw - 320px) / 2);
     }
 }
