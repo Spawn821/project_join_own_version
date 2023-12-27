@@ -18,7 +18,8 @@ let currentAddTask = '';
 
 /**
  * This function show or hide elements, based on the given array list.
- * @param {[string|array]} id is a list from id's.
+ * @param {string} area is the element to be filled with content.
+ * @param {string} action is the action for the element, 'open' or 'close'.
 */
 function dropDownAddTask(area, action) {
     let ids = area == 'assigned to' ? dropDownIdsAssignedTo : dropDownIdsCategory;
@@ -35,6 +36,12 @@ function dropDownAddTask(area, action) {
     });
 }
 
+
+/**
+ * This function executes all option so that the element (dropdown) can be opened.
+ * @param {string} element is the id from a element.
+ * @param {object} dropdownElement is the dropdown element.
+ */
 function openDropDonwsAddTask(element, dropdownElement) {
     if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
         if (dropdownElement.querySelector('.p-absolute')) {
@@ -51,6 +58,12 @@ function openDropDonwsAddTask(element, dropdownElement) {
     }
 }
 
+
+/**
+ * This function executes all option so that the element (dropdown) can be closed.
+ * @param {string} element is the id from a element.
+ * @param {object} dropdownElement is the dropdown element.
+ */
 function closeDropDonwsAddTask(element, dropdownElement) {
     if (element == 'add-task-wrapper-contact' || element == 'add-task-wrapper-category') {
         dropdownElement.classList.add('b-bottom-left-radius');
@@ -93,7 +106,9 @@ function renderAddTaskContactList() {
 
 let addedUsersToTask = [];
 
-
+/**
+ * This function set a css class to marked a clicked contact in the dropdown list.
+ */
 function markedUserAsClicked() {
     addedUsersToTask.map((user) => {
         const checkbox = document.getElementById(currentAddTask).querySelector(`#add-task-checkbox-${user.id}`);
@@ -149,7 +164,7 @@ function renderAddedUserToTask() {
 
 
 /**
- * This fucntion marked already clicked users.
+ * This function marked already clicked users.
  * @param {index} i is the index from array users.
  * @param {string} action is the action to remove or add the click style.
  */
@@ -168,6 +183,11 @@ function alreadyMarkedUsersAsClicked(i, action) {
 }
 
 
+/**
+ * This function removes a contact initials symbole under assigned to.
+ * @param {number} i is the index number from the contact.
+ * @returns the found index number from array addedUsersToTask.
+ */
 function removeUserFromTask(i) {
     const index = addedUsersToTask.findIndex((user) => user.id == i);
 

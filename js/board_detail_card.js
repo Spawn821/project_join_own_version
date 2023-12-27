@@ -17,6 +17,9 @@ function openDetailCard(i) {
 }
 
 
+/**
+ * This function close the detail card.
+ */
 function closeDetailCard() {
     let transparentBackground = document.getElementById('join-transparent-background');
     let detailCard = document.getElementById('board_detail_card_task_html');
@@ -32,6 +35,9 @@ function closeDetailCard() {
 }
 
 
+/**
+ * This function checks whether the entries are so large that scrolling is necessary.
+ */
 function addOrRemoveScrollbarDetailCard() {
     const detailCardHeight = document.getElementById('board-detail-card-panel').offsetHeight;
     const windowHeight = document.documentElement.clientHeight;
@@ -167,6 +173,10 @@ function fillDetailCardSubtasks(subtasks, element) {
 }
 
 
+/**
+ * This function checks which tasks habe been proceed and marked as checked or not.
+ * @param {number} i is the index from the task.
+ */
 function isSubtaskChecked(i) {
     let subtask = document.getElementById(`detailCardSubtask-${i}`);
 
@@ -182,6 +192,11 @@ function isSubtaskChecked(i) {
 }
 
 
+/**
+ * This function returns, on the basis of the parameter, the id from the element.
+ * @param {string} section is the section from the detail card, 'title', 'description' ...
+ * @returns the id from a element.
+ */
 function returnDetailCardSectionId(section) {
     switch (section) {
         case 'category':
@@ -204,6 +219,9 @@ function returnDetailCardSectionId(section) {
 }
 
 
+/**
+ * This function removes a task from the array.
+ */
 function deleteTask() {
     tasks.splice(currentTask, 1);
 
@@ -248,6 +266,12 @@ function fillEditTask() {
 }
 
 
+/**
+ * This function fill the sections from the detailcard with content fromt the array task.
+ * @param {string} title is the title from the task.
+ * @param {string} description is the description from the task.
+ * @param {string} dueDate is the date by which the task must be completed.
+ */
 function fillInputFieldsAndVariables(title, description, dueDate) {
     title.value = tasks[currentTask]['title'];
     description.value = tasks[currentTask]['description'];
@@ -260,6 +284,9 @@ function fillInputFieldsAndVariables(title, description, dueDate) {
 
 let taskEdit = false;
 
+/**
+ * This function close the detailcard.
+ */
 function closeEditTask() {
     clearTask();
 
@@ -270,6 +297,9 @@ function closeEditTask() {
 }
 
 
+/**
+ * This function calls the task is edit if select the 'OK' button on the detailcard.
+ */
 function changeTask() {
     let boardStatus = tasks[currentTask]['boardStatus'];
 

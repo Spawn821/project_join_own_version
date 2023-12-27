@@ -42,6 +42,11 @@ function markedPrioAsClicked(prioText) {
 }
 
 
+/**
+ * This function removed the class to set a pio button marked.
+ * @param {string} id is the id from the button.
+ * @param {boolean} clear is the boolean value indicating that the clear command from add task or add task overlay has been executed.
+ */
 function removeMarkedPrio(id, clear = false) {
     idPrioBtn.map((element) => {
         let prioBtn = document.getElementById(currentAddTask).querySelector('#' + element.id);
@@ -71,6 +76,9 @@ function renderCategoryTask() {
 }
 
 
+/**
+ * This function added a category to the list if is not existet and check if the input field is filled.
+ */
 function addCategory() {
     let newCategory = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
 
@@ -84,11 +92,20 @@ function addCategory() {
 }
 
 
+/**
+ * This function check if a category is allready exist.
+ * @param {string} category is the current category.
+ * @returns true or false if existet or not.
+ */
 function categoryExist(category) {
     return categoriesTask.find((element) => element['category'].toLowerCase() == category.toLowerCase());
 }
 
 
+/**
+ * This function added a category to the array.
+ * @param {string} newCategory is the name from the new category.
+ */
 function addCategoryToList(newCategory) {
     categoriesTask.push({ category: newCategory.value, id: categoriesTask.length });
     newCategory.value = '';
@@ -98,6 +115,10 @@ function addCategoryToList(newCategory) {
 }
 
 
+/**
+ * This function delete a categroy from the array.
+ * @param {string} category is the name from the category.
+ */
 function deleteCategoryFromList(category) {
     categoriesTask.splice(categoryIndex(category), 1);
 
@@ -106,11 +127,20 @@ function deleteCategoryFromList(category) {
 }
 
 
+/**
+ * This function find the index from the current category.
+ * @param {string} category is the name from the category.
+ * @returns the index from the category.
+ */
 function categoryIndex(category) {
     return categoriesTask.findIndex((element) => element.category == category);
 }
 
 
+/**
+ * This function fill the input field with the selected categroy.
+ * @param {string} category is the name from the selected category.
+ */
 function selectCategory(category) {
     let input = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
 
@@ -191,11 +221,19 @@ function actionInputSubtask(action) {
 }
 
 
+/**
+ * This function set the input field as focused/active.
+ * @param {object} newSubtask is the input field.
+ */
 function startInputSubtask(newSubtask) {
     newSubtask.focus();
 }
 
 
+/**
+ * This function added a new subtask to the list and check if the input field is filled.
+ * @param {object} newSubtask is the input field.
+ */
 function addSubtask(newSubtask) {
     if (newSubtask.value) {
         addSubtaskToArray(newSubtask);
@@ -205,6 +243,10 @@ function addSubtask(newSubtask) {
 }
 
 
+/**
+ * This function added a new subtask to the array an clear the input field.
+ * @param {object} newSubtask is the input field.
+ */
 function addSubtaskToArray(newSubtask) {
     addedSubtasks.push({ subtask: newSubtask.value, checked: false });
 
@@ -214,6 +256,11 @@ function addSubtaskToArray(newSubtask) {
 }
 
 
+/**
+ * This function changed the style from the input field if the added category or subtask allready exist or the field is empty.
+ * @param {object} newSubtask is the input field.
+ * @param {string} message is the message to appear in the input field.
+ */
 function addSubtaskError(newSubtask, message) {
     newSubtask.style.color = 'red';
     newSubtask.value = message;
@@ -227,12 +274,20 @@ function addSubtaskError(newSubtask, message) {
 }
 
 
+/**
+ * This function set the input field to blur/not active.
+ * @param {object} newSubtask is the input field.
+ */
 function cancelInputSubtask(newSubtask) {
     newSubtask.value = '';
     newSubtask.blur();
 }
 
 
+/**
+ * This function allows you to edit a sutask.
+ * @param {number} i is the index from the subtask.
+ */
 function editSubtask(i) {
     const changedSubtask = document.getElementById(`add-task-input-edit-subtask${i}`);
     const checked = addedSubtasks[i].checked;
@@ -242,6 +297,10 @@ function editSubtask(i) {
 }
 
 
+/**
+ * This function removes a subtask from the array.
+ * @param {*} i 
+ */
 function deleteSubtask(i) {
     addedSubtasks.splice(i, 1);
 
@@ -263,132 +322,4 @@ function changeSubtaskFromShownToEdit(i) {
 
     input.value = addedSubtasks[i].subtask;
     input.focus();
-}
-
-
-
-/* === CREATE TASK === */
-
-const prioImgPath = [
-    { priority: 'Urgent', img: 'assets/img/icon_urgent_red.png' },
-    { priority: 'Medium', img: 'assets/img/icon_medium_orange.png' },
-    { priority: 'Low', img: 'assets/img/icon_low_green.png' },
-];
-
-const addTaskInputIds = [
-    '#add-task-input-title',
-    '#add-task-textarea-description',
-    '#add-task-input-assigned-to',
-    '#add-task-input-date',
-    '#add-task-input-category'
-];
-
-let setBoardStatus = '';
-
-/**
- * This function create a new task instace in array tasks.
- * @param {string} action is the action to wich executed.
- */
-async function createOrEditTask(action, boardStatus) {
-    let title = document.getElementById(currentAddTask).querySelector('#add-task-input-title');
-    let description = document.getElementById(currentAddTask).querySelector('#add-task-textarea-description');
-    let dueDate = document.getElementById(currentAddTask).querySelector('#add-task-input-date');
-    let prioImg = findPriorityImg();
-    setBoardStatus == '' ? setBoardStatus = boardStatus : null;
-
-    if (action == 'create') {
-        createTask(title, description, dueDate, prioImg);
-    } else if (action == 'edit') {
-        editTask(title, description, dueDate, prioImg);
-    }
-
-    await setItem('tasks', JSON.stringify(tasks));
-}
-
-
-function createTask(title, description, dueDate, prioImg) {
-    let category = document.getElementById(currentAddTask).querySelector('#add-task-input-category');
-    const windowSize = window.matchMedia('(max-width: 1150px)');
-
-    tasks.push(returnTask(title, description, dueDate, prioImg, categoryExist(category.value)));
-
-    windowSize.matches ? clearTask() : openOrCloseAddTaskCard('close', '');
-    showNewTaskOnBoard();
-}
-
-
-function editTask(title, description, dueDate, prioImg) {
-    tasks.splice(currentTask, 1, returnTask(title, description, dueDate, prioImg, editCategory));
-
-    closeEditTask();
-    startCreateBoardShortCards();
-}
-
-
-function showNewTaskOnBoard() {
-    showTemplate('board_html');
-    setSidebarNavActive('board');
-    currentTask = tasks.length - 1;
-    showDroppedShortCard();
-}
-
-
-function findPriorityImg() {
-    try {
-        return prioImgPath.find((element) => element.priority == currentPrio).img;
-    } catch {
-        return 'assets/img/icon_low_green.png'; //default
-    }
-}
-
-
-function clearTask() {
-    addTaskInputIds.map((id) => {
-        let inputField = document.getElementById(currentAddTask).querySelector(id);
-        inputField ? inputField.value = '' : null;
-    })
-
-    addedUsersToTask = [];
-    currentPrio = '';
-    setBoardStatus = '';
-    addedSubtasks = [];
-
-    removeMarkedPrio('', true);
-    renderAddedUserToTask();
-    renderSubtaskTask();
-}
-
-
-function returnTask(title, description, dueDate, prioImg, category) {
-    return {
-        title: title.value,
-        description: description.value,
-        assignedTo: addedUsersToTask,
-        dueDate: dueDate.value,
-        prioText: currentPrio,
-        prioImg: prioImg,
-        category: category,
-        subtasks: addedSubtasks,
-        boardStatus: setBoardStatus
-    };
-}
-
-let inputsDisabledCreateTask = [
-    '#add-task-input-title',
-    '#add-task-textarea-description',
-    '#add-task-input-date',
-    '#add-task-input-category'
-]
-
-function checkDisabledCreateTask() {
-    let i = 0;
-
-    inputsDisabledCreateTask.map((input) => {
-        const inputField = document.getElementById(currentAddTask).querySelector(input);
-        let createTaskButton = document.getElementById(currentAddTask).querySelector('#add-task-button-create');
-
-        if (inputField.value) i++;
-
-        i == inputsDisabledCreateTask.length ? createTaskButton.disabled = false : createTaskButton.disabled = true;
-    });
 }

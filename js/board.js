@@ -43,6 +43,11 @@ function renderBoardShortCards(search, i) {
 }
 
 
+/**
+ * this function update the progress bar on the short card if a subtask is checked or not.
+ * @param {number} i is the index number from the task.
+ * @param {object} task is current task from array tasks.
+ */
 function updateProgressbarSubtasks(i, task) {
     let progressBarIs = document.getElementById(`board-short-card-progress-bar-is_${i}`);
     let checkedSubtasks = document.getElementById(`board-short-card-checked-subtasks_${i}`);
@@ -147,6 +152,10 @@ function selectBoardStatus(status) {
 }
 
 
+/**
+ * This function set all content in the columns on the board page to empty.
+ * @param {string} status is the board status, 'to do', 'in progress'...
+ */
 function resetBoardStatus(status) {
     switch (status) {
         case 'To do':
@@ -195,6 +204,9 @@ function boardDrop(status) {
 }
 
 
+/**
+ * This function marked a short card with a blink effect.
+ */
 async function showDroppedShortCard() {
     scrollToDroppedShortCard();
 
@@ -208,6 +220,9 @@ async function showDroppedShortCard() {
 }
 
 
+/**
+ * This function scroll to the current short card.
+ */
 function scrollToDroppedShortCard() {
     let scrollPositionElement = document.getElementById(`board-short-card-panel_${currentTask}`);
     scrollPositionElement.scrollIntoView({
@@ -245,6 +260,11 @@ function openOrCloseAddTaskCard(action, boardStatus) {
 }
 
 
+/**
+ * This function opens the add task overlay.
+ * @param {object} transparentBackground is the background for the overlays.
+ * @param {object} addTaskOverlay is the add task overlay.
+ */
 function openAddTaskCard(transparentBackground, addTaskOverlay) {
     transparentBackground.classList.remove('d-none');
     addTaskOverlay.classList.remove('d-none');
@@ -256,6 +276,11 @@ function openAddTaskCard(transparentBackground, addTaskOverlay) {
 }
 
 
+/**
+ * This function closed the add task overlay.
+ * @param {object} transparentBackground is the background for the overlays.
+ * @param {object} addTaskOverlay is the add task overlay.
+ */
 function closeAddTaskCard(transparentBackground, addTaskOverlay) {
     clearTask();
     overlayWindowPosition('close', addTaskOverlay);

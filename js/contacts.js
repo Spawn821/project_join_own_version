@@ -4,6 +4,9 @@ let existLetterHeadline = '';
 /* CONTACTS LEFT SIDE */
 /* ================== */
 
+/**
+ * This function start to render all contacts as list.
+ */
 function startCreateContacts() {
     let contactsList = document.getElementById('contacts-list');
     let i = 0;
@@ -73,6 +76,11 @@ function contactData(i) {
 }
 
 
+/**
+ * This function opens or close the contact data from the clicked contact in the desktop mode.
+ * @param {number} i is the index fromt array users.
+ * @param {object} contactCard is the clicked contact card.
+ */
 function openOrCloseContactDataDesktop(i, contactCard) {
     if (contactCard.classList.contains('contact-card-click')) {
         closeAllContactClicks();
@@ -87,6 +95,12 @@ function openOrCloseContactDataDesktop(i, contactCard) {
 }
 
 
+/**
+ * This function opens or close the contact data from the clicked contact in the mobile mode.
+ * @param {number} i is the index fromt array users.
+ * @param {object} contactCard is the clicked contact card.
+ * @param {boolean} contactData is the boolean value to say if contact data rendert or not.
+ */
 function openOrCloseContactDataMobile(i, contactData = true) {
     let contactsLeftSide = document.getElementById('contacts');
     let contactsRightSide = document.getElementById('contact-data');
@@ -99,6 +113,9 @@ function openOrCloseContactDataMobile(i, contactData = true) {
 }
 
 
+/**
+ * This function set a slide in effect to the clicked contact data.
+ */
 function contactDataSlideInAnimation() {
     let contactData = document.getElementById('contact-data-content-parent');
 
@@ -111,6 +128,9 @@ function contactDataSlideInAnimation() {
 }
 
 
+/**
+ * This function set a slide out effect to the clicked contact data.
+ */
 function contactDataSlideOutAnimation() {
     let contactData = document.getElementById('contact-data-content-parent');
 
@@ -143,6 +163,17 @@ function startCreateContactData(i, slideAnimation = true) {
 }
 
 
+/**
+ * This function renders all datas from the current contact.
+ * @param {object} content is the contant area from the contact data.
+ * @param {boolean} slideAnimation switches the slideanimation on or off.
+ * @param {number} i is the index from array users.
+ * @param {string} backgroundColor is the rgb color from the contact.
+ * @param {string} initals is the initials from the first and the last name.
+ * @param {string} name is the name from the contact.
+ * @param {string} email is the email address from the contact.
+ * @param {number} phone is the phone number from the contact.
+ */
 function renderContactData(content, slideAnimation, i, backgroundColor, initals, name, email, phone) {
     if (slideAnimation) {
         setTimeout(() => {
@@ -182,6 +213,11 @@ function closeAllContactClicks() {
 }
 
 
+/**
+ * This function opens the point menu in the mobile version.
+ * @param {string} action say open or close.
+ * @returns is the backdoor if try canceld.
+ */
 function openOrClosePointMenu(action) {
     let pointMenu = document.getElementById('contact-data-name-edit-del-area-mobile');
 
@@ -201,6 +237,9 @@ function openOrClosePointMenu(action) {
 }
 
 
+/**
+ * This event returns the class from all contact cards to marked as clicked.
+ */
 window.addEventListener('resize', () => {
     const windowSize = window.matchMedia('(max-width: 1400px)');
 

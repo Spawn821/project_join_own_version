@@ -1,11 +1,10 @@
 let currentContactIndex = 0;
 
 /**
- * This function opens and close the 'add new -' and 'edit contact' overlay.
- * @param {string} id1 is the id in the template from the parent container.
- * @param {string} id2 is the id from the includet container in the mainpage.
- * @param {boolean} renderEdit call the renderfunction from 'edit contact' overlay.
- * @param {integer} i is the index number from the array users and have a default value.
+ * This function selects the opening or closing of the add new - or edit contact function depending on the parameter.
+ * @param {string} id is the id from the add new - or edit contact overlay.
+ * @param {string} action is the action for the overlay, 'open' or close.
+ * @param {boolean} edit is the prameter to start the rendering from the edit contact overlay.
  */
 function openOrCloseAddNewEditContact(id, action, edit=false) {
     let transparentBackground = document.getElementById('join-transparent-background-overlay-add-new-contact');
@@ -19,6 +18,12 @@ function openOrCloseAddNewEditContact(id, action, edit=false) {
 }
 
 
+/**
+ * This function opens the add new - or edit contact overlay.
+ * @param {object} transparentBackground is the background for the overlays.
+ * @param {object} addNewEditContact is the overlay add new - or edit contact.
+ * @param {boolean} edit is the prameter to start the rendering from the edit contact overlay.
+ */
 function openAddNewEditContact(transparentBackground, addNewEditContact, edit) {
     transparentBackground.classList.remove('d-none');
     addNewEditContact.classList.remove('d-none');
@@ -29,6 +34,11 @@ function openAddNewEditContact(transparentBackground, addNewEditContact, edit) {
 }
 
 
+/**
+ * This function close the add new - or edit contact overlay.
+ * @param {object} transparentBackground is the background for the overlays.
+ * @param {object} addNewEditContact is the overlay add new - or edit contact.
+ */
 function closeAddNewEditContact(transparentBackground, addNewEditContact) {
     overlayWindowPosition('close', addNewEditContact);
 
