@@ -578,7 +578,7 @@ select {
 }
 
 .information-slidebox-vertical {
-    right: calc(50vw - 151.5px);
+    right: calc(50vw - 163px);
     bottom: -80px;
     animation-duration: 1s;
     animation-name: info-slide-up-down;
@@ -656,4 +656,25 @@ select {
             bottom: -80px;
         }
     }
+}
+
+
+
+/* ------------- */
+/* input warning */
+/* ------------- */
+
+.input-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wrong-mail-password {
+  width: 100%;
+  font-family: "Poppins";
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(255, 129, 144);
+  margin-bottom: -16px;
 }

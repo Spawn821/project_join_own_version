@@ -55,14 +55,25 @@
                             </div>
                         </div>
 
-                        <!-- edit contact input email -->
-                        <div class="input-img-area">
-                            <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
-                                placeholder="Email" id="edit-email">
+                        <div class="input-warning">
 
-                            <div class="input-img">
-                                <img src="assets/img/icon_mail.png" alt="icon email image">
+                            <!-- edit contact input email -->
+                            <div class="input-img-area">
+                                <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
+                                    placeholder="Email" id="edit-email"
+                                    onkeyup="checkDisabledAddNewOrEditContactButton('edit-email', 'edit-mail-exist', 'edit-contact-btn')"
+                                    onkeypress="checkDisabledAddNewOrEditContactButton('edit-email', 'edit-mail-exist', 'edit-contact-btn')">
+
+                                <div class="input-img">
+                                    <img src="assets/img/icon_mail.png" alt="icon email image">
+                                </div>
                             </div>
+
+                            <!-- add new contact warning email exist -->
+                            <span class="wrong-mail-password v-hidden" id="edit-mail-exist">
+                                Email is already available
+                            </span>
+
                         </div>
 
                         <!-- edit contact input phone -->
@@ -80,7 +91,7 @@
                             <button type="button" onclick="deleteContact()" class="edit-contact-btn-left btn-white">
                                 <span class="f-s-w-20px-400">Delete</span>
                             </button>
-                            <button type="submit" class="edit-contact-btn-right btn-black">
+                            <button type="submit" class="edit-contact-btn-right btn-black" id="edit-contact-btn">
                                 <span class="f-s-w-21px-700">Save</span>
                                 <img src="assets/img/icon_done_white_small.png" alt="">
                             </button>

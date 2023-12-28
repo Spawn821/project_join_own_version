@@ -13,6 +13,9 @@ let board;
 let taskMoveX;
 let taskMoveY;
 
+/**
+ * This event start if the the finger touches the screen.
+ */
 document.addEventListener('touchstart', e => {
     onScroll = false;
     saveScroll = 0;
@@ -22,7 +25,7 @@ document.addEventListener('touchstart', e => {
 
 
 /**
- * This function start to move the short card drag and drop if mobile.
+ * This function start to move the short card drag and drop mobile.
  * @param {object} e is the object from the touchstart event.
  */
 function startDragAndDropMobile(e) {
@@ -67,6 +70,9 @@ function lookForScrollAction() {
 }
 
 
+/**
+ * This function set all parameters to start with drag and drop.
+ */
 function setElementsForDragAndDropMobile() {
     tasksShortCards = document.querySelectorAll('.board-short-card-panel');
     toDoRow = document.querySelector('#board-to-do-column');
@@ -109,6 +115,7 @@ function touchstartShortCardMobile(task, e) {
  * @param {object} task is the short card element.
  * @param {number} taskStartX is the coordinate to start the short card in x.
  * @param {number} taskStartY is the coordinate to start the short card in y. 
+ * @param {number} scrollStartY is the coordinate to start for scrolling in y. 
  */
 function touchmoveShortCardMobile(task, taskStartX, taskStartY, scrollStartY) {
     task.addEventListener('touchmove', e => {
@@ -195,7 +202,7 @@ function statusRowPosBottomToShortCardCenter(status, task) {
 
 /**
  * This funcion takes into account the scrolling behavior of the page.
- * @param {object} scrollNextY is the object from the current touch if touchmove.
+ * @param {number} scrollMoveY is the value to move the scrollbar in y.
  */
 function considerScrollIfMoveShortCard(scrollMoveY) {
     let boardPanel = document.querySelector('.board-panel');
@@ -211,10 +218,6 @@ function considerScrollIfMoveShortCard(scrollMoveY) {
 /**
  * This fuction changes the style to drag the short card.
  * @param {object} task is the short card element.
- * @param {number} taskNextX is the current coordinate from the shrot card in x.
- * @param {number} taskNextY is the current coordinate from the shrot card in y.
- * @param {number} taskStartX is the start coordinate from the shrot card in x.
- * @param {number} taskStartY is the start coordinate from the shrot card in y.
  */
 function addShortCardStyleToHover(task) {
     task.style.left = taskMoveX + 'px';
@@ -239,6 +242,10 @@ function touchendShortCardMobile(task) {
 }
 
 
+/**
+ * This functioin set all style's from the short card to default if touch is ending.
+ * @param {*} task 
+ */
 function removeShortCardStyleToHover(task) {
     task.style.left = 0;
     task.style.top = 0;

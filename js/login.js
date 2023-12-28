@@ -102,7 +102,7 @@ function login() {
     const password = document.getElementById("login-password");
     const user = users.find(u => u.email == email.value && u.password == password.value);
     const wrongPasswordOrUser = users.find(u => u.email != email.value || u.password != password.value);
-    const warning = document.getElementById("login-wrong-mail-password");
+    const warning = document.getElementById("wrong-mail-password");
 
     if (user) {
         warning.classList.add('v-hidden');
@@ -174,13 +174,21 @@ function compareInputEmailWithUsers() {
 
     users.map((user) => {
         if (!flag) {
-            flag = iterateAllEmailaddresses(inputField, warning, user, button);
+            flag = checkDisabledButton(inputField, warning, user, button);
         }
     })
 }
 
 
-function iterateAllEmailaddresses(inputField, warning, user, button, flag) {
+/**
+ * This function check all conditions to enabled the button or shows a warning text.
+ * @param {object} inputField is the input currrent input field.
+ * @param {object} warning is the warning text.
+ * @param {object} user is the current user from array users.
+ * @param {object} button is the button to disabled or not.
+ * @returns true.
+ */
+function checkDisabledButton(inputField, warning, user, button) {
     warning.classList.remove('v-hidden');
     button.disabled = true;
 
@@ -195,15 +203,9 @@ function iterateAllEmailaddresses(inputField, warning, user, button, flag) {
 }
 
 
-function validInput(inputField, user) {
-    const validInput = inputField.value != '';
-    const validWithUsers = user['email'].toLowerCase().includes(inputField.value.toLowerCase());
-    const validWithSign = inputField.value.includes('@');
-
-    return validInput && validWithUsers && validWithSign;
-}
-
-
+/**
+ * This function returns to the login page and call a slidebox to shows the action that has taken.
+ */
 function sendMailResetPassword() {
     const inputField = document.getElementById('reset-email')
 

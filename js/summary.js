@@ -18,6 +18,10 @@ function renderSummary() {
 }
 
 
+/**
+ * This function set all parameters to validate the summary panels.
+ * @param {number} numberAllTasks is the number from all task entries.
+ */
 function setInfoValues(numberAllTasks) {
     document.getElementById('summary-to-do-number').innerHTML = numberToDo;
     document.getElementById('summary-done-number').innerHTML = numberDone;

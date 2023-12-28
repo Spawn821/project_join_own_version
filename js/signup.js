@@ -18,6 +18,13 @@ async function register() {
 }
 
 
+/**
+ * This function return the the user entry mask.
+ * @param {string} username is the name from the user.
+ * @param {string} usermail is the email address from the user.
+ * @param {string} password is the password from the user.
+ * @returns the user entry.
+ */
 function returnUser(username, usermail, password) {
     return {
         name: username.value,
@@ -53,7 +60,7 @@ function resetForm(username, usermail, password, confirmPassword) {
 function validateSignUp() {
     let signupBtn = document.getElementById('signup-btn');
     const compareUserNameAndMail = validateUserNameAndMail();
-    const emailExist = vaildateEmailAlreadyExist();
+    const emailExist = validateEmailAlreadyExist('signup-mail', 'signup-mail-already-exist');
     const comparePasswords = validatePasswords();
     const checkbox = document.getElementById('signup-checkbox').checked;
 
@@ -62,26 +69,6 @@ function validateSignUp() {
     } else {
         signupBtn.disabled = true;
     }
-}
-
-
-function vaildateEmailAlreadyExist() {
-    let inputField = document.getElementById('signup-mail');
-    let warning = document.getElementById('signup-mail-already-exist');
-    let flag = false;
-
-    users.map((user) => {
-        if (!flag) {
-            warning.classList.add('v-hidden');
-
-            if (validInput(inputField, user)) {
-                warning.classList.remove('v-hidden');
-                flag = true;
-            }
-        }
-    })
-
-    return flag;
 }
 
 

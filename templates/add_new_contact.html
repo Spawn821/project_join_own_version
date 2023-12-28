@@ -56,14 +56,25 @@
                             </div>
                         </div>
 
-                        <!-- add new contact input email -->
-                        <div class="input-img-area">
-                            <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
-                                placeholder="Email" id="add-new-email">
+                        <div class="input-warning">
 
-                            <div class="input-img">
-                                <img src="assets/img/icon_mail.png" alt="icon email image">
+                            <!-- add new contact input email -->
+                            <div class="input-img-area">
+                                <input required class="input-whitout-border-right f-s-w-20px-400" type="email"
+                                    placeholder="Email" id="add-new-email"
+                                    onkeyup="checkDisabledAddNewOrEditContactButton('add-new-email', 'add-new-mail-exist', 'create-contact-btn')"
+                                    onkeypress="checkDisabledAddNewOrEditContactButton('add-new-email', 'add-new-mail-exist', 'create-contact-btn')">
+
+                                <div class="input-img">
+                                    <img src="assets/img/icon_mail.png" alt="icon email image">
+                                </div>
                             </div>
+
+                            <!-- add new contact warning email exist -->
+                            <span class="wrong-mail-password v-hidden" id="add-new-mail-exist">
+                                Email is already available
+                            </span>
+
                         </div>
 
                         <!-- add new contact input phone -->
@@ -84,7 +95,7 @@
                                 <span class="f-s-w-20px-400">Cancel</span>
                                 <div class="btn-white-img"></div>
                             </button>
-                            <button type="submit" class="add-new-contact-btn-right btn-black">
+                            <button type="submit" class="add-new-contact-btn-right btn-black" id="create-contact-btn">
                                 <span class="f-s-w-21px-700">Create contact</span>
                                 <img src="assets/img/icon_done_white_small.png" alt="">
                             </button>

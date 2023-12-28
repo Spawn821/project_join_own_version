@@ -162,3 +162,26 @@ async function deleteContact(i = currentContactIndex, openFalse = true) {
     if (windowSize.matches) openOrCloseContactDataMobile(currentContactIndex, false);
     if (openFalse) openOrCloseAddNewEditContact('edit_contact_html', 'close');
 }
+
+
+/**
+ * This function check all conditions to disable or enable the button in add new - or edit contact.
+ * @param {string} idInput is the id from the input field element.
+ * @param {string} idWarning is the id from the warning text element.
+ * @param {string} idButton is the id from the button element.
+ */
+function checkDisabledAddNewOrEditContactButton(idInput, idWarning, idButton) {
+    let flag = validateEmailAlreadyExist(idInput, idWarning);
+
+    let inputField = document.getElementById(idInput).value;
+    let warning = document.getElementById(idWarning);
+    let button = document.getElementById(idButton);
+
+    if (!flag || flag && idInput == 'edit-email' &&
+        users[currentContactIndex]['email'].toLowerCase().includes(inputField.toLowerCase())) {
+        button.disabled = false;
+        warning.classList.add('v-hidden');
+    } else {
+        button.disabled = true;
+    }
+}

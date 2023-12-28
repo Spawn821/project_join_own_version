@@ -286,21 +286,6 @@
   }
 }
 
-.login-input-warning {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.login-wrong-mail-password {
-  width: 100%;
-  font-family: "Poppins";
-  font-size: 12px;
-  line-height: 14px;
-  color: rgb(255, 129, 144);
-  margin-bottom: -16px;
-}
-
 .login-options-area {
   display: flex;
   align-items: center;
